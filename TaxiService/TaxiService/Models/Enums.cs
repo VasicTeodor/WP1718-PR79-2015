@@ -16,6 +16,7 @@ namespace TaxiService.Models
 
         public enum CarTypes : int
         {
+            Bez_Naznake,
             Car,
             Kombi
         }

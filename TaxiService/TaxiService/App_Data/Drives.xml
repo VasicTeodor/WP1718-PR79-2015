@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Drives>
+  <Drive Id="43e93164-dcd4-472f-b749-7c7e003b8a97">
+    <Id>43e93164-dcd4-472f-b749-7c7e003b8a97</Id>
+    <CustomerId>4bd3b919-f5b5-4168-a021-18d52932931a</CustomerId>
+    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
+    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
+    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
+    <Date>2018-06-13T23:57:15.3250327+02:00</Date>
+    <CarType>Car</CarType>
+    <Price>2341.12</Price>
+    <State>Created</State>
+    <AddressX>34.5</AddressX>
+    <AddressY>53.53</AddressY>
+    <AddressA>Belilo 85 Sremski Karlovci</AddressA>
+    <DestinationX>34.5</DestinationX>
+    <DestinationY>53.53</DestinationY>
+    <DestinationAddress>Belilo 85 Sremski Karlovci</DestinationAddress>
+  </Drive>
+  <Drive Id="09c07b6b-1e38-48fc-a2d4-d047fb638321">
+    <Id>09c07b6b-1e38-48fc-a2d4-d047fb638321</Id>
+    <CustomerId>4bd3b919-f5b5-4168-a021-18d52932931a</CustomerId>
+    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
+    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
+    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
+    <Date>2018-06-13T23:58:27.7749325+02:00</Date>
+    <CarType>Car</CarType>
+    <Price>2341.12</Price>
+    <State>Created</State>
+    <AddressX>34.5</AddressX>
+    <AddressY>53.53</AddressY>
+    <AddressA>Belilo 85 Sremski Karlovci</AddressA>
+    <DestinationX>34.5</DestinationX>
+    <DestinationY>53.53</DestinationY>
+    <DestinationAddress>Belilo 85 Sremski Karlovci</DestinationAddress>
+  </Drive>
+</Drives>

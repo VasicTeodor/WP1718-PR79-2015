@@ -5,18 +5,18 @@ using System.Web;
 
 namespace TaxiService.Models
 {
-    public class Drive
+    public class DriveDto
     {
         public Guid DriveId { get; set; }
+        public Guid CustomerId { get; set; }
+        public Guid DispatcherId { get; set; }
+        public Guid DriverId { get; set; }
+        public Guid CommentId { get; set; }
         public DateTime Date { get; set; }
         public Enums.CarTypes CarType { get; set; }
-        public Customer OrderedBy { get; set; }
         public Location Destination { get; set; }
         public Location Address { get; set; }
-        public Dispatcher ApprovedBy { get; set; }
-        public Driver DrivedBy { get; set; }
         public double Price { get; set; }
-        public Comment Comments { get; set; }
         public Enums.Status State { get; set; }
     }
 }

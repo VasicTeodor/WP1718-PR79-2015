@@ -14,5 +14,11 @@ namespace TaxiService.Repository
         public static List<Driver> freeDrivers = new List<Driver>();
         public static List<Driver> ocupiedDrivers = new List<Driver>();
         public static List<Drive> drives = new List<Drive>();
+
+        public static DriveRepo _driveRepo = new DriveRepo();
+        public static DriverRepo _driverRepo = new DriverRepo();
+        public static CommentRepo _commentRepo = new CommentRepo();
+        public static CustomerRepo _customerRepo = new CustomerRepo();
+        public static DispatcherRepo _dispatcherRepo = new DispatcherRepo();
     }
 }

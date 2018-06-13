@@ -10,9 +10,12 @@ namespace TaxiService.Interfaces
     public interface IDriveRepo
     {
         IEnumerable<Drive> GetAllDrives();
-        void AddNewDrive(Drive drive);
+        IEnumerable<Drive> GetAllDrivesForCustomerId(Guid id);
+        void AddNewDriveCustomer(Drive drive);
+        void AddNewDriveDispatcher(Drive drive);
         Drive RetriveDriveById(Guid id);
-        Drive RetriveDriveByUser(User user);
-        void EditDrive(Drive drive);
+        void CustomerEditDrive(Drive drive);
+        void DispatcherEditDrive(Drive drive);
+        void DriverEditDrive(Drive drive);
     }
 }

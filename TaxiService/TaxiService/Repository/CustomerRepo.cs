@@ -169,7 +169,7 @@ namespace TaxiService.Repository
                         Email = customer.Element("Email").Value,
                         Phone = customer.Element("Phone").Value,
                         Gender = (Genders)Enum.Parse(typeof(Genders), customer.Element("Gender").Value),
-                        Role = (Roles)Enum.Parse(typeof(Roles), customer.Element("Email").Value)
+                        Role = (Roles)Enum.Parse(typeof(Roles), customer.Element("Role").Value)
                     }).ToList();
 
                 return customers;
@@ -201,7 +201,7 @@ namespace TaxiService.Repository
                         Email = customerx.Element("Email").Value,
                         Phone = customerx.Element("Phone").Value,
                         Gender = (Genders)Enum.Parse(typeof(Genders), customerx.Element("Gender").Value),
-                        Role = (Roles)Enum.Parse(typeof(Roles), customerx.Element("Email").Value)
+                        Role = (Roles)Enum.Parse(typeof(Roles), customerx.Element("Role").Value)
                     }).ToList();
 
                 Customer customer = customers.First(x => x.Id.Equals(id));

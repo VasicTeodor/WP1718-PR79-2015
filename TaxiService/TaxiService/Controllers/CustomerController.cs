@@ -11,13 +11,15 @@ namespace TaxiService.Controllers
 {
     public class CustomerController : ApiController
     {
-        private CustomerRepo _custRepo = new CustomerRepo();
-        private DriveRepo _driveRepo = new DriveRepo();
-
         [HttpPost]
+        [Route("api/Customer/CreateNewDrive")]
         public HttpResponseMessage CreateNewDrive([FromBody]Drive drive)
         {
-            return Request.CreateResponse(HttpStatusCode.OK);
+            drive.DriveId = Guid.NewGuid();
+            drive.Date = DateTime.Now;
+            drive.State = Enums.Status.Created;
+            DataRepository._driveRepo.AddNewDriveCustomer(drive);
+            return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driveRepo.GetAllDrives());
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Drivers>
-  <Driver Id="420f42f0-7437-4e39-8af8-c1adc482f014">
-    <Id>420f42f0-7437-4e39-8af8-c1adc482f014</Id>
+  <Driver Id="305ed38b-aa76-43ae-95dc-afec2a11bd16">
+    <Id>305ed38b-aa76-43ae-95dc-afec2a11bd16</Id>
     <Username>VozacPera</Username>
     <Password>Rope123</Password>
     <Name>Petar</Name>
@@ -13,7 +13,7 @@
     <Role>Driver</Role>
     <X>0</X>
     <Y>0</Y>
-    <Address>see</Address>
+    <Address>garage</Address>
     <CarId>-1</CarId>
     <ModelYear>1995</ModelYear>
     <RegNumber>NS993TX</RegNumber>

@@ -79,6 +79,18 @@ namespace TaxiService.Repository
                                         .Elements("Driver")
                                         .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
                                         .SetElementValue("Role", driver.Role);
+                xmlDocument.Element("Drivers")
+                                        .Elements("Driver")
+                                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
+                                        .SetElementValue("X", driver.Location.X);
+                xmlDocument.Element("Drivers")
+                                        .Elements("Driver")
+                                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
+                                        .SetElementValue("Y", driver.Location.Y);
+                xmlDocument.Element("Drivers")
+                                        .Elements("Driver")
+                                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
+                                        .SetElementValue("Address", driver.Location.Address);
 
                 xmlDocument.Save(fileName);
             }
@@ -125,7 +137,7 @@ namespace TaxiService.Repository
                     new XElement("X", driver.Location.X),
                     new XElement("Y", driver.Location.Y),
                     new XElement("Address", driver.Location.Address),
-                    new XElement("CarId", driver.Car.Id),
+                    new XElement("CarId", driver.Car.CarId),
                     new XElement("ModelYear", driver.Car.ModelYear),
                     new XElement("RegNumber", driver.Car.RegNumber),
                     new XElement("Type", driver.Car.Type)
@@ -152,15 +164,13 @@ namespace TaxiService.Repository
                                   new XElement("Email", driver.Email),
                                   new XElement("Gender", driver.Gender),
                                   new XElement("Role", driver.Role),
-                                        new XElement("Location",
-                                        new XElement("X", driver.Location.X),
-                                        new XElement("Y", driver.Location.Y),
-                                        new XElement("Address", driver.Location.Address)),
-                                        new XElement("Car",
-                                        new XElement("CarId", driver.Car.Id),
-                                        new XElement("ModelYear", driver.Car.ModelYear),
-                                        new XElement("RegNumber", driver.Car.RegNumber),
-                                        new XElement("Type", driver.Car.Type))
+                                  new XElement("X", driver.Location.X),
+                                  new XElement("Y", driver.Location.Y),
+                                  new XElement("Address", driver.Location.Address),
+                                  new XElement("CarId", driver.Car.CarId),
+                                  new XElement("ModelYear", driver.Car.ModelYear),
+                                  new XElement("RegNumber", driver.Car.RegNumber),
+                                  new XElement("Type", driver.Car.Type)
                                     ));
                     doc.Save(fileName);
                 }
@@ -197,7 +207,7 @@ namespace TaxiService.Repository
                         },
                         Car = new Car
                         {
-                            Id = Int32.Parse(driver.Element("CarId").Value),
+                            CarId = Int32.Parse(driver.Element("CarId").Value),
                             ModelYear = Int32.Parse(driver.Element("ModelYear").Value),
                             RegNumber = driver.Element("RegNumber").Value,
                             Type = (CarTypes)Enum.Parse(typeof(CarTypes), driver.Element("Type").Value)
@@ -242,7 +252,7 @@ namespace TaxiService.Repository
                         },
                         Car = new Car
                         {
-                            Id = Int32.Parse(driverx.Element("CarId").Value),
+                            CarId = Int32.Parse(driverx.Element("CarId").Value),
                             ModelYear = Int32.Parse(driverx.Element("ModelYear").Value),
                             RegNumber = driverx.Element("RegNumber").Value,
                             Type = (CarTypes)Enum.Parse(typeof(CarTypes), driverx.Element("Type").Value)
@@ -280,7 +290,20 @@ namespace TaxiService.Repository
                         Email = driverx.Element("Email").Value,
                         Phone = driverx.Element("Phone").Value,
                         Gender = (Genders)Enum.Parse(typeof(Genders), driverx.Element("Gender").Value),
-                        Role = (Roles)Enum.Parse(typeof(Roles), driverx.Element("Role").Value)
+                        Role = (Roles)Enum.Parse(typeof(Roles), driverx.Element("Role").Value),
+                        Location = new Location
+                        {
+                            Address = driverx.Element("Address").Value,
+                            X = Double.Parse(driverx.Element("X").Value),
+                            Y = Double.Parse(driverx.Element("Y").Value)
+                        },
+                        Car = new Car
+                        {
+                            CarId = Int32.Parse(driverx.Element("CarId").Value),
+                            ModelYear = Int32.Parse(driverx.Element("ModelYear").Value),
+                            RegNumber = driverx.Element("RegNumber").Value,
+                            Type = (CarTypes)Enum.Parse(typeof(CarTypes), driverx.Element("Type").Value)
+                        }
                     }).ToList();
 
                 Driver driver = drivers.First(x => x.Username.ToLower().Equals(Name.ToLower()));

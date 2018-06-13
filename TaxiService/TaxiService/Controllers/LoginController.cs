@@ -11,27 +11,23 @@ namespace TaxiService.Controllers
 {
     public class LoginController : ApiController
     {
-        private DispatcherRepo _dispRepo = new DispatcherRepo();
-        private DriverRepo _drivRepo = new DriverRepo();
-        private CustomerRepo _custRepo = new CustomerRepo();
-
         [HttpPost]
         //[Route("api/Login/SignIn")]
         public HttpResponseMessage SignIn([FromBody]LoginClass login)
         {
-            if (_drivRepo.LogIn(login.Username, login.Password))
+            if (DataRepository._driverRepo.LogIn(login.Username, login.Password))
             {
-                Driver driver = _drivRepo.RetriveDriverByUserName(login.Username);
+                Driver driver = DataRepository._driverRepo.RetriveDriverByUserName(login.Username);
                 return Request.CreateResponse(HttpStatusCode.OK, driver);
             }
-            else if(_dispRepo.LogIn(login.Username, login.Password))
+            else if(DataRepository._dispatcherRepo.LogIn(login.Username, login.Password))
             {
-                Dispatcher dispatcher = _dispRepo.RetriveDispatcherByUserName(login.Username);
+                Dispatcher dispatcher = DataRepository._dispatcherRepo.RetriveDispatcherByUserName(login.Username);
                 return Request.CreateResponse(HttpStatusCode.OK, dispatcher);
             }
-            else if(_custRepo.LogIn(login.Username, login.Password))
+            else if(DataRepository._customerRepo.LogIn(login.Username, login.Password))
             {
-                Customer customer = _custRepo.RetriveCustomerByUserName(login.Username);
+                Customer customer = DataRepository._customerRepo.RetriveCustomerByUserName(login.Username);
                 return Request.CreateResponse(HttpStatusCode.OK, customer);
             }
             else

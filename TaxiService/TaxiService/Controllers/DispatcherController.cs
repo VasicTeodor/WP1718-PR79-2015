@@ -11,25 +11,20 @@ namespace TaxiService.Controllers
 {
     public class DispatcherController : ApiController
     {
-        private DispatcherRepo _dispRepo = new DispatcherRepo();
-        private DriverRepo _drivRepo = new DriverRepo();
-        private CustomerRepo _custRepo = new CustomerRepo();
-        private DriveRepo _driveRepo = new DriveRepo();
-
         [HttpPost]
         [Route("api/Dispatcher/AddDriver")]
         public HttpResponseMessage AddDriver([FromBody]Driver driver)
         {
-            if (!_custRepo.CheckIfCustomerExists(driver.Username) &&
-                !_dispRepo.CheckIfDispatcherExists(driver.Username) &&
-                !_drivRepo.CheckIfDriverExists(driver.Username))
+            if (!DataRepository._customerRepo.CheckIfCustomerExists(driver.Username) &&
+                !DataRepository._dispatcherRepo.CheckIfDispatcherExists(driver.Username) &&
+                !DataRepository._driverRepo.CheckIfDriverExists(driver.Username))
             {
                 driver.Id = Guid.NewGuid();
                 driver.Role = Enums.Roles.Driver;
-                driver.Location = new Location { Address = "see", X = 0, Y = 0 };
-                driver.Car = new Car { Id = -1, ModelYear = 1995, RegNumber = "NS993TX", Type = Enums.CarTypes.Car };
-                _drivRepo.NewDriver(driver);
-                return Request.CreateResponse(HttpStatusCode.Created, _drivRepo.RetriveDriverById(driver.Id));
+                driver.Location = new Location { Address = "garage", X = 0, Y = 0 };
+                driver.Car = new Car { CarId = -1, ModelYear = 1995, RegNumber = "NS993TX", Type = Enums.CarTypes.Car };
+                DataRepository._driverRepo.NewDriver(driver);
+                return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driverRepo.RetriveDriverById(driver.Id));
             }
             else
             {
@@ -38,10 +33,14 @@ namespace TaxiService.Controllers
         }
 
         [HttpPost]
+        [Route("api/Dispatcher/CreateDrive")]
         public HttpResponseMessage CreateDrive([FromBody]Drive drive)
         {
-            _driveRepo.AddNewDrive(drive);
-            return Request.CreateResponse(HttpStatusCode.Created, _driveRepo.GetAllDrives());
+            drive.DriveId = Guid.NewGuid();
+            drive.Date = DateTime.Now;
+            drive.State = Enums.Status.Formated;
+            DataRepository._driveRepo.AddNewDriveDispatcher(drive);
+            return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driveRepo.GetAllDrives());
         }
     }
 }
