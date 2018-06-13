@@ -8,10 +8,12 @@ namespace TaxiService.Models
     public class Drive
     {
         public Guid Id { get; set; }
+        public Guid CustomerId { get; set; }
         public DateTime Date { get; set; }
         public Enums.CarTypes CarType { get; set; }
         public Customer OrderedBy { get; set; }
         public Location Destination { get; set; }
+        public Location Address { get; set; }
         public Dispatcher ApprovedBy { get; set; }
         public Driver DrivedBy { get; set; }
         public double Price { get; set; }

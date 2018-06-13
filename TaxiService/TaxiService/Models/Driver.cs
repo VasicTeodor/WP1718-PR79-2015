@@ -10,6 +10,6 @@ namespace TaxiService.Models
     public class Driver : User
     {
         public Car Car { get; set; }
-        Location Location { get; set; }
+        public Location Location { get; set; }
     }
 }

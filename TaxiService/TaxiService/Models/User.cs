@@ -21,6 +21,6 @@ namespace TaxiService.Models
         public Enums.Genders Gender { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public Enums.Roles Role { get; set; }
-        //dodati voznje - sve moguce? mozda listu voznji
+        public List<Drive> Drives { get; set; }
     }
 }

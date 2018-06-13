@@ -11,6 +11,9 @@ namespace TaxiService.Controllers
 {
     public class CustomerController : ApiController
     {
+        private CustomerRepo _custRepo = new CustomerRepo();
+        private DriveRepo _driveRepo = new DriveRepo();
+
         [HttpPost]
         public HttpResponseMessage CreateNewDrive([FromBody]Drive drive)
         {

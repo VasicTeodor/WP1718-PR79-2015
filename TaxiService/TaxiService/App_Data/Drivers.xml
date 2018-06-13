@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Drivers>
+  <Driver Id="420f42f0-7437-4e39-8af8-c1adc482f014">
+    <Id>420f42f0-7437-4e39-8af8-c1adc482f014</Id>
+    <Username>VozacPera</Username>
+    <Password>Rope123</Password>
+    <Name>Petar</Name>
+    <Surname>Petrovic</Surname>
+    <Jmbg>898786745</Jmbg>
+    <Phone>0609883342</Phone>
+    <Email>pera@gmail.com</Email>
+    <Gender>Male</Gender>
+    <Role>Driver</Role>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>see</Address>
+    <CarId>-1</CarId>
+    <ModelYear>1995</ModelYear>
+    <RegNumber>NS993TX</RegNumber>
+    <Type>Car</Type>
+  </Driver>
+</Drivers>
