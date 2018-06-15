@@ -14,6 +14,21 @@ namespace TaxiService.Repository
     {
         private string fileName = HttpContext.Current.Server.MapPath("~/App_Data/Drives.xml");
 
+        public void AddComment(Drive drive, Guid CommentId)
+        {
+            if (File.Exists(fileName))
+            {
+                XDocument xmlDocument = XDocument.Load(fileName);
+
+                xmlDocument.Element("Drives")
+                                        .Elements("Drive")
+                                        .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                        .SetElementValue("CommentId", CommentId);
+
+                xmlDocument.Save(fileName);
+            }
+        }
+
         public void AddNewDriveCustomer(Drive drive)
         {
             if (!File.Exists(fileName))
@@ -134,17 +149,94 @@ namespace TaxiService.Repository
 
         public void CustomerEditDrive(Drive drive)
         {
-            throw new NotImplementedException();
+            if (File.Exists(fileName))
+            {
+                XDocument xmlDocument = XDocument.Load(fileName);
+
+                xmlDocument.Element("Drives")
+                                        .Elements("Drive")
+                                        .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                        .SetElementValue("AddressX", drive.Address.X);
+                xmlDocument.Element("Drives")
+                                        .Elements("Drive")
+                                        .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                        .SetElementValue("AddressY", drive.Address.Y);
+                xmlDocument.Element("Drives")
+                                        .Elements("Drive")
+                                        .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                        .SetElementValue("AddressA", drive.Address.Address);
+                xmlDocument.Element("Drives")
+                                        .Elements("Drive")
+                                        .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                        .SetElementValue("CarType", drive.CarType);
+
+                xmlDocument.Save(fileName);
+            }
         }
 
         public void DispatcherEditDrive(Drive drive)
         {
-            throw new NotImplementedException();
+            if (File.Exists(fileName))
+            {
+                XDocument xmlDocument = XDocument.Load(fileName);
+
+                xmlDocument.Element("Drives")
+                                        .Elements("Drive")
+                                        .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                        .SetElementValue("DispatcherId", drive.ApprovedBy.Id);
+                xmlDocument.Element("Drives")
+                                        .Elements("Drive")
+                                        .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                        .SetElementValue("DriverId", drive.DrivedBy.Id);
+
+                xmlDocument.Save(fileName);
+            }
         }
 
         public void DriverEditDrive(Drive drive)
         {
-            throw new NotImplementedException();
+            if (File.Exists(fileName))
+            {
+                XDocument xmlDocument = XDocument.Load(fileName);
+                
+                xmlDocument.Element("Drives")
+                                        .Elements("Drive")
+                                        .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                        .SetElementValue("DriverId", drive.DrivedBy.Id);
+
+                xmlDocument.Save(fileName);
+            }
+        }
+
+        public void FinishDrive(Drive drive)
+        {
+            if (File.Exists(fileName))
+            {
+                XDocument xmlDocument = XDocument.Load(fileName);
+
+                xmlDocument.Element("Drives")
+                                        .Elements("Drive")
+                                        .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                        .SetElementValue("DestinationX", drive.Destination.X);
+                xmlDocument.Element("Drives")
+                                        .Elements("Drive")
+                                        .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                        .SetElementValue("DestinationY", drive.Destination.Y);
+                xmlDocument.Element("Drives")
+                                        .Elements("Drive")
+                                        .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                        .SetElementValue("DestinationAddress", drive.Destination.Address);
+                xmlDocument.Element("Drives")
+                                        .Elements("Drive")
+                                        .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                        .SetElementValue("Price", drive.Price);
+                xmlDocument.Element("Drives")
+                                        .Elements("Drive")
+                                        .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                        .SetElementValue("State", drive.State);
+
+                xmlDocument.Save(fileName);
+            }
         }
 
         public IEnumerable<Drive> GetAllDrives()
@@ -483,7 +575,186 @@ namespace TaxiService.Repository
 
         public Drive RetriveDriveById(Guid id)
         {
-            throw new NotImplementedException();
+            if (File.Exists(fileName))
+            {
+                List<Drive> fullDrives = new List<Drive>();
+                FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                XDocument doc = XDocument.Load(stream);
+                IEnumerable<DriveDto> drives =
+                    doc.Root
+                    .Elements("Drive")
+                    .Select(drive => new DriveDto
+                    {
+                        DriveId = Guid.Parse(drive.Element("Id").Value),
+                        CustomerId = Guid.Parse(drive.Element("CustomerId").Value),
+                        DispatcherId = Guid.Parse(drive.Element("DispatcherId").Value),
+                        DriverId = Guid.Parse(drive.Element("DriverId").Value),
+                        CommentId = Guid.Parse(drive.Element("CommentId").Value),
+                        Date = DateTime.Parse(drive.Element("Date").Value),
+                        CarType = (CarTypes)Enum.Parse(typeof(CarTypes), drive.Element("CarType").Value),
+                        Price = Double.Parse(drive.Element("Price").Value),
+                        State = (Status)Enum.Parse(typeof(Status), drive.Element("State").Value),
+                        Address = new Location
+                        {
+                            Address = drive.Element("AddressA").Value,
+                            X = Double.Parse(drive.Element("AddressX").Value),
+                            Y = Double.Parse(drive.Element("AddressY").Value),
+                        },
+                        Destination = new Location
+                        {
+                            Address = drive.Element("DestinationAddress").Value,
+                            X = Double.Parse(drive.Element("DestinationX").Value),
+                            Y = Double.Parse(drive.Element("DestinationY").Value),
+                        }
+                    }).ToList();
+
+                foreach (var d in drives)
+                {
+
+                    if (d.DispatcherId.Equals(Guid.Empty) && d.DriverId.Equals(Guid.Empty))
+                    {
+                        if (d.CommentId.Equals(Guid.Empty))
+                        {
+                            fullDrives.Add(new Drive
+                            {
+                                Address = d.Address,
+                                CarType = d.CarType,
+                                OrderedBy = DataRepository._customerRepo.RetriveCustomerById(d.CustomerId),
+                                Date = d.Date,
+                                Destination = d.Destination,
+                                DriveId = d.DriveId,
+                                Price = d.Price,
+                                State = d.State
+                            });
+                        }
+                        else
+                        {
+                            fullDrives.Add(new Drive
+                            {
+                                Address = d.Address,
+                                CarType = d.CarType,
+                                OrderedBy = DataRepository._customerRepo.RetriveCustomerById(d.CustomerId),
+                                Date = d.Date,
+                                Destination = d.Destination,
+                                DriveId = d.DriveId,
+                                Price = d.Price,
+                                State = d.State,
+                                Comments = DataRepository._commentRepo.GetCommentById(d.CommentId)
+                            });
+                        }
+                    }
+                    else if (d.CustomerId.Equals(Guid.Empty))
+                    {
+                        if (d.CommentId.Equals(Guid.Empty))
+                        {
+                            fullDrives.Add(new Drive
+                            {
+                                Address = d.Address,
+                                CarType = d.CarType,
+                                ApprovedBy = DataRepository._dispatcherRepo.RetriveDispatcherById(d.DispatcherId),
+                                Date = d.Date,
+                                Destination = d.Destination,
+                                DrivedBy = DataRepository._driverRepo.RetriveDriverById(d.DriverId),
+                                DriveId = d.DriveId,
+                                Price = d.Price,
+                                State = d.State
+                            });
+                        }
+                        else
+                        {
+                            fullDrives.Add(new Drive
+                            {
+                                Address = d.Address,
+                                CarType = d.CarType,
+                                ApprovedBy = DataRepository._dispatcherRepo.RetriveDispatcherById(d.DispatcherId),
+                                Date = d.Date,
+                                Destination = d.Destination,
+                                DrivedBy = DataRepository._driverRepo.RetriveDriverById(d.DriverId),
+                                DriveId = d.DriveId,
+                                Price = d.Price,
+                                State = d.State,
+                                Comments = DataRepository._commentRepo.GetCommentById(d.CommentId)
+                            });
+                        }
+                    }
+                    else if (d.DispatcherId.Equals(Guid.Empty))
+                    {
+                        if (d.CommentId.Equals(Guid.Empty))
+                        {
+                            fullDrives.Add(new Drive
+                            {
+                                Address = d.Address,
+                                CarType = d.CarType,
+                                OrderedBy = DataRepository._customerRepo.RetriveCustomerById(d.CustomerId),
+                                Date = d.Date,
+                                Destination = d.Destination,
+                                DrivedBy = DataRepository._driverRepo.RetriveDriverById(d.DriverId),
+                                DriveId = d.DriveId,
+                                Price = d.Price,
+                                State = d.State
+                            });
+                        }
+                        else
+                        {
+                            fullDrives.Add(new Drive
+                            {
+                                Address = d.Address,
+                                CarType = d.CarType,
+                                OrderedBy = DataRepository._customerRepo.RetriveCustomerById(d.CustomerId),
+                                Date = d.Date,
+                                Destination = d.Destination,
+                                DrivedBy = DataRepository._driverRepo.RetriveDriverById(d.DriverId),
+                                DriveId = d.DriveId,
+                                Price = d.Price,
+                                State = d.State,
+                                Comments = DataRepository._commentRepo.GetCommentById(d.CommentId)
+                            });
+                        }
+                    }
+                    else
+                    {
+                        if (d.CommentId.Equals(Guid.Empty))
+                        {
+                            fullDrives.Add(new Drive
+                            {
+                                Address = d.Address,
+                                CarType = d.CarType,
+                                ApprovedBy = DataRepository._dispatcherRepo.RetriveDispatcherById(d.DispatcherId),
+                                Date = d.Date,
+                                Destination = d.Destination,
+                                DrivedBy = DataRepository._driverRepo.RetriveDriverById(d.DriverId),
+                                DriveId = d.DriveId,
+                                OrderedBy = DataRepository._customerRepo.RetriveCustomerById(d.CustomerId),
+                                Price = d.Price,
+                                State = d.State
+                            });
+                        }
+                        else
+                        {
+                            fullDrives.Add(new Drive
+                            {
+                                Address = d.Address,
+                                CarType = d.CarType,
+                                ApprovedBy = DataRepository._dispatcherRepo.RetriveDispatcherById(d.DispatcherId),
+                                Date = d.Date,
+                                Destination = d.Destination,
+                                DrivedBy = DataRepository._driverRepo.RetriveDriverById(d.DriverId),
+                                DriveId = d.DriveId,
+                                OrderedBy = DataRepository._customerRepo.RetriveCustomerById(d.CustomerId),
+                                Price = d.Price,
+                                State = d.State,
+                                Comments = DataRepository._commentRepo.GetCommentById(d.CommentId)
+                            });
+                        }
+                    }
+                }
+
+                return fullDrives.FirstOrDefault( d => d.DriveId == id);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

@@ -17,5 +17,7 @@ namespace TaxiService.Interfaces
         void CustomerEditDrive(Drive drive);
         void DispatcherEditDrive(Drive drive);
         void DriverEditDrive(Drive drive);
+        void FinishDrive(Drive drive);
+        void AddComment(Drive drive, Guid CommentId);
     }
 }
