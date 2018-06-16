@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Taxi Novi Sad</title>
     <link rel="stylesheet" type="text/css" href="../Content/StyleSheetCustom.css" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script src="Scripts/RegisterScript.js" type="text/javascript"></script>
     <script src="Scripts/MyScript.js" type="text/javascript"></script>
     <link href="https://fonts.googleapis.com/css?family=Tahoma:100,200,300,400,500,600,700,800,900|Brush+Script+MT:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 </head>
 <body style="background-image: url('../Images/blckMap.JPG') !important;" onload="formatTime();">
-    <header>
+    <header id="displayHeader">
         <div>
             <a href="../Views/Driver/Home.cshtml">
                 <h1 class="header-large-brand">TAXI</h1>
@@ -19,96 +21,199 @@
         </div>
         <button name="menuBtn" onclick="generateMenu();">MENU</button>
         <nav>
-            <ul id="menu" style="display: none;">
-                <li><a href="">HOME</a></li>
-                <li><a href="">ABOUT</a></li>
-                <li><a href="">RESERVATION</a></li>
-                <li><a href="">CONTACTS</a></li>
-                <li><a href="">MY ACCOUNT</a></li>
-            </ul>
+            <div class="menu-dropdown">
+                <ul id="menu" style="display: none;">
+                    <li><a href="">HOME</a></li>
+                    <li><a href="">ABOUT</a></li>
+                    <li><a href="">RESERVATION</a></li>
+                    <li><a href="">CONTACTS</a></li>
+                    <li><a href="">MY ACCOUNT</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
     <main>
-        <section class="index-banner">
+        <section class="index-banner" id="displayBanner" style="display:none;">
             <div class="vertical-center">
                 <h2>WE ARE TAXI<br>NOVI SAD</h2>
                 <h1>With speciality in transporting people with luxury cars <br> and vans, with low prices.</h1>
             </div>
         </section>
         <section class="home-trips-table">
-            <div class="trips-wrap">
-                <p class="home-date-time" id="clock">OVDE IDE DATUM I SAT</p>
-                <div class="home-tt-header">
-                    <p>DATUM I VREME</p>
-                    <p>LOKACIJA</p>
+            <div class="wraper">
+                <div class="trips-wrap" style="display:none">
+                    <p class="home-date-time" id="clock">OVDE IDE DATUM I SAT</p>
+                    <div class="home-tt-header">
+                        <p>DATUM I VREME</p>
+                        <p>LOKACIJA</p>
+                    </div>
+                    <div class="home-tt-main">
+                        <p class="home-tt-display">15.10.2018 14:23</p>
+                        <p class="home-tt-display">Bul. Oslobodjenja, 2a</p>
+                        <button class="expand-table" onclick="showOtherInfo(this);" id="1">+</button>
+                    </div>
+                    <div class="home-tt-other" style="display: none;" id="otherInfo1">
+                        <div class="tableWrap">
+                            <table class="table-drive">
+                                <tr class="table-tr-drive">
+                                    <td class="table-td-drive">Date:</td>
+                                    <td class="table-td-drive"><p class="home-tt-display2">15.10.2018 14:23</p></td>
+                                </tr>
+                                <tr class="table-tr-drive">
+                                    <td class="table-td-drive">Address:</td>
+                                    <td class="table-td-drive"><p class="home-tt-display2">Bul. Oslobodjenja, 2a</p></td>
+                                </tr>
+                                <tr class="table-tr-drive">
+                                    <td class="table-td-drive">Car Type:</td>
+                                    <td class="table-td-drive"><p class="home-tt-display2">Car</p></td>
+                                </tr>
+                                <tr class="table-tr-drive">
+                                    <td class="table-td-drive">Destination:</td>
+                                    <td class="table-td-drive"><p class="home-tt-display2">Bul. Oslobodjenja, 2a</p></td>
+                                </tr>
+                                <tr class="table-tr-drive">
+                                    <td class="table-td-drive">Price:</td>
+                                    <td class="table-td-drive"><p class="home-tt-display2">2018.56 RSD</p></td>
+                                </tr>
+                                <tr class="table-tr-drive">
+                                    <td class="table-td-drive">Dispatcher:</td>
+                                    <td class="table-td-drive"><p class="home-tt-display2">Marko Markovic</p></td>
+                                </tr>
+                                <tr class="table-tr-drive">
+                                    <td class="table-td-drive">Driver:</td>
+                                    <td class="table-td-drive"><p class="home-tt-display2">Petar Petrovic</p></td>
+                                </tr>
+                                <tr class="table-tr-drive">
+                                    <td class="table-td-drive">Comment:</td>
+                                    <td class="table-td-drive">
+                                        <div>
+                                            <p class="comment-bold">Voznja je bila fantasticna, skroz sam uzivao..</p>
+                                            <p class="comment-italic">10.10.2018 14.41</p>
+                                            <p class="comment-bold">OCENA: 4</p>
+                                            <p class="comment-italic">Petar Petrovic-Vozac</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="table-tr-drive">
+                                    <td colspan="2" class="table-td-drive">
+                                        <button class="edit-drive" id="btnEdit">Edit</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                <div class="home-tt-main">
-                    <p class="home-tt-display">15.10.2018 14:23</p>
-                    <p class="home-tt-display">Bul. Oslobodjenja, 2a</p>
-                    <button class="expand-table" onclick="showOtherInfo(this);" id="1">+</button>
-                </div>
-                <div class="home-tt-other" style="display: none;" id="otherInfo1">
-                    <table>
-                        <tr>
-                            <td>Date:</td>
-                            <td><p class="home-tt-display2">15.10.2018 14:23</p></td>
+                <div class="trips-wrap">
+                    <h2 class="reg-header">REGISTER FORM</h2>
+                    <table class="reg-table">
+                        <tr class="reg-table-normal">
+                            <td class="reg-table-td">Name:</td>
+                            <td class="reg-table-td"><input type="text" id="regName" name="name" placeholder="Name" /></td>
                         </tr>
-                        <tr>
-                            <td>Address:</td>
-                            <td><p class="home-tt-display2">Bul. Oslobodjenja, 2a</p></td>
+                        <tr class="reg-table-error">
+                            <td colspan="2"><p id="errorName" class="index-error-label">&nbsp;</p></td>
                         </tr>
-                        <tr>
-                            <td>Date:</td>
-                            <td><p class="home-tt-display2">15.10.2018 14:23</p></td>
+                        <tr class="reg-table-normal">
+                            <td class="reg-table-td">Surname:</td>
+                            <td class="reg-table-td"><input type="text" id="regSurname" name="surname" placeholder="Surname" /></td>
                         </tr>
-                        <tr>
-                            <td>Address:</td>
-                            <td><p class="home-tt-display2">Bul. Oslobodjenja, 2a</p></td>
+                        <tr class="reg-table-error">
+                            <td colspan="2"><p id="errorSurname" class="index-error-label">&nbsp;</p></td>
                         </tr>
-                        <tr>
-                            <td>Date:</td>
-                            <td><p class="home-tt-display2">15.10.2018 14:23</p></td>
+                        <tr class="reg-table-normal">
+                            <td class="reg-table-td">Email:</td>
+                            <td class="reg-table-td"><input type="email" id="regEmail" name="email" placeholder="Email" /></td>
                         </tr>
-                        <tr>
-                            <td>Address:</td>
-                            <td><p class="home-tt-display2">Bul. Oslobodjenja, 2a</p></td>
+                        <tr class="reg-table-error">
+                            <td colspan="2"><p id="errorEmail" class="index-error-label">&nbsp;</p></td>
+                        </tr>
+                        <tr class="reg-table-normal">
+                            <td class="reg-table-td">Phone:</td>
+                            <td class="reg-table-td"><input type="text" id="regPhone" name="phone" placeholder="Phone" /></td>
+                        </tr>
+                        <tr class="reg-table-error">
+                            <td colspan="2"><p id="errorPhone" class="index-error-label">&nbsp;</p></td>
+                        </tr>
+                        <tr class="reg-table-normal">
+                            <td class="reg-table-td">JMBG:</td>
+                            <td class="reg-table-td"><input type="text" id="regJmbg" name="jmbg" placeholder="JMBG" /></td>
+                        </tr>
+                        <tr class="reg-table-error">
+                            <td colspan="2"><p id="errorJmbg" class="index-error-label">&nbsp;</p></td>
+                        </tr>
+                        <tr class="reg-table-normal">
+                            <td class="reg-table-td">Gender:</td>
+                            <td class="reg-table-td">
+                                <select id="regGender" name="gender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="reg-table-error">
+                            <td colspan="2"><p id="errorGender" class="index-error-label">&nbsp;</p></td>
+                        </tr>
+                        <tr class="reg-table-normal">
+                            <td class="reg-table-td">Username:</td>
+                            <td class="reg-table-td"><input type="text" id="regUsername" name="username" placeholder="Username" /></td>
+                        </tr>
+                        <tr class="reg-table-error">
+                            <td colspan="2"><p id="errorUsername" class="index-error-label">&nbsp;</p></td>
+                        </tr>
+                        <tr class="reg-table-normal">
+                            <td class="reg-table-td">Password:</td>
+                            <td class="reg-table-td"><input type="password" id="regPass" name="password" placeholder="Password" /></td>
+                        </tr>
+                        <tr class="reg-table-normal">
+                            <td class="reg-table-td">Repeat Password:</td>
+                            <td class="reg-table-td"><input type="password" id="regPassword" placeholder="Repeat Password" /></td>
+                        </tr>
+                        <tr class="reg-table-error">
+                            <td colspan="2"><p id="errorRegPass" class="index-error-label">&nbsp;</p></td>
+                        </tr>
+                        <tr class="reg-table-normal">
+                            <td colspan="2" class="reg-table-td"><button class="btn-register" id="btnRegister">Register</button></td>
                         </tr>
                     </table>
                 </div>
-                <div class="home-tt-main">
-                    <p class="home-tt-display">15.10.2018 14:23</p>
-                    <p class="home-tt-display">Bul. Oslobodjenja, 2a</p>
-                    <button class="expand-table" onclick="showOtherInfo(this);" id="2">+</button>
-                </div>
-                <div class="home-tt-other" style="display: none;" id="otherInfo2">
-                    <p class="home-tt-display2">15.10.2018 14:23</p>
-                    <p class="home-tt-display2">Bul. Oslobodjenja, 2a</p>
-                    <p class="home-tt-display2">15.10.2018 14:23</p>
-                    <p class="home-tt-display2">Bul. Oslobodjenja, 2a</p>
-                    <p class="home-tt-display2">15.10.2018 14:23</p>
-                    <p class="home-tt-display2">Bul. Oslobodjenja, 2a</p>
-                    <p class="home-tt-display2">15.10.2018 14:23</p>
-                    <p class="home-tt-display2">Bul. Oslobodjenja, 2a</p>
-                </div>
-                <div class="home-tt-main">
-                    <p class="home-tt-display">15.10.2018 14:23</p>
-                    <p class="home-tt-display">Bul. Oslobodjenja, 2a</p>
-                    <button class="expand-table" onclick="showOtherInfo(this);" id="3">+</button>
-                </div>
-                <div class="home-tt-other" style="display: none;" id="otherInfo3">
-                    <p class="home-tt-display2">15.10.2018 14:23</p>
-                    <p class="home-tt-display2">Bul. Oslobodjenja, 2a</p>
-                    <p class="home-tt-display2">15.10.2018 14:23</p>
-                    <p class="home-tt-display2">Bul. Oslobodjenja, 2a</p>
-                    <p class="home-tt-display2">15.10.2018 14:23</p>
-                    <p class="home-tt-display2">Bul. Oslobodjenja, 2a</p>
-                    <p class="home-tt-display2">15.10.2018 14:23</p>
-                    <p class="home-tt-display2">Bul. Oslobodjenja, 2a</p>
-                </div>
             </div>
         </section>
+        <div id="loginForm" class="backgroundDiv" style="display:none">
+            <div class="formHolder">
+                <div class="index-logo">
+                    <h1 class="index-large-text">TAXI</h1>
+                    <p class="index-small-text">Novi Sad</p>
+                </div>
+
+                <form class="index-login-form" accept-charset="utf-8" method="post" action="#">
+                    <div class="index-login-table">
+
+                        <p>Username:</p>
+
+                        <div class="index-text-wrap">
+                            <input type="text" placeholder="Username" name="username" />
+                        </div>
+
+                        <p>Password:</p>
+
+                        <div class="index-text-wrap">
+                            <input type="password" placeholder="Password" name="password" />
+                        </div>
+                        <p class="index-error-label"></p>
+
+                        <br />
+                        <div class="index-login-buttons">
+                            <input type="button" value="SIGN IN" />
+                            <input type="submit" value="LOG IN" />
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
     </main>
-    <footer>
+    <footer id="displayFooter">
         <ul class="footer-links-main">
             <li><a href="">HOME</a></li>
             <li><a href="">CONTACT</a></li>

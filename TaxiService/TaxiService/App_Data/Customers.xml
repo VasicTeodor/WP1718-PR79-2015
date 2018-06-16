@@ -12,4 +12,52 @@
     <Gender>Male</Gender>
     <Role>Customer</Role>
   </Customer>
+  <Customer Id="30b11ff9-c7dd-43c8-bdf0-f6753afc5cfc">
+    <Id>30b11ff9-c7dd-43c8-bdf0-f6753afc5cfc</Id>
+    <Username>Teodor</Username>
+    <Password />
+    <Name>Teodor</Name>
+    <Surname>Vasic</Surname>
+    <Jmbg>1583527835283</Jmbg>
+    <Phone>063423453</Phone>
+    <Email>teo@gmail.com</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="3f135587-1a0b-4e5e-a90a-9bf9902965ae">
+    <Id>3f135587-1a0b-4e5e-a90a-9bf9902965ae</Id>
+    <Username>Nikola</Username>
+    <Password />
+    <Name>Nikola</Name>
+    <Surname>Vasic</Surname>
+    <Jmbg>1583527835283</Jmbg>
+    <Phone>114255312</Phone>
+    <Email>teo@gmail.com</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="8e525284-1149-4837-8285-f88c7b2cb2cb">
+    <Id>8e525284-1149-4837-8285-f88c7b2cb2cb</Id>
+    <Username>Dalibor</Username>
+    <Password />
+    <Name>Dalibor</Name>
+    <Surname>Vasic</Surname>
+    <Jmbg>1583527835283</Jmbg>
+    <Phone>114255312</Phone>
+    <Email>teo@gmail.com</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="1760749d-57fc-480b-bb95-3d5dda42ae3e">
+    <Id>1760749d-57fc-480b-bb95-3d5dda42ae3e</Id>
+    <Username>Dado</Username>
+    <Password>dado123</Password>
+    <Name>Dado</Name>
+    <Surname>Vasic</Surname>
+    <Jmbg>1583527835283</Jmbg>
+    <Phone>114255312</Phone>
+    <Email>teo@gmail.com</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
 </Customers>

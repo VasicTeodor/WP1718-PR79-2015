@@ -311,6 +311,7 @@ header {
     width: 100%;
     height: 100px;
     opacity: 0.75;
+    z-index:1000;
 }
 
 header button{
@@ -330,11 +331,18 @@ header button:hover {
     background-color: #cdcdcd;
 }
 
-header nav ul{
+.menu-dropdown{
+    display:block;
+    z-index:1000;
+}
+
+header nav ul {
     display: none;
+    overflow: hidden;
     margin: 3px 20%;
     background-color: white;
     text-align: center;
+    z-index: 1000;
     border-radius: 0px 0px 15px 15px;
 }
 
@@ -342,6 +350,8 @@ header nav ul li{
     list-style: none;
     padding: 3px 2px;
     white-space: nowrap;
+    z-index:1000;
+    display: block;
 }
 
 header nav ul li a{
@@ -350,6 +360,9 @@ header nav ul li a{
     font-weight: 600;
     text-transform: uppercase;
     color: #111;
+    z-index:1000;
+    float: none;
+    display: block;
 }
 
 header nav ul li a:hover{
@@ -388,7 +401,46 @@ header nav ul li a:hover{
 }
 
 @media only screen and (min-width: 1000px) {
-    
+
+    header button {
+        margin: 40px calc((100% - 130px)/2) 3px calc((100% - 130px)/2) !important;
+        border: 3px solid black !important;
+        width: 130px !important;
+        font-size: 22px !important;
+    }
+
+    .menu-dropdown {
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    header nav ul {
+        width: 36% !important;
+        height: 248px !important;
+        margin: 0px calc(100% - 68%) !important;
+        margin-top: calc(100px - 85px) !important;
+    }
+
+    header nav ul li {
+        list-style: none;
+        padding: 0px 0px !important;
+        font-weight: bolder !important;
+        height: 45px !important;
+    }
+
+    header nav ul li a {
+        font-size: 18px !important;
+    }
+
+    .header-large-brand {
+        font-size: 70px !important;
+        margin-left: 10px !important;
+    }
+
+    .header-small-brand {
+        font-size: 40px !important;
+        margin-top: 45px !important;
+    }
 
     header nav ul{
         margin: 20px 0px 20px 20px;
@@ -438,11 +490,20 @@ header nav ul li a:hover{
     line-height: 40px;
 }
 
+.wraper{
+    width: 320px;
+    margin: 5px auto 0 auto;
+}
+
 .trips-wrap{
     width: 320px;
     margin: auto auto;
     background-color: white;
     opacity: 0.75;
+}
+
+.tableWrap{
+    overflow-x: auto;
 }
 
 .home-date-time {
@@ -480,13 +541,13 @@ header nav ul li a:hover{
 .home-tt-main {
     width: 310px;
     margin-left: 25px;
-    margin-bottom: 15px;
+    padding-bottom: 15px;
 }
 
 .home-tt-display {
     display: inline;
     text-align: center;
-    padding-right: 10px;
+    padding-right: 7px;
     font-family: Tahoma;
     font-size: 12px;
     font-weight: 600;
@@ -498,7 +559,7 @@ header nav ul li a:hover{
 .expand-table{
     border-radius: 50px 50px;
     font-family: Tahoma;
-    font-weight: 600;
+    font-weight: 900;
     background-color: transparent;
     border: 1px solid black;
 }
@@ -509,6 +570,7 @@ header nav ul li a:hover{
 
 .home-tt-other {
     width: 270px;
+    height: auto;
     margin-left: 25px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -529,12 +591,244 @@ header nav ul li a:hover{
     text-align: center;
     padding-bottom: 10px;
 }
+
+.table-drive {
+    margin: 0 auto;
+    width: 100%;
+    font-family: Tahoma;
+    font-weight: 600;
+    color: black;
+}
+
+.table-tr-drive {
+    text-align: center;
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+
+.table-td-drive{
+    width: calc(100% - 50%);
+    height: 35px;
+    padding-bottom: 5px;
+    vertical-align: middle;
+}
+
+.edit-drive{
+    height: 25px;
+    width: 50px;
+    font-family: Tahoma;
+    font-weight: 900;
+    background-color: transparent;
+    border: 1px solid black;
+}
+
+.edit-drive:hover{
+    background-color: #cdcdcd;
+}
+
+.comment-bold{
+    font-family: Tahoma;
+    font-weight: 900;
+    font-size: 12px;
+}
+
+.comment-italic{
+    font-family: Tahoma;
+    font-weight: 500;
+    font-size: 10px;
+    font-style: italic;
+}
+
+@media only screen and (min-width: 1000px) {
+    .index-banner h2 {
+        font-size: 74px !important;
+    }
+
+    .index-banner h1 {
+        font-size: 44px !important;
+    }
+
+    .wraper {
+        width: 1000px !important;
+    }
+
+    .trips-wrap {
+        width: 1000px !important;
+    }
+
+    .tableWrap {
+        overflow-x: auto;
+    }
+
+    .home-date-time {
+        font-size: 35px !important;
+    }
+
+    .home-tt-header {
+        width: calc(100% - 20px) !important;
+        margin: 20px 10px !important;
+        text-align: center !important;
+    }
+
+        .home-tt-header p {
+            padding-right: 100px !important;
+            font-size: 30px !important;
+        }
+
+    .home-tt-main {
+        width: 90% !important;
+        margin: 0px auto !important;
+        text-align: center !important;
+    }
+
+    .home-tt-display {
+        padding-right: 27px !important;
+        font-size: 25px !important;
+    }
+
+    .expand-table {
+        font-weight: bolder !important;
+        border: 3px solid black !important;
+    }
+
+    .home-tt-other {
+        width: calc(100% - 50px) !important;
+    }
+
+    .home-tt-display2 {
+        font-size: 22px !important;
+    }
+
+    .table-drive {
+        font-size: 18px !important;
+    }
+
+    .table-td-drive {
+        height: 50px !important;
+        text-align: center !important;
+    }
+
+    .edit-drive {
+        height: 30px !important;
+        border: 2px solid black !important;
+    }
+
+    .comment-bold {
+        font-size: 16px !important;
+    }
+
+    .comment-italic {
+        font-size: 13px !important;
+    }
+}
+
+/*====================REGISTER FORM=====================*/
+.reg-header{
+    width: 150px;
+    font-family: Tahoma;
+    font-size: 20px;
+    font-weight: 900;
+    color: black;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 10px
+}
+
+.reg-table {
+    width: calc(100%-10px);
+    margin: 10px auto;
+    font-family: Tahoma;
+    font-size: 15px;
+    font-weight: 900;
+    color: black;
+    text-align: center;
+}
+
+.reg-table-normal{
+    height: 30px;
+}
+
+.reg-table-error{
+    height: 20px;
+    text-align: center;
+}
+
+.reg-table-td input{
+    border: 2px solid black;
+}
+
+.reg-table-td select {
+    border: 2px solid black;
+}
+
+.btn-register {
+    font-family: Tahoma;
+    font-size: 12px;
+    font-weight: 900;
+    color: black;
+    text-align: center;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.btn-register:hover{
+    background-color: #cdcdcd;
+}
+
+@media only screen and (min-width: 1000px) {
+    .reg-header {
+        width: 300px !important;
+        font-size: 30px !important;
+    }
+
+    .reg-table {
+        width: 80% !important;
+        margin: 20px auto !important; 
+        font-size: 25px !important;
+    }
+
+    .reg-table-normal {
+        height: 50px !important;
+    }
+
+    .reg-table-error {
+        height: 30px !important;
+    }
+
+    .reg-table-td {
+        width: 50% !important;
+        vertical-align: middle;
+    }
+
+    .reg-table td {
+        width: 50% !important;
+        vertical-align: middle !important;
+    }
+
+    .reg-table-td input {
+        width: 50% !important;
+        vertical-align: middle;
+        font-size: 25px !important;
+        text-align: left !important;
+    }
+
+    .reg-table-td select {
+        font-size: 25px !important;
+        width: 50% !important;
+        vertical-align: middle;
+    }
+
+    .btn-register {
+        font-size: 18px !important;
+        border: 3px solid black !important; 
+    }
+}
 /*=====================FOOTER========================*/
 footer {
     width: calc(100% - 80px);
     padding: 40px 40px;
     background-color: white;
-    margin-top: 20px;
+    margin-top: 5px;
     overflow: hidden;
     opacity: 0.75;
 }

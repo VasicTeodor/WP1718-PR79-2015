@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using TaxiService.ApiHelpers;
 using TaxiService.Models;
 using TaxiService.Repository;
 
@@ -13,6 +14,7 @@ namespace TaxiService.Controllers
     {
         [HttpPost]
         [Route("api/Dispatcher/AddDriver")]
+        [BasicAuthentication]
         public HttpResponseMessage AddDriver([FromBody]Driver driver)
         {
             if (!DataRepository._customerRepo.CheckIfCustomerExists(driver.Username) &&
