@@ -331,9 +331,9 @@ header button:hover {
     background-color: #cdcdcd;
 }
 
-.menu-dropdown{
-    display:block;
-    z-index:1000;
+.menu-dropdown {
+    display: block;
+    z-index: 1000;
 }
 
 header nav ul {
@@ -351,7 +351,6 @@ header nav ul li{
     padding: 3px 2px;
     white-space: nowrap;
     z-index:1000;
-    display: block;
 }
 
 header nav ul li a{
@@ -361,7 +360,6 @@ header nav ul li a{
     text-transform: uppercase;
     color: #111;
     z-index:1000;
-    float: none;
     display: block;
 }
 
@@ -753,8 +751,16 @@ header nav ul li a:hover{
     text-align: center;
 }
 
-.reg-table-td input{
+.reg-table-td-input{
     border: 2px solid black;
+}
+
+.reg-table-td-error {
+    border: 2px solid red;
+}
+
+.reg-table-td-ok {
+    border: 2px solid lightgreen;
 }
 
 .reg-table-td select {
@@ -805,7 +811,21 @@ header nav ul li a:hover{
         vertical-align: middle !important;
     }
 
-    .reg-table-td input {
+    .reg-table-td-input {
+        width: 50% !important;
+        vertical-align: middle;
+        font-size: 25px !important;
+        text-align: left !important;
+    }
+
+    .reg-table-td-error {
+        width: 50% !important;
+        vertical-align: middle;
+        font-size: 25px !important;
+        text-align: left !important;
+    }
+
+    .reg-table-td-ok {
         width: 50% !important;
         vertical-align: middle;
         font-size: 25px !important;

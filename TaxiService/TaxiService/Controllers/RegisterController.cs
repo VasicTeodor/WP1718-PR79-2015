@@ -29,5 +29,21 @@ namespace TaxiService.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError);
             }
         }
+
+        [HttpPost]
+        [Route("api/Register/CheckUsername")]
+        public HttpResponseMessage CheckUsername([FromBody]LoginClass customer)
+        {
+            if (!DataRepository._customerRepo.CheckIfCustomerExists(customer.Username) &&
+               !DataRepository._dispatcherRepo.CheckIfDispatcherExists(customer.Username) &&
+               !DataRepository._driverRepo.CheckIfDriverExists(customer.Username))
+            {
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotAcceptable);
+            }
+        }
     }
 }

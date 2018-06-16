@@ -26,3 +26,9 @@ function showOtherInfo(elem) {
         document.getElementById(elem.id).innerHTML = "+";
     }
 }
+
+//$(document).ready(function () {
+//    $('#btnMenu').click(function () {
+//        $('#menu').slideToggle(300);
+//    });
+//});

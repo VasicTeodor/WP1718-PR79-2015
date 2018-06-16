@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Taxi Novi Sad</title>
     <link rel="stylesheet" type="text/css" href="../Content/StyleSheetCustom.css" />
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
     <script src="Scripts/jquery-1.10.2.js"></script>
     <script src="Scripts/RegisterScript.js" type="text/javascript"></script>
     <script src="Scripts/MyScript.js" type="text/javascript"></script>
@@ -19,7 +20,7 @@
                 <p class="header-small-brand">Novi Sad</p>
             </a>
         </div>
-        <button name="menuBtn" onclick="generateMenu();">MENU</button>
+        <button id="btnMenu" name="menuBtn" onclick="generateMenu();">MENU</button>
         <nav>
             <div class="menu-dropdown">
                 <ul id="menu" style="display: none;">
@@ -41,7 +42,7 @@
         </section>
         <section class="home-trips-table">
             <div class="wraper">
-                <div class="trips-wrap" style="display:none">
+                <div id="displayTrips" class="trips-wrap" style="display:none">
                     <p class="home-date-time" id="clock">OVDE IDE DATUM I SAT</p>
                     <div class="home-tt-header">
                         <p>DATUM I VREME</p>
@@ -103,78 +104,96 @@
                         </div>
                     </div>
                 </div>
-                <div class="trips-wrap">
+                <div id="displayRegister" class="trips-wrap">
                     <h2 class="reg-header">REGISTER FORM</h2>
-                    <table class="reg-table">
-                        <tr class="reg-table-normal">
-                            <td class="reg-table-td">Name:</td>
-                            <td class="reg-table-td"><input type="text" id="regName" name="name" placeholder="Name" /></td>
-                        </tr>
-                        <tr class="reg-table-error">
-                            <td colspan="2"><p id="errorName" class="index-error-label">&nbsp;</p></td>
-                        </tr>
-                        <tr class="reg-table-normal">
-                            <td class="reg-table-td">Surname:</td>
-                            <td class="reg-table-td"><input type="text" id="regSurname" name="surname" placeholder="Surname" /></td>
-                        </tr>
-                        <tr class="reg-table-error">
-                            <td colspan="2"><p id="errorSurname" class="index-error-label">&nbsp;</p></td>
-                        </tr>
-                        <tr class="reg-table-normal">
-                            <td class="reg-table-td">Email:</td>
-                            <td class="reg-table-td"><input type="email" id="regEmail" name="email" placeholder="Email" /></td>
-                        </tr>
-                        <tr class="reg-table-error">
-                            <td colspan="2"><p id="errorEmail" class="index-error-label">&nbsp;</p></td>
-                        </tr>
-                        <tr class="reg-table-normal">
-                            <td class="reg-table-td">Phone:</td>
-                            <td class="reg-table-td"><input type="text" id="regPhone" name="phone" placeholder="Phone" /></td>
-                        </tr>
-                        <tr class="reg-table-error">
-                            <td colspan="2"><p id="errorPhone" class="index-error-label">&nbsp;</p></td>
-                        </tr>
-                        <tr class="reg-table-normal">
-                            <td class="reg-table-td">JMBG:</td>
-                            <td class="reg-table-td"><input type="text" id="regJmbg" name="jmbg" placeholder="JMBG" /></td>
-                        </tr>
-                        <tr class="reg-table-error">
-                            <td colspan="2"><p id="errorJmbg" class="index-error-label">&nbsp;</p></td>
-                        </tr>
-                        <tr class="reg-table-normal">
-                            <td class="reg-table-td">Gender:</td>
-                            <td class="reg-table-td">
-                                <select id="regGender" name="gender">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr class="reg-table-error">
-                            <td colspan="2"><p id="errorGender" class="index-error-label">&nbsp;</p></td>
-                        </tr>
-                        <tr class="reg-table-normal">
-                            <td class="reg-table-td">Username:</td>
-                            <td class="reg-table-td"><input type="text" id="regUsername" name="username" placeholder="Username" /></td>
-                        </tr>
-                        <tr class="reg-table-error">
-                            <td colspan="2"><p id="errorUsername" class="index-error-label">&nbsp;</p></td>
-                        </tr>
-                        <tr class="reg-table-normal">
-                            <td class="reg-table-td">Password:</td>
-                            <td class="reg-table-td"><input type="password" id="regPass" name="password" placeholder="Password" /></td>
-                        </tr>
-                        <tr class="reg-table-normal">
-                            <td class="reg-table-td">Repeat Password:</td>
-                            <td class="reg-table-td"><input type="password" id="regPassword" placeholder="Repeat Password" /></td>
-                        </tr>
-                        <tr class="reg-table-error">
-                            <td colspan="2"><p id="errorRegPass" class="index-error-label">&nbsp;</p></td>
-                        </tr>
-                        <tr class="reg-table-normal">
-                            <td colspan="2" class="reg-table-td"><button class="btn-register" id="btnRegister">Register</button></td>
-                        </tr>
-                    </table>
+                    <div class="tableWrap">
+                        <table class="reg-table">
+                            <tr class="reg-table-normal">
+                                <td class="reg-table-td">Name:</td>
+                                <td class="reg-table-td">
+                                    <input class="reg-table-td-input" type="text" id="regName" name="name" placeholder="Name" />
+                                </td>
+                            </tr>
+                            <tr class="reg-table-error">
+                                <td colspan="2"><p id="errorName" class="index-error-label">&nbsp;</p></td>
+                            </tr>
+                            <tr class="reg-table-normal">
+                                <td class="reg-table-td">Surname:</td>
+                                <td class="reg-table-td">
+                                    <input class="reg-table-td-input" type="text" id="regSurname" name="surname" placeholder="Surname" />
+                                </td>
+                            </tr>
+                            <tr class="reg-table-error">
+                                <td colspan="2"><p id="errorSurname" class="index-error-label">&nbsp;</p></td>
+                            </tr>
+                            <tr class="reg-table-normal">
+                                <td class="reg-table-td">Email:</td>
+                                <td class="reg-table-td">
+                                    <input class="reg-table-td-input" type="email" id="regEmail" name="email" placeholder="Email" />
+                                </td>
+                            </tr>
+                            <tr class="reg-table-error">
+                                <td colspan="2"><p id="errorEmail" class="index-error-label">&nbsp;</p></td>
+                            </tr>
+                            <tr class="reg-table-normal">
+                                <td class="reg-table-td">Phone:</td>
+                                <td class="reg-table-td">
+                                    <input class="reg-table-td-input" type="text" id="regPhone" name="phone" placeholder="Phone" />
+                                </td>
+                            </tr>
+                            <tr class="reg-table-error">
+                                <td colspan="2"><p id="errorPhone" class="index-error-label">&nbsp;</p></td>
+                            </tr>
+                            <tr class="reg-table-normal">
+                                <td class="reg-table-td">JMBG:</td>
+                                <td class="reg-table-td">
+                                    <input class="reg-table-td-input" type="text" id="regJmbg" name="jmbg" placeholder="JMBG" />
+                                </td>
+                            </tr>
+                            <tr class="reg-table-error">
+                                <td colspan="2"><p id="errorJmbg" class="index-error-label">&nbsp;</p></td>
+                            </tr>
+                            <tr class="reg-table-normal">
+                                <td class="reg-table-td">Gender:</td>
+                                <td class="reg-table-td">
+                                    <select id="regGender" name="gender">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="reg-table-error">
+                                <td colspan="2"><p id="errorGender" class="index-error-label">&nbsp;</p></td>
+                            </tr>
+                            <tr class="reg-table-normal">
+                                <td class="reg-table-td">Username:</td>
+                                <td class="reg-table-td">
+                                    <input class="reg-table-td-input" type="text" id="regUsername" name="username" placeholder="Username" />
+                                </td>
+                            </tr>
+                            <tr class="reg-table-error">
+                                <td colspan="2"><p id="errorUsername" class="index-error-label">&nbsp;</p></td>
+                            </tr>
+                            <tr class="reg-table-normal">
+                                <td class="reg-table-td">Password:</td>
+                                <td class="reg-table-td">
+                                    <input class="reg-table-td-input" type="password" id="regPass" name="password" placeholder="Password" />
+                                </td>
+                            </tr>
+                            <tr class="reg-table-normal">
+                                <td class="reg-table-td">Repeat Password:</td>
+                                <td class="reg-table-td">
+                                    <input class="reg-table-td-input" type="password" id="regPassRpt" placeholder="Repeat Password" />
+                                </td>
+                            </tr>
+                            <tr class="reg-table-error">
+                                <td colspan="2"><p id="errorRegPass" class="index-error-label">&nbsp;</p></td>
+                            </tr>
+                            <tr class="reg-table-normal">
+                                <td colspan="2" class="reg-table-td"><button class="btn-register" id="btnRegister">Register</button></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </section>

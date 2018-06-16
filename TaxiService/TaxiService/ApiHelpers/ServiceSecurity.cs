@@ -33,5 +33,7 @@ namespace TaxiService.ApiHelpers
             var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
             return System.Convert.ToBase64String(plainTextBytes);
         }
+
+        //GO TO https://www.c-sharpcorner.com/article/introduction-to-aes-and-des-encryption-algorithms-in-net/
     }
 }

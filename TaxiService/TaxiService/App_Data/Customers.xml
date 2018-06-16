@@ -60,4 +60,28 @@
     <Gender>Male</Gender>
     <Role>Customer</Role>
   </Customer>
+  <Customer Id="0708a75f-6d86-42d4-b86b-98b635397bbd">
+    <Id>0708a75f-6d86-42d4-b86b-98b635397bbd</Id>
+    <Username>AcaSmrad</Username>
+    <Password>aca1212</Password>
+    <Name>Aleksandar</Name>
+    <Surname>Vasic</Surname>
+    <Jmbg>1235125324</Jmbg>
+    <Phone>312341533</Phone>
+    <Email>aca@smrda.com</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="c907b88c-621f-41ee-90b3-f253ee1d5aef">
+    <Id>c907b88c-621f-41ee-90b3-f253ee1d5aef</Id>
+    <Username>Pjotr</Username>
+    <Password>1234</Password>
+    <Name>Pera</Name>
+    <Surname>Peric</Surname>
+    <Jmbg>5325326346</Jmbg>
+    <Phone>123531532562</Phone>
+    <Email>sraf@sfaf.com</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
 </Customers>
