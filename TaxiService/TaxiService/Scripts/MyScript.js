@@ -27,8 +27,26 @@ function showOtherInfo(elem) {
     }
 }
 
-//$(document).ready(function () {
-//    $('#btnMenu').click(function () {
-//        $('#menu').slideToggle(300);
-//    });
-//});
+$(document).ready(function () {
+    //$('#btnMenu').click(function () {
+    //    $('#menu').slideToggle(300);
+    //});
+
+    $("#btnLogin").click(function () {
+        $("#blurBackground").show();
+        $("#displayLoginForm").fadeIn("slow");
+    });
+
+    $('#btnExitLogin').click(function () {
+        $('#displayLoginForm').hide();
+        $("#blurBackground").hide();
+    });
+
+    $('#btnRegisterForm').click(function () {
+        $('#displayLoginForm').fadeOut('slow', 'swing');
+        $("#blurBackground").fadeOut('slow', 'swing');
+        $('#displayTrips').fadeOut('slow', 'swing');
+        $('#displayBanner').fadeOut('slow', 'swing');
+        $('#displayRegister').fadeIn('slow', 'swing');
+    });
+});

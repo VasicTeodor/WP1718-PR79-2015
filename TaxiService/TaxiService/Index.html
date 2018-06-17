@@ -15,12 +15,17 @@
 <body style="background-image: url('../Images/blckMap.JPG') !important;" onload="formatTime();">
     <header id="displayHeader">
         <div>
-            <a href="../Views/Driver/Home.cshtml">
+            <a href="#">
                 <h1 class="header-large-brand">TAXI</h1>
                 <p class="header-small-brand">Novi Sad</p>
             </a>
+            <button id="btnLogin" class="login-button">Log In</button>
+            <div id="profileButtons" class="profile-btns">
+                <button id="btnProfile" class="profile-button">My Profile</button>
+                <button id="btnLogout" class="logout-button">Log Out</button>
+            </div>
         </div>
-        <button id="btnMenu" name="menuBtn" onclick="generateMenu();">MENU</button>
+        <button id="btnMenu" name="menuBtn" class="menu-button" onclick="generateMenu();">MENU</button>
         <nav>
             <div class="menu-dropdown">
                 <ul id="menu" style="display: none;">
@@ -28,13 +33,15 @@
                     <li><a href="">ABOUT</a></li>
                     <li><a href="">RESERVATION</a></li>
                     <li><a href="">CONTACTS</a></li>
-                    <li><a href="">MY ACCOUNT</a></li>
+                    <li><a href="">REGISTER</a></li>
+                    <li><a class="myAccMenu" href="">MY ACCOUNT</a></li>
+                    <li><a class="loginMenu" href="">LOG IN</a></li>
                 </ul>
             </div>
         </nav>
     </header>
     <main>
-        <section class="index-banner" id="displayBanner" style="display:none;">
+        <section class="index-banner" id="displayBanner" style="display:table;">
             <div class="vertical-center">
                 <h2>WE ARE TAXI<br>NOVI SAD</h2>
                 <h1>With speciality in transporting people with luxury cars <br> and vans, with low prices.</h1>
@@ -104,7 +111,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="displayRegister" class="trips-wrap">
+                <div id="displayRegister" class="trips-wrap" style="display: none;">
                     <h2 class="reg-header">REGISTER FORM</h2>
                     <div class="tableWrap">
                         <table class="reg-table">
@@ -197,47 +204,49 @@
                 </div>
             </div>
         </section>
-        <div id="loginForm" class="backgroundDiv" style="display:none">
-            <div class="formHolder">
-                <div class="index-logo">
-                    <h1 class="index-large-text">TAXI</h1>
-                    <p class="index-small-text">Novi Sad</p>
-                </div>
-
-                <form class="index-login-form" accept-charset="utf-8" method="post" action="#">
-                    <div class="index-login-table">
-
-                        <p>Username:</p>
-
-                        <div class="index-text-wrap">
-                            <input type="text" placeholder="Username" name="username" />
-                        </div>
-
-                        <p>Password:</p>
-
-                        <div class="index-text-wrap">
-                            <input type="password" placeholder="Password" name="password" />
-                        </div>
-                        <p class="index-error-label"></p>
-
-                        <br />
-                        <div class="index-login-buttons">
-                            <input type="button" value="SIGN IN" />
-                            <input type="submit" value="LOG IN" />
-                        </div>
-
+        <div id="blurBackground" class="background-blur">
+            <div id="displayLoginForm" class="backgroundDiv" style="display:none">
+                <div class="formHolder">
+                    <button id="btnExitLogin" class="exit-login">x</button>
+                    <div class="index-logo">
+                        <h1 class="index-large-text">TAXI</h1>
+                        <p class="index-small-text">Novi Sad</p>
                     </div>
-                </form>
+
+                    <form class="index-login-form" accept-charset="utf-8" method="post" action="#">
+                        <div class="index-login-table">
+
+                            <p>Username:</p>
+
+                            <div class="index-text-wrap">
+                                <input id="loginUsername" type="text" placeholder="Username" name="username" />
+                            </div>
+
+                            <p>Password:</p>
+
+                            <div class="index-text-wrap">
+                                <input id="loginPassword" type="password" placeholder="Password" name="password" />
+                            </div>
+                            <p id="errorLoginLbl" class="index-error-label"></p>
+
+                            <br />
+                            <div class="index-login-buttons">
+                                <input id="btnRegisterForm" class="index-reg-btn" type="button" value="SIGN IN" />
+                                <input id="btnSendLogin" class="index-login-btn" type="button" value="LOG IN" />
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-
     </main>
     <footer id="displayFooter">
         <ul class="footer-links-main">
             <li><a href="">HOME</a></li>
             <li><a href="">CONTACT</a></li>
-            <li><a href="">MY ACCOUNT</a></li>
-            <li><a href="">SIGN OUT</a></li>
+            <li><a href="">REGISTER</a></li>
+            <li><a id="btnLogout" class="login-footer" href="">SIGN OUT</a></li>
         </ul>
         <div class="footer-sm">
             <a href="">

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using TaxiService.ApiHelpers;
 using TaxiService.Models;
 using TaxiService.Repository;
 
@@ -19,6 +20,7 @@ namespace TaxiService.Controllers
                 !DataRepository._driverRepo.CheckIfDriverExists(customer.Username))
             {
                 customer.Id = Guid.NewGuid();
+                customer.Password = ServiceSecurity.EncryptData(customer.Password, "password");
                 customer.Role = Enums.Roles.Customer;
                 DataRepository._customerRepo.NewCustomer(customer);
 
