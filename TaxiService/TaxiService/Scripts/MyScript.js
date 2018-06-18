@@ -43,10 +43,56 @@ $(document).ready(function () {
     });
 
     $('#btnRegisterForm').click(function () {
+        $('#btnAddNewDriver').hide();
+        $('#addDriverFormCarId').hide();
+        $('#addDriverFormCarIdError').hide();
+        $('#addDriverFormModel').hide();
+        $('#addDriverFormModelError').hide();
+        $('#addDriverFormRegNum').hide();
+        $('#addDriverFormRegNumError').hide();
+        $('#addDriverFormCarType').hide();
+        $('#addDriverFormCarTypeError').hide();
+        $('#btnRegister').show();
         $('#displayLoginForm').fadeOut('slow', 'swing');
         $("#blurBackground").fadeOut('slow', 'swing');
         $('#displayTrips').fadeOut('slow', 'swing');
         $('#displayBanner').fadeOut('slow', 'swing');
         $('#displayRegister').fadeIn('slow', 'swing');
+    });
+
+    $('#btnRegisterFormMenu').click(function () {
+        $('#btnAddNewDriver').hide();
+        $('#addDriverFormCarId').hide();
+        $('#addDriverFormCarIdError').hide();
+        $('#addDriverFormModel').hide();
+        $('#addDriverFormModelError').hide();
+        $('#addDriverFormRegNum').hide();
+        $('#addDriverFormRegNumError').hide();
+        $('#addDriverFormCarType').hide();
+        $('#addDriverFormCarTypeError').hide();
+        $('#btnRegister').show();
+        $('#displayLoginForm').fadeOut('slow', 'swing');
+        $("#blurBackground").fadeOut('slow', 'swing');
+        $('#displayTrips').fadeOut('slow', 'swing');
+        $('#displayBanner').fadeOut('slow', 'swing');
+        $('#displayRegister').fadeIn('slow', 'swing');
+    });
+
+    $('main').hover(function () {
+        $('#menu').hide();
+    });
+
+    $('#btnDriveFilters').click(function () {
+        $('#filtersTable').slideToggle(800);
+    });
+
+    $('#btnNewDrive').click(function () {
+        $("#blurBackground").fadeIn('slow', 'swing');
+        $("#displayNewDrive").fadeIn('slow', 'swing');
+    });
+
+    $('#btnExitNewDrive').click(function () {
+        $("#blurBackground").fadeOut('slow', 'swing');
+        $("#displayNewDrive").fadeOut('slow', 'swing');
     });
 });

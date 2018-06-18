@@ -16,8 +16,14 @@ namespace TaxiService.Controllers
         public HttpResponseMessage CreateNewDrive([FromBody]Drive drive)
         {
             drive.DriveId = Guid.NewGuid();
-            drive.Date = DateTime.Now;
             drive.State = Enums.Status.Created;
+            drive.Destination = new Location
+            {
+                Address = "Unset",
+                X = 0,
+                Y = 0
+            };
+            drive.Price = 0;
             DataRepository._driveRepo.AddNewDriveCustomer(drive);
             return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driveRepo.GetAllDrives());
         }

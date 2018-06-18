@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Dispatchers>
+  <Dispatcher Id="6c76fe0d-bc81-4c86-a31e-407418072971">
+    <Id>6c76fe0d-bc81-4c86-a31e-407418072971</Id>
+    <Username>Admin</Username>
+    <Password>DkRaiMDeGum5I7G8s6xSAg==</Password>
+    <Name>Teodor</Name>
+    <Surname>Vasic</Surname>
+    <Jmbg>1810199685285</Jmbg>
+    <Phone>0645827859</Phone>
+    <Email>teo@gmail.com</Email>
+    <Gender>Male</Gender>
+    <Role>Dispatcher</Role>
+  </Dispatcher>
+</Dispatchers>

@@ -9,6 +9,8 @@
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
     <script src="Scripts/jquery-1.10.2.js"></script>
     <script src="Scripts/RegisterScript.js" type="text/javascript"></script>
+    <script src="Scripts/LoginScript.js" type="text/javascript"></script>
+    <script src="Scripts/DriveScript.js" type="text/javascript"></script>
     <script src="Scripts/MyScript.js" type="text/javascript"></script>
     <link href="https://fonts.googleapis.com/css?family=Tahoma:100,200,300,400,500,600,700,800,900|Brush+Script+MT:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 </head>
@@ -29,13 +31,13 @@
         <nav>
             <div class="menu-dropdown">
                 <ul id="menu" style="display: none;">
-                    <li><a href="">HOME</a></li>
-                    <li><a href="">ABOUT</a></li>
-                    <li><a href="">RESERVATION</a></li>
-                    <li><a href="">CONTACTS</a></li>
-                    <li><a href="">REGISTER</a></li>
-                    <li><a class="myAccMenu" href="">MY ACCOUNT</a></li>
-                    <li><a class="loginMenu" href="">LOG IN</a></li>
+                    <li><p >HOME</p></li>
+                    <li><p >ABOUT</p></li>
+                    <li><p >CONTACTS</p></li>
+                    <li><p id="btnRegisterFormMenu">REGISTER</p></li>
+                    <li><p id="btnAddDriver">ADD DRIVER</p></li>
+                    <li><p class="myAccMenu">MY ACCOUNT</p></li>
+                    <li><p class="loginMenu">LOG IN</p></li>
                 </ul>
             </div>
         </nav>
@@ -44,13 +46,62 @@
         <section class="index-banner" id="displayBanner" style="display:table;">
             <div class="vertical-center">
                 <h2>WE ARE TAXI<br>NOVI SAD</h2>
-                <h1>With speciality in transporting people with luxury cars <br> and vans, with low prices.</h1>
+                <h1>With speciality in transporting people in luxury cars <br> and vans, with low prices.</h1>
             </div>
         </section>
         <section class="home-trips-table">
             <div class="wraper">
-                <div id="displayTrips" class="trips-wrap" style="display:none">
+                <div id="displayTrips" class="trips-wrap">
                     <p class="home-date-time" id="clock">OVDE IDE DATUM I SAT</p>
+                    <div id="driveFunc" class="drive-filters">
+                        <button id="btnNewDrive" class="edit-new-drive">New drive</button>
+                        <button id="btnDriveFilters" class="edit-drive-filters">Filters</button>
+                        <div class="tableWrapFilters">
+                            <div id="filtersTable" style="display: none;">
+                                <table class="filters-table">
+                                    <tr>
+                                        <td>Sort by:</td>
+                                        <td>
+                                            <select>
+                                                <option value="Date">Date</option>
+                                                <option value="Price">Price</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Filter by:</td>
+                                        <td>
+                                            <select>
+                                                <option value="Date">Date</option>
+                                                <option value="Price">Price</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Search by Date:</td>
+                                    </tr>
+                                    <tr>
+                                        <td>From:<input type="date" /></td>
+                                        <td>To:<input type="date" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Search by Grade:</td>
+                                    </tr>
+                                    <tr>
+                                        <td>From:<input type="date" /></td>
+                                        <td>To:<input type="date" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Search by Price:</td>
+                                    </tr>
+                                    <tr>
+                                        <td>From:<input type="number" /></td>
+                                        <td>To:<input type="number" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                     <div class="home-tt-header">
                         <p>DATUM I VREME</p>
                         <p>LOKACIJA</p>
@@ -103,8 +154,9 @@
                                     </td>
                                 </tr>
                                 <tr class="table-tr-drive">
-                                    <td colspan="2" class="table-td-drive">
-                                        <button class="edit-drive" id="btnEdit">Edit</button>
+                                    <td colspan="2" class="table-td-drive" align="right">
+                                        <button class="edit-drive" id="btnEditDrive">Edit</button>
+                                        <button class="edit-drive" id="btnQuitDrive">Quit</button>
                                     </td>
                                 </tr>
                             </table>
@@ -114,7 +166,7 @@
                 <div id="displayRegister" class="trips-wrap" style="display: none;">
                     <h2 class="reg-header">REGISTER FORM</h2>
                     <div class="tableWrap">
-                        <table class="reg-table">
+                        <table id="regTable" class="reg-table">
                             <tr class="reg-table-normal">
                                 <td class="reg-table-td">Name:</td>
                                 <td class="reg-table-td">
@@ -181,6 +233,47 @@
                             <tr class="reg-table-error">
                                 <td colspan="2"><p id="errorUsername" class="index-error-label">&nbsp;</p></td>
                             </tr>
+                            <!--DEO ZA VOZACA STO SAMO ADMIN IMA PRISTUP-->
+                            <tr id="addDriverFormCarId" class="reg-table-normal" style="display:none;">
+                                <td class="reg-table-td">Car ID:</td>
+                                <td class="reg-table-td">
+                                    <input class="reg-table-td-input" type="number" id="regCarId" name="carId"/>
+                                </td>
+                            </tr>
+                            <tr id="addDriverFormCarIdError" class="reg-table-error" style="display: none;">
+                                <td colspan="2"><p id="errorCarId" class="index-error-label">&nbsp;</p></td>
+                            </tr>
+                            <tr id="addDriverFormModel" class="reg-table-normal" style="display: none;">
+                                <td class="reg-table-td">Model year:</td>
+                                <td class="reg-table-td">
+                                    <input class="reg-table-td-input" type="number" id="regModelYear" name="modelYear"/>
+                                </td>
+                            </tr>
+                            <tr id="addDriverFormModelError" class="reg-table-error" style="display: none;">
+                                <td colspan="2"><p id="errorModelYear" class="index-error-label">&nbsp;</p></td>
+                            </tr>
+                            <tr id="addDriverFormRegNum" class="reg-table-normal">
+                                <td class="reg-table-td">Registration number:</td>
+                                <td class="reg-table-td">
+                                    <input class="reg-table-td-input" type="text" id="regNumber" name="regNum" placeholder="Registration Number" />
+                                </td>
+                            </tr>
+                            <tr id="addDriverFormRegNumError" class="reg-table-error" style="display: none;">
+                                <td colspan="2"><p id="errorRegNum" class="index-error-label">&nbsp;</p></td>
+                            </tr>
+                            <tr id="addDriverFormCarType" class="reg-table-normal" style="display: none;">
+                                <td class="reg-table-td">Car type:</td>
+                                <td class="reg-table-td">
+                                    <select id="newCarType" name="carType">
+                                        <option value="Car">Car</option>
+                                        <option value="Van">Van</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="addDriverFormCarTypeError" class="reg-table-error" style="display: none;">
+                                <td colspan="2"><p id="errorNewCarType" class="index-error-label">&nbsp;</p></td>
+                            </tr>
+                            <!--DEO ZA VOZACA STO SAMO ADMIN IMA PRISTUP-->
                             <tr class="reg-table-normal">
                                 <td class="reg-table-td">Password:</td>
                                 <td class="reg-table-td">
@@ -197,7 +290,10 @@
                                 <td colspan="2"><p id="errorRegPass" class="index-error-label">&nbsp;</p></td>
                             </tr>
                             <tr class="reg-table-normal">
-                                <td colspan="2" class="reg-table-td"><button class="btn-register" id="btnRegister">Register</button></td>
+                                <td colspan="2" class="reg-table-td">
+                                    <button class="btn-register" id="btnRegister">Register</button>
+                                    <button class="btn-register" id="btnAddNewDriver">Add Driver</button>
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -237,6 +333,55 @@
 
                         </div>
                     </form>
+                </div>
+            </div>
+            <div id="displayNewDrive" style="display:none; margin-top: 20vh">
+                <div class="trips-wrap">
+                    <button id="btnExitNewDrive" class="exit-login">x</button>
+                    <h2 class="reg-header">New Drive</h2>
+                    <div class="tableWrap">
+                        <table class="table-drive">
+                            <tr class="table-tr-drive">
+                                <td class="table-td-drive">Date:</td>
+                                <td class="table-td-drive">
+                                    <input id="driveDate" type="date" class="home-tt-display2" />
+                                </td>
+                            </tr>
+                            <tr class="table-tr-drive">
+                                <td class="table-td-drive">Address:</td>
+                                <td class="table-td-drive">
+                                    <input id="driveAddress" type="text" class="home-tt-display2" />
+                                </td>
+                            </tr>
+                            <tr class="table-tr-drive">
+                                <td class="table-td-drive">Address X:</td>
+                                <td class="table-td-drive">
+                                    <input id="driveAddressX" type="number" class="home-tt-display2" />
+                                </td>
+                            </tr>
+                            <tr class="table-tr-drive">
+                                <td class="table-td-drive">Address Y:</td>
+                                <td class="table-td-drive">
+                                    <input id="driveAddressY" type="number" class="home-tt-display2" />
+                                </td>
+                            </tr>
+                            <tr class="table-tr-drive">
+                                <td class="table-td-drive">Car Type:</td>
+                                <td class="table-td-drive">
+                                    <select id="driveCar" class="home-tt-display2">
+                                        <option></option>
+                                        <option value="Car">Car</option>
+                                        <option value="Van">Van</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-drive">
+                                <td colspan="2" class="table-td-drive" align="right">
+                                    <button class="edit-drive" id="btnCreateDrive">Create</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

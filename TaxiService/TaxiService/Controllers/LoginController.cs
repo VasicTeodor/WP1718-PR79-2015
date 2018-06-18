@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -17,21 +18,33 @@ namespace TaxiService.Controllers
         [AllowAnonymous]
         public HttpResponseMessage SignIn([FromBody]LoginClass login)
         {
+            //LoginClass login = new LoginClass
+            //{
+            //    Username = jToken.Value<string>("username"),
+            //    Password = jToken.Value<string>("password")
+            //};
+
             if (DataRepository._driverRepo.LogIn(login.Username, ServiceSecurity.EncryptData(login.Password, "password")))
             {
-                Driver driver = DataRepository._driverRepo.RetriveDriverByUserName(login.Username);
-                return Request.CreateResponse(HttpStatusCode.OK, driver);
+                LoginDto logObj = new LoginDto();
+                logObj.User = DataRepository._driverRepo.RetriveDriverByUserName(login.Username);
+                logObj.AccessToken = ServiceSecurity.MakeToken($"{login.Username}:{login.Password}");
+                return Request.CreateResponse(HttpStatusCode.OK, logObj);
             }
             else if(DataRepository._dispatcherRepo.LogIn(login.Username, ServiceSecurity.EncryptData(login.Password,"password")))
             {
-                Dispatcher dispatcher = DataRepository._dispatcherRepo.RetriveDispatcherByUserName(login.Username);
-                return Request.CreateResponse(HttpStatusCode.OK, dispatcher);
+                LoginDto logObj = new LoginDto();
+                logObj.User = DataRepository._dispatcherRepo.RetriveDispatcherByUserName(login.Username);
+                logObj.AccessToken = ServiceSecurity.MakeToken($"{login.Username}:{login.Password}");
+                return Request.CreateResponse(HttpStatusCode.OK, logObj);
             }
             else if(DataRepository._customerRepo.LogIn(login.Username, ServiceSecurity.EncryptData(login.Password, "password")))
             {
-                Customer customer = DataRepository._customerRepo.RetriveCustomerByUserName(login.Username);
-                customer.Drives = (List<Drive>)DataRepository._driveRepo.GetAllDrivesForCustomerId(customer.Id);
-                return Request.CreateResponse(HttpStatusCode.OK, customer);
+                LoginDto logObj = new LoginDto();
+                logObj.User = DataRepository._customerRepo.RetriveCustomerByUserName(login.Username);
+                logObj.User.Drives = (List<Drive>)DataRepository._driveRepo.GetAllDrivesForCustomerId(logObj.User.Id);
+                logObj.AccessToken = ServiceSecurity.MakeToken($"{login.Username}:{login.Password}");
+                return Request.CreateResponse(HttpStatusCode.OK, logObj);
             }
             else
             {

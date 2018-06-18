@@ -19,4 +19,99 @@
     <RegNumber>NS993TX</RegNumber>
     <Type>Car</Type>
   </Driver>
+  <Driver Id="ee4193f7-ccd6-44da-896d-e21f1186e94c">
+    <Id>ee4193f7-ccd6-44da-896d-e21f1186e94c</Id>
+    <Username>Zrna96</Username>
+    <Password>AQNxNvLDlpwWhpV/DOwStA==</Password>
+    <Name>Nikola</Name>
+    <Surname>Zrnic</Surname>
+    <Jmbg>124528953895</Jmbg>
+    <Phone>0623124532</Phone>
+    <Email>zrna@hotmail.com</Email>
+    <Gender>Male</Gender>
+    <Role>Driver</Role>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>0</CarId>
+    <ModelYear>0</ModelYear>
+    <RegNumber></RegNumber>
+    <Type>Bez_Naznake</Type>
+  </Driver>
+  <Driver Id="b46680e3-f80b-4d2a-b938-784c49398844">
+    <Id>b46680e3-f80b-4d2a-b938-784c49398844</Id>
+    <Username>Zrna962</Username>
+    <Password>AQNxNvLDlpwWhpV/DOwStA==</Password>
+    <Name>Nikola</Name>
+    <Surname>Zrnic</Surname>
+    <Jmbg>124528953895</Jmbg>
+    <Phone>0623124532</Phone>
+    <Email>zrna@hotmail.com</Email>
+    <Gender>Male</Gender>
+    <Role>Driver</Role>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>0</CarId>
+    <ModelYear>0</ModelYear>
+    <RegNumber></RegNumber>
+    <Type>Bez_Naznake</Type>
+  </Driver>
+  <Driver Id="06c3d346-9fba-4981-8ecd-d867cc62b6c4">
+    <Id>06c3d346-9fba-4981-8ecd-d867cc62b6c4</Id>
+    <Username>Djoka123</Username>
+    <Password>HS8Shl3NFAMJKzzUp9wK5Q==</Password>
+    <Name>Djordje</Name>
+    <Surname>Mali</Surname>
+    <Jmbg>124528953895</Jmbg>
+    <Phone>0623124532</Phone>
+    <Email>djoka@hotmail.com</Email>
+    <Gender>Male</Gender>
+    <Role>Driver</Role>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>0</CarId>
+    <ModelYear>0</ModelYear>
+    <RegNumber></RegNumber>
+    <Type>Bez_Naznake</Type>
+  </Driver>
+  <Driver Id="2abfc0d0-9a9c-4104-aa37-8927a668d469">
+    <Id>2abfc0d0-9a9c-4104-aa37-8927a668d469</Id>
+    <Username>Djoka1234</Username>
+    <Password>lGW3Y8ORcEdcsxZhjzPC5w==</Password>
+    <Name>Djordje</Name>
+    <Surname>Mali</Surname>
+    <Jmbg>124528953895</Jmbg>
+    <Phone>0623124532</Phone>
+    <Email>djoka@hotmail.com</Email>
+    <Gender>Male</Gender>
+    <Role>Driver</Role>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>12</CarId>
+    <ModelYear>2005</ModelYear>
+    <RegNumber>NS299KA</RegNumber>
+    <Type>Car</Type>
+  </Driver>
+  <Driver Id="f15ec465-ecb9-4b9d-ba1b-9b393bfa4d5c">
+    <Id>f15ec465-ecb9-4b9d-ba1b-9b393bfa4d5c</Id>
+    <Username>PeraP</Username>
+    <Password>+yiBOfD0uKlwo/xLI10GVQ==</Password>
+    <Name>Djordje</Name>
+    <Surname>Mali</Surname>
+    <Jmbg>124528953895</Jmbg>
+    <Phone>0623124532</Phone>
+    <Email>djoka@hotmail.com</Email>
+    <Gender>Male</Gender>
+    <Role>Driver</Role>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>12</CarId>
+    <ModelYear>2005</ModelYear>
+    <RegNumber>NS299KA</RegNumber>
+    <Type>Car</Type>
+  </Driver>
 </Drivers>

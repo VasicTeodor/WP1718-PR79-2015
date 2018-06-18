@@ -12,15 +12,16 @@ namespace TaxiService.ApiHelpers
     {
         public static bool Login(string username, string password)
         {
-            if (DataRepository._driverRepo.LogIn(username, password))
+            var encryptedPass = EncryptData(password, "password");
+            if (DataRepository._driverRepo.LogIn(username, encryptedPass))
             {
                 return true;
             }
-            else if (DataRepository._dispatcherRepo.LogIn(username, password))
+            else if (DataRepository._dispatcherRepo.LogIn(username, encryptedPass))
             {
                 return true;
             }
-            else if (DataRepository._customerRepo.LogIn(username, password))
+            else if (DataRepository._customerRepo.LogIn(username, encryptedPass))
             {
                 return true;
             }

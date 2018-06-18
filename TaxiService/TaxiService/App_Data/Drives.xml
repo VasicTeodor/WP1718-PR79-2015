@@ -34,4 +34,21 @@
     <DestinationY>53.53</DestinationY>
     <DestinationAddress>Belilo 85 Sremski Karlovci</DestinationAddress>
   </Drive>
+  <Drive Id="6687ea15-ed1d-4817-bffe-09716772bc29">
+    <Id>6687ea15-ed1d-4817-bffe-09716772bc29</Id>
+    <CustomerId>6c76fe0d-bc81-4c86-a31e-407418072971</CustomerId>
+    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
+    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
+    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
+    <Date>2015-12-22T00:00:00</Date>
+    <CarType>Bez_Naznake</CarType>
+    <Price>0</Price>
+    <State>Created</State>
+    <AddressX>34</AddressX>
+    <AddressY>31</AddressY>
+    <AddressA>Bulevar Oslobodjenja </AddressA>
+    <DestinationX>0</DestinationX>
+    <DestinationY>0</DestinationY>
+    <DestinationAddress>Unset</DestinationAddress>
+  </Drive>
 </Drives>

@@ -25,7 +25,6 @@ namespace TaxiService.Controllers
                 driver.Role = Enums.Roles.Driver;
                 driver.Password = ServiceSecurity.EncryptData(driver.Password, "password");
                 driver.Location = new Location { Address = "garage", X = 0, Y = 0 };
-                driver.Car = new Car { CarId = -1, ModelYear = 1995, RegNumber = "NS993TX", Type = Enums.CarTypes.Car };
                 DataRepository._driverRepo.NewDriver(driver);
                 return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driverRepo.RetriveDriverById(driver.Id));
             }

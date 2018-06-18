@@ -6,6 +6,70 @@
         $('#displayTrips').fadeIn('slow', 'swing');
     };
 
+    $('#btnAddDriver').click(function () {
+        var user = JSON.parse(sessionStorage.getItem('activeUser'));
+        alert(user.role);
+        alert(sessionStorage.getItem('accessToken'));
+        if (user.role === 'Dispatcher') {
+            $('#addDriverFormCarId').show();
+            $('#addDriverFormCarIdError').show();
+            $('#addDriverFormModel').show();
+            $('#addDriverFormModelError').show();
+            $('#addDriverFormRegNum').show();
+            $('#addDriverFormRegNumError').show();
+            $('#addDriverFormCarType').show();
+            $('#addDriverFormCarTypeError').show();
+            $('#btnRegister').hide();
+            $('#btnAddNewDriver').show();
+            $('#displayTrips').fadeOut('slow', 'swing');
+            $('#displayBanner').fadeOut('slow', 'swing');
+            $('#displayRegister').fadeIn('slow', 'swing');
+        }
+    });
+
+    $('#btnAddNewDriver').click(function () {
+        if (sendData) {
+
+            let driver = {
+                name: $('#regName').val(),
+                surname: $('#regSurname').val(),
+                email: $('#regEmail').val(),
+                phone: $('#regPhone').val(),
+                jmbg: $('#regJmbg').val(),
+                gender: $('#regGender').val(),
+                username: $('#regUsername').val(),
+                password: $('#regPass').val(),
+                car: {
+                    modelYear: $('#regModelYear').val(),
+                    regNumber: $('#regNumber').val(),
+                    carId: $('#regCarId').val(),
+                    type: $('#newCarType').val()
+                }
+            };
+
+            let token = sessionStorage.getItem('accessToken');
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/Dispatcher/AddDriver',
+                data: JSON.stringify(driver),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Basic ' + token.toString()
+                },
+                success: function (data) {
+                    alert(JSON.stringify(data));
+
+                    $('#displayRegister').fadeOut('slow', 'swing', showHome);
+                },
+                error: function (jqXHR) {
+                    alert("Greska pri registraciji!");
+                }
+            });
+        }
+    });
+
     $("#btnRegister").click(function () {
         if (sendData) {
             $.ajax({
@@ -145,7 +209,7 @@
             error: function (jqXHR) {
                 $('#regUsername').removeClass("reg-table-td-input").addClass("reg-table-td-error");
                 $('#regUsername').removeClass("reg-table-td-ok").addClass("reg-table-td-error");
-                $('#errorUsername').text('Sorry but that username is allready taken!')
+                $('#errorUsername').text('Sorry but that username is allready taken!'),
                 sendData = false;
             }
         });
@@ -168,7 +232,7 @@
             $('#regPass').removeClass("reg-table-td-ok").addClass("reg-table-td-error");
             $('#regPassRpt').removeClass("reg-table-td-input").addClass("reg-table-td-error");
             $('#regPassRpt').removeClass("reg-table-td-ok").addClass("reg-table-td-error");
-            $('#errorRegPass').text('Passwords must match!')
+            $('#errorRegPass').text('Passwords must match!'),
             sendData = false;
         }
     });
