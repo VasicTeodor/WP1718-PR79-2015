@@ -32,50 +32,63 @@ $(document).ready(function () {
     //    $('#menu').slideToggle(300);
     //});
 
-    $("#btnLogin").click(function () {
-        $("#blurBackground").show();
-        $("#displayLoginForm").fadeIn("slow");
-    });
+    let displayRegister = function DisplayRegisterForm() {
+        $('#btnAddNewDriver').hide();
+        $('#btnUpdateAccount').hide();
+        $('#displayRegisterHeader').text('REGISTER FORM');
+        $('#addDriverFormCarId').hide();
+        $('#addDriverFormCarIdError').hide();
+        $('#addDriverFormModel').hide();
+        $('#addDriverFormModelError').hide();
+        $('#addDriverFormRegNum').hide();
+        $('#addDriverFormRegNumError').hide();
+        $('#addDriverFormCarType').hide();
+        $('#addDriverFormCarTypeError').hide();
+        $('#regUsername').attr('readonly', false);
+        $('#btnRegister').show();
+        $('#displayLoginForm').fadeOut('slow', 'swing');
+        $("#blurBackground").fadeOut('slow', 'swing');
+        $('#displayTrips').fadeOut('slow', 'swing');
+        $('#displayNewRide').fadeOut('slow', 'swing');
+        $('#displayBanner').fadeOut('slow', 'swing');
+        $('#displayHeader').fadeIn('slow', 'swing');
+        $('#displayRegister').fadeIn('slow', 'swing');
+        $('#displayFooter').fadeIn('slow', 'swing');
+    };
+
+    $('#btnRegisterForm').click(displayRegister);
+    $('#btnRegisterFooter').click(displayRegister);
+    $('#btnRegisterFormMenu').click(displayRegister);
+
+    let login = function ShowLogin() {
+        $('#blurBackground').show();
+        $('#displayLoginForm').fadeIn("slow",'swing');
+    };
+
+    $('#btnLoginForm').click(login);
+    $("#btnLoginMenu").click(login);
+
+
+    let home = function DisplayHome() {
+        $('#displayLoginForm').fadeOut('slow', 'swing');
+        $("#blurBackground").fadeOut('slow', 'swing');
+        $('#displayTrips').fadeOut('slow', 'swing');
+        $('#displayRegister').fadeOut('slow', 'swing');
+        $('#displayNewRide').fadeOut('slow', 'swing');
+        $('#displayHeader').fadeIn('slow', 'swing');
+        $('#displayBanner').fadeIn('slow', 'swing');
+        $('#displayFooter').fadeIn('slow', 'swing');
+    };
+
+    $('#btnHomeMenu').click(home);
+    $('#logoClickHome').click(home);
+    $('#logoClickHome2').click(home);
+    $('#btnHomeFooter').click(home);
 
     $('#btnExitLogin').click(function () {
         $('#displayLoginForm').hide();
         $("#blurBackground").hide();
-    });
-
-    $('#btnRegisterForm').click(function () {
-        $('#btnAddNewDriver').hide();
-        $('#addDriverFormCarId').hide();
-        $('#addDriverFormCarIdError').hide();
-        $('#addDriverFormModel').hide();
-        $('#addDriverFormModelError').hide();
-        $('#addDriverFormRegNum').hide();
-        $('#addDriverFormRegNumError').hide();
-        $('#addDriverFormCarType').hide();
-        $('#addDriverFormCarTypeError').hide();
-        $('#btnRegister').show();
-        $('#displayLoginForm').fadeOut('slow', 'swing');
-        $("#blurBackground").fadeOut('slow', 'swing');
-        $('#displayTrips').fadeOut('slow', 'swing');
-        $('#displayBanner').fadeOut('slow', 'swing');
-        $('#displayRegister').fadeIn('slow', 'swing');
-    });
-
-    $('#btnRegisterFormMenu').click(function () {
-        $('#btnAddNewDriver').hide();
-        $('#addDriverFormCarId').hide();
-        $('#addDriverFormCarIdError').hide();
-        $('#addDriverFormModel').hide();
-        $('#addDriverFormModelError').hide();
-        $('#addDriverFormRegNum').hide();
-        $('#addDriverFormRegNumError').hide();
-        $('#addDriverFormCarType').hide();
-        $('#addDriverFormCarTypeError').hide();
-        $('#btnRegister').show();
-        $('#displayLoginForm').fadeOut('slow', 'swing');
-        $("#blurBackground").fadeOut('slow', 'swing');
-        $('#displayTrips').fadeOut('slow', 'swing');
-        $('#displayBanner').fadeOut('slow', 'swing');
-        $('#displayRegister').fadeIn('slow', 'swing');
+        home;
     });
 
     $('main').hover(function () {
@@ -87,6 +100,30 @@ $(document).ready(function () {
     });
 
     $('#btnNewDrive').click(function () {
+        let user = sessionStorage.getItem('activeUser');
+        let token = sessionStorage.getItem('accessToken');
+
+        if (user.role === "Customer") {
+            $('#dispatcherDrive').hide();
+        }
+        else {
+            $('#dispatcherDrive').show();
+            $.ajax({
+                type: 'GET',
+                url: '/api/Driver/GetFreeDrivers',
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Basic ' + token.toString()
+                },
+                success: function (data) {
+                    alert(JSON.stringify(data));
+                    driver = JSON.stringify(data);
+                },
+                error: function () {
+                    alert("Greska na serveru, molimo vas pokusajte kasnije!");
+                }
+            });
+        }
         $("#blurBackground").fadeIn('slow', 'swing');
         $("#displayNewDrive").fadeIn('slow', 'swing');
     });
@@ -94,5 +131,23 @@ $(document).ready(function () {
     $('#btnExitNewDrive').click(function () {
         $("#blurBackground").fadeOut('slow', 'swing');
         $("#displayNewDrive").fadeOut('slow', 'swing');
+        home;
+        $('#displayTrips').fadeIn('slow', 'swing');
     });
+
+    let logout = function LogOut() {
+        if (sessionStorage.getItem('accessToken')) {
+            $('#profileButtons').hide();
+            $('#btnLogin').show();
+            $('#btnAddDriver').hide();
+            $('#menu').css('height', '200');
+            $('#displayTrips').fadeOut('slow', 'swing');
+            sessionStorage.removeItem('accessToken');
+            sessionStorage.removeItem('activeUser');
+            home;
+        }
+    };
+
+    $('#btnLogout').click(logout);
+    $('#btnLogoutFooter').click(logout);
 });

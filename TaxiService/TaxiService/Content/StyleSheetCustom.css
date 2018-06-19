@@ -163,7 +163,7 @@ body {
 
 .index-login-table{
     width: 90%;
-    height: 90%;
+    height: 70%;
     margin: auto auto;
     display: block;
     overflow: hidden;
@@ -222,6 +222,7 @@ body {
     margin: 15px auto;
     display: flex;
     align-content: center;
+    margin-bottom: 150px;
 }
 
 .index-reg-btn {
@@ -409,6 +410,7 @@ header nav ul li p:hover{
     color: #111;
     width: auto;
     float: left;
+    cursor: pointer;
 }
 
 .header-small-brand {
@@ -423,9 +425,10 @@ header nav ul li p:hover{
     color: #111;
     float: left;
     width: auto;
+    cursor: pointer;
 }
 
-.login-button{
+.login-button {
     display: none;
 }
 
@@ -928,7 +931,7 @@ header nav ul li p:hover{
 }
 
 .reg-table {
-    width: calc(100%-10px);
+    width: calc(100% - 10px);
     margin: 10px auto;
     font-family: Tahoma;
     font-size: 15px;
@@ -1060,11 +1063,12 @@ footer ul li{
     white-space: nowrap;
 }
 
-footer ul li a{
+footer ul li p{
     font-family: Tahoma;
     font-size: 24px;
     line-height: 40px;
     color: black;
+    cursor: pointer;
 }
 
 .footer-sm{

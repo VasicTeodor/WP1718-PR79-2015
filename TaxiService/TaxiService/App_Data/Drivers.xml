@@ -114,4 +114,23 @@
     <RegNumber>NS299KA</RegNumber>
     <Type>Car</Type>
   </Driver>
+  <Driver Id="67931297-d76a-447c-84c0-8297c32dbb3d">
+    <Id>67931297-d76a-447c-84c0-8297c32dbb3d</Id>
+    <Username>Vozac</Username>
+    <Password>Dz3PHQmiuA1UF/jxZ5t1QA==</Password>
+    <Name>Vozac</Name>
+    <Surname>Vozac</Surname>
+    <Jmbg>2132132312132</Jmbg>
+    <Phone>0645827859</Phone>
+    <Email>vozac@taxins.com</Email>
+    <Gender>Female</Gender>
+    <Role>Driver</Role>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>22</CarId>
+    <ModelYear>2008</ModelYear>
+    <RegNumber>NS311LF</RegNumber>
+    <Type>Bez_Naznake</Type>
+  </Driver>
 </Drivers>

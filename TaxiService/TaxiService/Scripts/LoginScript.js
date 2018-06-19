@@ -54,8 +54,15 @@
                     sessionStorage.setItem('activeUser', JSON.stringify(data.user));
                     $('#displayLoginForm').fadeOut('slow', 'swing');
                     $("#blurBackground").fadeOut('slow', 'swing');
-                    $('#btnLogin').hide();
+                    $('#btnLoginForm').hide();
                     $('#profileButtons').show();
+                    if (data.user.role === 'Dispatcher') {
+                        $('#btnAddDriver').show();
+                        $('#menu').css('height', '248');
+                    } else {
+                        $('#btnAddDriver').hide();
+                        $('#menu').css('height', '200');
+                    }
                 },
                 error: function (jqXHR) {
                     $('#errorLoginLbl').text('Wrong username or password!');

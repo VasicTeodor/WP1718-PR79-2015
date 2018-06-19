@@ -84,4 +84,28 @@
     <Gender>Male</Gender>
     <Role>Customer</Role>
   </Customer>
+  <Customer Id="1e3d9ea1-2570-4809-9ef4-98a968718f6c">
+    <Id>1e3d9ea1-2570-4809-9ef4-98a968718f6c</Id>
+    <Username>Musterija</Username>
+    <Password>Dz3PHQmiuA1UF/jxZ5t1QA==</Password>
+    <Name>Musterija1</Name>
+    <Surname>Musterija1</Surname>
+    <Jmbg>1234567890121</Jmbg>
+    <Phone>024124441211</Phone>
+    <Email>musterija1@taxins.com</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="819433b5-b4d0-496e-94df-01a57ab740fc">
+    <Id>819433b5-b4d0-496e-94df-01a57ab740fc</Id>
+    <Username>Musterija2</Username>
+    <Password>xPvO9tMrkBDNoSrVuUMgHw==</Password>
+    <Name>Musterija1</Name>
+    <Surname>Musterija1</Surname>
+    <Jmbg>2342335235213</Jmbg>
+    <Phone>14143521352</Phone>
+    <Email>musterija1@taxi</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
 </Customers>

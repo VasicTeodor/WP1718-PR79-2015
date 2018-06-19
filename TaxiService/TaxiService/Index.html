@@ -15,13 +15,13 @@
     <link href="https://fonts.googleapis.com/css?family=Tahoma:100,200,300,400,500,600,700,800,900|Brush+Script+MT:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 </head>
 <body style="background-image: url('../Images/blckMap.JPG') !important;" onload="formatTime();">
-    <header id="displayHeader">
+    <header id="displayHeader" class="home-link">
         <div>
-            <a href="#">
-                <h1 class="header-large-brand">TAXI</h1>
-                <p class="header-small-brand">Novi Sad</p>
+            <a>
+                <h1 class="header-large-brand" id="logoClickHome">TAXI</h1>
+                <p class="header-small-brand" id="logoClickHome2">Novi Sad</p>
             </a>
-            <button id="btnLogin" class="login-button">Log In</button>
+            <button id="btnLoginForm" class="login-button">Log In</button>
             <div id="profileButtons" class="profile-btns">
                 <button id="btnProfile" class="profile-button">My Profile</button>
                 <button id="btnLogout" class="logout-button">Log Out</button>
@@ -31,13 +31,13 @@
         <nav>
             <div class="menu-dropdown">
                 <ul id="menu" style="display: none;">
-                    <li><p >HOME</p></li>
+                    <li><p id="btnHomeMenu">HOME</p></li>
                     <li><p >ABOUT</p></li>
                     <li><p >CONTACTS</p></li>
                     <li><p id="btnRegisterFormMenu">REGISTER</p></li>
                     <li><p id="btnAddDriver">ADD DRIVER</p></li>
-                    <li><p class="myAccMenu">MY ACCOUNT</p></li>
-                    <li><p class="loginMenu">LOG IN</p></li>
+                    <li><p id="btnMyAccMenu" class="myAccMenu">MY ACCOUNT</p></li>
+                    <li><p id="btnLoginMenu" class="loginMenu">LOG IN</p></li>
                 </ul>
             </div>
         </nav>
@@ -164,7 +164,7 @@
                     </div>
                 </div>
                 <div id="displayRegister" class="trips-wrap" style="display: none;">
-                    <h2 class="reg-header">REGISTER FORM</h2>
+                    <p id="displayRegisterHeader" class="reg-header">REGISTER FORM</p>
                     <div class="tableWrap">
                         <table id="regTable" class="reg-table">
                             <tr class="reg-table-normal">
@@ -293,6 +293,7 @@
                                 <td colspan="2" class="reg-table-td">
                                     <button class="btn-register" id="btnRegister">Register</button>
                                     <button class="btn-register" id="btnAddNewDriver">Add Driver</button>
+                                    <button class="btn-register" id="btnUpdateAccount">Save Changes</button>
                                 </td>
                             </tr>
                         </table>
@@ -323,6 +324,8 @@
                             <div class="index-text-wrap">
                                 <input id="loginPassword" type="password" placeholder="Password" name="password" />
                             </div>
+
+                        </div>
                             <p id="errorLoginLbl" class="index-error-label"></p>
 
                             <br />
@@ -330,8 +333,6 @@
                                 <input id="btnRegisterForm" class="index-reg-btn" type="button" value="SIGN IN" />
                                 <input id="btnSendLogin" class="index-login-btn" type="button" value="LOG IN" />
                             </div>
-
-                        </div>
                     </form>
                 </div>
             </div>
@@ -375,6 +376,14 @@
                                     </select>
                                 </td>
                             </tr>
+                            <tr id="dispatcherDrive" class="table-tr-drive">
+                                <td class="table-td-drive">Driver:</td>
+                                <td class="table-td-drive">
+                                    <select id="freeDriver" class="home-tt-display2">
+                                        <option value="id">Ime + Preziime</option>
+                                    </select>
+                                </td>
+                            </tr>
                             <tr class="table-tr-drive">
                                 <td colspan="2" class="table-td-drive" align="right">
                                     <button class="edit-drive" id="btnCreateDrive">Create</button>
@@ -388,10 +397,10 @@
     </main>
     <footer id="displayFooter">
         <ul class="footer-links-main">
-            <li><a href="">HOME</a></li>
-            <li><a href="">CONTACT</a></li>
-            <li><a href="">REGISTER</a></li>
-            <li><a id="btnLogout" class="login-footer" href="">SIGN OUT</a></li>
+            <li><p id="btnHomeFooter">HOME</p></li>
+            <li><p >CONTACT</p></li>
+            <li><p id="btnRegisterFooter">REGISTER</p></li>
+            <li><p id="btnLogoutFooter" class="login-footer">SIGN OUT</p></li>
         </ul>
         <div class="footer-sm">
             <a href="">

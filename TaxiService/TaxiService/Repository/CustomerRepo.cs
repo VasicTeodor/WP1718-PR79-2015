@@ -38,11 +38,7 @@ namespace TaxiService.Repository
             if (File.Exists(fileName))
             {
                 XDocument xmlDocument = XDocument.Load(fileName);
-
-                xmlDocument.Element("Customers")
-                                        .Elements("Customer")
-                                        .Where(x => x.Attribute("Id").Value == customer.Id.ToString()).FirstOrDefault()
-                                        .SetElementValue("Id", customer.Id);
+                
                 xmlDocument.Element("Customers")
                                         .Elements("Customer")
                                         .Where(x => x.Attribute("Id").Value == customer.Id.ToString()).FirstOrDefault()
@@ -75,10 +71,6 @@ namespace TaxiService.Repository
                                         .Elements("Customer")
                                         .Where(x => x.Attribute("Id").Value == customer.Id.ToString()).FirstOrDefault()
                                         .SetElementValue("Gender", customer.Gender);
-                xmlDocument.Element("Customers")
-                                        .Elements("Customer")
-                                        .Where(x => x.Attribute("Id").Value == customer.Id.ToString()).FirstOrDefault()
-                                        .SetElementValue("Role", customer.Role);
 
                 xmlDocument.Save(fileName);
             }

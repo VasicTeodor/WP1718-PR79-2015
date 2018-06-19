@@ -6,12 +6,79 @@
         $('#displayTrips').fadeIn('slow', 'swing');
     };
 
+    $('#btnProfile').click(function () {
+        let user = JSON.parse(sessionStorage.getItem('activeUser'));
+
+        if (sessionStorage.getItem('accessToken')) {
+            if (user.role === 'Driver') {
+                $('#addDriverFormCarId').show();
+                $('#displayRegisterHeader').text('MY PROFILE');
+                $('#addDriverFormCarIdError').show();
+                $('#addDriverFormModel').show();
+                $('#addDriverFormModelError').show();
+                $('#addDriverFormRegNum').show();
+                $('#addDriverFormRegNumError').show();
+                $('#addDriverFormCarType').show();
+                $('#addDriverFormCarTypeError').show();
+                $('#btnRegister').hide();
+                $('#btnUpdateAccount').show();
+                $('#btnAddNewDriver').hide();
+
+                $('#regName').val(user.name);
+                $('#regSurname').val(user.surname);
+                $('#regEmail').val(user.email);
+                $('#regPhone').val(user.phone);
+                $('#regJmbg').val(user.jmbg);
+                $('#regGender').val(user.gender.toString());
+                $('#regUsername').val(user.username);
+                $('#regUsername').attr('readonly', true);
+                $('#regModelYear').val(user.car.modelYear)
+                $('#regNumber').val(user.car.regNumber);
+                $('#regCarId').val(user.car.carId);
+                $('#newCarType').val(user.car.type.toString());
+            }
+            else if (user.role === 'Customer' || user.role === 'Dispatcher') {
+                $('#btnAddNewDriver').hide();
+                $('#btnRegister').hide();
+                $('#btnUpdateAccount').show();
+                $('#displayRegisterHeader').text('MY PROFILE');
+                $('#addDriverFormCarId').hide();
+                $('#addDriverFormCarIdError').hide();
+                $('#addDriverFormModel').hide();
+                $('#addDriverFormModelError').hide();
+                $('#addDriverFormRegNum').hide();
+                $('#addDriverFormRegNumError').hide();
+                $('#addDriverFormCarType').hide();
+                $('#addDriverFormCarTypeError').hide();
+
+                $('#regName').val(user.name);
+                $('#regSurname').val(user.surname);
+                $('#regEmail').val(user.email);
+                $('#regPhone').val(user.phone);
+                $('#regJmbg').val(user.jmbg);
+                $('#regGender').val(user.gender.toString());
+                $('#regUsername').val(user.username);
+                $('#regUsername').attr('readonly',true);
+            }
+
+            $('#displayLoginForm').fadeOut('slow', 'swing');
+            $("#blurBackground").fadeOut('slow', 'swing');
+            $('#displayTrips').fadeOut('slow', 'swing');
+            $('#displayNewRide').fadeOut('slow', 'swing');
+            $('#displayBanner').fadeOut('slow', 'swing');
+            $('#displayHeader').fadeIn('slow', 'swing');
+            $('#displayRegister').fadeIn('slow', 'swing');
+            $('#displayFooter').fadeIn('slow', 'swing');
+        }
+    });
+
     $('#btnAddDriver').click(function () {
-        var user = JSON.parse(sessionStorage.getItem('activeUser'));
+        let user = JSON.parse(sessionStorage.getItem('activeUser'));
         alert(user.role);
         alert(sessionStorage.getItem('accessToken'));
         if (user.role === 'Dispatcher') {
             $('#addDriverFormCarId').show();
+            $('#displayRegisterHeader').text('NEW DRIVER');
             $('#addDriverFormCarIdError').show();
             $('#addDriverFormModel').show();
             $('#addDriverFormModelError').show();
@@ -20,14 +87,130 @@
             $('#addDriverFormCarType').show();
             $('#addDriverFormCarTypeError').show();
             $('#btnRegister').hide();
+            $('#btnUpdateAccount').hide();
             $('#btnAddNewDriver').show();
+
+            $('#displayLoginForm').fadeOut('slow', 'swing');
+            $("#blurBackground").fadeOut('slow', 'swing');
             $('#displayTrips').fadeOut('slow', 'swing');
+            $('#displayNewRide').fadeOut('slow', 'swing');
             $('#displayBanner').fadeOut('slow', 'swing');
+            $('#displayHeader').fadeIn('slow', 'swing');
             $('#displayRegister').fadeIn('slow', 'swing');
+            $('#displayFooter').fadeIn('slow', 'swing');
+        }
+    });
+
+    CheckInput();
+    $('#btnUpdateAccount').click(function () {
+        if (sessionStorage.getItem('accessToken')) {
+            let user = JSON.parse(sessionStorage.getItem('activeUser'));
+
+            if (sendData) {
+                if (user.role === 'Driver') {
+                    let driver = {
+                        id: user.id,
+                        name: $('#regName').val(),
+                        surname: $('#regSurname').val(),
+                        email: $('#regEmail').val(),
+                        phone: $('#regPhone').val(),
+                        jmbg: $('#regJmbg').val(),
+                        gender: $('#regGender').val(),
+                        username: $('#regUsername').val(),
+                        password: $('#regPass').val(),
+                        car: {
+                            modelYear: $('#regModelYear').val(),
+                            regNumber: $('#regNumber').val(),
+                            carId: $('#regCarId').val(),
+                            type: $('#newCarType').val()
+                        }
+                    };
+
+                    let token = sessionStorage.getItem('accessToken');
+
+                    $.ajax({
+                        type: 'PUT',
+                        url: '/api/Driver/UpdateDriver',
+                        data: JSON.stringify(driver),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        headers: {
+                            'Authorization': 'Basic ' + token.toString()
+                        },
+                        success: function (data) {
+                            alert(JSON.stringify(data));
+                            sessionStorage.setItem('activeUser', JSON.stringify(data));
+
+                            $('#displayRegister').fadeOut('slow', 'swing', showHome);
+                        },
+                        error: function () {
+                            alert("Greska pri update-u!");
+                        }
+                    });
+                } else  {
+                    let userUpdate = {
+                        id: user.id,
+                        name: $('#regName').val(),
+                        surname: $('#regSurname').val(),
+                        email: $('#regEmail').val(),
+                        phone: $('#regPhone').val(),
+                        jmbg: $('#regJmbg').val(),
+                        gender: $('#regGender').val(),
+                        username: $('#regUsername').val(),
+                        password: $('#regPass').val(),
+                        role: user.role
+                    };
+
+                    if (user.role === 'Dispatcher') {
+                        let token = sessionStorage.getItem('accessToken');
+                        $.ajax({
+                            type: 'PUT',
+                            url: '/api/Dispatcher/UpdateDispatcher',
+                            data: JSON.stringify(userUpdate),
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            headers: {
+                                'Authorization': 'Basic ' + token.toString()
+                            },
+                            success: function (data) {
+                                alert(JSON.stringify(data));
+                                sessionStorage.setItem('activeUser', JSON.stringify(data));
+
+                                $('#displayRegister').fadeOut('slow', 'swing', showHome);
+                            },
+                            error: function () {
+                                alert("Greska pri update-u!");
+                            }
+                        });
+                    } else if (user.role === 'Customer') {
+                        let token = sessionStorage.getItem('accessToken');
+                        $.ajax({
+                            type: 'PUT',
+                            url: '/api/Customer/UpdateCustomer',
+                            data: JSON.stringify(userUpdate),
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            headers: {
+                                'Authorization': 'Basic ' + token.toString()
+                            },
+                            success: function (data) {
+                                alert(JSON.stringify(data));
+                                sessionStorage.setItem('activeUser', JSON.stringify(data));
+
+                                $('#displayRegister').fadeOut('slow', 'swing', showHome);
+                            },
+                            error: function () {
+                                alert("Greska pri update-u!");
+                            }
+                        });
+                    }
+                }
+            }
         }
     });
 
     $('#btnAddNewDriver').click(function () {
+        CheckInput();
         if (sendData) {
 
             let driver = {
@@ -71,6 +254,7 @@
     });
 
     $("#btnRegister").click(function () {
+        CheckInput();
         if (sendData) {
             $.ajax({
                 url: '/api/Register/RegisterAccount',
@@ -139,7 +323,7 @@
     $('#regJmbg').on('input', function () {
         let input = $(this);
         let re = /^\b\d{13}\b$/i;
-        let is_jmbg = input.val();
+        let is_jmbg = re.test(input.val());
         if (is_jmbg) {
             input.removeClass("reg-table-td-input").addClass("reg-table-td-ok");
             input.removeClass("reg-table-td-error").addClass("reg-table-td-ok");
@@ -193,26 +377,28 @@
     });
 
     $("#regUsername").focusout(function () {
-        $.ajax({
-            url: '/api/Register/CheckUsername',
-            method: 'POST',
-            data: {
-                Username: $('#regUsername').val(),
-                Password: $('#regPass').val()
-            },
-            success: function () {
-                $('#regUsername').removeClass("reg-table-td-input").addClass("reg-table-td-ok");
-                $('#regUsername').removeClass("reg-table-td-error").addClass("reg-table-td-ok");
-                $('#errorUsername').text(' ');
-                sendData = true;
-            },
-            error: function (jqXHR) {
-                $('#regUsername').removeClass("reg-table-td-input").addClass("reg-table-td-error");
-                $('#regUsername').removeClass("reg-table-td-ok").addClass("reg-table-td-error");
-                $('#errorUsername').text('Sorry but that username is allready taken!'),
-                sendData = false;
-            }
-        });
+        if ($('#displayRegisterHeader').text() === 'REGISTER FORM' || $('#displayRegisterHeader').text() === 'NEW DRIVER') {
+            $.ajax({
+                url: '/api/Register/CheckUsername',
+                method: 'POST',
+                data: {
+                    Username: $('#regUsername').val(),
+                    Password: $('#regPass').val()
+                },
+                success: function () {
+                    $('#regUsername').removeClass("reg-table-td-input").addClass("reg-table-td-ok");
+                    $('#regUsername').removeClass("reg-table-td-error").addClass("reg-table-td-ok");
+                    $('#errorUsername').text(' ');
+                    sendData = true;
+                },
+                error: function (jqXHR) {
+                    $('#regUsername').removeClass("reg-table-td-input").addClass("reg-table-td-error");
+                    $('#regUsername').removeClass("reg-table-td-ok").addClass("reg-table-td-error");
+                    $('#errorUsername').text('Sorry but that username is allready taken!'),
+                        sendData = false;
+                }
+            });
+        }
     });
 
     $('#regPassRpt').focusout(function () {
@@ -236,4 +422,86 @@
             sendData = false;
         }
     });
+
+    $('#regPass').on('input', function () {
+        let input = $(this);
+        let is_name = input.val();
+        if (is_name) {
+            $('#regPass').removeClass("reg-table-td-input").addClass("reg-table-td-ok");
+            $('#regPass').removeClass("reg-table-td-error").addClass("reg-table-td-ok");
+            $('#regPassRpt').removeClass("reg-table-td-input").addClass("reg-table-td-ok");
+            $('#regPassRpt').removeClass("reg-table-td-error").addClass("reg-table-td-ok");
+            $('#errorRegPass').text(' ');
+            sendData = true;
+        }
+        else {
+            $('#regPass').removeClass("reg-table-td-input").addClass("reg-table-td-error");
+            $('#regPass').removeClass("reg-table-td-ok").addClass("reg-table-td-error");
+            $('#regPassRpt').removeClass("reg-table-td-input").addClass("reg-table-td-error");
+            $('#regPassRpt').removeClass("reg-table-td-ok").addClass("reg-table-td-error");
+            $('#errorRegPass').text('You must enter password!'),
+            sendData = false;
+        }
+    });
+
+    $('#regCarId').focusout(function () {
+        let input = $(this);
+        let is_carId = input.val();
+        if (is_carId) {
+            input.removeClass("reg-table-td-input").addClass("reg-table-td-ok");
+            input.removeClass("reg-table-td-error").addClass("reg-table-td-ok");
+            $('#errorCarId').text(' ');
+            sendData = true;
+        }
+        else {
+            input.removeClass("reg-table-td-input").addClass("reg-table-td-error");
+            input.removeClass("reg-table-td-ok").addClass("reg-table-td-error");
+            $('#errorCarId').text('This field is required!');
+            sendData = false;
+        }
+    });
+
+    $('#regModelYear').focusout(function () {
+        let input = $(this);
+        let re = /^\b\d{4}\b$/i;
+        let is_modelYear = re.test(input.val());
+        if (is_modelYear) {
+            input.removeClass("reg-table-td-input").addClass("reg-table-td-ok");
+            input.removeClass("reg-table-td-error").addClass("reg-table-td-ok");
+            $('#errorModelYear').text(' ');
+            sendData = true;
+        }
+        else {
+            input.removeClass("reg-table-td-input").addClass("reg-table-td-error");
+            input.removeClass("reg-table-td-ok").addClass("reg-table-td-error");
+            $('#errorModelYear').text('This field is required!');
+            sendData = false;
+        }
+    });
+
+    $('#regNumber').focusout(function () {
+        let input = $(this);
+        let re = '/^[a-z0-9]+$/';
+        let is_regNum = re.test(input.val());
+        if (is_regNum) {
+            input.removeClass("reg-table-td-input").addClass("reg-table-td-ok");
+            input.removeClass("reg-table-td-error").addClass("reg-table-td-ok");
+            $('#errorRegNum').text(' ');
+            sendData = true;
+        }
+        else {
+            input.removeClass("reg-table-td-input").addClass("reg-table-td-error");
+            input.removeClass("reg-table-td-ok").addClass("reg-table-td-error");
+            $('#errorRegNum').text('This field is required!');
+            sendData = false;
+        }
+    });
+
+    function CheckInput() {
+        if ($('#regPass').val() && $('#regName').val() && $('#regSurname').val() && $('#regUsername').val() && $('#regJmbg').val() && $('#regEmail').val() && $('#regPhone').val()) {
+            sendData = true;
+        } else {
+            sendData = false;
+        }
+    }
 });

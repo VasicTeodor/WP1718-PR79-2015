@@ -38,11 +38,7 @@ namespace TaxiService.Repository
             if (File.Exists(fileName))
             {
                 XDocument xmlDocument = XDocument.Load(fileName);
-
-                xmlDocument.Element("Drivers")
-                                        .Elements("Driver")
-                                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
-                                        .SetElementValue("Id", driver.Id);
+                
                 xmlDocument.Element("Drivers")
                                         .Elements("Driver")
                                         .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
@@ -76,21 +72,33 @@ namespace TaxiService.Repository
                                         .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
                                         .SetElementValue("Gender", driver.Gender);
                 xmlDocument.Element("Drivers")
-                                        .Elements("Driver")
-                                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
-                                        .SetElementValue("Role", driver.Role);
+                                       .Elements("Driver")
+                                       .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
+                                       .SetElementValue("CarId", driver.Car.CarId);
                 xmlDocument.Element("Drivers")
-                                        .Elements("Driver")
-                                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
-                                        .SetElementValue("X", driver.Location.X);
+                                       .Elements("Driver")
+                                       .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
+                                       .SetElementValue("ModelYear", driver.Car.ModelYear);
                 xmlDocument.Element("Drivers")
-                                        .Elements("Driver")
-                                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
-                                        .SetElementValue("Y", driver.Location.Y);
+                                       .Elements("Driver")
+                                       .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
+                                       .SetElementValue("RegNumber", driver.Car.RegNumber);
                 xmlDocument.Element("Drivers")
-                                        .Elements("Driver")
-                                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
-                                        .SetElementValue("Address", driver.Location.Address);
+                                       .Elements("Driver")
+                                       .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
+                                       .SetElementValue("Type", driver.Car.Type);
+                //xmlDocument.Element("Drivers")
+                //                        .Elements("Driver")
+                //                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
+                //                        .SetElementValue("X", driver.Location.X);
+                //xmlDocument.Element("Drivers")
+                //                        .Elements("Driver")
+                //                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
+                //                        .SetElementValue("Y", driver.Location.Y);
+                //xmlDocument.Element("Drivers")
+                //                        .Elements("Driver")
+                //                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
+                //                        .SetElementValue("Address", driver.Location.Address);
 
                 xmlDocument.Save(fileName);
             }
@@ -134,6 +142,7 @@ namespace TaxiService.Repository
                 new XElement("Email", driver.Email),
                 new XElement("Gender", driver.Gender),
                 new XElement("Role", driver.Role),
+                    new XElement("Ocuppied", driver.Ocuppied),
                     new XElement("X", driver.Location.X),
                     new XElement("Y", driver.Location.Y),
                     new XElement("Address", driver.Location.Address),
@@ -164,6 +173,7 @@ namespace TaxiService.Repository
                                   new XElement("Email", driver.Email),
                                   new XElement("Gender", driver.Gender),
                                   new XElement("Role", driver.Role),
+                                  new XElement("Occupied", driver.Ocuppied),
                                   new XElement("X", driver.Location.X),
                                   new XElement("Y", driver.Location.Y),
                                   new XElement("Address", driver.Location.Address),
@@ -199,6 +209,7 @@ namespace TaxiService.Repository
                         Phone = driver.Element("Phone").Value,
                         Gender = (Genders)Enum.Parse(typeof(Genders), driver.Element("Gender").Value),
                         Role = (Roles)Enum.Parse(typeof(Roles), driver.Element("Role").Value),
+                        Ocuppied = bool.Parse(driver.Element("Ocuppied").Value),
                         Location = new Location
                         {
                             Address = driver.Element("Address").Value,
@@ -244,6 +255,7 @@ namespace TaxiService.Repository
                         Phone = driverx.Element("Phone").Value,
                         Gender = (Genders)Enum.Parse(typeof(Genders), driverx.Element("Gender").Value),
                         Role = (Roles)Enum.Parse(typeof(Roles), driverx.Element("Role").Value),
+                        Ocuppied = bool.Parse(driverx.Element("Ocuppied").Value),
                         Location = new Location
                         {
                             Address = driverx.Element("Address").Value,
@@ -291,6 +303,7 @@ namespace TaxiService.Repository
                         Phone = driverx.Element("Phone").Value,
                         Gender = (Genders)Enum.Parse(typeof(Genders), driverx.Element("Gender").Value),
                         Role = (Roles)Enum.Parse(typeof(Roles), driverx.Element("Role").Value),
+                        Ocuppied = bool.Parse(driverx.Element("Ocuppied").Value),
                         Location = new Location
                         {
                             Address = driverx.Element("Address").Value,
