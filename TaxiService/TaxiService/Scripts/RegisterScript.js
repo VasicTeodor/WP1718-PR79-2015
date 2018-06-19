@@ -32,7 +32,7 @@
                 $('#regGender').val(user.gender.toString());
                 $('#regUsername').val(user.username);
                 $('#regUsername').attr('readonly', true);
-                $('#regModelYear').val(user.car.modelYear)
+                $('#regModelYear').val(user.car.modelYear);
                 $('#regNumber').val(user.car.regNumber);
                 $('#regCarId').val(user.car.carId);
                 $('#newCarType').val(user.car.type.toString());

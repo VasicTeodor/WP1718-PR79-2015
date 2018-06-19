@@ -24,7 +24,7 @@ namespace TaxiService.Controllers
                 driver.Id = Guid.NewGuid();
                 driver.Role = Enums.Roles.Driver;
                 driver.Password = ServiceSecurity.EncryptData(driver.Password, "password");
-                driver.Ocuppied = false;
+                driver.Occupied = false;
                 driver.Location = new Location { Address = "garage", X = 0, Y = 0 };
                 DataRepository._driverRepo.NewDriver(driver);
                 return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driverRepo.RetriveDriverById(driver.Id));
@@ -64,7 +64,7 @@ namespace TaxiService.Controllers
             drive.Date = DateTime.Now;
             drive.State = Enums.Status.Processed;
             DataRepository._driveRepo.AddNewDriveDispatcher(drive);
-            return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driveRepo.GetAllDrives());
+            return Request.CreateResponse(HttpStatusCode.Created);
         }
     }
 }

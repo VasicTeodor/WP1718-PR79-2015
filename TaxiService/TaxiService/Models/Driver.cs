@@ -9,7 +9,7 @@ namespace TaxiService.Models
 {
     public class Driver : User
     {
-        public bool Ocuppied { get; set; }
+        public bool Occupied { get; set; }
         public Car Car { get; set; }
         public Location Location { get; set; }
     }

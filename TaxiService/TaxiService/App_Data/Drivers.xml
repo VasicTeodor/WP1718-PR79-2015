@@ -1,136 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Drivers>
-  <Driver Id="305ed38b-aa76-43ae-95dc-afec2a11bd16">
-    <Id>305ed38b-aa76-43ae-95dc-afec2a11bd16</Id>
-    <Username>VozacPera</Username>
-    <Password>Rope123</Password>
-    <Name>Petar</Name>
-    <Surname>Petrovic</Surname>
-    <Jmbg>898786745</Jmbg>
-    <Phone>0609883342</Phone>
-    <Email>pera@gmail.com</Email>
-    <Gender>Male</Gender>
-    <Role>Driver</Role>
-    <X>0</X>
-    <Y>0</Y>
-    <Address>garage</Address>
-    <CarId>-1</CarId>
-    <ModelYear>1995</ModelYear>
-    <RegNumber>NS993TX</RegNumber>
-    <Type>Car</Type>
-  </Driver>
-  <Driver Id="ee4193f7-ccd6-44da-896d-e21f1186e94c">
-    <Id>ee4193f7-ccd6-44da-896d-e21f1186e94c</Id>
-    <Username>Zrna96</Username>
-    <Password>AQNxNvLDlpwWhpV/DOwStA==</Password>
-    <Name>Nikola</Name>
-    <Surname>Zrnic</Surname>
-    <Jmbg>124528953895</Jmbg>
-    <Phone>0623124532</Phone>
-    <Email>zrna@hotmail.com</Email>
-    <Gender>Male</Gender>
-    <Role>Driver</Role>
-    <X>0</X>
-    <Y>0</Y>
-    <Address>garage</Address>
-    <CarId>0</CarId>
-    <ModelYear>0</ModelYear>
-    <RegNumber></RegNumber>
-    <Type>Bez_Naznake</Type>
-  </Driver>
-  <Driver Id="b46680e3-f80b-4d2a-b938-784c49398844">
-    <Id>b46680e3-f80b-4d2a-b938-784c49398844</Id>
-    <Username>Zrna962</Username>
-    <Password>AQNxNvLDlpwWhpV/DOwStA==</Password>
-    <Name>Nikola</Name>
-    <Surname>Zrnic</Surname>
-    <Jmbg>124528953895</Jmbg>
-    <Phone>0623124532</Phone>
-    <Email>zrna@hotmail.com</Email>
-    <Gender>Male</Gender>
-    <Role>Driver</Role>
-    <X>0</X>
-    <Y>0</Y>
-    <Address>garage</Address>
-    <CarId>0</CarId>
-    <ModelYear>0</ModelYear>
-    <RegNumber></RegNumber>
-    <Type>Bez_Naznake</Type>
-  </Driver>
-  <Driver Id="06c3d346-9fba-4981-8ecd-d867cc62b6c4">
-    <Id>06c3d346-9fba-4981-8ecd-d867cc62b6c4</Id>
-    <Username>Djoka123</Username>
-    <Password>HS8Shl3NFAMJKzzUp9wK5Q==</Password>
-    <Name>Djordje</Name>
-    <Surname>Mali</Surname>
-    <Jmbg>124528953895</Jmbg>
-    <Phone>0623124532</Phone>
-    <Email>djoka@hotmail.com</Email>
-    <Gender>Male</Gender>
-    <Role>Driver</Role>
-    <X>0</X>
-    <Y>0</Y>
-    <Address>garage</Address>
-    <CarId>0</CarId>
-    <ModelYear>0</ModelYear>
-    <RegNumber></RegNumber>
-    <Type>Bez_Naznake</Type>
-  </Driver>
-  <Driver Id="2abfc0d0-9a9c-4104-aa37-8927a668d469">
-    <Id>2abfc0d0-9a9c-4104-aa37-8927a668d469</Id>
-    <Username>Djoka1234</Username>
-    <Password>lGW3Y8ORcEdcsxZhjzPC5w==</Password>
-    <Name>Djordje</Name>
-    <Surname>Mali</Surname>
-    <Jmbg>124528953895</Jmbg>
-    <Phone>0623124532</Phone>
-    <Email>djoka@hotmail.com</Email>
-    <Gender>Male</Gender>
-    <Role>Driver</Role>
-    <X>0</X>
-    <Y>0</Y>
-    <Address>garage</Address>
-    <CarId>12</CarId>
-    <ModelYear>2005</ModelYear>
-    <RegNumber>NS299KA</RegNumber>
-    <Type>Car</Type>
-  </Driver>
-  <Driver Id="f15ec465-ecb9-4b9d-ba1b-9b393bfa4d5c">
-    <Id>f15ec465-ecb9-4b9d-ba1b-9b393bfa4d5c</Id>
-    <Username>PeraP</Username>
-    <Password>+yiBOfD0uKlwo/xLI10GVQ==</Password>
-    <Name>Djordje</Name>
-    <Surname>Mali</Surname>
-    <Jmbg>124528953895</Jmbg>
-    <Phone>0623124532</Phone>
-    <Email>djoka@hotmail.com</Email>
-    <Gender>Male</Gender>
-    <Role>Driver</Role>
-    <X>0</X>
-    <Y>0</Y>
-    <Address>garage</Address>
-    <CarId>12</CarId>
-    <ModelYear>2005</ModelYear>
-    <RegNumber>NS299KA</RegNumber>
-    <Type>Car</Type>
-  </Driver>
-  <Driver Id="67931297-d76a-447c-84c0-8297c32dbb3d">
-    <Id>67931297-d76a-447c-84c0-8297c32dbb3d</Id>
-    <Username>Vozac</Username>
+  <Driver Id="4e921b43-dfe6-4996-b0e3-f64fd553f734">
+    <Id>4e921b43-dfe6-4996-b0e3-f64fd553f734</Id>
+    <Username>Vozac1</Username>
     <Password>Dz3PHQmiuA1UF/jxZ5t1QA==</Password>
-    <Name>Vozac</Name>
-    <Surname>Vozac</Surname>
-    <Jmbg>2132132312132</Jmbg>
-    <Phone>0645827859</Phone>
-    <Email>vozac@taxins.com</Email>
+    <Name>Vozac1</Name>
+    <Surname>Vozac1</Surname>
+    <Jmbg>1243235123435</Jmbg>
+    <Phone>025241521</Phone>
+    <Email>vozac1@taxi.com</Email>
+    <Gender>Male</Gender>
+    <Role>Driver</Role>
+    <Occupied>false</Occupied>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>1</CarId>
+    <ModelYear>2016</ModelYear>
+    <RegNumber>NS245TX</RegNumber>
+    <Type>Car</Type>
+  </Driver>
+  <Driver Id="a1a2b84d-7948-4df7-a119-66cf0128bea1">
+    <Id>a1a2b84d-7948-4df7-a119-66cf0128bea1</Id>
+    <Username>Vozac2</Username>
+    <Password>Dz3PHQmiuA1UF/jxZ5t1QA==</Password>
+    <Name>Vozac2</Name>
+    <Surname>Vozac2</Surname>
+    <Jmbg>1243235123435</Jmbg>
+    <Phone>025241521</Phone>
+    <Email>vozac2@taxi.com</Email>
     <Gender>Female</Gender>
     <Role>Driver</Role>
+    <Occupied>false</Occupied>
     <X>0</X>
     <Y>0</Y>
     <Address>garage</Address>
-    <CarId>22</CarId>
+    <CarId>2</CarId>
+    <ModelYear>2015</ModelYear>
+    <RegNumber>NS231TX</RegNumber>
+    <Type>Bez_Naznake</Type>
+  </Driver>
+  <Driver Id="a0cb1b5c-ca61-4191-87d5-3758310eb910">
+    <Id>a0cb1b5c-ca61-4191-87d5-3758310eb910</Id>
+    <Username>Vozac3</Username>
+    <Password>Dz3PHQmiuA1UF/jxZ5t1QA==</Password>
+    <Name>Vozac3</Name>
+    <Surname>Vozac3</Surname>
+    <Jmbg>1243235123435</Jmbg>
+    <Phone>025241521</Phone>
+    <Email>vozac3@taxi.com</Email>
+    <Gender>Female</Gender>
+    <Role>Driver</Role>
+    <Occupied>true</Occupied>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>3</CarId>
     <ModelYear>2008</ModelYear>
-    <RegNumber>NS311LF</RegNumber>
+    <RegNumber>NS231TX</RegNumber>
     <Type>Bez_Naznake</Type>
   </Driver>
 </Drivers>

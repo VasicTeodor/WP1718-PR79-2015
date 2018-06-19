@@ -5,31 +5,31 @@
         let input = $('loginUsername');
         let is_name = input.val();
         if (is_name) {
-            input.css('borderColor','lightgreen')
+            input.css('borderColor', 'lightgreen');
             $('#errorLoginLbl').text(' ');
             sendData = true;
         }
         else {
-            input.css('borderColor', 'red')
+            input.css('borderColor', 'red');
             $('#errorLoginLbl').text('Username is required!');
             sendData = false;
         }
-    };
+    }
 
     function CheckPassword() {
         let input = $('#loginPassword');
         let is_name = input.val();
         if (is_name) {
-            input.css('borderColor', 'lightgreen')
+            input.css('borderColor', 'lightgreen');
             $('#errorLoginLbl').text(' ');
             sendData = true;
         }
         else {
-            input.css('borderColor', 'red')
+            input.css('borderColor', 'red');
             $('#errorLoginLbl').text('Password is required!');
             sendData = false;
         }
-    };
+    }
 
     $('#btnSendLogin').click(function () {
         CheckUsername();

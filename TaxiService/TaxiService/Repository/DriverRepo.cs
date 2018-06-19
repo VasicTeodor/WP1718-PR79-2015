@@ -142,7 +142,7 @@ namespace TaxiService.Repository
                 new XElement("Email", driver.Email),
                 new XElement("Gender", driver.Gender),
                 new XElement("Role", driver.Role),
-                    new XElement("Ocuppied", driver.Ocuppied),
+                    new XElement("Occupied", driver.Occupied),
                     new XElement("X", driver.Location.X),
                     new XElement("Y", driver.Location.Y),
                     new XElement("Address", driver.Location.Address),
@@ -173,7 +173,7 @@ namespace TaxiService.Repository
                                   new XElement("Email", driver.Email),
                                   new XElement("Gender", driver.Gender),
                                   new XElement("Role", driver.Role),
-                                  new XElement("Occupied", driver.Ocuppied),
+                                  new XElement("Occupied", driver.Occupied),
                                   new XElement("X", driver.Location.X),
                                   new XElement("Y", driver.Location.Y),
                                   new XElement("Address", driver.Location.Address),
@@ -209,7 +209,7 @@ namespace TaxiService.Repository
                         Phone = driver.Element("Phone").Value,
                         Gender = (Genders)Enum.Parse(typeof(Genders), driver.Element("Gender").Value),
                         Role = (Roles)Enum.Parse(typeof(Roles), driver.Element("Role").Value),
-                        Ocuppied = bool.Parse(driver.Element("Ocuppied").Value),
+                        Occupied = bool.Parse(driver.Element("Occupied").Value),
                         Location = new Location
                         {
                             Address = driver.Element("Address").Value,
@@ -255,7 +255,7 @@ namespace TaxiService.Repository
                         Phone = driverx.Element("Phone").Value,
                         Gender = (Genders)Enum.Parse(typeof(Genders), driverx.Element("Gender").Value),
                         Role = (Roles)Enum.Parse(typeof(Roles), driverx.Element("Role").Value),
-                        Ocuppied = bool.Parse(driverx.Element("Ocuppied").Value),
+                        Occupied = bool.Parse(driverx.Element("Occupied").Value),
                         Location = new Location
                         {
                             Address = driverx.Element("Address").Value,
@@ -303,7 +303,7 @@ namespace TaxiService.Repository
                         Phone = driverx.Element("Phone").Value,
                         Gender = (Genders)Enum.Parse(typeof(Genders), driverx.Element("Gender").Value),
                         Role = (Roles)Enum.Parse(typeof(Roles), driverx.Element("Role").Value),
-                        Ocuppied = bool.Parse(driverx.Element("Ocuppied").Value),
+                        Occupied = bool.Parse(driverx.Element("Occupied").Value),
                         Location = new Location
                         {
                             Address = driverx.Element("Address").Value,

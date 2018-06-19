@@ -118,6 +118,11 @@ $(document).ready(function () {
                 success: function (data) {
                     alert(JSON.stringify(data));
                     driver = JSON.stringify(data);
+                    $('#freeDriver').empty();
+                    for (let i = 0; i < data.length; i++) {
+                        let fullName = JSON.stringify(data[i].name) + ' ' + JSON.stringify(data[i].surname);
+                        $('#freeDriver').append('<option value="' + JSON.stringify(data[i].id).replace(/"|_/g, '') + '">' + fullName.replace(/"|_/g, '') + '</option>');
+                    }
                 },
                 error: function () {
                     alert("Greska na serveru, molimo vas pokusajte kasnije!");
@@ -138,7 +143,7 @@ $(document).ready(function () {
     let logout = function LogOut() {
         if (sessionStorage.getItem('accessToken')) {
             $('#profileButtons').hide();
-            $('#btnLogin').show();
+            $('#btnLoginForm').show();
             $('#btnAddDriver').hide();
             $('#menu').css('height', '200');
             $('#displayTrips').fadeOut('slow', 'swing');

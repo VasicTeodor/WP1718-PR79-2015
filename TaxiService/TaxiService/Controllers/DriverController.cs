@@ -36,12 +36,12 @@ namespace TaxiService.Controllers
         [HttpGet]
         [Route("api/Driver/GetDriver")]
         [BasicAuthentication]
-        public HttpResponseMessage GetDriver([FromUri] JToken jToken)
+        public HttpResponseMessage GetDriver([FromUri] string id)
         {
-            var id = jToken.Value<Guid>("id");
+            Guid chosenId = Guid.Parse(id);
 
             Driver driver = null;
-            driver = DataRepository._driverRepo.RetriveDriverById(id);
+            driver = DataRepository._driverRepo.RetriveDriverById(chosenId);
 
             if(driver != null)
             {
@@ -63,7 +63,7 @@ namespace TaxiService.Controllers
 
             foreach(var d in drivers)
             {
-                if(d.Ocuppied == false)
+                if(d.Occupied == false)
                 {
                     freeDrivers.Add(d);
                 }
