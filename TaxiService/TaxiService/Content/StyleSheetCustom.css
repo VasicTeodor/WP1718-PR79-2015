@@ -452,7 +452,7 @@ header nav ul li p:hover{
 
     header nav ul {
         width: 36% !important;
-        height: 248px !important;
+        height: 200px;
         margin: 0px calc(100% - 68%) !important;
         margin-top: calc(100px - 85px) !important;
     }

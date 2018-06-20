@@ -5,7 +5,7 @@
         var user = JSON.parse(sessionStorage.getItem('activeUser'));
 
         if (user.role === 'Customer') {
-            alert(JSON.stringify(JSON.parse(user)));
+            alert(JSON.stringify(user));
 
             let drive = {
                 date: `${$('#driveDate').val()}`,
@@ -16,7 +16,7 @@
                         y: $('#driveAddressY').val()
                     },
                 carType: `${$('#driveCar').val()}`,
-                orderedBy: JSON.parse(user)
+                orderedBy: user
             };
 
             alert(JSON.stringify(drive));

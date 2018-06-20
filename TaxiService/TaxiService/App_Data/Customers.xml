@@ -108,4 +108,76 @@
     <Gender>Male</Gender>
     <Role>Customer</Role>
   </Customer>
+  <Customer Id="1fa1f280-3739-4cb8-af4c-7838481fdb5d">
+    <Id>1fa1f280-3739-4cb8-af4c-7838481fdb5d</Id>
+    <Username>Musterijaa</Username>
+    <Password>xPvO9tMrkBDNoSrVuUMgHw==</Password>
+    <Name>Musterija</Name>
+    <Surname>Musterija</Surname>
+    <Jmbg>1235125324567</Jmbg>
+    <Phone>029428344</Phone>
+    <Email>musterija@taxins.com</Email>
+    <Gender>Female</Gender>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="b118cd44-031b-4e64-9470-e32696f98884">
+    <Id>b118cd44-031b-4e64-9470-e32696f98884</Id>
+    <Username>mus</Username>
+    <Password>Yjm47vW1REAu62hxkxvE3w==</Password>
+    <Name>mus</Name>
+    <Surname>mus</Surname>
+    <Jmbg>4114412142412</Jmbg>
+    <Phone>2314115</Phone>
+    <Email>mus@gm</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="d14252fe-c065-4822-84ca-c180eef0ae7d">
+    <Id>d14252fe-c065-4822-84ca-c180eef0ae7d</Id>
+    <Username>mus1</Username>
+    <Password>Yjm47vW1REAu62hxkxvE3w==</Password>
+    <Name>mus</Name>
+    <Surname>mus</Surname>
+    <Jmbg>4114412142412</Jmbg>
+    <Phone>2314115</Phone>
+    <Email>mus@gm</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="035c6b6d-825e-423d-8a6d-9ab768476ef0">
+    <Id>035c6b6d-825e-423d-8a6d-9ab768476ef0</Id>
+    <Username>mus2</Username>
+    <Password>Hn/O3bh7YSXoWzf+/eZPRg==</Password>
+    <Name>mus</Name>
+    <Surname>mus</Surname>
+    <Jmbg>4114412142412</Jmbg>
+    <Phone>2314115</Phone>
+    <Email>mus@gm</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="851d9c99-cdbb-44d8-8054-fceea7363568">
+    <Id>851d9c99-cdbb-44d8-8054-fceea7363568</Id>
+    <Username>Teo123</Username>
+    <Password>uwE29YV4gNAyTA5snHRpjw==</Password>
+    <Name>Teodor</Name>
+    <Surname>Vasic</Surname>
+    <Jmbg>2423423434234</Jmbg>
+    <Phone>3244112</Phone>
+    <Email>teo@gm</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="c5b872e2-23d3-4cf9-84f9-f851c11a078b">
+    <Id>c5b872e2-23d3-4cf9-84f9-f851c11a078b</Id>
+    <Username>Teo1234</Username>
+    <Password>pxqbpx0K3+KNMw+6Zbsynw==</Password>
+    <Name>Teodor</Name>
+    <Surname>Vasic</Surname>
+    <Jmbg>2423423434234</Jmbg>
+    <Phone>3244112</Phone>
+    <Email>teo@gm</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
 </Customers>

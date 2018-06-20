@@ -269,11 +269,17 @@
                     Username: $('#regUsername').val(),
                     Password: $('#regPass').val()
                 },
-                success: function () {
+                success: function (data) {
                     alert("Uspesna registracija!");
+                    alert(data.accessToken);
+                    alert(JSON.stringify(data.user));
+                    sessionStorage.setItem('accessToken', data.accessToken);
+                    sessionStorage.setItem('activeUser', JSON.stringify(data.user));
+                    $('#btnLoginForm').hide();
+                    $('#profileButtons').show();
                     $('#displayRegister').fadeOut('slow', 'swing', showHome);
                 },
-                error: function (jqXHR) {
+                error: function () {
                     alert("Greska pri registraciji!");
                 }
             });
@@ -391,11 +397,11 @@
                     $('#errorUsername').text(' ');
                     sendData = true;
                 },
-                error: function (jqXHR) {
+                error: function () {
                     $('#regUsername').removeClass("reg-table-td-input").addClass("reg-table-td-error");
                     $('#regUsername').removeClass("reg-table-td-ok").addClass("reg-table-td-error");
                     $('#errorUsername').text('Sorry but that username is allready taken!'),
-                        sendData = false;
+                    sendData = false;
                 }
             });
         }

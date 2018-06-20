@@ -63,8 +63,14 @@ namespace TaxiService.Controllers
             drive.DriveId = Guid.NewGuid();
             drive.Date = DateTime.Now;
             drive.State = Enums.Status.Processed;
+            drive.Destination = new Location
+            {
+                Address = "Unset",
+                X = 0,
+                Y = 0
+            };
             DataRepository._driveRepo.AddNewDriveDispatcher(drive);
-            return Request.CreateResponse(HttpStatusCode.Created);
+            return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driveRepo.GetAllDrives());
         }
     }
 }

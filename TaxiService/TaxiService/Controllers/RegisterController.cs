@@ -20,11 +20,14 @@ namespace TaxiService.Controllers
                 !DataRepository._driverRepo.CheckIfDriverExists(customer.Username))
             {
                 customer.Id = Guid.NewGuid();
-                customer.Password = ServiceSecurity.EncryptData(customer.Password, "password");
                 customer.Role = Enums.Roles.Customer;
+                LoginDto logObj = new LoginDto();
+                logObj.AccessToken = ServiceSecurity.MakeToken($"{customer.Username}:{customer.Password}");
+                customer.Password = ServiceSecurity.EncryptData(customer.Password, "password");
+                logObj.User = customer;
                 DataRepository._customerRepo.NewCustomer(customer);
 
-                return Request.CreateResponse(HttpStatusCode.Created, DataRepository._customerRepo.RetriveCustomerById(customer.Id));
+                return Request.CreateResponse(HttpStatusCode.Created, logObj);
             }
             else
             {

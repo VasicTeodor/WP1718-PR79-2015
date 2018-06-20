@@ -19,10 +19,10 @@ function formatTime() {
 
 function showOtherInfo(elem) {
     if (document.getElementById("otherInfo" + elem.id).style.display == "none") {
-        document.getElementById("otherInfo" + elem.id).style.display = "block";
+        $('#otherInfo' + elem.id).slideDown('slow');
         document.getElementById(elem.id).innerHTML = "-";
-    } else {                     
-        document.getElementById("otherInfo" + elem.id).style.display = "none";
+    } else {
+        $('#otherInfo' + elem.id).slideUp('slow');
         document.getElementById(elem.id).innerHTML = "+";
     }
 }
@@ -72,7 +72,11 @@ $(document).ready(function () {
     let home = function DisplayHome() {
         $('#displayLoginForm').fadeOut('slow', 'swing');
         $("#blurBackground").fadeOut('slow', 'swing');
-        $('#displayTrips').fadeOut('slow', 'swing');
+        if (sessionStorage.getItem('accessToken')) {
+            $('#displayTrips').fadeIn('slow', 'swing');
+        } else {
+            $('#displayTrips').fadeOut('slow', 'swing');
+        }
         $('#displayRegister').fadeOut('slow', 'swing');
         $('#displayNewRide').fadeOut('slow', 'swing');
         $('#displayHeader').fadeIn('slow', 'swing');
@@ -100,7 +104,7 @@ $(document).ready(function () {
     });
 
     $('#btnNewDrive').click(function () {
-        let user = sessionStorage.getItem('activeUser');
+        let user = JSON.parse(sessionStorage.getItem('activeUser'));
         let token = sessionStorage.getItem('accessToken');
 
         if (user.role === "Customer") {

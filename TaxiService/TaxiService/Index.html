@@ -35,7 +35,7 @@
                     <li><p >ABOUT</p></li>
                     <li><p >CONTACTS</p></li>
                     <li><p id="btnRegisterFormMenu">REGISTER</p></li>
-                    <li><p id="btnAddDriver">ADD DRIVER</p></li>
+                    <li><p id="btnAddDriver"style="display: none;">ADD DRIVER</p></li>
                     <li><p id="btnMyAccMenu" class="myAccMenu">MY ACCOUNT</p></li>
                     <li><p id="btnLoginMenu" class="loginMenu">LOG IN</p></li>
                 </ul>
@@ -106,62 +106,7 @@
                         <p>DATUM I VREME</p>
                         <p>LOKACIJA</p>
                     </div>
-                    <div class="home-tt-main">
-                        <p class="home-tt-display">15.10.2018 14:23</p>
-                        <p class="home-tt-display">Bul. Oslobodjenja, 2a</p>
-                        <button class="expand-table" onclick="showOtherInfo(this);" id="1">+</button>
-                    </div>
-                    <div class="home-tt-other" style="display: none;" id="otherInfo1">
-                        <div class="tableWrap">
-                            <table class="table-drive">
-                                <tr class="table-tr-drive">
-                                    <td class="table-td-drive">Date:</td>
-                                    <td class="table-td-drive"><p class="home-tt-display2">15.10.2018 14:23</p></td>
-                                </tr>
-                                <tr class="table-tr-drive">
-                                    <td class="table-td-drive">Address:</td>
-                                    <td class="table-td-drive"><p class="home-tt-display2">Bul. Oslobodjenja, 2a</p></td>
-                                </tr>
-                                <tr class="table-tr-drive">
-                                    <td class="table-td-drive">Car Type:</td>
-                                    <td class="table-td-drive"><p class="home-tt-display2">Car</p></td>
-                                </tr>
-                                <tr class="table-tr-drive">
-                                    <td class="table-td-drive">Destination:</td>
-                                    <td class="table-td-drive"><p class="home-tt-display2">Bul. Oslobodjenja, 2a</p></td>
-                                </tr>
-                                <tr class="table-tr-drive">
-                                    <td class="table-td-drive">Price:</td>
-                                    <td class="table-td-drive"><p class="home-tt-display2">2018.56 RSD</p></td>
-                                </tr>
-                                <tr class="table-tr-drive">
-                                    <td class="table-td-drive">Dispatcher:</td>
-                                    <td class="table-td-drive"><p class="home-tt-display2">Marko Markovic</p></td>
-                                </tr>
-                                <tr class="table-tr-drive">
-                                    <td class="table-td-drive">Driver:</td>
-                                    <td class="table-td-drive"><p class="home-tt-display2">Petar Petrovic</p></td>
-                                </tr>
-                                <tr class="table-tr-drive">
-                                    <td class="table-td-drive">Comment:</td>
-                                    <td class="table-td-drive">
-                                        <div>
-                                            <p class="comment-bold">Voznja je bila fantasticna, skroz sam uzivao..</p>
-                                            <p class="comment-italic">10.10.2018 14.41</p>
-                                            <p class="comment-bold">OCENA: 4</p>
-                                            <p class="comment-italic">Petar Petrovic-Vozac</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="table-tr-drive">
-                                    <td colspan="2" class="table-td-drive" align="right">
-                                        <button class="edit-drive" id="btnEditDrive">Edit</button>
-                                        <button class="edit-drive" id="btnQuitDrive">Quit</button>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div id="displayRegister" class="trips-wrap" style="display: none;">
                     <p id="displayRegisterHeader" class="reg-header">REGISTER FORM</p>
@@ -385,7 +330,7 @@
                                 </td>
                             </tr>
                             <tr class="table-tr-drive">
-                                <td colspan="2" class="table-td-drive" align="right">
+                                <td colspan="2" class="table-td-drive" align="center">
                                     <button class="edit-drive" id="btnCreateDrive">Create</button>
                                 </td>
                             </tr>
