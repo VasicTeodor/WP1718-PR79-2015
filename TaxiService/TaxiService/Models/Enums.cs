@@ -9,21 +9,21 @@ namespace TaxiService.Models
     {
         public enum Roles : int
         {
-            Driver,
+            Driver = 0,
             Customer,
             Dispatcher
         }
 
         public enum CarTypes : int
         {
-            Bez_Naznake,
-            Car,
-            Kombi
+            Bez_Naznake = 0,
+            Car = 1,
+            Kombi = 2
         }
 
         public enum Status : int
         {
-            Created,
+            Created = 0,
             Canceled,
             Formated,
             Processed,
@@ -34,7 +34,7 @@ namespace TaxiService.Models
 
         public enum Genders : int
         {
-            Male,
+            Male = 0,
             Female
         }
     }

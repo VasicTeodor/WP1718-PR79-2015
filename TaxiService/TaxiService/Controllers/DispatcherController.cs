@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -62,15 +63,51 @@ namespace TaxiService.Controllers
         {
             drive.DriveId = Guid.NewGuid();
             drive.Date = DateTime.Now;
-            drive.State = Enums.Status.Processed;
+            drive.State = Enums.Status.Formated;
             drive.Destination = new Location
             {
                 Address = "Unset",
                 X = 0,
                 Y = 0
             };
+            drive.DrivedBy.Occupied = true;
+            DataRepository._driverRepo.DriverOccupation(drive.DrivedBy);
             DataRepository._driveRepo.AddNewDriveDispatcher(drive);
-            return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driveRepo.GetAllDrives());
+            return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driveRepo.RetriveDriveById(drive.DriveId));
+        }
+
+        [HttpPut]
+        [Route("api/Dispatcher/UpdateDrive")]
+        [BasicAuthentication]
+        public HttpResponseMessage UpdateDrive([FromBody]JToken jToken)
+        {
+            string id = jToken.Value<string>("driveId");
+            Guid driveId = Guid.Parse(id);
+            string driverId = jToken.Value<string>("drivedBy");
+            Guid drivenBy = Guid.Parse(driverId);
+            string approvedBy = jToken.Value<string>("approvedBy");
+            Guid dispatcherId = Guid.Parse(approvedBy);
+            Drive update = null;
+            Driver driver = null;
+            Dispatcher dispatcher = null;
+            dispatcher = DataRepository._dispatcherRepo.RetriveDispatcherById(dispatcherId);
+            update = DataRepository._driveRepo.RetriveDriveById(driveId);
+            driver = DataRepository._driverRepo.RetriveDriverById(drivenBy);
+
+            if (update != null && driver != null && dispatcher != null)
+            {
+                update.DrivedBy = driver;
+                update.ApprovedBy = dispatcher;
+                update.State = Enums.Status.Formated;
+                driver.Occupied = true;
+                DataRepository._driverRepo.DriverOccupation(driver);
+                DataRepository._driveRepo.DispatcherEditDrive(update);
+                return Request.CreateResponse(HttpStatusCode.OK, update);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
         }
     }
 }

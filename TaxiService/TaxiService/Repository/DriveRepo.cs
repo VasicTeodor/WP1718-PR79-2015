@@ -188,6 +188,10 @@ namespace TaxiService.Repository
                                         .Elements("Drive")
                                         .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
                                         .SetElementValue("DriverId", drive.DrivedBy.Id);
+                xmlDocument.Element("Drives")
+                                       .Elements("Drive")
+                                       .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                       .SetElementValue("State", drive.State);
 
                 xmlDocument.Save(fileName);
             }
@@ -203,6 +207,25 @@ namespace TaxiService.Repository
                                         .Elements("Drive")
                                         .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
                                         .SetElementValue("DriverId", drive.DrivedBy.Id);
+                xmlDocument.Element("Drives")
+                                       .Elements("Drive")
+                                       .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                       .SetElementValue("State", drive.State);
+
+                xmlDocument.Save(fileName);
+            }
+        }
+
+        public void UpdateState(Drive drive)
+        {
+            if (File.Exists(fileName))
+            {
+                XDocument xmlDocument = XDocument.Load(fileName);
+
+                xmlDocument.Element("Drives")
+                                        .Elements("Drive")
+                                        .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
+                                        .SetElementValue("CommentId", drive.Comments.CommentId);
 
                 xmlDocument.Save(fileName);
             }

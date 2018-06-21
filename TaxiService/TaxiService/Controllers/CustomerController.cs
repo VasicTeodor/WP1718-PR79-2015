@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -35,10 +36,12 @@ namespace TaxiService.Controllers
 
         [HttpPost]
         [Route("api/Customer/CreateNewDrive")]
+        [BasicAuthentication]
         public HttpResponseMessage CreateNewDrive([FromBody]Drive drive)
         {
             drive.DriveId = Guid.NewGuid();
             drive.State = Enums.Status.Created;
+            drive.Date = DateTime.Now;
             drive.Destination = new Location
             {
                 Address = "Unset",
@@ -47,7 +50,52 @@ namespace TaxiService.Controllers
             };
             drive.Price = 0;
             DataRepository._driveRepo.AddNewDriveCustomer(drive);
-            return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driveRepo.GetAllDrives());
+            return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driveRepo.RetriveDriveById(drive.DriveId));
+        }
+
+        [HttpPut]
+        [Route("api/Customer/QuitDrive")]
+        [BasicAuthentication]
+        public HttpResponseMessage QuitDrive([FromBody]JToken jToken)
+        {
+            string id = jToken.Value<string>("quitId");
+            Guid driveId = Guid.Parse(id);
+            Drive quit = null;
+            quit = DataRepository._driveRepo.RetriveDriveById(driveId);
+
+            if (quit != null)
+            {
+                quit.State = Enums.Status.Canceled;
+
+                DataRepository._driveRepo.UpdateState(quit);
+
+                return Request.CreateResponse(HttpStatusCode.OK, quit);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+        }
+
+        [HttpPut]
+        [Route("api/Customer/UpdateDrive")]
+        [BasicAuthentication]
+        public HttpResponseMessage UpdateDrive([FromBody]Drive drive)
+        {
+            Drive old = null; 
+            old = DataRepository._driveRepo.RetriveDriveById(drive.DriveId);
+
+            if (old != null)
+            {
+                old.Address = drive.Address;
+                old.CarType = drive.CarType;
+                DataRepository._driveRepo.CustomerEditDrive(old);
+                return Request.CreateResponse(HttpStatusCode.OK, old);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
         }
     }
 }

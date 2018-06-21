@@ -92,7 +92,7 @@ $(document).ready(function () {
     $('#btnExitLogin').click(function () {
         $('#displayLoginForm').hide();
         $("#blurBackground").hide();
-        home;
+        home();
     });
 
     $('main').hover(function () {
@@ -106,12 +106,30 @@ $(document).ready(function () {
     $('#btnNewDrive').click(function () {
         let user = JSON.parse(sessionStorage.getItem('activeUser'));
         let token = sessionStorage.getItem('accessToken');
+        $('#driveAddress').parent().parent().show();
+        $('#driveAddressX').parent().parent().show();
+        $('#driveAddressY').parent().parent().show();
+        $('#driveCar').parent().parent().show();
 
         if (user.role === "Customer") {
             $('#dispatcherDrive').hide();
+            $('#driverDrive').hide();
+            $('#btnEditDrive').hide();
+            $('#btnCreateDrive').show();
+            $('#driveAddress').attr('readonly', false);
+            $('#driveAddressX').attr('readonly', false);
+            $('#driveAddressY').attr('readonly', false);
+            $('#driveCar').attr('readonly', false);
         }
         else {
+            $('#driveAddress').attr('readonly', false);
+            $('#driveAddressX').attr('readonly', false);
+            $('#driveAddressY').attr('readonly', false);
+            $('#driveCar').attr('readonly', false);
             $('#dispatcherDrive').show();
+            $('#driverDrive').hide();
+            $('#btnCreateDrive').show();
+            $('#btnEditDrive').hide();
             $.ajax({
                 type: 'GET',
                 url: '/api/Driver/GetFreeDrivers',
@@ -140,7 +158,21 @@ $(document).ready(function () {
     $('#btnExitNewDrive').click(function () {
         $("#blurBackground").fadeOut('slow', 'swing');
         $("#displayNewDrive").fadeOut('slow', 'swing');
-        home;
+        home();
+        $('#displayTrips').fadeIn('slow', 'swing');
+    });
+
+    $('#btnExitFinishedDrive').click(function () {
+        $("#blurBackground").fadeOut('slow', 'swing');
+        $("#displayDriverFinished").fadeOut('slow', 'swing');
+        home();
+        $('#displayTrips').fadeIn('slow', 'swing');
+    });
+
+    $('#btnExitComment').click(function () {
+        $("#blurBackground").fadeOut('slow', 'swing');
+        $("#displayCommentForm").fadeOut('slow', 'swing');
+        home();
         $('#displayTrips').fadeIn('slow', 'swing');
     });
 
@@ -148,12 +180,14 @@ $(document).ready(function () {
         if (sessionStorage.getItem('accessToken')) {
             $('#profileButtons').hide();
             $('#btnLoginForm').show();
+            $('#btnRegisterFormMenu').show();
             $('#btnAddDriver').hide();
             $('#menu').css('height', '200');
+            $('#fillInTrips').empty();
             $('#displayTrips').fadeOut('slow', 'swing');
             sessionStorage.removeItem('accessToken');
             sessionStorage.removeItem('activeUser');
-            home;
+            home();
         }
     };
 

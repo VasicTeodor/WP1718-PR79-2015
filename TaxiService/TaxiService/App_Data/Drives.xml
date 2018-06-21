@@ -1,188 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Drives>
-  <Drive Id="43e93164-dcd4-472f-b749-7c7e003b8a97">
-    <Id>43e93164-dcd4-472f-b749-7c7e003b8a97</Id>
-    <CustomerId>4bd3b919-f5b5-4168-a021-18d52932931a</CustomerId>
+  <Drive Id="47431110-8dda-4442-bb50-48e985c1e03d">
+    <Id>47431110-8dda-4442-bb50-48e985c1e03d</Id>
+    <CustomerId>018c725d-8a44-4dab-aa43-c98ac90ff406</CustomerId>
+    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
+    <DriverId>119b31ed-02e9-4e33-82e0-1acac9f39c7b</DriverId>
+    <CommentId>4396ab22-61b8-47af-bd8b-c00568a64177</CommentId>
+    <Date>2018-06-21T04:26:15.5421653+02:00</Date>
+    <CarType>Kombi</CarType>
+    <Price>0</Price>
+    <State>Accepted</State>
+    <AddressX>32</AddressX>
+    <AddressY>43</AddressY>
+    <AddressA>Bolnica centar</AddressA>
+    <DestinationX>0</DestinationX>
+    <DestinationY>0</DestinationY>
+    <DestinationAddress>Unset</DestinationAddress>
+  </Drive>
+  <Drive Id="ea77bb9d-b846-4368-88a8-811f652fea8e">
+    <Id>ea77bb9d-b846-4368-88a8-811f652fea8e</Id>
+    <CustomerId>018c725d-8a44-4dab-aa43-c98ac90ff406</CustomerId>
     <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
     <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
     <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
-    <Date>2018-06-13T23:57:15.3250327+02:00</Date>
-    <CarType>Car</CarType>
-    <Price>2341.12</Price>
+    <Date>2018-06-21T04:28:41.0199283+02:00</Date>
+    <CarType>Bez_Naznake</CarType>
+    <Price>0</Price>
     <State>Created</State>
-    <AddressX>34.5</AddressX>
-    <AddressY>53.53</AddressY>
-    <AddressA>Belilo 85 Sremski Karlovci</AddressA>
-    <DestinationX>34.5</DestinationX>
-    <DestinationY>53.53</DestinationY>
-    <DestinationAddress>Belilo 85 Sremski Karlovci</DestinationAddress>
+    <AddressX>43</AddressX>
+    <AddressY>233</AddressY>
+    <AddressA>Hotel Park</AddressA>
+    <DestinationX>0</DestinationX>
+    <DestinationY>0</DestinationY>
+    <DestinationAddress>Unset</DestinationAddress>
   </Drive>
-  <Drive Id="09c07b6b-1e38-48fc-a2d4-d047fb638321">
-    <Id>09c07b6b-1e38-48fc-a2d4-d047fb638321</Id>
-    <CustomerId>4bd3b919-f5b5-4168-a021-18d52932931a</CustomerId>
-    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
-    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
-    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
-    <Date>2018-06-13T23:58:27.7749325+02:00</Date>
-    <CarType>Car</CarType>
-    <Price>2341.12</Price>
-    <State>Created</State>
-    <AddressX>34.5</AddressX>
-    <AddressY>53.53</AddressY>
-    <AddressA>Belilo 85 Sremski Karlovci</AddressA>
-    <DestinationX>34.5</DestinationX>
-    <DestinationY>53.53</DestinationY>
-    <DestinationAddress>Belilo 85 Sremski Karlovci</DestinationAddress>
-  </Drive>
-  <Drive Id="ec71424d-6b9c-4bdf-86a7-cb07e8f0442f">
-    <Id>ec71424d-6b9c-4bdf-86a7-cb07e8f0442f</Id>
+  <Drive Id="2fd3e4ea-ac84-4bb5-b623-dada2b4afb57">
+    <Id>2fd3e4ea-ac84-4bb5-b623-dada2b4afb57</Id>
     <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
     <CustomerId>00000000-0000-0000-0000-000000000000</CustomerId>
     <DispatcherId>6c76fe0d-bc81-4c86-a31e-407418072971</DispatcherId>
-    <DriverId>4e921b43-dfe6-4996-b0e3-f64fd553f734</DriverId>
-    <Date>2018-06-19T23:46:55.1523712+02:00</Date>
+    <DriverId>119b31ed-02e9-4e33-82e0-1acac9f39c7b</DriverId>
+    <Date>2018-06-21T04:45:01.6238129+02:00</Date>
     <CarType>Car</CarType>
     <Price>0</Price>
-    <State>Processed</State>
-    <AddressX>231</AddressX>
-    <AddressY>324</AddressY>
-    <AddressA>Novi Sad</AddressA>
-    <DestinationX>0</DestinationX>
-    <DestinationY>0</DestinationY>
-    <DestinationAddress>Unset</DestinationAddress>
-  </Drive>
-  <Drive Id="30fb598e-ee38-4cb0-8adb-cae172dcf9b6">
-    <Id>30fb598e-ee38-4cb0-8adb-cae172dcf9b6</Id>
-    <CustomerId>035c6b6d-825e-423d-8a6d-9ab768476ef0</CustomerId>
-    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
-    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
-    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
-    <Date>2018-06-22T00:00:00</Date>
-    <CarType>Car</CarType>
-    <Price>0</Price>
-    <State>Created</State>
-    <AddressX>32</AddressX>
-    <AddressY>23</AddressY>
-    <AddressA>Belilo</AddressA>
-    <DestinationX>0</DestinationX>
-    <DestinationY>0</DestinationY>
-    <DestinationAddress>Unset</DestinationAddress>
-  </Drive>
-  <Drive Id="c3ced7f0-0421-4e88-bdf5-eb558a03b82a">
-    <Id>c3ced7f0-0421-4e88-bdf5-eb558a03b82a</Id>
-    <CustomerId>851d9c99-cdbb-44d8-8054-fceea7363568</CustomerId>
-    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
-    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
-    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
-    <Date>2018-06-13T00:00:00</Date>
-    <CarType>Car</CarType>
-    <Price>0</Price>
-    <State>Created</State>
-    <AddressX>12</AddressX>
-    <AddressY>22</AddressY>
-    <AddressA>asdasd</AddressA>
-    <DestinationX>0</DestinationX>
-    <DestinationY>0</DestinationY>
-    <DestinationAddress>Unset</DestinationAddress>
-  </Drive>
-  <Drive Id="edda2f0a-c2b8-4e4d-bac3-15cbac26b495">
-    <Id>edda2f0a-c2b8-4e4d-bac3-15cbac26b495</Id>
-    <CustomerId>851d9c99-cdbb-44d8-8054-fceea7363568</CustomerId>
-    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
-    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
-    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
-    <Date>2018-06-13T00:00:00</Date>
-    <CarType>Car</CarType>
-    <Price>0</Price>
-    <State>Created</State>
-    <AddressX>12</AddressX>
-    <AddressY>22</AddressY>
-    <AddressA>asdasd</AddressA>
-    <DestinationX>0</DestinationX>
-    <DestinationY>0</DestinationY>
-    <DestinationAddress>Unset</DestinationAddress>
-  </Drive>
-  <Drive Id="731f5bfe-5d65-4340-8b9c-8a02377bb39e">
-    <Id>731f5bfe-5d65-4340-8b9c-8a02377bb39e</Id>
-    <CustomerId>851d9c99-cdbb-44d8-8054-fceea7363568</CustomerId>
-    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
-    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
-    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
-    <Date>2018-06-13T00:00:00</Date>
-    <CarType>Car</CarType>
-    <Price>0</Price>
-    <State>Created</State>
-    <AddressX>12</AddressX>
-    <AddressY>22</AddressY>
-    <AddressA>asdasdw</AddressA>
-    <DestinationX>0</DestinationX>
-    <DestinationY>0</DestinationY>
-    <DestinationAddress>Unset</DestinationAddress>
-  </Drive>
-  <Drive Id="ff2d61aa-030f-4f43-afa4-878a153fa6cf">
-    <Id>ff2d61aa-030f-4f43-afa4-878a153fa6cf</Id>
-    <CustomerId>851d9c99-cdbb-44d8-8054-fceea7363568</CustomerId>
-    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
-    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
-    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
-    <Date>2018-06-13T00:00:00</Date>
-    <CarType>Car</CarType>
-    <Price>0</Price>
-    <State>Created</State>
-    <AddressX>12</AddressX>
-    <AddressY>22</AddressY>
-    <AddressA>rsffvASD</AddressA>
-    <DestinationX>0</DestinationX>
-    <DestinationY>0</DestinationY>
-    <DestinationAddress>Unset</DestinationAddress>
-  </Drive>
-  <Drive Id="520a95ef-7bff-4bdd-a428-d4af2ae93d4f">
-    <Id>520a95ef-7bff-4bdd-a428-d4af2ae93d4f</Id>
-    <CustomerId>c5b872e2-23d3-4cf9-84f9-f851c11a078b</CustomerId>
-    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
-    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
-    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
-    <Date>2018-06-13T00:00:00</Date>
-    <CarType>Car</CarType>
-    <Price>0</Price>
-    <State>Created</State>
-    <AddressX>12</AddressX>
-    <AddressY>22</AddressY>
-    <AddressA>rsffvASD</AddressA>
-    <DestinationX>0</DestinationX>
-    <DestinationY>0</DestinationY>
-    <DestinationAddress>Unset</DestinationAddress>
-  </Drive>
-  <Drive Id="83b91b27-6f90-4ece-b657-9335c1d42483">
-    <Id>83b91b27-6f90-4ece-b657-9335c1d42483</Id>
-    <CustomerId>c5b872e2-23d3-4cf9-84f9-f851c11a078b</CustomerId>
-    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
-    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
-    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
-    <Date>2018-06-13T00:00:00</Date>
-    <CarType>Car</CarType>
-    <Price>0</Price>
-    <State>Created</State>
-    <AddressX>12</AddressX>
-    <AddressY>22</AddressY>
-    <AddressA>QWESR</AddressA>
-    <DestinationX>0</DestinationX>
-    <DestinationY>0</DestinationY>
-    <DestinationAddress>Unset</DestinationAddress>
-  </Drive>
-  <Drive Id="ae4c1b2a-f41a-436c-a334-f7281d988a94">
-    <Id>ae4c1b2a-f41a-436c-a334-f7281d988a94</Id>
-    <CustomerId>c5b872e2-23d3-4cf9-84f9-f851c11a078b</CustomerId>
-    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
-    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
-    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
-    <Date>2018-06-13T00:00:00</Date>
-    <CarType>Car</CarType>
-    <Price>0</Price>
-    <State>Created</State>
-    <AddressX>12</AddressX>
-    <AddressY>22</AddressY>
-    <AddressA>saewq</AddressA>
+    <State>Formated</State>
+    <AddressX>23</AddressX>
+    <AddressY>43</AddressY>
+    <AddressA>Hipodrom</AddressA>
     <DestinationX>0</DestinationX>
     <DestinationY>0</DestinationY>
     <DestinationAddress>Unset</DestinationAddress>

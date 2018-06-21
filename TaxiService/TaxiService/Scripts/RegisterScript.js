@@ -277,6 +277,11 @@
                     sessionStorage.setItem('activeUser', JSON.stringify(data.user));
                     $('#btnLoginForm').hide();
                     $('#profileButtons').show();
+                    $('#btnNewDrive').show();
+                    $('#btnDriveFilters').show();
+                    $('#btnDriverLocation').hide();
+                    $('#btnDriverAllDrives').hide();
+                    $('#btnDispatcherAllDrives').hide();
                     $('#displayRegister').fadeOut('slow', 'swing', showHome);
                 },
                 error: function () {

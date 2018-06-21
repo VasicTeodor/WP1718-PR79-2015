@@ -22,6 +22,7 @@ namespace TaxiService.Repository
                 new XElement("Comments",
                 new XElement("Comment", new XAttribute("Id", comment.CommentId),
                 new XElement("CommentId", comment.CommentId),
+                new XElement("CommentedOn", comment.CommentedOn.DriveId),
                 new XElement("CreatedById", comment.CreatedBy.Id),
                 new XElement("CreatedOn", comment.CreatedOn),
                 new XElement("Description", comment.Description),
@@ -39,6 +40,7 @@ namespace TaxiService.Repository
                     XElement customers = doc.Element("Comments");
                     customers.Add(new XElement("Comment", new XAttribute("Id", comment.CommentId),
                                                           new XElement("CommentId", comment.CommentId),
+                                                          new XElement("CommentedOn", comment.CommentedOn.DriveId),
                                                           new XElement("CreatedById", comment.CreatedBy.Id),
                                                           new XElement("CreatedOn", comment.CreatedOn),
                                                           new XElement("Description", comment.Description),
@@ -59,11 +61,12 @@ namespace TaxiService.Repository
                 IEnumerable<CommentDto> comments =
                     doc.Root
                     .Elements("Comment")
+                    .Where(x => x.Attribute("Id").Value == id.ToString())
                     .Select(comment => new CommentDto
                     {
                         CreatedById = Guid.Parse(comment.Element("CreatedById").Value),
                         CreatedOn = DateTime.Parse(comment.Element("CreatedOn").Value),
-                        DriveId = Guid.Parse(comment.Element("DriveId").Value),
+                        DriveId = Guid.Parse(comment.Element("CommentedOn").Value),
                         CommentId = Guid.Parse(comment.Element("CommentId").Value),
                         Description = comment.Element("Description").Value,
                         Grade = Int32.Parse(comment.Element("Grade").Value)
@@ -71,15 +74,28 @@ namespace TaxiService.Repository
 
                 foreach(var c in comments)
                 {
-                    realComments.Add(new Comment
+                    try
                     {
-                        CommentedOn = DataRepository._driveRepo.RetriveDriveById(c.DriveId),
-                        CommentId = c.CommentId,
-                        CreatedBy = DataRepository._customerRepo.RetriveCustomerById(c.CreatedById),
-                        CreatedOn = c.CreatedOn,
-                        Description = c.Description,
-                        Grade = c.Grade
-                    });
+                        realComments.Add(new Comment
+                        {
+                            CommentId = c.CommentId,
+                            CreatedBy = DataRepository._customerRepo.RetriveCustomerById(c.CreatedById),
+                            CreatedOn = c.CreatedOn,
+                            Description = c.Description,
+                            Grade = c.Grade
+                        });
+                    }
+                    catch
+                    {
+                        realComments.Add(new Comment
+                        {
+                            CommentId = c.CommentId,
+                            CreatedBy = DataRepository._driverRepo.RetriveDriverById(c.CreatedById),
+                            CreatedOn = c.CreatedOn,
+                            Description = c.Description,
+                            Grade = c.Grade
+                        });
+                    }
                 }
 
                 Comment commentx = realComments.FirstOrDefault(x => x.CommentId == id);

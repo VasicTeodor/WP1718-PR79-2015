@@ -104,7 +104,22 @@ namespace TaxiService.Repository
             }
         }
 
-        public bool LogIn(string username, string password)
+        public void DriverOccupation(Driver driver)
+        {
+            if (File.Exists(fileName))
+            {
+                XDocument xmlDocument = XDocument.Load(fileName);
+
+                xmlDocument.Element("Drivers")
+                                        .Elements("Driver")
+                                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
+                                        .SetElementValue("Occupied", driver.Occupied);
+
+                xmlDocument.Save(fileName);
+            }
+        }
+
+                public bool LogIn(string username, string password)
         {
             if (File.Exists(fileName))
             {

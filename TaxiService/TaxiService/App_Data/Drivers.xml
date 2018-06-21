@@ -1,63 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Drivers>
-  <Driver Id="4e921b43-dfe6-4996-b0e3-f64fd553f734">
-    <Id>4e921b43-dfe6-4996-b0e3-f64fd553f734</Id>
-    <Username>Vozac1</Username>
-    <Password>Dz3PHQmiuA1UF/jxZ5t1QA==</Password>
-    <Name>Vozac1</Name>
-    <Surname>Vozac1</Surname>
-    <Jmbg>1243235123435</Jmbg>
-    <Phone>025241521</Phone>
-    <Email>vozac1@taxi.com</Email>
+  <Driver Id="119b31ed-02e9-4e33-82e0-1acac9f39c7b">
+    <Id>119b31ed-02e9-4e33-82e0-1acac9f39c7b</Id>
+    <Username>Driver</Username>
+    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
+    <Name>Djordje</Name>
+    <Surname>Samar</Surname>
+    <Jmbg>1254254325443</Jmbg>
+    <Phone>0605342354</Phone>
+    <Email>djoka@taxins.com</Email>
+    <Gender>Male</Gender>
+    <Role>Driver</Role>
+    <Occupied>true</Occupied>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>1</CarId>
+    <ModelYear>2016</ModelYear>
+    <RegNumber>NS2015TX</RegNumber>
+    <Type>Car</Type>
+  </Driver>
+  <Driver Id="48eaa55e-1911-4c19-8727-61b4e4907202">
+    <Id>48eaa55e-1911-4c19-8727-61b4e4907202</Id>
+    <Username>Driver2</Username>
+    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
+    <Name>Pera</Name>
+    <Surname>Udarac</Surname>
+    <Jmbg>1254254325443</Jmbg>
+    <Phone>0605342354</Phone>
+    <Email>sarma@taxins.com</Email>
     <Gender>Male</Gender>
     <Role>Driver</Role>
     <Occupied>false</Occupied>
     <X>0</X>
     <Y>0</Y>
     <Address>garage</Address>
-    <CarId>1</CarId>
-    <ModelYear>2016</ModelYear>
-    <RegNumber>NS245TX</RegNumber>
-    <Type>Car</Type>
-  </Driver>
-  <Driver Id="a1a2b84d-7948-4df7-a119-66cf0128bea1">
-    <Id>a1a2b84d-7948-4df7-a119-66cf0128bea1</Id>
-    <Username>Vozac2</Username>
-    <Password>Dz3PHQmiuA1UF/jxZ5t1QA==</Password>
-    <Name>Vozac2</Name>
-    <Surname>Vozac2</Surname>
-    <Jmbg>1243235123435</Jmbg>
-    <Phone>025241521</Phone>
-    <Email>vozac2@taxi.com</Email>
-    <Gender>Female</Gender>
-    <Role>Driver</Role>
-    <Occupied>false</Occupied>
-    <X>0</X>
-    <Y>0</Y>
-    <Address>garage</Address>
     <CarId>2</CarId>
-    <ModelYear>2015</ModelYear>
-    <RegNumber>NS231TX</RegNumber>
-    <Type>Bez_Naznake</Type>
-  </Driver>
-  <Driver Id="a0cb1b5c-ca61-4191-87d5-3758310eb910">
-    <Id>a0cb1b5c-ca61-4191-87d5-3758310eb910</Id>
-    <Username>Vozac3</Username>
-    <Password>Dz3PHQmiuA1UF/jxZ5t1QA==</Password>
-    <Name>Vozac3</Name>
-    <Surname>Vozac3</Surname>
-    <Jmbg>1243235123435</Jmbg>
-    <Phone>025241521</Phone>
-    <Email>vozac3@taxi.com</Email>
-    <Gender>Female</Gender>
-    <Role>Driver</Role>
-    <Occupied>true</Occupied>
-    <X>0</X>
-    <Y>0</Y>
-    <Address>garage</Address>
-    <CarId>3</CarId>
-    <ModelYear>2008</ModelYear>
-    <RegNumber>NS231TX</RegNumber>
+    <ModelYear>2016</ModelYear>
+    <RegNumber>NS325TX</RegNumber>
     <Type>Bez_Naznake</Type>
   </Driver>
 </Drivers>

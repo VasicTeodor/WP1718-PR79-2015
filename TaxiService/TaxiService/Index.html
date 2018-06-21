@@ -34,8 +34,8 @@
                     <li><p id="btnHomeMenu">HOME</p></li>
                     <li><p >ABOUT</p></li>
                     <li><p >CONTACTS</p></li>
-                    <li><p id="btnRegisterFormMenu">REGISTER</p></li>
-                    <li><p id="btnAddDriver"style="display: none;">ADD DRIVER</p></li>
+                    <li id="btnRegisterFormMenu"><p >REGISTER</p></li>
+                    <li id="btnAddDriver"><p>ADD DRIVER</p></li>
                     <li><p id="btnMyAccMenu" class="myAccMenu">MY ACCOUNT</p></li>
                     <li><p id="btnLoginMenu" class="loginMenu">LOG IN</p></li>
                 </ul>
@@ -51,11 +51,15 @@
         </section>
         <section class="home-trips-table">
             <div class="wraper">
-                <div id="displayTrips" class="trips-wrap">
+                <div id="displayTrips" class="trips-wrap" style="display: none;">
                     <p class="home-date-time" id="clock">OVDE IDE DATUM I SAT</p>
                     <div id="driveFunc" class="drive-filters">
                         <button id="btnNewDrive" class="edit-new-drive">New drive</button>
                         <button id="btnDriveFilters" class="edit-drive-filters">Filters</button>
+                        <button id="btnDriverLocation" class="edit-new-drive">Change Location</button>
+                        <button id="btnDriverAllDrives" class="edit-drive-filters">All Drives</button>
+                        <br />
+                        <button id="btnDispatcherAllDrives" class="all-drive-dispatcher">All Drives</button>
                         <div class="tableWrapFilters">
                             <div id="filtersTable" style="display: none;">
                                 <table class="filters-table">
@@ -106,7 +110,9 @@
                         <p>DATUM I VREME</p>
                         <p>LOKACIJA</p>
                     </div>
-                    
+                    <div id="fillInTrips">
+
+                    </div>
                 </div>
                 <div id="displayRegister" class="trips-wrap" style="display: none;">
                     <p id="displayRegisterHeader" class="reg-header">REGISTER FORM</p>
@@ -288,12 +294,6 @@
                     <div class="tableWrap">
                         <table class="table-drive">
                             <tr class="table-tr-drive">
-                                <td class="table-td-drive">Date:</td>
-                                <td class="table-td-drive">
-                                    <input id="driveDate" type="date" class="home-tt-display2" />
-                                </td>
-                            </tr>
-                            <tr class="table-tr-drive">
                                 <td class="table-td-drive">Address:</td>
                                 <td class="table-td-drive">
                                     <input id="driveAddress" type="text" class="home-tt-display2" />
@@ -315,9 +315,9 @@
                                 <td class="table-td-drive">Car Type:</td>
                                 <td class="table-td-drive">
                                     <select id="driveCar" class="home-tt-display2">
-                                        <option></option>
+                                        <option value="Bez_Naznake">Any</option>
                                         <option value="Car">Car</option>
-                                        <option value="Van">Van</option>
+                                        <option value="Kombi">Van</option>
                                     </select>
                                 </td>
                             </tr>
@@ -329,9 +329,92 @@
                                     </select>
                                 </td>
                             </tr>
+                            <tr id="driverDrive" class="table-tr-drive">
+                                <td class="table-td-drive">State:</td>
+                                <td class="table-td-drive">
+                                    <select id="driverFinishedState" class="home-tt-display2">
+                                        <option value="Successful">Successful</option>
+                                        <option value="Unsuccessful">Unsuccessful</option>
+                                    </select>
+                                </td>
+                            </tr>
                             <tr class="table-tr-drive">
                                 <td colspan="2" class="table-td-drive" align="center">
                                     <button class="edit-drive" id="btnCreateDrive">Create</button>
+                                    <button class="edit-drive" id="btnEditDrive">Update</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="displayCommentForm"style="display:none; margin-top: 20vh">
+                <div class="trips-wrap">
+                    <button id="btnExitComment" class="exit-login">x</button>
+                    <h2 class="reg-header">Comment</h2>
+                    <div class="tableWrap">
+                        <table class="table-drive">
+                            <tr class="table-tr-drive">
+                                <td class="table-td-drive">Text:</td>
+                                <td class="table-td-drive">
+                                    <input id="commentText" type="text" class="home-tt-display2"/>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-drive">
+                                <td class="table-td-drive">Grade:</td>
+                                <td class="table-td-drive">
+                                    <select id="commentGrade" class="home-tt-display2">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-drive">
+                                <td colspan="2" class="table-td-drive" align="center">
+                                    <button class="edit-drive" id="btnCreateComment">Create</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="displayDriverFinished" style="display:none; margin-top: 20vh">
+                <div class="trips-wrap">
+                    <button id="btnExitFinishedDrive" class="exit-login">x</button>
+                    <h2 class="reg-header">Finished Drive</h2>
+                    <div class="tableWrap">
+                        <table class="table-drive">
+                            <tr class="table-tr-drive">
+                                <td class="table-td-drive">Destination:</td>
+                                <td class="table-td-drive">
+                                    <input id="driveDestinationAddress" type="text" class="home-tt-display2" />
+                                </td>
+                            </tr>
+                            <tr class="table-tr-drive">
+                                <td class="table-td-drive">Address X:</td>
+                                <td class="table-td-drive">
+                                    <input id="driveDestinationAddressX" type="number" class="home-tt-display2" />
+                                </td>
+                            </tr>
+                            <tr class="table-tr-drive">
+                                <td class="table-td-drive">Address Y:</td>
+                                <td class="table-td-drive">
+                                    <input id="driveDestinationAddressY" type="number" class="home-tt-display2" />
+                                </td>
+                            </tr>
+                            <tr class="table-tr-drive">
+                                <td class="table-td-drive">Price:</td>
+                                <td class="table-td-drive">
+                                    <input id="drivePrice" type="text" class="home-tt-display2" placeholder="Price"/>
+                                </td>
+                            </tr>
+                            <tr class="table-tr-drive">
+                                <td colspan="2" class="table-td-drive" align="center">
+                                    <button class="edit-drive" id="btnFinishDrive">Finish</button>
                                 </td>
                             </tr>
                         </table>
