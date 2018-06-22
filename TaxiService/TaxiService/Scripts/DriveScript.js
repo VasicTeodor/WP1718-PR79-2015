@@ -22,12 +22,20 @@ function DisplayNewDrive(data) {
             role = 'Customer';
         }
 
+        let d = new Date(data.comments.createdOn),
+            minutes = d.getMinutes().toString().length == 1 ? '0' + d.getMinutes() : d.getMinutes(),
+            hours = d.getHours().toString().length == 1 ? '0' + d.getHours() : d.getHours(),
+            seconds = d.getSeconds().toString().length == 1 ? '0' + d.getSeconds() : d.getSeconds(),
+            months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        let realDate = days[d.getDay()] + ' ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear() + ' ' + hours + ':' + minutes + ':' + seconds;
+
         comment = '<tr class="table-tr-drive">' +
             '<td class="table-td-drive">Comment:</td>' +
             '<td class="table-td-drive">' +
             '<div>' +
             '<p class="comment-bold">' + data.comments.description.toString() + '</p>' +
-            '<p class="comment-italic">' + data.comments.createdOn.toString() + '</p>' +
+            '<p class="comment-italic">' + realDate + '</p>' +
             '<p class="comment-bold">GRADE: ' + data.grade.toString() + '</p>' +
             '<p class="comment-italic">' + data.createdBy.name + ' ' + data.createdBy.surname + ' - ' + role + '</p>' +
             '</div>' +
@@ -82,8 +90,16 @@ function DisplayNewDrive(data) {
             '</tr>';
     }
 
+    let d = new Date(data.date),
+        minutes = d.getMinutes().toString().length == 1 ? '0' + d.getMinutes() : d.getMinutes(),
+        hours = d.getHours().toString().length == 1 ? '0' + d.getHours() : d.getHours(),
+        seconds = d.getSeconds().toString().length == 1 ? '0' + d.getSeconds() : d.getSeconds(),
+        months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    let realDate = days[d.getDay()] + ' ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear() + ' ' + hours + ':' + minutes + ':' + seconds;
+
     $('#fillInTrips').append('<div class="home-tt-main">' +
-        '<p class="home-tt-display">' + data.date.toString() + '</p>' +
+        '<p class="home-tt-display">' + realDate + '</p>' +
         '<p class="home-tt-display">' + data.address.address.toString() + '</p>' +
         '<button class="expand-table" onclick="showOtherInfo(this);" id="' + counter.toString() + '">+</button>' +
         '</div>' +
@@ -92,7 +108,7 @@ function DisplayNewDrive(data) {
         '<table class="table-drive">' +
         '<tr class="table-tr-drive">' +
         '<td class="table-td-drive">Date:</td>' +
-        '<td class="table-td-drive"><p class="home-tt-display2">' + data.date.toString() + '</p></td>' +
+        '<td class="table-td-drive"><p class="home-tt-display2">' + realDate + '</p></td>' +
         '</tr>' +
         '<tr class="table-tr-drive">' +
         '<td class="table-td-drive">Address:</td>' +
@@ -122,6 +138,7 @@ function QuitDrive(elem) {
     let user = JSON.parse(sessionStorage.getItem('activeUser'));
     let token = sessionStorage.getItem('accessToken');
     let driveId = $('#' + elem.id).val();
+    updateDriveId = driveId;
 
     let dataS = {
         quitId: driveId
@@ -142,6 +159,9 @@ function QuitDrive(elem) {
                 alert("Error while canceling drive, try again later!");
             }
         });
+
+        $("#blurBackground").fadeIn('slow', 'swing');
+        $("#displayCommentForm").fadeIn('slow', 'swing');
     }
 }
 
@@ -256,7 +276,8 @@ function DriverDrive(elem) {
             headers: {
                 'Authorization': 'Basic ' + token.toString()
             },
-            success: function (data) { },
+            success: function (data) {
+            },
             error: function () {
                 alert("Error while accepting drive, try again later!");
             }
@@ -264,12 +285,42 @@ function DriverDrive(elem) {
     }
 }
 
+var myDrives = function GetAllMyDrives() {
+    let user = JSON.parse(sessionStorage.getItem('activeUser'));
+    let token = sessionStorage.getItem('accessToken');
+
+    $.ajax({
+        type: 'GET',
+        url: '/api/Drive/GetAllDrivesForId',
+        data: {
+            id: user.id,
+            role: user.role
+        },
+        dataType: 'json',
+        headers: {
+            'Authorization': 'Basic ' + token.toString()
+        },
+        success: function (data) {
+            alert(JSON.stringify(data));
+            PrintAllDrives(data);
+        },
+        error: function () {
+            alert("Server side error, please try again later!");
+        }
+    });
+};
+
 var drives = function GetAllDrives() {
+    let user = JSON.parse(sessionStorage.getItem('activeUser'));
     let token = sessionStorage.getItem('accessToken');
 
     $.ajax({
         type: 'GET',
         url: '/api/Drive/GetAllDrives',
+        data: {
+            id: user.id,
+            role: user.role
+        },
         dataType: 'json',
         headers: {
             'Authorization': 'Basic ' + token.toString()
@@ -320,6 +371,7 @@ $(document).ready(function () {
                     DisplayNewDrive(data);
                     $("#displayNewDrive").fadeOut('slow', 'swing');
                     $("#blurBackground").fadeOut('slow', 'swing');
+                    formReset();
                 },
                 error: function () {
                     alert("Error while creating new drive!");
@@ -372,6 +424,7 @@ $(document).ready(function () {
                             DisplayNewDrive(data);
                             $("#displayNewDrive").fadeOut('slow', 'swing');
                             $("#blurBackground").fadeOut('slow', 'swing');
+                            formReset();
                         },
                         error: function () {
                             alert("Error while creating new drive!");
@@ -424,8 +477,10 @@ $(document).ready(function () {
                     'Authorization': 'Basic ' + token.toString()
                 },
                 success: function (data) {
+                    myDrives();
                     $("#blurBackground").fadeOut('slow', 'swing');
                     $("#displayNewDrive").fadeOut('slow', 'swing');
+                    formReset();
                 },
                 error: function () {
                     alert("Error while updating drive, try again later!");
@@ -468,8 +523,11 @@ $(document).ready(function () {
                 'Authorization': 'Basic ' + token.toString()
             },
             success: function (data) {
+                updateDriverLocation($('#driveDestinationAddress').val(), $('#driveDestinationAddressX').val(), $('#driveDestinationAddressY').val());
+                myDrives();
                 $("#blurBackground").fadeOut('slow', 'swing');
                 $("#displayNewDrive").fadeOut('slow', 'swing');
+                formReset();
             },
             error: function () {
                 alert("Error while updating drive, try again later!");
@@ -485,17 +543,32 @@ $(document).ready(function () {
         var token = sessionStorage.getItem('accessToken');
         var user = JSON.parse(sessionStorage.getItem('activeUser'));
 
-        let drive = {
-            driveId: updateDriveId,
-            drivedBy: user.id,
-            state: $('#driverFinishedState').val(),
-            text: $('#commentText').val(),
-            grade: $('#commentGrade').val()
-        };
+        let uri = '/api/';
+        let drive;
+        if (user.role === 'Driver') {
+            drive = {
+                driveId: updateDriveId,
+                drivedBy: user.id,
+                state: $('#driverFinishedState').val(),
+                text: $('#commentText').val(),
+                grade: $('#commentGrade').val()
+            };
+
+            uri += 'Driver/FailedDrive';
+        } else {
+            drive = {
+                driveId: updateDriveId,
+                orderedBy: user.id,
+                text: $('#commentText').val(),
+                grade: $('#commentGrade').val()
+            };
+
+            uri += 'Customer/AddComment';
+        }
 
         $.ajax({
             type: 'PUT',
-            url: '/api/Driver/FailedDrive',
+            url: uri,
             data: JSON.stringify(drive),
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
@@ -503,11 +576,12 @@ $(document).ready(function () {
                 'Authorization': 'Basic ' + token.toString()
             },
             success: function (data) {
+                myDrives();
                 $("#blurBackground").fadeOut('slow', 'swing');
                 $("#displayCommentForm").fadeOut('slow', 'swing');
+                formReset();
             },
             error: function () {
-                alert("Error while updating drive, try again later!");
             }
         });
 
@@ -518,5 +592,52 @@ $(document).ready(function () {
 
     $('#btnDriverAllDrives').click(drives);
     $('#btnDispatcherAllDrives').click(drives);
+
+    $('#btnApplyFilters').click(function () {
+        var token = sessionStorage.getItem('accessToken');
+        var user = JSON.parse(sessionStorage.getItem('activeUser'));
+        
+        let filters;
+        if (user.role === 'Customer') {
+            filters = {
+                userRole: user.role,
+                userId: user.id,
+                sortBy: $('#selectSortBy').val(),
+                filterBy: $('#slectFilterBy').val(),
+                fromDate: $('#filterDateFrom').val(),
+                toDate: $('#filterDateTo').val(),
+                gradeFrom: $('#filterGradeFrom').val(),
+                gradeTo: $('#filterGradeTo').val(),
+                priceFrom: $('#filterPriceFrom').val(),
+                priceTo: $('#filterPriceTo').val()
+            };
+            
+        } else {
+            filters = {
+                userRole: user.role,
+                userId: user.id,
+                searchRole: $('#filterRole').val(),
+                filterName: $('#filterName').val(),
+                filterSurname: $('#filterSurname').val()
+            };
+            
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/Drive/Filters',
+            data: JSON.stringify(filters),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            headers: {
+                'Authorization': 'Basic ' + token.toString()
+            },
+            success: function (data) {
+                PrintAllDrives(data);
+            },
+            error: function () {
+            }
+        });
+    });
 
 });

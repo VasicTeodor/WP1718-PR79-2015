@@ -8,4 +8,36 @@
     <Description>Pukla guma na putu</Description>
     <Grade>0</Grade>
   </Comment>
+  <Comment Id="2bc17949-9f2b-4dcc-8b4a-4020e496702f">
+    <CommentId>2bc17949-9f2b-4dcc-8b4a-4020e496702f</CommentId>
+    <CommentedOn>04a94705-fdec-40dd-afd2-a3eb51b429ae</CommentedOn>
+    <CreatedById>73c6b055-9a49-47b5-b372-259d66afd752</CreatedById>
+    <CreatedOn>2018-06-21T14:41:02.7393235+02:00</CreatedOn>
+    <Description>Povezao me komsija</Description>
+    <Grade>0</Grade>
+  </Comment>
+  <Comment Id="7292b1a1-d137-4c21-8065-4a2d1780163c">
+    <CommentId>7292b1a1-d137-4c21-8065-4a2d1780163c</CommentId>
+    <CommentedOn>04a94705-fdec-40dd-afd2-a3eb51b429ae</CommentedOn>
+    <CreatedById>73c6b055-9a49-47b5-b372-259d66afd752</CreatedById>
+    <CreatedOn>2018-06-21T14:42:12.8590693+02:00</CreatedOn>
+    <Description>Povezao me komsija</Description>
+    <Grade>0</Grade>
+  </Comment>
+  <Comment Id="38bddcb4-486e-4fa0-be5e-9c40e5af5c8e">
+    <CommentId>38bddcb4-486e-4fa0-be5e-9c40e5af5c8e</CommentId>
+    <CommentedOn>015f2e63-df82-4086-8074-f090135a95a1</CommentedOn>
+    <CreatedById>73c6b055-9a49-47b5-b372-259d66afd752</CreatedById>
+    <CreatedOn>2018-06-21T14:46:56.1994071+02:00</CreatedOn>
+    <Description>Pocela je kisa</Description>
+    <Grade>4</Grade>
+  </Comment>
+  <Comment Id="707e1144-5bcd-44e0-9dd3-db315afe8c6c">
+    <CommentId>707e1144-5bcd-44e0-9dd3-db315afe8c6c</CommentId>
+    <CommentedOn>015f2e63-df82-4086-8074-f090135a95a1</CommentedOn>
+    <CreatedById>73c6b055-9a49-47b5-b372-259d66afd752</CreatedById>
+    <CreatedOn>2018-06-21T14:47:29.7830202+02:00</CreatedOn>
+    <Description>Pocela je kisa</Description>
+    <Grade>5</Grade>
+  </Comment>
 </Comments>

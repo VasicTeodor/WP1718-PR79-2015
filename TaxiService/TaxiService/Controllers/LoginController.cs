@@ -36,7 +36,7 @@ namespace TaxiService.Controllers
                 logObj.AccessToken = ServiceSecurity.MakeToken($"{login.Username}:{login.Password}");
 
                 List<Drive> allDrives = DataRepository._driveRepo.GetAllDrives().ToList();
-                logObj.User.Drives = allDrives;//allDrives.FindAll(x => (x.ApprovedBy != null) && (x.ApprovedBy.Id == logObj.User.Id));
+                logObj.User.Drives = allDrives.FindAll(x => (x.ApprovedBy != null) && (x.ApprovedBy.Id == logObj.User.Id));
 
                 return Request.CreateResponse(HttpStatusCode.OK, logObj);
             }

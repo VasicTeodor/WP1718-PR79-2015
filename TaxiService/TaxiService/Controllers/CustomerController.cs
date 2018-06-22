@@ -97,5 +97,41 @@ namespace TaxiService.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
         }
+
+        [HttpPut]
+        [Route("api/Customer/AddComment")]
+        [BasicAuthentication]
+        public HttpResponseMessage AddComment([FromBody]JToken jToken)
+        {
+            string id = jToken.Value<string>("driveId");
+            Guid driveId = Guid.Parse(id);
+            string customerId = jToken.Value<string>("orderedBy");
+            Guid orderedBy = Guid.Parse(customerId);
+            
+            Comment comment = new Comment();
+            comment.CommentId = Guid.NewGuid();
+            comment.CreatedOn = DateTime.Now;
+            comment.Description = jToken.Value<string>("text");
+            comment.Grade = Int32.Parse(jToken.Value<string>("grade"));
+            Drive update = null;
+            Customer customer = null;
+
+            update = DataRepository._driveRepo.RetriveDriveById(driveId);
+            customer = DataRepository._customerRepo.RetriveCustomerById(orderedBy);
+
+            if (update != null && customer != null)
+            {
+                comment.CreatedBy = customer;
+                comment.CommentedOn = update;
+                update.Comments = comment;
+                DataRepository._commentRepo.AddNewComment(comment);
+                DataRepository._driveRepo.AddComment(update, update.Comments.CommentId);
+                return Request.CreateResponse(HttpStatusCode.OK, update);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+        }
     }
 }

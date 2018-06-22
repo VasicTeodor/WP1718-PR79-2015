@@ -87,18 +87,30 @@ namespace TaxiService.Repository
                                        .Elements("Driver")
                                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
                                        .SetElementValue("Type", driver.Car.Type);
-                //xmlDocument.Element("Drivers")
-                //                        .Elements("Driver")
-                //                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
-                //                        .SetElementValue("X", driver.Location.X);
-                //xmlDocument.Element("Drivers")
-                //                        .Elements("Driver")
-                //                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
-                //                        .SetElementValue("Y", driver.Location.Y);
-                //xmlDocument.Element("Drivers")
-                //                        .Elements("Driver")
-                //                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
-                //                        .SetElementValue("Address", driver.Location.Address);
+                
+                xmlDocument.Save(fileName);
+            }
+        }
+
+        public void ChangeDriverLocation(Driver driver)
+        {
+            if (File.Exists(fileName))
+            {
+                XDocument xmlDocument = XDocument.Load(fileName);
+
+                xmlDocument.Element("Drivers")
+                                        .Elements("Driver")
+                                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
+                                        .SetElementValue("X", driver.Location.X);
+                xmlDocument.Element("Drivers")
+                                        .Elements("Driver")
+                                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
+                                        .SetElementValue("Y", driver.Location.Y);
+                xmlDocument.Element("Drivers")
+                                        .Elements("Driver")
+                                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
+                                        .SetElementValue("Address", driver.Location.Address);
+
 
                 xmlDocument.Save(fileName);
             }

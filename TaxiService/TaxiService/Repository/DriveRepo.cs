@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -225,7 +226,7 @@ namespace TaxiService.Repository
                 xmlDocument.Element("Drives")
                                         .Elements("Drive")
                                         .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
-                                        .SetElementValue("CommentId", drive.Comments.CommentId);
+                                        .SetElementValue("State", drive.State);
 
                 xmlDocument.Save(fileName);
             }
@@ -281,7 +282,7 @@ namespace TaxiService.Repository
                         CommentId = Guid.Parse(drive.Element("CommentId").Value),
                         Date = DateTime.Parse(drive.Element("Date").Value),
                         CarType = (CarTypes)Enum.Parse(typeof(CarTypes), drive.Element("CarType").Value),
-                        Price = Double.Parse(drive.Element("Price").Value),
+                        Price = Double.Parse(drive.Element("Price").Value, CultureInfo.InvariantCulture),
                         State = (Status)Enum.Parse(typeof(Status), drive.Element("State").Value),
                         Address = new Location
                         {
@@ -466,7 +467,7 @@ namespace TaxiService.Repository
                         CommentId = Guid.Parse(drive.Element("CommentId").Value),
                         Date = DateTime.Parse(drive.Element("Date").Value),
                         CarType = (CarTypes)Enum.Parse(typeof(CarTypes), drive.Element("CarType").Value),
-                        Price = Double.Parse(drive.Element("Price").Value),
+                        Price = Double.Parse(drive.Element("Price").Value, CultureInfo.InvariantCulture),
                         State = (Status)Enum.Parse(typeof(Status), drive.Element("State").Value),
                         Address = new Location
                         {
@@ -615,7 +616,7 @@ namespace TaxiService.Repository
                         CommentId = Guid.Parse(drive.Element("CommentId").Value),
                         Date = DateTime.Parse(drive.Element("Date").Value),
                         CarType = (CarTypes)Enum.Parse(typeof(CarTypes), drive.Element("CarType").Value),
-                        Price = Double.Parse(drive.Element("Price").Value),
+                        Price = Double.Parse(drive.Element("Price").Value, CultureInfo.InvariantCulture),
                         State = (Status)Enum.Parse(typeof(Status), drive.Element("State").Value),
                         Address = new Location
                         {

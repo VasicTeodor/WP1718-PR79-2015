@@ -12,4 +12,52 @@
     <Gender>Male</Gender>
     <Role>Customer</Role>
   </Customer>
+  <Customer Id="73c6b055-9a49-47b5-b372-259d66afd752">
+    <Id>73c6b055-9a49-47b5-b372-259d66afd752</Id>
+    <Username>Customer2</Username>
+    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
+    <Name>Nikola</Name>
+    <Surname>Vasic</Surname>
+    <Jmbg>2424242424242</Jmbg>
+    <Phone>021883041</Phone>
+    <Email>nikola@gmail.com</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="5e38440e-5481-45ef-8ca5-540a1a4ee490">
+    <Id>5e38440e-5481-45ef-8ca5-540a1a4ee490</Id>
+    <Username>Customer3</Username>
+    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
+    <Name>Aleksa</Name>
+    <Surname>Aleksic</Surname>
+    <Jmbg>4223535252352</Jmbg>
+    <Phone>031432324</Phone>
+    <Email>aca@gmail.com</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="33691482-322c-4837-b694-50958f42c713">
+    <Id>33691482-322c-4837-b694-50958f42c713</Id>
+    <Username>Customer4</Username>
+    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
+    <Name>Aleksandra</Name>
+    <Surname>Aleksic</Surname>
+    <Jmbg>4223535252352</Jmbg>
+    <Phone>031432324</Phone>
+    <Email>aca@gmail.com</Email>
+    <Gender>Female</Gender>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="d4189454-c5a6-4cb7-a1a8-5dfa53097a1c">
+    <Id>d4189454-c5a6-4cb7-a1a8-5dfa53097a1c</Id>
+    <Username>Customer5</Username>
+    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
+    <Name>Milan</Name>
+    <Surname>Pasic</Surname>
+    <Jmbg>4848444484844</Jmbg>
+    <Phone>02485585</Phone>
+    <Email>misko@gmail</Email>
+    <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
 </Customers>

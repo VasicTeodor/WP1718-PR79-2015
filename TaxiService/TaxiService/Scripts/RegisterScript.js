@@ -101,8 +101,8 @@
         }
     });
 
-    CheckInput();
     $('#btnUpdateAccount').click(function () {
+        CheckInput();
         if (sessionStorage.getItem('accessToken')) {
             let user = JSON.parse(sessionStorage.getItem('activeUser'));
 
@@ -142,6 +142,7 @@
                             sessionStorage.setItem('activeUser', JSON.stringify(data));
 
                             $('#displayRegister').fadeOut('slow', 'swing', showHome);
+                            formReset();
                         },
                         error: function () {
                             alert("Greska pri update-u!");
@@ -177,6 +178,7 @@
                                 sessionStorage.setItem('activeUser', JSON.stringify(data));
 
                                 $('#displayRegister').fadeOut('slow', 'swing', showHome);
+                                formReset();
                             },
                             error: function () {
                                 alert("Greska pri update-u!");
@@ -198,6 +200,7 @@
                                 sessionStorage.setItem('activeUser', JSON.stringify(data));
 
                                 $('#displayRegister').fadeOut('slow', 'swing', showHome);
+                                formReset();
                             },
                             error: function () {
                                 alert("Greska pri update-u!");
@@ -245,6 +248,7 @@
                     alert(JSON.stringify(data));
 
                     $('#displayRegister').fadeOut('slow', 'swing', showHome);
+                    formReset();
                 },
                 error: function (jqXHR) {
                     alert("Greska pri registraciji!");
@@ -283,6 +287,7 @@
                     $('#btnDriverAllDrives').hide();
                     $('#btnDispatcherAllDrives').hide();
                     $('#displayRegister').fadeOut('slow', 'swing', showHome);
+                    formReset();
                 },
                 error: function () {
                     alert("Greska pri registraciji!");

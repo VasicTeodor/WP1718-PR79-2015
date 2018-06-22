@@ -5,20 +5,20 @@
     <Username>Driver</Username>
     <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
     <Name>Djordje</Name>
-    <Surname>Samar</Surname>
+    <Surname>Pesnica</Surname>
     <Jmbg>1254254325443</Jmbg>
     <Phone>0605342354</Phone>
     <Email>djoka@taxins.com</Email>
     <Gender>Male</Gender>
     <Role>Driver</Role>
-    <Occupied>true</Occupied>
+    <Occupied>false</Occupied>
     <X>0</X>
     <Y>0</Y>
     <Address>garage</Address>
-    <CarId>1</CarId>
-    <ModelYear>2016</ModelYear>
-    <RegNumber>NS2015TX</RegNumber>
-    <Type>Car</Type>
+    <CarId>2</CarId>
+    <ModelYear>2015</ModelYear>
+    <RegNumber>NS222TX</RegNumber>
+    <Type>Bez_Naznake</Type>
   </Driver>
   <Driver Id="48eaa55e-1911-4c19-8727-61b4e4907202">
     <Id>48eaa55e-1911-4c19-8727-61b4e4907202</Id>
@@ -32,9 +32,9 @@
     <Gender>Male</Gender>
     <Role>Driver</Role>
     <Occupied>false</Occupied>
-    <X>0</X>
+    <X>43</X>
     <Y>0</Y>
-    <Address>garage</Address>
+    <Address>weqad</Address>
     <CarId>2</CarId>
     <ModelYear>2016</ModelYear>
     <RegNumber>NS325TX</RegNumber>

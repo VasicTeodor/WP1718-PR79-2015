@@ -27,6 +27,46 @@ function showOtherInfo(elem) {
     }
 }
 
+let formReset = function ResetAllForms() {
+    $("input[type='text'], textarea").val('');
+    $("input[type='password'], textarea").val('');
+    $("input[type='email'], textarea").val('');
+    $("input[type='number'], textarea").val('');
+    $("input[type='date'], textarea").val('');
+    $("select").each(function () { this.selectedIndex = 0; });
+};
+
+var updateDriverLocation = function (address, addressX, addressY) {
+    var token = sessionStorage.getItem('accessToken');
+    var user = JSON.parse(sessionStorage.getItem('activeUser'));
+
+    let location = {
+        drivedBy: user.id,
+        address: address,
+        addressX: addressX,
+        addressY: addressY,
+    };
+
+    $.ajax({
+        type: 'PUT',
+        url: '/api/Driver/UpdateDriverLocation',
+        data: JSON.stringify(location),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        headers: {
+            'Authorization': 'Basic ' + token.toString()
+        },
+        success: function (data) {
+            myDrives();
+            $("#blurBackground").fadeOut('slow', 'swing');
+            $("#displayDriverLocation").fadeOut('slow', 'swing');
+        },
+        error: function () {
+            alert("Error while updating location, try again later!");
+        }
+    });
+}
+
 $(document).ready(function () {
     //$('#btnMenu').click(function () {
     //    $('#menu').slideToggle(300);
@@ -74,6 +114,42 @@ $(document).ready(function () {
         $("#blurBackground").fadeOut('slow', 'swing');
         if (sessionStorage.getItem('accessToken')) {
             $('#displayTrips').fadeIn('slow', 'swing');
+            $('#btnLoginForm').hide();
+            $('#profileButtons').show();
+            let user = JSON.parse(sessionStorage.getItem('activeUser'));
+            myDrives();
+            if (user.role === 'Dispatcher') {
+                $('#btnNewDrive').show();
+                $('#btnDriveFilters').show();
+                $('#btnDriverLocation').hide();
+                $('#btnDriverAllDrives').hide();
+                $('#btnDispatcherAllDrives').show();
+                $('#btnAddDriver').show();
+                $('#btnRegisterFormMenu').hide();
+                $('#menu').css('height', '200');
+                $('.admin-filters').show();
+                $('.customer-filters').hide();
+            } else if (user.role === 'Driver') {
+                $('#btnNewDrive').hide();
+                $('#btnDriveFilters').hide();
+                $('#btnDriverLocation').show();
+                $('#btnDriverAllDrives').show();
+                $('#btnDispatcherAllDrives').hide();
+                $('#btnAddDriver').hide();
+                $('#btnRegisterFormMenu').hide();
+                $('#menu').css('height', '152');
+            } else {
+                $('#btnNewDrive').show();
+                $('#btnDriveFilters').show();
+                $('#btnDriverLocation').hide();
+                $('#btnDriverAllDrives').hide();
+                $('#btnDispatcherAllDrives').hide();
+                $('#btnAddDriver').hide();
+                $('#btnRegisterFormMenu').hide();
+                $('#menu').css('height', '152');
+                $('.admin-filters').hide();
+                $('.customer-filters').show();
+            }
         } else {
             $('#displayTrips').fadeOut('slow', 'swing');
         }
@@ -176,6 +252,13 @@ $(document).ready(function () {
         $('#displayTrips').fadeIn('slow', 'swing');
     });
 
+    $('#btnExitLocationChange').click(function () {
+        $("#blurBackground").fadeOut('slow', 'swing');
+        $("#displayDriverLocation").fadeOut('slow', 'swing');
+        home();
+        $('#displayTrips').fadeIn('slow', 'swing');
+    });
+
     let logout = function LogOut() {
         if (sessionStorage.getItem('accessToken')) {
             $('#profileButtons').hide();
@@ -187,10 +270,23 @@ $(document).ready(function () {
             $('#displayTrips').fadeOut('slow', 'swing');
             sessionStorage.removeItem('accessToken');
             sessionStorage.removeItem('activeUser');
+            $('#filtersTable').hide();
             home();
+            formReset();
         }
     };
 
     $('#btnLogout').click(logout);
     $('#btnLogoutFooter').click(logout);
-});
+
+    $('#btnDriverLocation').click(function () {
+        $("#blurBackground").fadeIn('slow', 'swing');
+        $("#displayDriverLocation").fadeIn('slow', 'swing');
+    });
+    
+    $('#btnChangeDLocation').click(function () {
+        updateDriverLocation($('#driverLocation').val(), $('#driverLocationX').val(), $('#driverLocationY').val());
+        $("#blurBackground").fadeOut('slow', 'swing');
+        $("#displayDriverLocation").fadeOut('slow', 'swing');
+    });                       
+});                           

@@ -117,7 +117,7 @@ namespace TaxiService.Controllers
             Location location = new Location();
             location.Address = jToken.Value<string>("destination");
             location.X = Double.Parse(jToken.Value<string>("destinationX"));
-            location.X = Double.Parse(jToken.Value<string>("destinationY"));
+            location.Y = Double.Parse(jToken.Value<string>("destinationY"));
             double price = Double.Parse(jToken.Value<string>("price"));
             Drive update = null;
             Driver driver = null;
@@ -134,6 +134,34 @@ namespace TaxiService.Controllers
                 DataRepository._driverRepo.DriverOccupation(driver);
                 DataRepository._driveRepo.FinishDrive(update);
                 return Request.CreateResponse(HttpStatusCode.OK, update);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+        }
+
+        [HttpPut]
+        [Route("api/Driver/UpdateDriverLocation")]
+        [BasicAuthentication]
+        public HttpResponseMessage UpdateDriverLocation([FromBody]JToken jToken)
+        {
+            string driverId = jToken.Value<string>("drivedBy");
+            Guid drivenBy = Guid.Parse(driverId);
+            
+            Location location = new Location();
+            location.Address = jToken.Value<string>("address");
+            location.X = Double.Parse(jToken.Value<string>("addressX"));
+            location.Y = Double.Parse(jToken.Value<string>("addressY"));
+            Driver driver = null;
+            
+            driver = DataRepository._driverRepo.RetriveDriverById(drivenBy);
+
+            if (driver != null)
+            {
+                driver.Location = location;
+                DataRepository._driverRepo.ChangeDriverLocation(driver);
+                return Request.CreateResponse(HttpStatusCode.OK, driver);
             }
             else
             {
@@ -172,6 +200,7 @@ namespace TaxiService.Controllers
                 driver.Occupied = false;
                 DataRepository._driverRepo.DriverOccupation(driver);
                 DataRepository._commentRepo.AddNewComment(comment);
+                update.Comments.CommentedOn = null;
                 DataRepository._driveRepo.AddComment(update, update.Comments.CommentId);
                 DataRepository._driveRepo.UpdateState(update);
                 return Request.CreateResponse(HttpStatusCode.OK, update);

@@ -54,12 +54,20 @@ function PrintAllDrives(allDrives) {
                 role = 'Customer';
             }
 
+            let d = new Date(allDrives[i].comments.createdOn),   
+                minutes = d.getMinutes().toString().length == 1 ? '0' + d.getMinutes() : d.getMinutes(),
+                hours = d.getHours().toString().length == 1 ? '0' + d.getHours() : d.getHours(),
+                seconds = d.getSeconds().toString().length == 1 ? '0' + d.getSeconds() : d.getSeconds(),
+                months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            let realDate = days[d.getDay()] + ' ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear() + ' ' + hours + ':' + minutes + ':' + seconds; 
+
             comment = '<tr class="table-tr-drive">' +
                 '<td class="table-td-drive">Comment:</td>' +
                 '<td class="table-td-drive">' +
                 '<div>' +
                 '<p class="comment-bold">' + allDrives[i].comments.description.toString() + '</p>' +
-                '<p class="comment-italic">' + allDrives[i].comments.createdOn.toString() + '</p>' +
+                '<p class="comment-italic">' + realDate + '</p>' +
                 '<p class="comment-bold">GRADE: ' + allDrives[i].comments.grade.toString() + '</p>' +
                 '<p class="comment-italic">' + allDrives[i].comments.createdBy.name + ' ' + allDrives[i].comments.createdBy.surname + ' - ' + role + '</p>' +
                 '</div>' +
@@ -102,9 +110,17 @@ function PrintAllDrives(allDrives) {
                 '<td class="table-td-drive"><p class="home-tt-display2">' + allDrives[i].destination.address.toString() + '</p></td>' +
                 '</tr>';
         }
+        
+        let d = new Date(allDrives[i].date),
+            minutes = d.getMinutes().toString().length == 1 ? '0' + d.getMinutes() : d.getMinutes(),
+            hours = d.getHours().toString().length == 1 ? '0' + d.getHours() : d.getHours(),
+            seconds = d.getSeconds().toString().length == 1 ? '0' + d.getSeconds() : d.getSeconds(),
+            months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        let realDate = days[d.getDay()] + ' ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear() + ' ' + hours + ':' + minutes + ':' + seconds;  
 
         $('#fillInTrips').append('<div class="home-tt-main">' +
-            '<p class="home-tt-display">' + allDrives[i].date.toString() + '</p>' +
+            '<p class="home-tt-display">' + realDate + '</p>' +
             '<p class="home-tt-display">' + allDrives[i].address.address.toString() + '</p>' +
             '<button class="expand-table" onclick="showOtherInfo(this);" id="' + counter.toString() + '">+</button>' +
             '</div>' +
@@ -113,7 +129,7 @@ function PrintAllDrives(allDrives) {
             '<table class="table-drive">' +
             '<tr class="table-tr-drive">' +
             '<td class="table-td-drive">Date:</td>' +
-            '<td class="table-td-drive"><p class="home-tt-display2">' + allDrives[i].date.toString() + '</p></td>' +
+            '<td class="table-td-drive"><p class="home-tt-display2">' + realDate + '</p></td>' +
             '</tr>' +
             '<tr class="table-tr-drive">' +
             '<td class="table-td-drive">Address:</td>' +
@@ -126,7 +142,7 @@ function PrintAllDrives(allDrives) {
             + destination +
             '<tr class="table-tr-drive">' +
             '<td class="table-td-drive">Price:</td>' +
-            '<td class="table-td-drive"><p class="home-tt-display2">' + allDrives[i].price.toString() + ' RSD</p></td>' +
+            '<td class="table-td-drive"><p class="home-tt-display2">' + allDrives[i].price + ' RSD</p></td>' +
             '</tr>'
             + customer
             + dispatcher
@@ -224,6 +240,8 @@ $(document).ready(function () {
                         $('#btnAddDriver').show();
                         $('#btnRegisterFormMenu').hide();
                         $('#menu').css('height', '200');
+                        $('.admin-filters').show();
+                        $('.customer-filters').hide();
                     } else if (user.role === 'Driver') {
                         $('#btnNewDrive').hide();
                         $('#btnDriveFilters').hide();
@@ -242,7 +260,10 @@ $(document).ready(function () {
                         $('#btnAddDriver').hide();
                         $('#btnRegisterFormMenu').hide();
                         $('#menu').css('height', '152');
+                        $('.admin-filters').hide();
+                        $('.customer-filters').show();
                     }
+                    formReset();
 
                     $('#displayTrips').fadeIn('slow', 'swing');
 
