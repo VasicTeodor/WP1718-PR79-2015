@@ -90,6 +90,24 @@ function DisplayNewDrive(data) {
             '</tr>';
     }
 
+    let state = '';
+
+    if (data.state === 0) {
+        state = 'On waiting list';
+    } else if (data.state === 1) {
+        state = 'Canceled';
+    } else if (data.state === 2) {
+        state = 'Formated';
+    } else if (data.state === 3) {
+        state = 'Processed';
+    } else if (data.state === 4) {
+        state = 'Accepted';
+    } else if (data.state === 5) {
+        state = 'Successful';
+    } else {
+        state = 'Unsuccessful';
+    }
+
     let d = new Date(data.date),
         minutes = d.getMinutes().toString().length == 1 ? '0' + d.getMinutes() : d.getMinutes(),
         hours = d.getHours().toString().length == 1 ? '0' + d.getHours() : d.getHours(),
@@ -106,6 +124,10 @@ function DisplayNewDrive(data) {
         '<div class="home-tt-other" style="display: none;" id="otherInfo' + counter.toString() + '">' +
         '<div class="tableWrap">' +
         '<table class="table-drive">' +
+        '<tr class="table-tr-drive">' +
+        '<td class="table-td-drive">Drive State:</td>' +
+        '<td class="table-td-drive"><p class="home-tt-display2">' + state + '</p></td>' +
+        '</tr>' +
         '<tr class="table-tr-drive">' +
         '<td class="table-td-drive">Date:</td>' +
         '<td class="table-td-drive"><p class="home-tt-display2">' + realDate + '</p></td>' +
@@ -132,6 +154,14 @@ function DisplayNewDrive(data) {
         '</div>' +
         '</div>');
     counter++;
+}
+
+function LeaveComment(elem) {
+    let driveId = $('#' + elem.id).val();
+    updateDriveId = driveId;
+
+    $("#blurBackground").fadeIn('slow', 'swing');
+    $("#displayCommentForm").fadeIn('slow', 'swing');
 }
 
 function QuitDrive(elem) {
@@ -215,26 +245,7 @@ function EditDrive(elem) {
                 $('#dispatcherDrive').show();
                 $('#btnCreateDrive').hide();
                 $('#btnEditDrive').show();
-                $.ajax({
-                    type: 'GET',
-                    url: '/api/Driver/GetFreeDrivers',
-                    dataType: 'json',
-                    headers: {
-                        'Authorization': 'Basic ' + token.toString()
-                    },
-                    success: function (data) {
-                        alert(JSON.stringify(data));
-                        driver = JSON.stringify(data);
-                        $('#freeDriver').empty();
-                        for (let i = 0; i < data.length; i++) {
-                            let fullName = JSON.stringify(data[i].name) + ' ' + JSON.stringify(data[i].surname);
-                            $('#freeDriver').append('<option value="' + JSON.stringify(data[i].id).replace(/"|_/g, '') + '">' + fullName.replace(/"|_/g, '') + '</option>');
-                        }
-                    },
-                    error: function () {
-                        alert("Server side error, please try again later!");
-                    }
-                });
+                freeDrivers(data.carType);
             } else {
                 $('#driveAddress').parent().parent().hide();
                 $('#driveAddressX').parent().parent().hide();
@@ -277,6 +288,7 @@ function DriverDrive(elem) {
                 'Authorization': 'Basic ' + token.toString()
             },
             success: function (data) {
+                $('#' + elem.id).fadeOut('slow', 'swing');
             },
             error: function () {
                 alert("Error while accepting drive, try again later!");
@@ -510,7 +522,7 @@ $(document).ready(function () {
             destination: $('#driveDestinationAddress').val(),
             destinationX: $('#driveDestinationAddressX').val(),
             destinationY: $('#driveDestinationAddressY').val(),
-            price: $('#drivePrice').val()
+            price: $('#drivePrice').val().replace(/\./,',')
         };
 
         $.ajax({
@@ -608,8 +620,8 @@ $(document).ready(function () {
                 toDate: $('#filterDateTo').val(),
                 gradeFrom: $('#filterGradeFrom').val(),
                 gradeTo: $('#filterGradeTo').val(),
-                priceFrom: $('#filterPriceFrom').val(),
-                priceTo: $('#filterPriceTo').val()
+                priceFrom: $('#filterPriceFrom').val().replace(/\./,','),
+                priceTo: $('#filterPriceTo').val().replace(/\./,',')
             };
             
         } else {
@@ -640,4 +652,41 @@ $(document).ready(function () {
         });
     });
 
+    $("#drivePrice").on("keypress keyup blur", function (event) {
+        //this.value = this.value.replace(/[^0-9\.]/g,'');
+        $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+        if ((event.which != 46 || $(this).val().indexOf(',') != -1) && (event.which < 48 || event.which > 57)) {
+            if (event.keyCode != 8 && event.keyCode != 37 && event.keyCode != 39) {
+                event.preventDefault();
+            }
+        }
+    });
+
+    $("#filterPriceFrom").on("keypress keyup blur", function (event) {
+        //this.value = this.value.replace(/[^0-9\.]/g,'');
+        $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+        if ((event.which != 46 || $(this).val().indexOf(',') != -1) && (event.which < 48 || event.which > 57)) {
+            if (event.keyCode != 8 && event.keyCode != 37 && event.keyCode != 39) {
+                event.preventDefault();
+            }
+        }
+    });
+
+    $("#filterPriceTo").on("keypress keyup blur", function (event) {
+        //this.value = this.value.replace(/[^0-9\.]/g,'');
+        $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+        if ((event.which != 46 || $(this).val().indexOf(',') != -1) && (event.which < 48 || event.which > 57)) {
+            if (event.keyCode != 8 && event.keyCode != 37 && event.keyCode != 39) {
+                event.preventDefault();
+            }
+        }
+    });
+
+    $('#driveCar').on('change', function () {
+        var user = JSON.parse(sessionStorage.getItem('activeUser'));
+
+        if (user.role === 'Dispatcher') {
+            freeDrivers($('#driveCar').val());
+        }
+    });
 });

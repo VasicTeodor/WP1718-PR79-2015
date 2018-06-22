@@ -14,12 +14,7 @@ function PrintAllDrives(allDrives) {
             carType = 'Van';
         }
 
-        let buttons = '<tr class="table-tr-drive">' +
-            '<td colspan="2" class="table-td-drive" align="right">' +
-            '<button class="edit-drive" id="btnEditDrive' + counter + '" onclick="EditDrive(this);" value="' + allDrives[i].driveId.toString() + '">Edit</button>' +
-            '<button class="edit-drive" id="btnQuitDrive' + counter + '"  onclick="QuitDrive(this);" value="' + allDrives[i].driveId.toString() + '">Quit</button>' +
-            '</td>' +
-            '</tr>';
+        let buttons = '';
         if (user.role === 'Dispatcher') {
             if (allDrives[i].state === 0) {
                 buttons = '<tr class="table-tr-drive">' +
@@ -38,8 +33,29 @@ function PrintAllDrives(allDrives) {
                     '<button class="edit-drive" id="btnAcceptDrive' + counter + '"  onclick="DriverDrive(this);" value="' + allDrives[i].driveId.toString() + '">Drive</button>' +
                     '</td>' +
                     '</tr>';
+            } else if (allDrives[i].state === 4 || allDrives[i].state === 2) {
+                buttons = '<tr class="table-tr-drive">' +
+                    '<td colspan="2" class="table-td-drive" align="right">' +
+                    '<button class="edit-drive" id="btnEditDrive' + counter + '" onclick="EditDrive(this);" value="' + allDrives[i].driveId.toString() + '">Edit</button>' +
+                    '</td>' +
+                    '</tr>';
             } else {
                 buttons = '';
+            }
+        } else {
+            if (allDrives[i].state === 0) {
+                buttons = '<tr class="table-tr-drive">' +
+                    '<td colspan="2" class="table-td-drive" align="right">' +
+                    '<button class="edit-drive" id="btnEditDrive' + counter + '" onclick="EditDrive(this);" value="' + allDrives[i].driveId.toString() + '">Edit</button>' +
+                    '<button class="edit-drive" id="btnQuitDrive' + counter + '"  onclick="QuitDrive(this);" value="' + allDrives[i].driveId.toString() + '">Quit</button>' +
+                    '</td>' +
+                    '</tr>';
+            } else if (allDrives[i].state === 5 && allDrives[i].comment == null) {
+                buttons = '<tr class="table-tr-drive">' +
+                    '<td colspan="2" class="table-td-drive" align="right">' +
+                    '<button class="edit-drive" id="btnCustomerComment' + counter + '" onclick="LeaveComment(this);" value="' + allDrives[i].driveId.toString() + '">Comment</button>' +
+                    '</td>' +
+                    '</tr>';
             }
         }
 
@@ -110,6 +126,24 @@ function PrintAllDrives(allDrives) {
                 '<td class="table-td-drive"><p class="home-tt-display2">' + allDrives[i].destination.address.toString() + '</p></td>' +
                 '</tr>';
         }
+
+        let state = '';
+
+        if (allDrives[i].state === 0) {
+            state = 'On waiting list';
+        } else if (allDrives[i].state === 1) {
+            state = 'Canceled';
+        } else if (allDrives[i].state === 2) {
+            state = 'Formated';
+        } else if (allDrives[i].state === 3) {
+            state = 'Processed';
+        } else if (allDrives[i].state === 4) {
+            state = 'Accepted';
+        } else if (allDrives[i].state === 5) {
+            state = 'Successful';
+        } else{
+            state = 'Unsuccessful';
+        }
         
         let d = new Date(allDrives[i].date),
             minutes = d.getMinutes().toString().length == 1 ? '0' + d.getMinutes() : d.getMinutes(),
@@ -127,6 +161,10 @@ function PrintAllDrives(allDrives) {
             '<div class="home-tt-other" style="display: none;" id="otherInfo' + counter.toString() + '">' +
             '<div class="tableWrap">' +
             '<table class="table-drive">' +
+            '<tr class="table-tr-drive">' +
+            '<td class="table-td-drive">Drive State:</td>' +
+            '<td class="table-td-drive"><p class="home-tt-display2">' + state + '</p></td>' +
+            '</tr>' +
             '<tr class="table-tr-drive">' +
             '<td class="table-td-drive">Date:</td>' +
             '<td class="table-td-drive"><p class="home-tt-display2">' + realDate + '</p></td>' +

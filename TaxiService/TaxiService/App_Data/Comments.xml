@@ -40,4 +40,12 @@
     <Description>Pocela je kisa</Description>
     <Grade>5</Grade>
   </Comment>
+  <Comment Id="aea616eb-f42a-49b2-9417-16260ce56ea7">
+    <CommentId>aea616eb-f42a-49b2-9417-16260ce56ea7</CommentId>
+    <CommentedOn>ea77bb9d-b846-4368-88a8-811f652fea8e</CommentedOn>
+    <CreatedById>018c725d-8a44-4dab-aa43-c98ac90ff406</CreatedById>
+    <CreatedOn>2018-06-22T18:10:02.5458579+02:00</CreatedOn>
+    <Description>Voznja je bila udobna!</Description>
+    <Grade>5</Grade>
+  </Comment>
 </Comments>

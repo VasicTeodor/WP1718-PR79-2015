@@ -401,7 +401,7 @@
                     Username: $('#regUsername').val(),
                     Password: $('#regPass').val()
                 },
-                success: function () {
+                success: function (data) {
                     $('#regUsername').removeClass("reg-table-td-input").addClass("reg-table-td-ok");
                     $('#regUsername').removeClass("reg-table-td-error").addClass("reg-table-td-ok");
                     $('#errorUsername').text(' ');
@@ -460,7 +460,7 @@
         }
     });
 
-    $('#regCarId').focusout(function () {
+    $('#regCarId').on('input',function () {
         let input = $(this);
         let is_carId = input.val();
         if (is_carId) {
@@ -477,7 +477,7 @@
         }
     });
 
-    $('#regModelYear').focusout(function () {
+    $('#regModelYear').on('input',function () {
         let input = $(this);
         let re = /^\b\d{4}\b$/i;
         let is_modelYear = re.test(input.val());
@@ -495,9 +495,9 @@
         }
     });
 
-    $('#regNumber').focusout(function () {
+    $('#regNumber').on('input',function () {
         let input = $(this);
-        let re = '/^[a-z0-9]+$/';
+        let re = /[A-Z][A-Z][0-9]+[A-Z][A-Z]/;
         let is_regNum = re.test(input.val());
         if (is_regNum) {
             input.removeClass("reg-table-td-input").addClass("reg-table-td-ok");

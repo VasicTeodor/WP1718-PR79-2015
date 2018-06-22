@@ -44,7 +44,8 @@ namespace TaxiService.Controllers
             {
                 if(userRole == Enums.Roles.Driver)
                 {
-                    allDrives.RemoveAll(d => d.State != Enums.Status.Created);
+                    Driver driver = DataRepository._driverRepo.RetriveDriverById(userId);
+                    allDrives.RemoveAll(d => (d.State != Enums.Status.Created) || (d.CarType != driver.Car.Type));
                 }
 
                 if(userRole == Enums.Roles.Customer)
@@ -244,6 +245,7 @@ namespace TaxiService.Controllers
                                 allDrives.RemoveAll(d => !d.OrderedBy.Surname.Contains(surname));
                             }
                         }
+                        filteredDrives = allDrives;
                     }
                     else if (jToken.Value<string>("searchRole").Equals("Driver"))
                     {

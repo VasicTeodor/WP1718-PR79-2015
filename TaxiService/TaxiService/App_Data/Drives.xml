@@ -22,7 +22,7 @@
     <CustomerId>018c725d-8a44-4dab-aa43-c98ac90ff406</CustomerId>
     <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
     <DriverId>119b31ed-02e9-4e33-82e0-1acac9f39c7b</DriverId>
-    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
+    <CommentId>aea616eb-f42a-49b2-9417-16260ce56ea7</CommentId>
     <Date>2018-06-21T04:28:41.0199283+02:00</Date>
     <CarType>Bez_Naznake</CarType>
     <Price>2993.34</Price>
@@ -237,5 +237,73 @@
     <DestinationX>43</DestinationX>
     <DestinationY>0</DestinationY>
     <DestinationAddress>Grocka</DestinationAddress>
+  </Drive>
+  <Drive Id="1a0d8f28-377a-4c23-ae18-31666258bf71">
+    <Id>1a0d8f28-377a-4c23-ae18-31666258bf71</Id>
+    <CustomerId>5e38440e-5481-45ef-8ca5-540a1a4ee490</CustomerId>
+    <DispatcherId>6c76fe0d-bc81-4c86-a31e-407418072971</DispatcherId>
+    <DriverId>a9e3a986-4a26-44ee-a215-bab40d2533db</DriverId>
+    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
+    <Date>2018-06-22T16:40:18.9151675+02:00</Date>
+    <CarType>Car</CarType>
+    <Price>3243243</Price>
+    <State>Successful</State>
+    <AddressX>32</AddressX>
+    <AddressY>43</AddressY>
+    <AddressA>Sibir</AddressA>
+    <DestinationX>32</DestinationX>
+    <DestinationY>53</DestinationY>
+    <DestinationAddress>Belorusija</DestinationAddress>
+  </Drive>
+  <Drive Id="f3c98b56-2df6-441d-86cc-d90916414b24">
+    <Id>f3c98b56-2df6-441d-86cc-d90916414b24</Id>
+    <CustomerId>5e38440e-5481-45ef-8ca5-540a1a4ee490</CustomerId>
+    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
+    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
+    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
+    <Date>2018-06-22T16:41:15.2743367+02:00</Date>
+    <CarType>Kombi</CarType>
+    <Price>0</Price>
+    <State>Created</State>
+    <AddressX>54</AddressX>
+    <AddressY>34</AddressY>
+    <AddressA>Rusija</AddressA>
+    <DestinationX>0</DestinationX>
+    <DestinationY>0</DestinationY>
+    <DestinationAddress>Unset</DestinationAddress>
+  </Drive>
+  <Drive Id="8c8192a4-a27b-4ea0-812c-8e9696ae379b">
+    <Id>8c8192a4-a27b-4ea0-812c-8e9696ae379b</Id>
+    <CustomerId>5e38440e-5481-45ef-8ca5-540a1a4ee490</CustomerId>
+    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
+    <DriverId>119b31ed-02e9-4e33-82e0-1acac9f39c7b</DriverId>
+    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
+    <Date>2018-06-22T16:41:30.7771034+02:00</Date>
+    <CarType>Bez_Naznake</CarType>
+    <Price>3243.43</Price>
+    <State>Successful</State>
+    <AddressX>34</AddressX>
+    <AddressY>65</AddressY>
+    <AddressA>wetsea</AddressA>
+    <DestinationX>34</DestinationX>
+    <DestinationY>34</DestinationY>
+    <DestinationAddress>Aerodrom</DestinationAddress>
+  </Drive>
+  <Drive Id="67b642e2-0bf8-41b0-969e-eb42104573e0">
+    <Id>67b642e2-0bf8-41b0-969e-eb42104573e0</Id>
+    <CustomerId>33691482-322c-4837-b694-50958f42c713</CustomerId>
+    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
+    <DriverId>119b31ed-02e9-4e33-82e0-1acac9f39c7b</DriverId>
+    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
+    <Date>2018-06-22T18:16:55.0032463+02:00</Date>
+    <CarType>Bez_Naznake</CarType>
+    <Price>448245</Price>
+    <State>Successful</State>
+    <AddressX>23</AddressX>
+    <AddressY>43</AddressY>
+    <AddressA>bla</AddressA>
+    <DestinationX>42</DestinationX>
+    <DestinationY>64</DestinationY>
+    <DestinationAddress>blaa bla</DestinationAddress>
   </Drive>
 </Drives>

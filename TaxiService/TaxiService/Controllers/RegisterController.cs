@@ -39,11 +39,18 @@ namespace TaxiService.Controllers
         [Route("api/Register/CheckUsername")]
         public HttpResponseMessage CheckUsername([FromBody]LoginClass customer)
         {
-            if (!DataRepository._customerRepo.CheckIfCustomerExists(customer.Username) &&
-               !DataRepository._dispatcherRepo.CheckIfDispatcherExists(customer.Username) &&
-               !DataRepository._driverRepo.CheckIfDriverExists(customer.Username))
+            if (!string.IsNullOrEmpty(customer.Username))
             {
-                return Request.CreateResponse(HttpStatusCode.OK);
+                if (!DataRepository._customerRepo.CheckIfCustomerExists(customer.Username) &&
+                   !DataRepository._dispatcherRepo.CheckIfDispatcherExists(customer.Username) &&
+                   !DataRepository._driverRepo.CheckIfDriverExists(customer.Username))
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, true);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotAcceptable);
+                }
             }
             else
             {

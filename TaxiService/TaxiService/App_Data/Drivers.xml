@@ -12,9 +12,9 @@
     <Gender>Male</Gender>
     <Role>Driver</Role>
     <Occupied>false</Occupied>
-    <X>0</X>
-    <Y>0</Y>
-    <Address>garage</Address>
+    <X>34</X>
+    <Y>34</Y>
+    <Address>Aerodrom</Address>
     <CarId>2</CarId>
     <ModelYear>2015</ModelYear>
     <RegNumber>NS222TX</RegNumber>
@@ -39,5 +39,25 @@
     <ModelYear>2016</ModelYear>
     <RegNumber>NS325TX</RegNumber>
     <Type>Bez_Naznake</Type>
+  </Driver>
+  <Driver Id="a9e3a986-4a26-44ee-a215-bab40d2533db">
+    <Id>a9e3a986-4a26-44ee-a215-bab40d2533db</Id>
+    <Username>Driver3</Username>
+    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
+    <Name>Nikola</Name>
+    <Surname>Zrnic</Surname>
+    <Jmbg>1234325323245</Jmbg>
+    <Phone>324442134</Phone>
+    <Email>zrna96@gmail.com</Email>
+    <Gender>Male</Gender>
+    <Role>Driver</Role>
+    <Occupied>false</Occupied>
+    <X>32</X>
+    <Y>53</Y>
+    <Address>Belorusija</Address>
+    <CarId>3</CarId>
+    <ModelYear>2018</ModelYear>
+    <RegNumber>NS244TX</RegNumber>
+    <Type>Car</Type>
   </Driver>
 </Drivers>

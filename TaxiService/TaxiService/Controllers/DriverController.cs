@@ -56,20 +56,30 @@ namespace TaxiService.Controllers
         [HttpGet]
         [Route("api/Driver/GetFreeDrivers")]
         [BasicAuthentication]
-        public HttpResponseMessage GetFreeDrivers()
+        public HttpResponseMessage GetFreeDrivers([FromUri]string type)
         {
-            List<Driver> drivers = DataRepository._driverRepo.RetriveAllDrivers().ToList();
-            List<Driver> freeDrivers = new List<Driver>();
-
-            foreach(var d in drivers)
+            List<Driver> drivers = null;
+            drivers = DataRepository._driverRepo.RetriveAllDrivers().ToList();
+            
+            if(drivers != null)
             {
-                if(d.Occupied == false)
-                {
-                    freeDrivers.Add(d);
-                }
-            }
+                Enums.CarTypes car = (Enums.CarTypes)Enum.Parse(typeof(Enums.CarTypes), type);
 
-            return Request.CreateResponse(HttpStatusCode.OK, freeDrivers);
+                if(car != Enums.CarTypes.Bez_Naznake)
+                {
+                    drivers.RemoveAll(d => (d.Occupied == true) || (d.Car.Type != car));
+                }
+                else
+                {
+                    drivers.RemoveAll(d => d.Occupied == true);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, drivers);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
         }
 
         [HttpPut]

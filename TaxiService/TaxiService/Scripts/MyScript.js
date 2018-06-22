@@ -34,6 +34,30 @@ let formReset = function ResetAllForms() {
     $("input[type='number'], textarea").val('');
     $("input[type='date'], textarea").val('');
     $("select").each(function () { this.selectedIndex = 0; });
+    $('#regName').removeClass().addClass("reg-table-td-input");
+    $('#errorName').val(' ');
+    $('#regSurname').removeClass().addClass("reg-table-td-input");
+    $('#errorSurname').val(' ');
+    $('#regEmail').removeClass().addClass("reg-table-td-input");
+    $('#errorEmail').val(' ');
+    $('#regPhone').removeClass().addClass("reg-table-td-input");
+    $('#errorPhone').val(' ');
+    $('#regJmbg').removeClass().addClass("reg-table-td-input");
+    $('#errorJmbg').val(' ');
+    $('#regUsername').removeClass().addClass("reg-table-td-input");
+    $('#errorUsername').val(' ');
+    $('#regCarId').removeClass().addClass("reg-table-td-input");
+    $('#errorCarId').val(' ');
+    $('#regModelYear').removeClass().addClass("reg-table-td-input");
+    $('#errorModelYear').val(' ');
+    $('#regNumber').removeClass().addClass("reg-table-td-input");
+    $('#errorRegNum').val(' ');
+    $('#regPass').removeClass().addClass("reg-table-td-input");
+    $('#regPassRpt').removeClass().addClass("reg-table-td-input");
+    $('#errorRegPass').val(' ');
+    $('#loginUsername').css('borderColor', 'black');
+    $('#loginPassword').css('borderColor', 'black');
+    $('#errorLoginLbl').val(' ');
 };
 
 var updateDriverLocation = function (address, addressX, addressY) {
@@ -44,7 +68,7 @@ var updateDriverLocation = function (address, addressX, addressY) {
         drivedBy: user.id,
         address: address,
         addressX: addressX,
-        addressY: addressY,
+        addressY: addressY
     };
 
     $.ajax({
@@ -65,7 +89,35 @@ var updateDriverLocation = function (address, addressX, addressY) {
             alert("Error while updating location, try again later!");
         }
     });
-}
+};
+
+var freeDrivers = function GetFreeDrivers(carType) {
+    let token = sessionStorage.getItem('accessToken');
+
+    $.ajax({
+        type: 'GET',
+        url: '/api/Driver/GetFreeDrivers',
+        data: {
+            type: carType
+        },
+        dataType: 'json',
+        headers: {
+            'Authorization': 'Basic ' + token.toString()
+        },
+        success: function (data) {
+            alert(JSON.stringify(data));
+            driver = JSON.stringify(data);
+            $('#freeDriver').empty();
+            for (let i = 0; i < data.length; i++) {
+                let fullName = JSON.stringify(data[i].name) + ' ' + JSON.stringify(data[i].surname);
+                $('#freeDriver').append('<option value="' + JSON.stringify(data[i].id).replace(/"|_/g, '') + '">' + fullName.replace(/"|_/g, '') + '</option>');
+            }
+        },
+        error: function () {
+            alert("There is no free drivers, please try again later!");
+        }
+    });
+};
 
 $(document).ready(function () {
     //$('#btnMenu').click(function () {
@@ -169,6 +221,7 @@ $(document).ready(function () {
         $('#displayLoginForm').hide();
         $("#blurBackground").hide();
         home();
+        formReset();
     });
 
     $('main').hover(function () {
@@ -206,26 +259,7 @@ $(document).ready(function () {
             $('#driverDrive').hide();
             $('#btnCreateDrive').show();
             $('#btnEditDrive').hide();
-            $.ajax({
-                type: 'GET',
-                url: '/api/Driver/GetFreeDrivers',
-                dataType: 'json',
-                headers: {
-                    'Authorization': 'Basic ' + token.toString()
-                },
-                success: function (data) {
-                    alert(JSON.stringify(data));
-                    driver = JSON.stringify(data);
-                    $('#freeDriver').empty();
-                    for (let i = 0; i < data.length; i++) {
-                        let fullName = JSON.stringify(data[i].name) + ' ' + JSON.stringify(data[i].surname);
-                        $('#freeDriver').append('<option value="' + JSON.stringify(data[i].id).replace(/"|_/g, '') + '">' + fullName.replace(/"|_/g, '') + '</option>');
-                    }
-                },
-                error: function () {
-                    alert("Greska na serveru, molimo vas pokusajte kasnije!");
-                }
-            });
+            freeDrivers("Bez_Naznake");
         }
         $("#blurBackground").fadeIn('slow', 'swing');
         $("#displayNewDrive").fadeIn('slow', 'swing');
@@ -235,6 +269,7 @@ $(document).ready(function () {
         $("#blurBackground").fadeOut('slow', 'swing');
         $("#displayNewDrive").fadeOut('slow', 'swing');
         home();
+        formReset();
         $('#displayTrips').fadeIn('slow', 'swing');
     });
 
@@ -242,6 +277,7 @@ $(document).ready(function () {
         $("#blurBackground").fadeOut('slow', 'swing');
         $("#displayDriverFinished").fadeOut('slow', 'swing');
         home();
+        formReset();
         $('#displayTrips').fadeIn('slow', 'swing');
     });
 
@@ -249,6 +285,7 @@ $(document).ready(function () {
         $("#blurBackground").fadeOut('slow', 'swing');
         $("#displayCommentForm").fadeOut('slow', 'swing');
         home();
+        formReset();
         $('#displayTrips').fadeIn('slow', 'swing');
     });
 
@@ -256,6 +293,7 @@ $(document).ready(function () {
         $("#blurBackground").fadeOut('slow', 'swing');
         $("#displayDriverLocation").fadeOut('slow', 'swing');
         home();
+        formReset();
         $('#displayTrips').fadeIn('slow', 'swing');
     });
 
