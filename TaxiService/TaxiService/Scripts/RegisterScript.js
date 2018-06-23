@@ -74,8 +74,6 @@
 
     $('#btnAddDriver').click(function () {
         let user = JSON.parse(sessionStorage.getItem('activeUser'));
-        alert(user.role);
-        alert(sessionStorage.getItem('accessToken'));
         if (user.role === 'Dispatcher') {
             $('#addDriverFormCarId').show();
             $('#displayRegisterHeader').text('NEW DRIVER');
@@ -138,7 +136,6 @@
                             'Authorization': 'Basic ' + token.toString()
                         },
                         success: function (data) {
-                            alert(JSON.stringify(data));
                             sessionStorage.setItem('activeUser', JSON.stringify(data));
 
                             $('#displayRegister').fadeOut('slow', 'swing', showHome);
@@ -174,7 +171,6 @@
                                 'Authorization': 'Basic ' + token.toString()
                             },
                             success: function (data) {
-                                alert(JSON.stringify(data));
                                 sessionStorage.setItem('activeUser', JSON.stringify(data));
 
                                 $('#displayRegister').fadeOut('slow', 'swing', showHome);
@@ -196,7 +192,6 @@
                                 'Authorization': 'Basic ' + token.toString()
                             },
                             success: function (data) {
-                                alert(JSON.stringify(data));
                                 sessionStorage.setItem('activeUser', JSON.stringify(data));
 
                                 $('#displayRegister').fadeOut('slow', 'swing', showHome);
@@ -245,8 +240,6 @@
                     'Authorization': 'Basic ' + token.toString()
                 },
                 success: function (data) {
-                    alert(JSON.stringify(data));
-
                     $('#displayRegister').fadeOut('slow', 'swing', showHome);
                     formReset();
                 },
@@ -275,8 +268,6 @@
                 },
                 success: function (data) {
                     alert("Uspesna registracija!");
-                    alert(data.accessToken);
-                    alert(JSON.stringify(data.user));
                     sessionStorage.setItem('accessToken', data.accessToken);
                     sessionStorage.setItem('activeUser', JSON.stringify(data.user));
                     $('#btnLoginForm').hide();

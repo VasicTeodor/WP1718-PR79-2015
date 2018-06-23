@@ -207,6 +207,13 @@ body {
     margin: 0 auto;
 }
 
+.map {
+    width: 200px;
+    height: 300px;
+    margin: 0 auto;
+    background-color: white !important;
+}
+
 .index-error-label {
     font-family: Tahoma;
     font-size: 10px !important;
@@ -272,6 +279,14 @@ body {
 }
 
 @media only screen and (min-width: 1000px){
+
+    .map {
+        background-color: white !important;
+        width: 500px !important;
+        height: 500px !important;
+    }
+
+    
     .backgroundDiv {
         width: 720px !important;
     }
@@ -587,11 +602,10 @@ header nav ul li p:hover{
     margin: 5px auto 0 auto;
 }
 
-.trips-wrap{
+.trips-wrap {
     width: 320px;
     margin: auto auto;
-    background-color: white;
-    opacity: 0.75;
+    background-color: rgba(255, 255, 255, 0.85);
 }
 
 .tableWrap{

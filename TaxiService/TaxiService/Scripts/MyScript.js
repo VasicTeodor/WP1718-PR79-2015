@@ -105,7 +105,6 @@ var freeDrivers = function GetFreeDrivers(carType) {
             'Authorization': 'Basic ' + token.toString()
         },
         success: function (data) {
-            alert(JSON.stringify(data));
             driver = JSON.stringify(data);
             $('#freeDriver').empty();
             for (let i = 0; i < data.length; i++) {
@@ -239,21 +238,22 @@ $(document).ready(function () {
         $('#driveAddressX').parent().parent().show();
         $('#driveAddressY').parent().parent().show();
         $('#driveCar').parent().parent().show();
+        $('#map').parent().parent().show();
 
         if (user.role === "Customer") {
             $('#dispatcherDrive').hide();
             $('#driverDrive').hide();
             $('#btnEditDrive').hide();
             $('#btnCreateDrive').show();
-            $('#driveAddress').attr('readonly', false);
-            $('#driveAddressX').attr('readonly', false);
-            $('#driveAddressY').attr('readonly', false);
+            $('#driveAddress').attr('readonly', true);
+            $('#driveAddressX').attr('readonly', true);
+            $('#driveAddressY').attr('readonly', true);
             $('#driveCar').attr('readonly', false);
         }
         else {
-            $('#driveAddress').attr('readonly', false);
-            $('#driveAddressX').attr('readonly', false);
-            $('#driveAddressY').attr('readonly', false);
+            $('#driveAddress').attr('readonly', true);
+            $('#driveAddressX').attr('readonly', true);
+            $('#driveAddressY').attr('readonly', true);
             $('#driveCar').attr('readonly', false);
             $('#dispatcherDrive').show();
             $('#driverDrive').hide();

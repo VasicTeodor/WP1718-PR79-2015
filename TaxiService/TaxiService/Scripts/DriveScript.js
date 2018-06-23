@@ -213,7 +213,6 @@ function EditDrive(elem) {
             'Authorization': 'Basic ' + token.toString()
         },
         success: function (data) {
-            alert(JSON.stringify(data));
 
             $('#driveAddress').val(data.address.address);
             $('#driveAddressX').val(data.address.x);
@@ -235,12 +234,14 @@ function EditDrive(elem) {
                 $('#driveAddressX').parent().parent().show();
                 $('#driveAddressY').parent().parent().show();
                 $('#driveCar').parent().parent().show();
+                $('#map').parent().parent().show();
             }
             else if (user.role === 'Dispatcher') {
                 $('#driveAddress').parent().parent().hide();
                 $('#driveAddressX').parent().parent().hide();
                 $('#driveAddressY').parent().parent().hide();
                 $('#driveCar').parent().parent().hide();
+                $('#map').parent().parent().hide();
                 $('#driverDrive').hide();
                 $('#dispatcherDrive').show();
                 $('#btnCreateDrive').hide();
@@ -251,6 +252,7 @@ function EditDrive(elem) {
                 $('#driveAddressX').parent().parent().hide();
                 $('#driveAddressY').parent().parent().hide();
                 $('#driveCar').parent().parent().hide();
+                $('#map').parent().parent().hide();
                 $('#driverDrive').show();
                 $('#dispatcherDrive').hide();
                 $('#btnCreateDrive').hide();
@@ -313,7 +315,6 @@ var myDrives = function GetAllMyDrives() {
             'Authorization': 'Basic ' + token.toString()
         },
         success: function (data) {
-            alert(JSON.stringify(data));
             PrintAllDrives(data);
         },
         error: function () {
@@ -338,7 +339,6 @@ var drives = function GetAllDrives() {
             'Authorization': 'Basic ' + token.toString()
         },
         success: function (data) {
-            alert(JSON.stringify(data));
             PrintAllDrives(data);
         },
         error: function () {
@@ -354,7 +354,6 @@ $(document).ready(function () {
         var user = JSON.parse(sessionStorage.getItem('activeUser'));
 
         if (user.role === 'Customer') {
-            alert(JSON.stringify(user));
 
             let drive = {
                 address:
@@ -367,8 +366,6 @@ $(document).ready(function () {
                 orderedBy: user
             };
 
-            alert(JSON.stringify(drive));
-
             $.ajax({
                 type: 'POST',
                 url: '/api/Customer/CreateNewDrive',
@@ -379,7 +376,6 @@ $(document).ready(function () {
                     'Authorization': 'Basic ' + token.toString()
                 },
                 success: function (data) {
-                    alert(JSON.stringify(data));
                     DisplayNewDrive(data);
                     $("#displayNewDrive").fadeOut('slow', 'swing');
                     $("#blurBackground").fadeOut('slow', 'swing');
@@ -405,7 +401,6 @@ $(document).ready(function () {
                     'Authorization': 'Basic ' + token.toString()
                 },
                 success: function (data) {
-                    alert(JSON.stringify(data));
                     driver = JSON.stringify(data);
 
                     let drive = {
@@ -420,8 +415,6 @@ $(document).ready(function () {
                         drivedBy: JSON.parse(driver)
                     };
 
-                    alert(JSON.stringify(drive));
-
                     $.ajax({
                         type: 'POST',
                         url: '/api/Dispatcher/CreateDrive',
@@ -432,7 +425,6 @@ $(document).ready(function () {
                             'Authorization': 'Basic ' + token.toString()
                         },
                         success: function (data) {
-                            alert(JSON.stringify(data));
                             DisplayNewDrive(data);
                             $("#displayNewDrive").fadeOut('slow', 'swing');
                             $("#blurBackground").fadeOut('slow', 'swing');

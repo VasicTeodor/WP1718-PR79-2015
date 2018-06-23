@@ -256,8 +256,6 @@ $(document).ready(function () {
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 success: function (data) {
-                    alert(data.accessToken);
-                    alert(JSON.stringify(data.user));
                     sessionStorage.setItem('accessToken', data.accessToken);
                     sessionStorage.setItem('activeUser', JSON.stringify(data.user));
                     $('#displayLoginForm').fadeOut('slow', 'swing');
