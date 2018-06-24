@@ -118,6 +118,122 @@ var freeDrivers = function GetFreeDrivers(carType) {
     });
 };
 
+function UnBanDriver(elem) {
+    let token = sessionStorage.getItem('accessToken');
+    let userId = $('#' + elem.id).val();
+    banUser = userId;
+    let banned = false;
+    bann = {
+        id: banUser,
+        ban: banned
+    };
+
+    $.ajax({
+        type: 'PUT',
+        url: '/api/Driver/BanDriver',
+        data: JSON.stringify(bann),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        headers: {
+            'Authorization': 'Basic ' + token.toString()
+        },
+        success: function (data) {
+            $('#' + elem.id).attr("onclick", "BanDriver(this)");
+            $('#' + elem.id).text("Ban Driver");
+        },
+        error: function () {
+            alert("Error while banning user, try again later!");
+        }
+    });
+}
+
+function BanDriver(elem) {
+    let token = sessionStorage.getItem('accessToken');
+    let userId = $('#' + elem.id).val();
+    banUser = userId;
+    let banned = true;
+    bann = {
+        id: banUser,
+        ban: banned
+    };
+
+    $.ajax({
+        type: 'PUT',
+        url: '/api/Driver/BanDriver',
+        data: JSON.stringify(bann),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        headers: {
+            'Authorization': 'Basic ' + token.toString()
+        },
+        success: function (data) {
+            $('#' + elem.id).attr("onclick", "UnBanDriver(this)");
+            $('#' + elem.id).text("Unban Driver");
+        },
+        error: function () {
+            alert("Error while banning user, try again later!");
+        }
+    });
+}
+
+function UnBanCustomer(elem) {
+    let token = sessionStorage.getItem('accessToken');
+    let userId = $('#' + elem.id).val();
+    banUser = userId;
+    let banned = false;
+    bann = {
+        id: banUser,
+        ban: banned
+    };
+
+    $.ajax({
+        type: 'PUT',
+        url: '/api/Customer/BanCustomer',
+        data: JSON.stringify(bann),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        headers: {
+            'Authorization': 'Basic ' + token.toString()
+        },
+        success: function (data) {
+            $('#' + elem.id).attr("onclick", "BanCustomer(this)");
+            $('#' + elem.id).text("Ban Customer");
+        },
+        error: function () {
+            alert("Error while banning user, try again later!");
+        }
+    });
+}
+
+function BanCustomer(elem) {
+    let token = sessionStorage.getItem('accessToken');
+    let userId = $('#' + elem.id).val();
+    banUser = userId;
+    let banned = true;
+    bann = {
+        id: banUser,
+        ban: banned
+    };
+
+    $.ajax({
+        type: 'PUT',
+        url: '/api/Customer/BanCustomer',
+        data: JSON.stringify(bann),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        headers: {
+            'Authorization': 'Basic ' + token.toString()
+        },
+        success: function (data) {
+            $('#' + elem.id).attr("onclick", "UnBanCustomer(this)");
+            $('#' + elem.id).text("Unban Customer");
+        },
+        error: function () {
+            alert("Error while banning user, try again later!");
+        }
+    });
+}
+
 $(document).ready(function () {
     //$('#btnMenu').click(function () {
     //    $('#menu').slideToggle(300);
@@ -165,6 +281,7 @@ $(document).ready(function () {
         $("#blurBackground").fadeOut('slow', 'swing');
         if (sessionStorage.getItem('accessToken')) {
             $('#displayTrips').fadeIn('slow', 'swing');
+            $('body').css('backgroundImage', 'url(Images/tax3i.jpg)');
             $('#btnLoginForm').hide();
             $('#profileButtons').show();
             let user = JSON.parse(sessionStorage.getItem('activeUser'));
@@ -176,10 +293,12 @@ $(document).ready(function () {
                 $('#btnDriverAllDrives').hide();
                 $('#btnDispatcherAllDrives').show();
                 $('#btnAddDriver').show();
+                $('#btnBanUsers').show();
                 $('#btnRegisterFormMenu').hide();
-                $('#menu').css('height', '200');
+                $('#menu').css('height', '248');
                 $('.admin-filters').show();
                 $('.customer-filters').hide();
+                $('#displayBanner').fadeOut('slow', 'swing');
             } else if (user.role === 'Driver') {
                 $('#btnNewDrive').hide();
                 $('#btnDriveFilters').hide();
@@ -187,8 +306,10 @@ $(document).ready(function () {
                 $('#btnDriverAllDrives').show();
                 $('#btnDispatcherAllDrives').hide();
                 $('#btnAddDriver').hide();
+                $('#btnBanUsers').hide();
                 $('#btnRegisterFormMenu').hide();
                 $('#menu').css('height', '152');
+                $('#displayBanner').fadeOut('slow', 'swing');
             } else {
                 $('#btnNewDrive').show();
                 $('#btnDriveFilters').show();
@@ -196,18 +317,21 @@ $(document).ready(function () {
                 $('#btnDriverAllDrives').hide();
                 $('#btnDispatcherAllDrives').hide();
                 $('#btnAddDriver').hide();
+                $('#btnBanUsers').hide();
                 $('#btnRegisterFormMenu').hide();
                 $('#menu').css('height', '152');
                 $('.admin-filters').hide();
                 $('.customer-filters').show();
+                $('#displayBanner').fadeOut('slow', 'swing');
             }
         } else {
             $('#displayTrips').fadeOut('slow', 'swing');
+            $('#displayBanner').fadeIn('slow', 'swing');
         }
         $('#displayRegister').fadeOut('slow', 'swing');
+        $('#displayUsers').fadeOut('slow', 'swing');
         $('#displayNewRide').fadeOut('slow', 'swing');
         $('#displayHeader').fadeIn('slow', 'swing');
-        $('#displayBanner').fadeIn('slow', 'swing');
         $('#displayFooter').fadeIn('slow', 'swing');
     };
 
@@ -303,8 +427,12 @@ $(document).ready(function () {
             $('#btnLoginForm').show();
             $('#btnRegisterFormMenu').show();
             $('#btnAddDriver').hide();
+            $('#displayUsers').hide();
+            $('#usersTable').empty();
+            $('#btnBanUsers').hide();
             $('#menu').css('height', '200');
             $('#fillInTrips').empty();
+            $('body').css('backgroundImage', 'url(Images/allBlack.png)');
             $('#displayTrips').fadeOut('slow', 'swing');
             sessionStorage.removeItem('accessToken');
             sessionStorage.removeItem('activeUser');
@@ -326,5 +454,59 @@ $(document).ready(function () {
         updateDriverLocation($('#driverLocation').val(), $('#driverLocationX').val(), $('#driverLocationY').val());
         $("#blurBackground").fadeOut('slow', 'swing');
         $("#displayDriverLocation").fadeOut('slow', 'swing');
-    });                       
+    });
+
+    $('#btnBanUsers').click(function () {
+        let token = sessionStorage.getItem("accessToken");
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/Dispatcher/GetAllUsers',
+            dataType: 'json',
+            headers: {
+                'Authorization': 'Basic ' + token.toString()
+            },
+            success: function (data) {
+                $('#usersTable').empty();
+                let counter = 1;
+
+                for (let i = 0; i < data.length; i++) {
+                    let fullName = data[i].name + ' ' + data[i].surname;
+
+                    let btn = '';
+                    if (data[i].role === 'Driver') {
+                        if (data[i].isBanned) {
+                            btn = '<button id="btnBan' + counter + '" onclick="UnBanDriver(this);" value="' + data[i].id + '" class="btn-register">Unban Driver</button>';
+                        } else {
+                            btn = '<button id="btnBan' + counter + '" onclick="BanDriver(this);" value="' + data[i].id + '" class="btn-register">Ban Driver</button>';
+                        }
+                    } else if (data[i].role === 'Customer') {
+                        if (data[i].isBanned) {
+                            btn = '<button id="btnBan' + counter + '" onclick="UnBanCustomer(this);" value="' + data[i].id + '" class="btn-register">Unban Customer</button>';
+                        } else {
+                            btn = '<button id="btnBan' + counter + '" onclick="BanCustomer(this);" value="' + data[i].id + '" class="btn-register">Ban Customer</button>';
+                        }
+                    }
+
+                    $('#usersTable').append('<tr class="reg-table-normal">' +
+                        '<td class="ban-table-td">' + data[i].username + '</td>' +
+                        '<td class="ban-table-td">' + fullName + '</td>' +
+                        '<td class="ban-table-td">' + btn + '</td>' +
+                        '</tr>');
+                    counter++;
+                }
+                $('#displayTrips').fadeOut('slow', 'swing');
+                $('#displayRegister').fadeOut('slow', 'swing');
+                $('#displayNewRide').fadeOut('slow', 'swing');
+                $('#displayBanner').fadeOut('slow', 'swing');
+                $('#displayHeader').fadeIn('slow', 'swing');
+                $('#displayUsers').fadeIn('slow', 'swing');
+                $('#displayFooter').fadeIn('slow', 'swing');
+            },
+            error: function () {
+                alert("There is no free drivers, please try again later!");
+            }
+        });
+
+    });
 });                           

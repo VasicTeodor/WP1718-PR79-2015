@@ -33,6 +33,21 @@ namespace TaxiService.Repository
             }
         }
 
+        public void BanCustomer(Guid id, bool ban)
+        {
+            if (File.Exists(fileName))
+            {
+                XDocument xmlDocument = XDocument.Load(fileName);
+
+                xmlDocument.Element("Customers")
+                                        .Elements("Customer")
+                                        .Where(x => x.Attribute("Id").Value == id.ToString()).FirstOrDefault()
+                                        .SetElementValue("IsBanned", ban);
+
+                xmlDocument.Save(fileName);
+            }
+        }
+
         public void EditCustomerProfile(Customer customer)
         {
             if (File.Exists(fileName))
@@ -112,6 +127,7 @@ namespace TaxiService.Repository
                 new XElement("Phone", customer.Phone),
                 new XElement("Email", customer.Email),
                 new XElement("Gender", customer.Gender),
+                new XElement("IsBanned", customer.IsBanned),
                 new XElement("Role", customer.Role))
                 ));
 
@@ -134,6 +150,7 @@ namespace TaxiService.Repository
                                   new XElement("Phone", customer.Phone),
                                   new XElement("Email", customer.Email),
                                   new XElement("Gender", customer.Gender),
+                                  new XElement("IsBanned", customer.IsBanned),
                                   new XElement("Role", customer.Role)));
                     doc.Save(fileName);
                 }
@@ -160,6 +177,7 @@ namespace TaxiService.Repository
                         Jmbg = customer.Element("Jmbg").Value,
                         Email = customer.Element("Email").Value,
                         Phone = customer.Element("Phone").Value,
+                        IsBanned = bool.Parse(customer.Element("IsBanned").Value),
                         Gender = (Genders)Enum.Parse(typeof(Genders), customer.Element("Gender").Value),
                         Role = (Roles)Enum.Parse(typeof(Roles), customer.Element("Role").Value)
                     }).ToList();
@@ -192,6 +210,7 @@ namespace TaxiService.Repository
                         Jmbg = customerx.Element("Jmbg").Value,
                         Email = customerx.Element("Email").Value,
                         Phone = customerx.Element("Phone").Value,
+                        IsBanned = bool.Parse(customerx.Element("IsBanned").Value),
                         Gender = (Genders)Enum.Parse(typeof(Genders), customerx.Element("Gender").Value),
                         Role = (Roles)Enum.Parse(typeof(Roles), customerx.Element("Role").Value)
                     }).ToList();
@@ -226,6 +245,7 @@ namespace TaxiService.Repository
                         Jmbg = customerx.Element("Jmbg").Value,
                         Email = customerx.Element("Email").Value,
                         Phone = customerx.Element("Phone").Value,
+                        IsBanned = bool.Parse(customerx.Element("IsBanned").Value),
                         Gender = (Genders)Enum.Parse(typeof(Genders), customerx.Element("Gender").Value),
                         Role = (Roles)Enum.Parse(typeof(Roles), customerx.Element("Role").Value)
                     }).ToList();

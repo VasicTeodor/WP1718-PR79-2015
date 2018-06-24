@@ -2,7 +2,6 @@
     var sendData = false;
 
     let showHome = function () {
-        $('#displayBanner').fadeIn('slow', 'swing');
         $('#displayTrips').fadeIn('slow', 'swing');
     };
 

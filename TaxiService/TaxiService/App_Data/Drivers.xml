@@ -12,9 +12,10 @@
     <Gender>Male</Gender>
     <Role>Driver</Role>
     <Occupied>false</Occupied>
-    <X>45264984</X>
-    <Y>198363394</Y>
-    <Address>Кисачка 61, Нови Сад 21101</Address>
+    <IsBanned>false</IsBanned>
+    <X>452644898</X>
+    <Y>198350903</Y>
+    <Address>Краљевића Марка 50, Нови Сад 21101</Address>
     <CarId>2</CarId>
     <ModelYear>2015</ModelYear>
     <RegNumber>NS222TX</RegNumber>
@@ -32,6 +33,7 @@
     <Gender>Male</Gender>
     <Role>Driver</Role>
     <Occupied>false</Occupied>
+    <IsBanned>false</IsBanned>
     <X>43</X>
     <Y>0</Y>
     <Address>weqad</Address>
@@ -52,6 +54,7 @@
     <Gender>Male</Gender>
     <Role>Driver</Role>
     <Occupied>false</Occupied>
+    <IsBanned>false</IsBanned>
     <X>32</X>
     <Y>53</Y>
     <Address>Belorusija</Address>

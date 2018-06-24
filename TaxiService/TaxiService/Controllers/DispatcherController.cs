@@ -26,6 +26,7 @@ namespace TaxiService.Controllers
                 driver.Role = Enums.Roles.Driver;
                 driver.Password = ServiceSecurity.EncryptData(driver.Password, "password");
                 driver.Occupied = false;
+                driver.IsBanned = false;
                 driver.Location = new Location { Address = "garage", X = 0, Y = 0 };
                 DataRepository._driverRepo.NewDriver(driver);
                 return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driverRepo.RetriveDriverById(driver.Id));
@@ -103,6 +104,25 @@ namespace TaxiService.Controllers
                 DataRepository._driverRepo.DriverOccupation(driver);
                 DataRepository._driveRepo.DispatcherEditDrive(update);
                 return Request.CreateResponse(HttpStatusCode.OK, update);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+        }
+
+        [HttpGet]
+        [Route("api/Dispatcher/GetAllUsers")]
+        [BasicAuthentication]
+        public HttpResponseMessage GetAllUsers()
+        {
+            List<User> allUsers = null;
+            allUsers = DataRepository._customerRepo.RetriveAllCustomers().ToList<User>();
+            allUsers.AddRange(DataRepository._driverRepo.RetriveAllDrivers().ToList<User>());
+
+            if(allUsers != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, allUsers);
             }
             else
             {

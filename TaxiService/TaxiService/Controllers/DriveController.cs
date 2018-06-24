@@ -121,7 +121,7 @@ namespace TaxiService.Controllers
                     {
                         if (sortBy.Equals("Date"))
                         {
-                            userDrives.Sort((d1, d2) => DateTime.Compare(d1.Date, d2.Date));
+                            userDrives.Sort((d1, d2) => DateTime.Compare(d2.Date, d1.Date));
                         }else if (sortBy.Equals("Grade"))
                         {
                             userDrives.RemoveAll(x => x.Comments == null);

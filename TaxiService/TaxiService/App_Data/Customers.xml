@@ -8,6 +8,7 @@
     <Surname>Petrovic</Surname>
     <Jmbg>2335543542334</Jmbg>
     <Phone>03133432</Phone>
+    <IsBanned>false</IsBanned>
     <Email>pera@gmail.com</Email>
     <Gender>Male</Gender>
     <Role>Customer</Role>
@@ -21,6 +22,7 @@
     <Jmbg>2424242424242</Jmbg>
     <Phone>021883041</Phone>
     <Email>nikola@gmail.com</Email>
+    <IsBanned>false</IsBanned>
     <Gender>Male</Gender>
     <Role>Customer</Role>
   </Customer>
@@ -33,6 +35,7 @@
     <Jmbg>4223535252352</Jmbg>
     <Phone>031432324</Phone>
     <Email>aca@gmail.com</Email>
+    <IsBanned>false</IsBanned>
     <Gender>Male</Gender>
     <Role>Customer</Role>
   </Customer>
@@ -45,6 +48,7 @@
     <Jmbg>4223535252352</Jmbg>
     <Phone>031432324</Phone>
     <Email>aca@gmail.com</Email>
+    <IsBanned>false</IsBanned>
     <Gender>Female</Gender>
     <Role>Customer</Role>
   </Customer>
@@ -57,7 +61,21 @@
     <Jmbg>4848444484844</Jmbg>
     <Phone>02485585</Phone>
     <Email>misko@gmail</Email>
+    <IsBanned>false</IsBanned>
     <Gender>Male</Gender>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="e71b028f-99f0-4049-9940-c66917cb2163">
+    <Id>e71b028f-99f0-4049-9940-c66917cb2163</Id>
+    <Username>Customer6</Username>
+    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
+    <Name>Nemanja</Name>
+    <Surname>Nekic</Surname>
+    <Jmbg>1234345435445</Jmbg>
+    <Phone>0394377236</Phone>
+    <Email>neca@gmail.com</Email>
+    <Gender>Male</Gender>
+    <IsBanned>false</IsBanned>
     <Role>Customer</Role>
   </Customer>
 </Customers>

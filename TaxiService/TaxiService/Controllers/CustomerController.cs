@@ -133,5 +133,27 @@ namespace TaxiService.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
         }
+
+        [HttpPut]
+        [Route("api/Customer/BanCustomer")]
+        [BasicAuthentication]
+        public HttpResponseMessage BanCustomer([FromBody]JToken jToken)
+        {
+            string customerId = jToken.Value<string>("id");
+            Guid customer = Guid.Empty;
+            customer = Guid.Parse(customerId);
+
+            bool ban = bool.Parse(jToken.Value<string>("ban"));
+
+            if (customer != Guid.Empty)
+            {
+                DataRepository._customerRepo.BanCustomer(customer, ban);
+                return Request.CreateResponse(HttpStatusCode.OK, true);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+        }
     }
 }

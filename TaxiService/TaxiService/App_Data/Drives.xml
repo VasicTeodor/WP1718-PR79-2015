@@ -121,14 +121,14 @@
   </Drive>
   <Drive Id="51ce81ae-7250-41f3-b10e-aee5689c5d2d">
     <Id>51ce81ae-7250-41f3-b10e-aee5689c5d2d</Id>
-    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
+    <CommentId>b5942af2-a65a-4d28-9da9-ee860134cef7</CommentId>
     <CustomerId>00000000-0000-0000-0000-000000000000</CustomerId>
     <DispatcherId>6c76fe0d-bc81-4c86-a31e-407418072971</DispatcherId>
     <DriverId>119b31ed-02e9-4e33-82e0-1acac9f39c7b</DriverId>
     <Date>2018-06-21T14:56:21.1235855+02:00</Date>
     <CarType>Car</CarType>
     <Price>0</Price>
-    <State>Formated</State>
+    <State>Unsuccessful</State>
     <AddressX>43</AddressX>
     <AddressY>233</AddressY>
     <AddressA>Avenija mode</AddressA>
@@ -353,6 +353,40 @@
     <AddressX>45.2584818</AddressX>
     <AddressY>19.832983</AddressY>
     <AddressA>Булевар ослобођења 34, Нови Сад 21101</AddressA>
+    <DestinationX>0</DestinationX>
+    <DestinationY>0</DestinationY>
+    <DestinationAddress>Unset</DestinationAddress>
+  </Drive>
+  <Drive Id="f9a4936e-8f3f-44b2-a4bc-4c6ebca02596">
+    <Id>f9a4936e-8f3f-44b2-a4bc-4c6ebca02596</Id>
+    <CustomerId>018c725d-8a44-4dab-aa43-c98ac90ff406</CustomerId>
+    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
+    <DriverId>119b31ed-02e9-4e33-82e0-1acac9f39c7b</DriverId>
+    <CommentId>b449c9ba-fdac-48d9-985b-9c6b1bcaadd7</CommentId>
+    <Date>2018-06-23T18:40:54.0830623+02:00</Date>
+    <CarType>Bez_Naznake</CarType>
+    <Price>5354.45</Price>
+    <State>Successful</State>
+    <AddressX>45.2633108</AddressX>
+    <AddressY>19.8331417</AddressY>
+    <AddressA>Берислава Берића 16, Нови Сад 21101</AddressA>
+    <DestinationX>452644898</DestinationX>
+    <DestinationY>198350903</DestinationY>
+    <DestinationAddress>Краљевића Марка 50, Нови Сад 21101</DestinationAddress>
+  </Drive>
+  <Drive Id="04c83fa1-7828-4651-932e-cb247b7ee5d1">
+    <Id>04c83fa1-7828-4651-932e-cb247b7ee5d1</Id>
+    <CustomerId>e71b028f-99f0-4049-9940-c66917cb2163</CustomerId>
+    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
+    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
+    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
+    <Date>2018-06-24T01:54:19.1948489+02:00</Date>
+    <CarType>Bez_Naznake</CarType>
+    <Price>0</Price>
+    <State>Created</State>
+    <AddressX>45.2612208</AddressX>
+    <AddressY>19.8336943</AddressY>
+    <AddressA>Булевар краља Петра I 18a, Нови Сад 21101</AddressA>
     <DestinationX>0</DestinationX>
     <DestinationY>0</DestinationY>
     <DestinationAddress>Unset</DestinationAddress>

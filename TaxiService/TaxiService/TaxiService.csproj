@@ -233,6 +233,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\allBlack.png" />
+    <Content Include="Images\blckMap.JPG" />
+    <Content Include="Images\fb.png" />
+    <Content Include="Images\insta.png" />
+    <Content Include="Images\tax3i.jpg" />
+    <Content Include="Images\taxi.jpg" />
+    <Content Include="Images\taxi1.jpg" />
+    <Content Include="Images\taxi2.jpg" />
+    <Content Include="Images\tw.png" />
     <Content Include="Index.html" />
     <Content Include="Login.html" />
     <Content Include="Scripts\ApiScripts.js" />
@@ -285,7 +294,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -21,6 +21,7 @@ namespace TaxiService.Controllers
             {
                 customer.Id = Guid.NewGuid();
                 customer.Role = Enums.Roles.Customer;
+                customer.IsBanned = false;
                 LoginDto logObj = new LoginDto();
                 logObj.AccessToken = ServiceSecurity.MakeToken($"{customer.Username}:{customer.Password}");
                 customer.Password = ServiceSecurity.EncryptData(customer.Password, "password");

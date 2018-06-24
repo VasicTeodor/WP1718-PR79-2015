@@ -15,7 +15,7 @@
     <script src="Scripts/MyScript.js" type="text/javascript"></script>
     <link href="https://fonts.googleapis.com/css?family=Tahoma:100,200,300,400,500,600,700,800,900|Brush+Script+MT:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 </head>
-<body style="background-image: url('../Images/allBlack.png') !important;" onload="formatTime();">
+<body onload="formatTime();">
     <header id="displayHeader" class="home-link">
         <div>
             <a>
@@ -37,8 +37,9 @@
                     <li><p>CONTACTS</p></li>
                     <li id="btnRegisterFormMenu"><p>REGISTER</p></li>
                     <li id="btnAddDriver"><p>ADD DRIVER</p></li>
-                    <li><p id="btnMyAccMenu" class="myAccMenu">MY ACCOUNT</p></li>
-                    <li><p id="btnLoginMenu" class="loginMenu">LOG IN</p></li>
+                    <li id="btnBanUsers"><p>BAN USERS</p></li>
+                    <li id="btnMyAccMenu"><p class="myAccMenu">MY ACCOUNT</p></li>
+                    <li id="btnLoginMenu"><p class="loginMenu">LOG IN</p></li>
                 </ul>
             </div>
         </nav>
@@ -54,6 +55,9 @@
             <div class="wraper">
                 <div id="displayTrips" class="trips-wrap" style="display: none;">
                     <p class="home-date-time" id="clock">OVDE IDE DATUM I SAT</p>
+                    <div class="weather">
+                        <div id="openweathermap-widget-15"></div>
+                    </div>
                     <div id="driveFunc" class="drive-filters">
                         <button id="btnNewDrive" class="edit-new-drive">New drive</button>
                         <button id="btnDriveFilters" class="edit-drive-filters">Filters</button>
@@ -301,6 +305,25 @@
                         </table>
                     </div>
                 </div>
+                <div id="displayUsers" class="trips-wrap" style="display: none;">
+                    <p id="displayRegisterHeader" class="reg-header">ALL USERS  </p>
+                    <div class="tableWrap">
+                        <table class="ban-table">
+                            <tr class="reg-table-normal">
+                                <th class="ban-table-td">Username</th>
+                                <th class="ban-table-td">Name</th>
+                                <th class="ban-table-td">Action</th>
+                            </tr>
+                        </table>
+                        <table id="usersTable" class="ban-table">
+                            <tr class="reg-table-normal">
+                                <td class="ban-table-td">Rope</td>
+                                <td class="ban-table-td">Petar Petrovic</td>
+                                <td class="ban-table-td"><button id="btnBan" value="id" class="btn-register">Ban User</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
         </section>
         <div id="blurBackground" class="background-blur">
@@ -438,7 +461,7 @@
                     </div>
                 </div>
             </div>
-            <div id="displayDriverFinished" style="display:none; margin-top: 20vh">
+            <div id="displayDriverFinished" style="display:none; margin-top: 5vh">
                 <div class="trips-wrap">
                     <button id="btnExitFinishedDrive" class="exit-login">x</button>
                     <h2 class="reg-header">Finished Drive</h2>
@@ -482,7 +505,7 @@
                     </div>
                 </div>
             </div>
-            <div id="displayDriverLocation" style="display:none; margin-top: 20vh">
+            <div id="displayDriverLocation" style="display:none; margin-top: 5vh">
                 <div class="trips-wrap">
                     <button id="btnExitLocationChange" class="exit-login">x</button>
                     <h2 class="reg-header">Change Location</h2>
@@ -546,6 +569,23 @@
     </footer>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrjeABCsOwW1rhi7eW6_b_fWF8OK2HeiA&callback=initMap">
+    </script>
+    <script>
+        window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
+        window.myWidgetParam.push({
+            id: 15, cityid: '3194360',
+            appid: 'c9f7b7402f8c2d05ff8a642ef0a379e2',
+            units: 'metric',
+            containerid: 'openweathermap-widget-15',
+        });
+        (function () {
+            var script = document.createElement('script');
+            script.async = true;
+            script.charset = "utf-8";
+            script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(script, s);
+        })();
     </script>
 </body>
 </html>

@@ -116,6 +116,21 @@ namespace TaxiService.Repository
             }
         }
 
+        public void BannDriver(Guid id, bool ban)
+        {
+            if (File.Exists(fileName))
+            {
+                XDocument xmlDocument = XDocument.Load(fileName);
+
+                xmlDocument.Element("Drivers")
+                                        .Elements("Driver")
+                                        .Where(x => x.Attribute("Id").Value == id.ToString()).FirstOrDefault()
+                                        .SetElementValue("IsBanned", ban);
+
+                xmlDocument.Save(fileName);
+            }
+        }
+
         public void DriverOccupation(Driver driver)
         {
             if (File.Exists(fileName))
@@ -168,6 +183,7 @@ namespace TaxiService.Repository
                 new XElement("Phone", driver.Phone),
                 new XElement("Email", driver.Email),
                 new XElement("Gender", driver.Gender),
+                new XElement("IsBanned", driver.IsBanned),
                 new XElement("Role", driver.Role),
                     new XElement("Occupied", driver.Occupied),
                     new XElement("X", driver.Location.X),
@@ -199,6 +215,7 @@ namespace TaxiService.Repository
                                   new XElement("Phone", driver.Phone),
                                   new XElement("Email", driver.Email),
                                   new XElement("Gender", driver.Gender),
+                                  new XElement("IsBanned", driver.IsBanned),
                                   new XElement("Role", driver.Role),
                                   new XElement("Occupied", driver.Occupied),
                                   new XElement("X", driver.Location.X),
@@ -236,6 +253,7 @@ namespace TaxiService.Repository
                         Phone = driver.Element("Phone").Value,
                         Gender = (Genders)Enum.Parse(typeof(Genders), driver.Element("Gender").Value),
                         Role = (Roles)Enum.Parse(typeof(Roles), driver.Element("Role").Value),
+                        IsBanned = bool.Parse(driver.Element("IsBanned").Value),
                         Occupied = bool.Parse(driver.Element("Occupied").Value),
                         Location = new Location
                         {
@@ -282,6 +300,7 @@ namespace TaxiService.Repository
                         Phone = driverx.Element("Phone").Value,
                         Gender = (Genders)Enum.Parse(typeof(Genders), driverx.Element("Gender").Value),
                         Role = (Roles)Enum.Parse(typeof(Roles), driverx.Element("Role").Value),
+                        IsBanned = bool.Parse(driverx.Element("IsBanned").Value),
                         Occupied = bool.Parse(driverx.Element("Occupied").Value),
                         Location = new Location
                         {
@@ -330,6 +349,7 @@ namespace TaxiService.Repository
                         Phone = driverx.Element("Phone").Value,
                         Gender = (Genders)Enum.Parse(typeof(Genders), driverx.Element("Gender").Value),
                         Role = (Roles)Enum.Parse(typeof(Roles), driverx.Element("Role").Value),
+                        IsBanned = bool.Parse(driverx.Element("IsBanned").Value),
                         Occupied = bool.Parse(driverx.Element("Occupied").Value),
                         Location = new Location
                         {

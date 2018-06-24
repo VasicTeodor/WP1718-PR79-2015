@@ -266,6 +266,9 @@ $(document).ready(function () {
 
                     let user = JSON.parse(sessionStorage.getItem('activeUser'));
                     let allDrives = user.drives;
+                    $('#displayBanner').fadeOut('slow', 'swing');
+                    $('#displayRegister').fadeOut('slow', 'swing');
+                    $('body').css('backgroundImage', 'url(Images/tax3i.jpg)');
 
                     if (user.role === 'Dispatcher') {
                         $('#btnNewDrive').show();
@@ -274,8 +277,9 @@ $(document).ready(function () {
                         $('#btnDriverAllDrives').hide();
                         $('#btnDispatcherAllDrives').show();
                         $('#btnAddDriver').show();
+                        $('#btnBanUsers').show();
                         $('#btnRegisterFormMenu').hide();
-                        $('#menu').css('height', '200');
+                        $('#menu').css('height', '248');
                         $('.admin-filters').show();
                         $('.customer-filters').hide();
                     } else if (user.role === 'Driver') {
@@ -285,6 +289,7 @@ $(document).ready(function () {
                         $('#btnDriverAllDrives').show();
                         $('#btnDispatcherAllDrives').hide();
                         $('#btnAddDriver').hide();
+                        $('#btnBanUsers').hide();
                         $('#btnRegisterFormMenu').hide();
                         $('#menu').css('height', '152');
                     } else {
@@ -294,6 +299,7 @@ $(document).ready(function () {
                         $('#btnDriverAllDrives').hide();
                         $('#btnDispatcherAllDrives').hide();
                         $('#btnAddDriver').hide();
+                        $('#btnBanUsers').hide();
                         $('#btnRegisterFormMenu').hide();
                         $('#menu').css('height', '152');
                         $('.admin-filters').hide();
@@ -305,6 +311,11 @@ $(document).ready(function () {
 
                     PrintAllDrives(allDrives);
                     
+                },
+                statusCode: {
+                    400: function (response) {
+                        alert('Your account is suspended, please contact our staff.');
+                    }
                 },
                 error: function (jqXHR) {
                     $('#errorLoginLbl').text('Wrong username or password!');

@@ -20,14 +20,24 @@ namespace TaxiService.Controllers
         {
             if (DataRepository._driverRepo.LogIn(login.Username, ServiceSecurity.EncryptData(login.Password, "password")))
             {
-                LoginDto logObj = new LoginDto();
-                logObj.User = DataRepository._driverRepo.RetriveDriverByUserName(login.Username);
-                logObj.AccessToken = ServiceSecurity.MakeToken($"{login.Username}:{login.Password}");
+                Driver driver = DataRepository._driverRepo.RetriveDriverByUserName(login.Username);
 
-                List<Drive> allDrives = DataRepository._driveRepo.GetAllDrives().ToList();
-                logObj.User.Drives = allDrives.FindAll(x => (x.DrivedBy != null) && (x.DrivedBy.Id == logObj.User.Id));
+                if (!driver.IsBanned)
+                {
+                    LoginDto logObj = new LoginDto();
+                    logObj.User = driver;
+                    logObj.AccessToken = ServiceSecurity.MakeToken($"{login.Username}:{login.Password}");
 
-                return Request.CreateResponse(HttpStatusCode.OK, logObj);
+                    List<Drive> allDrives = DataRepository._driveRepo.GetAllDrives().ToList();
+                    logObj.User.Drives = allDrives.FindAll(x => (x.DrivedBy != null) && (x.DrivedBy.Id == logObj.User.Id));
+
+                    return Request.CreateResponse(HttpStatusCode.OK, logObj);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
+                
             }
             else if(DataRepository._dispatcherRepo.LogIn(login.Username, ServiceSecurity.EncryptData(login.Password,"password")))
             {
@@ -42,11 +52,20 @@ namespace TaxiService.Controllers
             }
             else if(DataRepository._customerRepo.LogIn(login.Username, ServiceSecurity.EncryptData(login.Password, "password")))
             {
-                LoginDto logObj = new LoginDto();
-                logObj.User = DataRepository._customerRepo.RetriveCustomerByUserName(login.Username);
-                logObj.User.Drives = (List<Drive>)DataRepository._driveRepo.GetAllDrivesForCustomerId(logObj.User.Id);
-                logObj.AccessToken = ServiceSecurity.MakeToken($"{login.Username}:{login.Password}");
-                return Request.CreateResponse(HttpStatusCode.OK, logObj);
+                Customer customer = DataRepository._customerRepo.RetriveCustomerByUserName(login.Username);
+
+                if (!customer.IsBanned)
+                {
+                    LoginDto logObj = new LoginDto();
+                    logObj.User = customer;
+                    logObj.User.Drives = (List<Drive>)DataRepository._driveRepo.GetAllDrivesForCustomerId(logObj.User.Id);
+                    logObj.AccessToken = ServiceSecurity.MakeToken($"{login.Username}:{login.Password}");
+                    return Request.CreateResponse(HttpStatusCode.OK, logObj);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
             }
             else
             {

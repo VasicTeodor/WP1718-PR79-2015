@@ -16,6 +16,7 @@ namespace TaxiService.Models
         public string Surname { get; set; }
         public string Jmbg { get; set; }
         public string Phone { get; set; }
+        public bool IsBanned { get; set; }
         public string Email { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public Enums.Genders Gender { get; set; }
