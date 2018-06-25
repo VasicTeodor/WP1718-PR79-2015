@@ -2,6 +2,7 @@
     var sendData = false;
 
     let showHome = function () {
+        $('.wraper').fadeIn('slow', 'swing');
         $('#displayTrips').fadeIn('slow', 'swing');
     };
 
@@ -66,6 +67,7 @@
             $('#displayNewRide').fadeOut('slow', 'swing');
             $('#displayBanner').fadeOut('slow', 'swing');
             $('#displayHeader').fadeIn('slow', 'swing');
+            $('.wraper').fadeIn('slow', 'swing');
             $('#displayRegister').fadeIn('slow', 'swing');
             $('#displayFooter').fadeIn('slow', 'swing');
         }
@@ -93,6 +95,7 @@
             $('#displayNewRide').fadeOut('slow', 'swing');
             $('#displayBanner').fadeOut('slow', 'swing');
             $('#displayHeader').fadeIn('slow', 'swing');
+            $('.wraper').fadeIn('slow', 'swing');
             $('#displayRegister').fadeIn('slow', 'swing');
             $('#displayFooter').fadeIn('slow', 'swing');
         }
@@ -139,6 +142,7 @@
 
                             $('#displayRegister').fadeOut('slow', 'swing', showHome);
                             formReset();
+                            showHome();
                         },
                         error: function () {
                             alert("Greska pri update-u!");
@@ -174,6 +178,7 @@
 
                                 $('#displayRegister').fadeOut('slow', 'swing', showHome);
                                 formReset();
+                                showHome();
                             },
                             error: function () {
                                 alert("Greska pri update-u!");
@@ -195,6 +200,7 @@
 
                                 $('#displayRegister').fadeOut('slow', 'swing', showHome);
                                 formReset();
+                                showHome();
                             },
                             error: function () {
                                 alert("Greska pri update-u!");
@@ -241,6 +247,7 @@
                 success: function (data) {
                     $('#displayRegister').fadeOut('slow', 'swing', showHome);
                     formReset();
+                    showHome();
                 },
                 error: function (jqXHR) {
                     alert("Greska pri registraciji!");
@@ -278,6 +285,7 @@
                     $('#btnDispatcherAllDrives').hide();
                     $('#displayRegister').fadeOut('slow', 'swing', showHome);
                     formReset();
+                    showHome();
                 },
                 error: function () {
                     alert("Greska pri registraciji!");

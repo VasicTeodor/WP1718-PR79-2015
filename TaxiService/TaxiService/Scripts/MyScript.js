@@ -67,8 +67,8 @@ var updateDriverLocation = function (address, addressX, addressY) {
     let location = {
         drivedBy: user.id,
         address: address,
-        addressX: addressX,
-        addressY: addressY
+        addressX: addressX.replace(/\./, ','),
+        addressY: addressY.replace(/\./, ',')
     };
 
     $.ajax({
@@ -259,6 +259,7 @@ $(document).ready(function () {
         $('#displayNewRide').fadeOut('slow', 'swing');
         $('#displayBanner').fadeOut('slow', 'swing');
         $('#displayHeader').fadeIn('slow', 'swing');
+        $('.wraper').fadeIn('slow', 'swing');
         $('#displayRegister').fadeIn('slow', 'swing');
         $('#displayFooter').fadeIn('slow', 'swing');
     };
@@ -280,6 +281,7 @@ $(document).ready(function () {
         $('#displayLoginForm').fadeOut('slow', 'swing');
         $("#blurBackground").fadeOut('slow', 'swing');
         if (sessionStorage.getItem('accessToken')) {
+            $('.wraper').fadeIn('slow', 'swing');
             $('#displayTrips').fadeIn('slow', 'swing');
             $('body').css('backgroundImage', 'url(Images/tax3i.jpg)');
             $('#btnLoginForm').hide();
@@ -327,6 +329,7 @@ $(document).ready(function () {
         } else {
             $('#displayTrips').fadeOut('slow', 'swing');
             $('#displayBanner').fadeIn('slow', 'swing');
+            $('.wraper').hide();
         }
         $('#displayRegister').fadeOut('slow', 'swing');
         $('#displayUsers').fadeOut('slow', 'swing');
@@ -394,6 +397,7 @@ $(document).ready(function () {
         $("#displayNewDrive").fadeOut('slow', 'swing');
         home();
         formReset();
+        $('.wraper').fadeIn('slow', 'swing');
         $('#displayTrips').fadeIn('slow', 'swing');
     });
 
@@ -402,6 +406,7 @@ $(document).ready(function () {
         $("#displayDriverFinished").fadeOut('slow', 'swing');
         home();
         formReset();
+        $('.wraper').fadeIn('slow', 'swing');
         $('#displayTrips').fadeIn('slow', 'swing');
     });
 
@@ -410,6 +415,7 @@ $(document).ready(function () {
         $("#displayCommentForm").fadeOut('slow', 'swing');
         home();
         formReset();
+        $('.wraper').fadeIn('slow', 'swing');
         $('#displayTrips').fadeIn('slow', 'swing');
     });
 
@@ -418,6 +424,7 @@ $(document).ready(function () {
         $("#displayDriverLocation").fadeOut('slow', 'swing');
         home();
         formReset();
+        $('.wraper').fadeIn('slow', 'swing');
         $('#displayTrips').fadeIn('slow', 'swing');
     });
 
@@ -428,6 +435,7 @@ $(document).ready(function () {
             $('#btnRegisterFormMenu').show();
             $('#btnAddDriver').hide();
             $('#displayUsers').hide();
+            $('.wraper').hide();
             $('#usersTable').empty();
             $('#btnBanUsers').hide();
             $('#menu').css('height', '200');
@@ -495,11 +503,13 @@ $(document).ready(function () {
                         '</tr>');
                     counter++;
                 }
+                $('.wraper').fadeOut('slow', 'swing');
                 $('#displayTrips').fadeOut('slow', 'swing');
                 $('#displayRegister').fadeOut('slow', 'swing');
                 $('#displayNewRide').fadeOut('slow', 'swing');
                 $('#displayBanner').fadeOut('slow', 'swing');
                 $('#displayHeader').fadeIn('slow', 'swing');
+                $('.wraper').fadeIn('slow', 'swing');
                 $('#displayUsers').fadeIn('slow', 'swing');
                 $('#displayFooter').fadeIn('slow', 'swing');
             },

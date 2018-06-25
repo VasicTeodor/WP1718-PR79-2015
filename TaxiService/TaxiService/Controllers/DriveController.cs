@@ -46,6 +46,17 @@ namespace TaxiService.Controllers
                 {
                     Driver driver = DataRepository._driverRepo.RetriveDriverById(userId);
                     allDrives.RemoveAll(d => (d.State != Enums.Status.Created) || (d.CarType != driver.Car.Type));
+                    allDrives.Sort((d1, d2) => CalculateLength(driver.Location.X, driver.Location.Y, d2.Address.X, d2.Address.Y).CompareTo(CalculateLength(driver.Location.X, driver.Location.Y, d1.Address.X, d1.Address.Y)));
+                    // This shows calling the Sort(Comparison(T) overload using 
+                    // an anonymous method for the Comparison delegate. 
+                    // This method treats null as the lesser of two values.
+                    //parts.Sort(delegate (Part x, Part y)
+                    //{
+                    //    if (x.PartName == null && y.PartName == null) return 0;
+                    //    else if (x.PartName == null) return -1;i ovooo
+                    //    else if (y.PartName == null) return 1;ovoo
+                    //    else return x.PartName.CompareTo(y.PartName);
+                    //});
                 }
 
                 if(userRole == Enums.Roles.Customer)
@@ -282,6 +293,11 @@ namespace TaxiService.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError);
             }
+        }
+
+        private double CalculateLength(double x1, double y1, double x2, double y2)
+        {
+            return Math.Sqrt((Math.Pow((x1 - y1), 2)) - (Math.Pow((x2 - y2), 2)));
         }
     }
 }

@@ -258,8 +258,8 @@ namespace TaxiService.Repository
                         Location = new Location
                         {
                             Address = driver.Element("Address").Value,
-                            X = Double.Parse(driver.Element("X").Value),
-                            Y = Double.Parse(driver.Element("Y").Value)
+                            X = (double)(driver.Element("X")),
+                            Y = (double)(driver.Element("Y"))
                         },
                         Car = new Car
                         {
@@ -305,8 +305,8 @@ namespace TaxiService.Repository
                         Location = new Location
                         {
                             Address = driverx.Element("Address").Value,
-                            X = Double.Parse(driverx.Element("X").Value),
-                            Y = Double.Parse(driverx.Element("Y").Value)
+                            X = (double)(driverx.Element("X")),
+                            Y = (double)(driverx.Element("Y"))
                         },
                         Car = new Car
                         {
@@ -354,8 +354,8 @@ namespace TaxiService.Repository
                         Location = new Location
                         {
                             Address = driverx.Element("Address").Value,
-                            X = Double.Parse(driverx.Element("X").Value),
-                            Y = Double.Parse(driverx.Element("Y").Value)
+                            X = (double)(driverx.Element("X")),
+                            Y = (double)(driverx.Element("Y"))
                         },
                         Car = new Car
                         {

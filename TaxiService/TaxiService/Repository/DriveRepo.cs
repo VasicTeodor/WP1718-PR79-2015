@@ -287,14 +287,14 @@ namespace TaxiService.Repository
                         Address = new Location
                         {
                             Address = drive.Element("AddressA").Value,
-                            X = Double.Parse(drive.Element("AddressX").Value),
-                            Y = Double.Parse(drive.Element("AddressY").Value),
+                            X = (double)(drive.Element("AddressX")),
+                            Y = (double)(drive.Element("AddressY")),
                         },
                         Destination = new Location
                         {
                             Address = drive.Element("DestinationAddress").Value,
-                            X = Double.Parse(drive.Element("DestinationX").Value),
-                            Y = Double.Parse(drive.Element("DestinationY").Value),
+                            X = (double)(drive.Element("DestinationX")),
+                            Y = (double)(drive.Element("DestinationY")),
                         }
                     }).ToList();
 
@@ -472,14 +472,14 @@ namespace TaxiService.Repository
                         Address = new Location
                         {
                             Address = drive.Element("AddressA").Value,
-                            X = Double.Parse(drive.Element("AddressX").Value),
-                            Y = Double.Parse(drive.Element("AddressY").Value),
+                            X = (double)(drive.Element("AddressX")),
+                            Y = (double)(drive.Element("AddressY"))
                         },
                         Destination = new Location
                         {
                             Address = drive.Element("DestinationAddress").Value,
-                            X = Double.Parse(drive.Element("DestinationX").Value),
-                            Y = Double.Parse(drive.Element("DestinationY").Value),
+                            X = (double)(drive.Element("DestinationX")),
+                            Y = (double)(drive.Element("DestinationY"))
                         }
                     }).ToList();
 
@@ -621,14 +621,14 @@ namespace TaxiService.Repository
                         Address = new Location
                         {
                             Address = drive.Element("AddressA").Value,
-                            X = Double.Parse(drive.Element("AddressX").Value),
-                            Y = Double.Parse(drive.Element("AddressY").Value),
+                            X = (double)(drive.Element("AddressX")),
+                            Y = (double)(drive.Element("AddressY"))
                         },
                         Destination = new Location
                         {
                             Address = drive.Element("DestinationAddress").Value,
-                            X = Double.Parse(drive.Element("DestinationX").Value),
-                            Y = Double.Parse(drive.Element("DestinationY").Value),
+                            X = (double)(drive.Element("DestinationX")),
+                            Y = (double)(drive.Element("DestinationY"))
                         }
                     }).ToList();
 

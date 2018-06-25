@@ -155,7 +155,7 @@ function PrintAllDrives(allDrives) {
 
         $('#fillInTrips').append('<div class="home-tt-main">' +
             '<p class="home-tt-display">' + realDate + '</p>' +
-            '<p class="home-tt-display">' + allDrives[i].address.address.toString() + '</p>' +
+            '<p class="home-tt-display">' + allDrives[i].address.address.slice(0, allDrives[i].address.address.indexOf(',')) + '</p>' +
             '<button class="expand-table" onclick="showOtherInfo(this);" id="' + counter.toString() + '">+</button>' +
             '</div>' +
             '<div class="home-tt-other" style="display: none;" id="otherInfo' + counter.toString() + '">' +
@@ -308,6 +308,7 @@ $(document).ready(function () {
                     formReset();
 
                     $('#displayTrips').fadeIn('slow', 'swing');
+                    $('.wraper').fadeIn('slow', 'swing');
 
                     PrintAllDrives(allDrives);
                     

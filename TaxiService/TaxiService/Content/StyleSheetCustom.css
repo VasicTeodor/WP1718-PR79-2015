@@ -563,7 +563,7 @@ header nav ul li p:hover{
 
 .index-banner {
     width: 100%;
-    height: calc(90vh - 100px);
+    height: calc(75vh - 100px);
     background-image: url('../Images/taxi.jpg');
     background-repeat: no-repeat;
     background-position: center;
@@ -597,9 +597,12 @@ header nav ul li p:hover{
     line-height: 40px;
 }
 
-.wraper{
+.wraper {
     width: 320px;
     margin: 5px auto 0 auto;
+    height: auto;
+    overflow-y: scroll;
+    background-color: rgba(255, 255, 255, 0.75);
 }
 
 .trips-wrap {
@@ -880,7 +883,8 @@ header nav ul li p:hover{
     }
 
     .wraper {
-        width: 1000px !important;
+        height: 64vh !important;
+        width: 1020px !important;
     }
 
     .trips-wrap {
@@ -1107,8 +1111,11 @@ footer {
     background-color: rgba(225,225,225,0.75);
     margin-top: 5px;
     overflow: hidden;
-    opacity: 0.75;
-    height: 10%;
+    height: 25vh;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 footer ul{

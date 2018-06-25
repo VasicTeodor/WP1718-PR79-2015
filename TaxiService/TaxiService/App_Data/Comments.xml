@@ -64,4 +64,12 @@
     <Description>Sve je bilo vrh</Description>
     <Grade>5</Grade>
   </Comment>
+  <Comment Id="c3247a53-82b7-4742-a66a-fddb5311e00e">
+    <CommentId>c3247a53-82b7-4742-a66a-fddb5311e00e</CommentId>
+    <CommentedOn>2fd3e4ea-ac84-4bb5-b623-dada2b4afb57</CommentedOn>
+    <CreatedById>119b31ed-02e9-4e33-82e0-1acac9f39c7b</CreatedById>
+    <CreatedOn>2018-06-24T23:23:04.2826642+02:00</CreatedOn>
+    <Description>Doslo je do sudara na putu, nisam mogao doci do musterije.</Description>
+    <Grade>0</Grade>
+  </Comment>
 </Comments>

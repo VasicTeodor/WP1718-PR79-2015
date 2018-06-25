@@ -13,9 +13,9 @@
     <Role>Driver</Role>
     <Occupied>false</Occupied>
     <IsBanned>false</IsBanned>
-    <X>452644898</X>
-    <Y>198350903</Y>
-    <Address>Краљевића Марка 50, Нови Сад 21101</Address>
+    <X>45.2587591</X>
+    <Y>19.8386296</Y>
+    <Address>Војводе Шупљикца 2, Нови Сад 21101</Address>
     <CarId>2</CarId>
     <ModelYear>2015</ModelYear>
     <RegNumber>NS222TX</RegNumber>
@@ -62,5 +62,47 @@
     <ModelYear>2018</ModelYear>
     <RegNumber>NS244TX</RegNumber>
     <Type>Car</Type>
+  </Driver>
+  <Driver Id="191c3687-35bf-43ea-90b2-d18e62b7db24">
+    <Id>191c3687-35bf-43ea-90b2-d18e62b7db24</Id>
+    <Username>Driver4</Username>
+    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
+    <Name>Sonja</Name>
+    <Surname>Marinkovic</Surname>
+    <Jmbg>3423542435662</Jmbg>
+    <Phone>34242312</Phone>
+    <Email>sonja@gmail.com</Email>
+    <Gender>Female</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Driver</Role>
+    <Occupied>false</Occupied>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>1</CarId>
+    <ModelYear>2014</ModelYear>
+    <RegNumber>NS205TX</RegNumber>
+    <Type>Bez_Naznake</Type>
+  </Driver>
+  <Driver Id="f02b184e-21b6-462a-baed-05c973122429">
+    <Id>f02b184e-21b6-462a-baed-05c973122429</Id>
+    <Username>Driver5</Username>
+    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
+    <Name>Suzana</Name>
+    <Surname>Jovicic</Surname>
+    <Jmbg>2346423432345</Jmbg>
+    <Phone>342534</Phone>
+    <Email>suza@taxins.com</Email>
+    <Gender>Female</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Driver</Role>
+    <Occupied>false</Occupied>
+    <X>452639304</X>
+    <Y>198308533</Y>
+    <Address>Булевар Јаше Томића undefined, Нови Сад 21101</Address>
+    <CarId>4</CarId>
+    <ModelYear>2015</ModelYear>
+    <RegNumber>NS5343TX</RegNumber>
+    <Type>Kombi</Type>
   </Driver>
 </Drivers>

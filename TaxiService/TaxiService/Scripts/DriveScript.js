@@ -118,7 +118,7 @@ function DisplayNewDrive(data) {
 
     $('#fillInTrips').append('<div class="home-tt-main">' +
         '<p class="home-tt-display">' + realDate + '</p>' +
-        '<p class="home-tt-display">' + data.address.address.toString() + '</p>' +
+        '<p class="home-tt-display">' + data.address.address.slice(0, data.address.address.indexOf(',')) + '</p>' +
         '<button class="expand-table" onclick="showOtherInfo(this);" id="' + counter.toString() + '">+</button>' +
         '</div>' +
         '<div class="home-tt-other" style="display: none;" id="otherInfo' + counter.toString() + '">' +
