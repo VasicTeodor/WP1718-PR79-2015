@@ -52,11 +52,13 @@
             </div>
         </section>
         <section class="home-trips-table">
-            <div class="wraper" style="display: none;">
+            <div class="wraper">
                 <div id="displayTrips" class="trips-wrap" style="display: none;">
                     <p class="home-date-time" id="clock">OVDE IDE DATUM I SAT</p>
                     <div class="weather">
                         <div id="openweathermap-widget-15"></div>
+                    </div>
+                    <div id="displayCurDrive" class="cur-drive">
                     </div>
                     <div id="driveFunc" class="drive-filters">
                         <button id="btnNewDrive" class="edit-new-drive">New drive</button>
@@ -436,7 +438,7 @@
                             <tr class="table-tr-drive">
                                 <td class="table-td-drive">Text:</td>
                                 <td class="table-td-drive">
-                                    <input id="commentText" type="text" class="home-tt-display2" />
+                                    <textarea id="commentText" type="text" class="home-tt-display2" style="text-align:left;"></textarea>
                                 </td>
                             </tr>
                             <tr class="table-tr-drive">

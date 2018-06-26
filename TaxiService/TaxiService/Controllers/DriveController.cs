@@ -14,14 +14,16 @@ namespace TaxiService.Controllers
     [BasicAuthentication]
     public class DriveController : ApiController
     {
+        //private static List<Drive> sortDrives = new List<Drive>();
+
         [HttpGet]
         [Route("api/Drive/GetDrive")]
         public HttpResponseMessage QuitDrive([FromUri]string id)
         {
             Guid driveId = Guid.Parse(id);
-            Drive drive = null; 
+            Drive drive = null;
             drive = DataRepository._driveRepo.RetriveDriveById(driveId);
-            if(drive != null)
+            if (drive != null)
             {
                 return Request.CreateResponse(HttpStatusCode.OK, drive);
             }
@@ -42,24 +44,24 @@ namespace TaxiService.Controllers
             allDrives = DataRepository._driveRepo.GetAllDrives().ToList();
             if (allDrives != null)
             {
-                if(userRole == Enums.Roles.Driver)
+                if (userRole == Enums.Roles.Driver)
                 {
                     Driver driver = DataRepository._driverRepo.RetriveDriverById(userId);
-                    allDrives.RemoveAll(d => (d.State != Enums.Status.Created) || (d.CarType != driver.Car.Type));
-                    allDrives.Sort((d1, d2) => CalculateLength(driver.Location.X, driver.Location.Y, d2.Address.X, d2.Address.Y).CompareTo(CalculateLength(driver.Location.X, driver.Location.Y, d1.Address.X, d1.Address.Y)));
-                    // This shows calling the Sort(Comparison(T) overload using 
-                    // an anonymous method for the Comparison delegate. 
-                    // This method treats null as the lesser of two values.
-                    //parts.Sort(delegate (Part x, Part y)
-                    //{
-                    //    if (x.PartName == null && y.PartName == null) return 0;
-                    //    else if (x.PartName == null) return -1;i ovooo
-                    //    else if (y.PartName == null) return 1;ovoo
-                    //    else return x.PartName.CompareTo(y.PartName);
-                    //});
+                    allDrives.RemoveAll(d => (d.State != Enums.Status.Created) || (d.CarType != driver.Car.Type && d.CarType != Enums.CarTypes.Bez_Naznake));
+                    allDrives.Sort(delegate (Drive d1, Drive d2)
+                    {
+                        if(CalculateLength(driver.Location.X,driver.Location.Y,d1.Address.X,d1.Address.Y) < CalculateLength(driver.Location.X, driver.Location.Y, d2.Address.X, d2.Address.Y))
+                        {
+                            return -1;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    });
                 }
 
-                if(userRole == Enums.Roles.Customer)
+                if (userRole == Enums.Roles.Customer)
                 {
                     allDrives.RemoveAll(d => d.OrderedBy.Id != userId);
                 }
@@ -92,7 +94,7 @@ namespace TaxiService.Controllers
                     allDrives.RemoveAll(d => (d.OrderedBy == null) || (d.OrderedBy.Id != userId));
                 }
 
-                if(userRole == Enums.Roles.Dispatcher)
+                if (userRole == Enums.Roles.Dispatcher)
                 {
                     allDrives.RemoveAll(d => (d.ApprovedBy == null) || (d.ApprovedBy.Id != userId));
                 }
@@ -122,7 +124,7 @@ namespace TaxiService.Controllers
 
             if (allDrives != null && userDrives != null)
             {
-                if(role == Enums.Roles.Customer)
+                if (role == Enums.Roles.Customer)
                 {
                     List<Drive> filtered = new List<Drive>();
 
@@ -133,7 +135,7 @@ namespace TaxiService.Controllers
                         if (sortBy.Equals("Date"))
                         {
                             userDrives.Sort((d1, d2) => DateTime.Compare(d2.Date, d1.Date));
-                        }else if (sortBy.Equals("Grade"))
+                        } else if (sortBy.Equals("Grade"))
                         {
                             userDrives.RemoveAll(x => x.Comments == null);
 
@@ -143,7 +145,7 @@ namespace TaxiService.Controllers
 
                     if (!jToken.Value<string>("filterBy").Equals("State"))
                     {
-                        Enums.Status state = (Enums.Status)Enum.Parse(typeof(Enums.Status),jToken.Value<string>("filterBy"));
+                        Enums.Status state = (Enums.Status)Enum.Parse(typeof(Enums.Status), jToken.Value<string>("filterBy"));
                         userDrives.RemoveAll(x => x.State != state);
                     }
 
@@ -169,7 +171,7 @@ namespace TaxiService.Controllers
                             userDrives.RemoveAll(d => d.Date.Date > dateTo.Date);
                         }
                     }
-                    
+
                     if (!String.IsNullOrEmpty(jToken.Value<string>("gradeFrom")) || !String.IsNullOrEmpty(jToken.Value<string>("gradeTo")))
                     {
 
@@ -224,16 +226,16 @@ namespace TaxiService.Controllers
                             userDrives.RemoveAll(d => d.Price > priceTo);
                         }
                     }
-                    
+
                     filteredDrives = userDrives;
                 }
 
-                if(role == Enums.Roles.Dispatcher)
+                if (role == Enums.Roles.Dispatcher)
                 {
                     if (jToken.Value<string>("searchRole").Equals("Customer"))
                     {
                         allDrives.RemoveAll(d => d.OrderedBy == null);
-                        if(!String.IsNullOrEmpty(jToken.Value<string>("filterName")) || !String.IsNullOrEmpty(jToken.Value<string>("filterSurname")))
+                        if (!String.IsNullOrEmpty(jToken.Value<string>("filterName")) || !String.IsNullOrEmpty(jToken.Value<string>("filterSurname")))
                         {
                             if (!String.IsNullOrEmpty(jToken.Value<string>("filterName")))
                             {
@@ -295,9 +297,33 @@ namespace TaxiService.Controllers
             }
         }
 
+        //private void BubbleSort(List<Drive> data, Driver driver)
+        //{
+        //    int i, j;
+        //    int N = data.Count;
+
+        //    for (j = N - 1; j > 0; j--)
+        //    {
+        //        for (i = 0; i < j; i++)
+        //        {
+        //            if (CalculateLength(driver.Location.X,driver.Location.Y,data[i].Address.X,data[i].Address.Y) > CalculateLength(driver.Location.X, driver.Location.Y, data[i+1].Address.X, data[i+1].Address.Y))
+        //                Exchange(data, i, i + 1);
+        //        }
+        //    }
+        //}
+
+        //private static void Exchange(List<Drive> drives, int m, int n)
+        //{
+        //    Drive temporary;
+
+        //    temporary = drives[m];
+        //    drives[m] = drives[n];
+        //    drives[n] = temporary;
+        //}
+
         private double CalculateLength(double x1, double y1, double x2, double y2)
         {
-            return Math.Sqrt((Math.Pow((x1 - y1), 2)) - (Math.Pow((x2 - y2), 2)));
+            return Math.Sqrt(Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2));
         }
     }
 }

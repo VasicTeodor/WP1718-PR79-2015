@@ -87,10 +87,17 @@ namespace TaxiService.Controllers
 
             if (old != null)
             {
-                old.Address = drive.Address;
-                old.CarType = drive.CarType;
-                DataRepository._driveRepo.CustomerEditDrive(old);
-                return Request.CreateResponse(HttpStatusCode.OK, old);
+                if (old.State == Enums.Status.Created)
+                {
+                    old.Address = drive.Address;
+                    old.CarType = drive.CarType;
+                    DataRepository._driveRepo.CustomerEditDrive(old);
+                    return Request.CreateResponse(HttpStatusCode.OK, old);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.Gone);
+                }
             }
             else
             {

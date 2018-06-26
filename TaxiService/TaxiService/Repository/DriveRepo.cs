@@ -203,7 +203,7 @@ namespace TaxiService.Repository
             if (File.Exists(fileName))
             {
                 XDocument xmlDocument = XDocument.Load(fileName);
-                
+
                 xmlDocument.Element("Drives")
                                         .Elements("Drive")
                                         .Where(x => x.Attribute("Id").Value == drive.DriveId.ToString()).FirstOrDefault()
@@ -298,7 +298,7 @@ namespace TaxiService.Repository
                         }
                     }).ToList();
 
-                foreach(var d in drives)
+                foreach (var d in drives)
                 {
 
                     if (d.DispatcherId.Equals(Guid.Empty) && d.DriverId.Equals(Guid.Empty))
@@ -773,7 +773,7 @@ namespace TaxiService.Repository
                     }
                 }
 
-                return fullDrives.FirstOrDefault( d => d.DriveId == id);
+                return fullDrives.FirstOrDefault(d => d.DriveId == id);
             }
             else
             {

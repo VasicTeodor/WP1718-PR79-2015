@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
+using TaxiService.Models;
 using TaxiService.Repository;
 
 namespace TaxiService.ApiHelpers
@@ -15,7 +16,16 @@ namespace TaxiService.ApiHelpers
             var encryptedPass = EncryptData(password, "password");
             if (DataRepository._driverRepo.LogIn(username, encryptedPass))
             {
-                return true;
+                Driver driver = null;
+                driver = DataRepository._driverRepo.RetriveDriverByUserName(username);
+                if(driver != null && driver.IsBanned == false)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else if (DataRepository._dispatcherRepo.LogIn(username, encryptedPass))
             {
@@ -23,7 +33,17 @@ namespace TaxiService.ApiHelpers
             }
             else if (DataRepository._customerRepo.LogIn(username, encryptedPass))
             {
-                return true;
+                Customer customer = null;
+                customer = DataRepository._customerRepo.RetriveCustomerByUserName(username);
+
+                if(customer != null && customer.IsBanned == false)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {

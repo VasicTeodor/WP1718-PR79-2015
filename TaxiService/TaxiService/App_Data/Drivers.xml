@@ -34,9 +34,9 @@
     <Role>Driver</Role>
     <Occupied>false</Occupied>
     <IsBanned>false</IsBanned>
-    <X>43</X>
-    <Y>0</Y>
-    <Address>weqad</Address>
+    <X>45.2622559</X>
+    <Y>19.8188044</Y>
+    <Address>Руменачка 33, Нови Сад 21113</Address>
     <CarId>2</CarId>
     <ModelYear>2016</ModelYear>
     <RegNumber>NS325TX</RegNumber>
@@ -53,11 +53,11 @@
     <Email>zrna96@gmail.com</Email>
     <Gender>Male</Gender>
     <Role>Driver</Role>
-    <Occupied>false</Occupied>
+    <Occupied>true</Occupied>
     <IsBanned>false</IsBanned>
-    <X>32</X>
-    <Y>53</Y>
-    <Address>Belorusija</Address>
+    <X>45.2568356</X>
+    <Y>19.8316839</Y>
+    <Address>Branimira Ćosića 10, Novi Sad 21101</Address>
     <CarId>3</CarId>
     <ModelYear>2018</ModelYear>
     <RegNumber>NS244TX</RegNumber>
@@ -97,9 +97,9 @@
     <IsBanned>false</IsBanned>
     <Role>Driver</Role>
     <Occupied>false</Occupied>
-    <X>452639304</X>
-    <Y>198308533</Y>
-    <Address>Булевар Јаше Томића undefined, Нови Сад 21101</Address>
+    <X>45.2571111</X>
+    <Y>19.8344797</Y>
+    <Address>Булевар ослобођења 65, Нови Сад 21101</Address>
     <CarId>4</CarId>
     <ModelYear>2015</ModelYear>
     <RegNumber>NS5343TX</RegNumber>

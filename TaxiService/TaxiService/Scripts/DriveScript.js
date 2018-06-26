@@ -1,4 +1,5 @@
 ﻿var updateDriveId;
+var price = true;
 
 function DisplayNewDrive(data) {
     let user = JSON.parse(sessionStorage.getItem('activeUser'));
@@ -52,6 +53,25 @@ function DisplayNewDrive(data) {
             '<button class="edit-drive" id="btnQuitDrive' + counter + '"  onclick="QuitDrive(this);" value="' + data.driveId.toString() + '">Quit</button>' +
             '</td>' +
             '</tr>';
+
+        $('#displayCurDrive').empty();
+        $('#displayCurDrive').append('<table class="cur-drive-table">' +
+            '<tr>' +
+            '<th colspan="2">CURRENT DRIVE</th>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>SATE:</td>' +
+            '<td> On waiting list </td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>ADDRESS:</td>' +
+            '<td>' + data.address.address.slice(0, data.address.address.indexOf(',')) + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>CAR TYPE:</td>' +
+            '<td>' + carType + '</td>' +
+            '</tr>' +
+            '</table>');
     }
 
     let driver = '';
@@ -246,7 +266,7 @@ function EditDrive(elem) {
                 $('#dispatcherDrive').show();
                 $('#btnCreateDrive').hide();
                 $('#btnEditDrive').show();
-                freeDrivers(data.carType);
+                freeDriversLocation(data.carType, data.address.x, data.address.y);
             } else {
                 $('#driveAddress').parent().parent().hide();
                 $('#driveAddressX').parent().parent().hide();
@@ -290,40 +310,50 @@ function DriverDrive(elem) {
                 'Authorization': 'Basic ' + token.toString()
             },
             success: function (data) {
+                sessionStorage.setItem('activeUser', JSON.stringify(data));
                 $('#' + elem.id).fadeOut('slow', 'swing');
             },
-            error: function () {
-                alert("Error while accepting drive, try again later!");
+            statusCode: {
+                410: function () {
+                    alert('This drive is not active anymore.');
+                    drives();
+                },
+                404: function () {
+                    alert("Error while accepting drive, try again later!");
+                }
             }
         });
     }
 }
 
 var myDrives = function GetAllMyDrives() {
-    let user = JSON.parse(sessionStorage.getItem('activeUser'));
-    let token = sessionStorage.getItem('accessToken');
+    if (!filtersOn && !allDrivesOn) {
+        let user = JSON.parse(sessionStorage.getItem('activeUser'));
+        let token = sessionStorage.getItem('accessToken');
 
-    $.ajax({
-        type: 'GET',
-        url: '/api/Drive/GetAllDrivesForId',
-        data: {
-            id: user.id,
-            role: user.role
-        },
-        dataType: 'json',
-        headers: {
-            'Authorization': 'Basic ' + token.toString()
-        },
-        success: function (data) {
-            PrintAllDrives(data);
-        },
-        error: function () {
-            alert("Server side error, please try again later!");
-        }
-    });
+        $.ajax({
+            type: 'GET',
+            url: '/api/Drive/GetAllDrivesForId',
+            data: {
+                id: user.id,
+                role: user.role
+            },
+            dataType: 'json',
+            headers: {
+                'Authorization': 'Basic ' + token.toString()
+            },
+            success: function (data) {
+                PrintAllDrives(data);
+            },
+            error: function () {
+                alert("Server side error, please try again later!");
+            }
+        });
+    }
 };
 
 var drives = function GetAllDrives() {
+    //if(!allDrivesOn && !filtersOn)
     let user = JSON.parse(sessionStorage.getItem('activeUser'));
     let token = sessionStorage.getItem('accessToken');
 
@@ -340,6 +370,7 @@ var drives = function GetAllDrives() {
         },
         success: function (data) {
             PrintAllDrives(data);
+            allDrivesOn = true;
         },
         error: function () {
             alert("Server side error, please try again later!");
@@ -379,6 +410,7 @@ $(document).ready(function () {
                     DisplayNewDrive(data);
                     $("#displayNewDrive").fadeOut('slow', 'swing');
                     $("#blurBackground").fadeOut('slow', 'swing');
+                    $('#btnNewDrive').prop("disabled", true);
                     formReset();
                 },
                 error: function () {
@@ -486,8 +518,19 @@ $(document).ready(function () {
                     $("#displayNewDrive").fadeOut('slow', 'swing');
                     formReset();
                 },
-                error: function () {
-                    alert("Error while updating drive, try again later!");
+                statusCode: {
+                    410: function () {
+                        if (user.role === 'Dispatcher') {
+                            alert('This drive is not active anymore.');
+                            drives();
+                        } else {
+                            alert("Your drive is acceppted, you can not edit it anymore.")
+                            myDrives();
+                        }
+                    },
+                    404: function () {
+                        alert("Error while updating drive, try again later!");
+                    }
                 }
             });
 
@@ -517,30 +560,32 @@ $(document).ready(function () {
             price: $('#drivePrice').val().replace(/\./,',')
         };
 
-        $.ajax({
-            type: 'PUT',
-            url: '/api/Driver/UpdateDrive',
-            data: JSON.stringify(drive),
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            headers: {
-                'Authorization': 'Basic ' + token.toString()
-            },
-            success: function (data) {
-                updateDriverLocation($('#driveDestinationAddress').val(), $('#driveDestinationAddressX').val(), $('#driveDestinationAddressY').val());
-                myDrives();
-                $("#blurBackground").fadeOut('slow', 'swing');
-                $("#displayNewDrive").fadeOut('slow', 'swing');
-                formReset();
-            },
-            error: function () {
-                alert("Error while updating drive, try again later!");
-            }
-        });
+        if (price) {
+            $.ajax({
+                type: 'PUT',
+                url: '/api/Driver/UpdateDrive',
+                data: JSON.stringify(drive),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Basic ' + token.toString()
+                },
+                success: function (data) {
+                    updateDriverLocation($('#driveDestinationAddress').val(), $('#driveDestinationAddressX').val(), $('#driveDestinationAddressY').val());
+                    myDrives();
+                    $("#blurBackground").fadeOut('slow', 'swing');
+                    $("#displayNewDrive").fadeOut('slow', 'swing');
+                    formReset();
+                },
+                error: function () {
+                    alert("Error while updating drive, try again later!");
+                }
+            });
 
-        $("#blurBackground").fadeOut('slow', 'swing');
-        $("#displayDriverFinished").fadeOut('slow', 'swing');
-        updateDriveId = '';
+            $("#blurBackground").fadeOut('slow', 'swing');
+            $("#displayDriverFinished").fadeOut('slow', 'swing');
+            updateDriveId = '';
+        }
     });
 
     $('#btnCreateComment').click(function () {
@@ -624,7 +669,7 @@ $(document).ready(function () {
                 filterName: $('#filterName').val(),
                 filterSurname: $('#filterSurname').val()
             };
-            
+            filtersOn = true;
         }
 
         $.ajax({
@@ -679,6 +724,17 @@ $(document).ready(function () {
 
         if (user.role === 'Dispatcher') {
             freeDrivers($('#driveCar').val());
+        }
+    });
+
+    $('#drivePrice').on('input', function () {
+        let input = $(this);
+        if (input.val()) {
+
+            price = true;
+        }
+        else {
+            price = false;
         }
     });
 });

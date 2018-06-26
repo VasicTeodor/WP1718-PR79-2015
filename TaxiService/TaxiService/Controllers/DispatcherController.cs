@@ -97,13 +97,20 @@ namespace TaxiService.Controllers
 
             if (update != null && driver != null && dispatcher != null)
             {
-                update.DrivedBy = driver;
-                update.ApprovedBy = dispatcher;
-                update.State = Enums.Status.Formated;
-                driver.Occupied = true;
-                DataRepository._driverRepo.DriverOccupation(driver);
-                DataRepository._driveRepo.DispatcherEditDrive(update);
-                return Request.CreateResponse(HttpStatusCode.OK, update);
+                if (update.State == Enums.Status.Created || update.State == Enums.Status.Processed)
+                {
+                    update.DrivedBy = driver;
+                    update.ApprovedBy = dispatcher;
+                    update.State = Enums.Status.Processed;
+                    driver.Occupied = true;
+                    DataRepository._driverRepo.DriverOccupation(driver);
+                    DataRepository._driveRepo.DispatcherEditDrive(update);
+                    return Request.CreateResponse(HttpStatusCode.OK, update);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.Gone);
+                }
             }
             else
             {

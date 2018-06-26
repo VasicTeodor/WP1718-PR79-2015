@@ -82,6 +82,59 @@ namespace TaxiService.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/Driver/GetFreeDriversByLen")]
+        [BasicAuthentication]
+        public HttpResponseMessage GetFreeDriversByLen([FromUri]string type, double x, double y)
+        {
+            List<Driver> drivers = null;
+            drivers = DataRepository._driverRepo.RetriveAllDrivers().ToList();
+
+            if (drivers != null)
+            {
+                Enums.CarTypes car = (Enums.CarTypes)Enum.Parse(typeof(Enums.CarTypes), type);
+
+                if (car != Enums.CarTypes.Bez_Naznake)
+                {
+                    drivers.RemoveAll(d => (d.Occupied == true) || (d.Car.Type != car));
+                    drivers.Sort(delegate (Driver d1, Driver d2)
+                    {
+                        if (CalculateLength(x, y, d1.Location.X, d1.Location.Y) < CalculateLength(x, y, d2.Location.X, d2.Location.Y))
+                            return -1;
+                        else
+                            return 1;
+                    });
+
+                    if(drivers.Count > 5)
+                    {
+                        drivers.RemoveRange(5, drivers.Count - 5);
+                    }
+                }
+                else
+                {
+                    drivers.RemoveAll(d => d.Occupied == true);
+                    drivers.Sort(delegate (Driver d1, Driver d2)
+                    {
+                        if (CalculateLength(x, y, d1.Location.X, d1.Location.Y) < CalculateLength(x, y, d2.Location.X, d2.Location.Y))
+                            return -1;
+                        else
+                            return 1;
+                    });
+
+                    if (drivers.Count > 5)
+                    {
+                        drivers.RemoveRange(5, drivers.Count - 5);
+                    }
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, drivers);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+        }
+
         [HttpPut]
         [Route("api/Driver/AcceptDrive")]
         [BasicAuthentication]
@@ -100,12 +153,20 @@ namespace TaxiService.Controllers
 
             if (update != null && driver != null)
             {
-                update.DrivedBy = driver;
-                update.State = Enums.Status.Accepted;
-                driver.Occupied = true;
-                DataRepository._driverRepo.DriverOccupation(driver);
-                DataRepository._driveRepo.DriverEditDrive(update);
-                return Request.CreateResponse(HttpStatusCode.OK, update);
+                if(update.State == Enums.Status.Created)
+                {
+                    update.DrivedBy = driver;
+                    update.State = Enums.Status.Accepted;
+                    driver.Occupied = true;
+                    DataRepository._driverRepo.DriverOccupation(driver);
+                    DataRepository._driveRepo.DriverEditDrive(update);
+                    return Request.CreateResponse(HttpStatusCode.OK, driver);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.Gone);
+                }
+                
             }
             else
             {
@@ -126,8 +187,8 @@ namespace TaxiService.Controllers
             Enums.Status state = (Enums.Status)Enum.Parse(typeof(Enums.Status), jToken.Value<string>("state"));
             Location location = new Location();
             location.Address = jToken.Value<string>("destination");
-            location.X = Double.Parse(jToken.Value<string>("destinationX"));
-            location.Y = Double.Parse(jToken.Value<string>("destinationY"));
+            location.X = jToken.Value<double>("destinationX");
+            location.Y = jToken.Value<double>("destinationY");
             double price = Double.Parse(jToken.Value<string>("price"));
             Drive update = null;
             Driver driver = null;
@@ -161,8 +222,8 @@ namespace TaxiService.Controllers
             
             Location location = new Location();
             location.Address = jToken.Value<string>("address");
-            location.X = Double.Parse(jToken.Value<string>("addressX"));
-            location.Y = Double.Parse(jToken.Value<string>("addressY"));
+            location.X = jToken.Value<double>("addressX");
+            location.Y = jToken.Value<double>("addressY");
             Driver driver = null;
             
             driver = DataRepository._driverRepo.RetriveDriverById(drivenBy);
@@ -194,7 +255,7 @@ namespace TaxiService.Controllers
             comment.CommentId = Guid.NewGuid();
             comment.CreatedOn = DateTime.Now;
             comment.Description = jToken.Value<string>("text");
-            comment.Grade = Int32.Parse(jToken.Value<string>("grade"));
+            comment.Grade = jToken.Value<int>("grade");
             Drive update = null;
             Driver driver = null;
 
@@ -241,6 +302,11 @@ namespace TaxiService.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
+        }
+
+        private double CalculateLength(double x1, double y1, double x2, double y2)
+        {
+            return Math.Sqrt(Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2));
         }
     }
 }

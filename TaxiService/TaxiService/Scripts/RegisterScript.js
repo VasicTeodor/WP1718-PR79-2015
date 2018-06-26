@@ -2,7 +2,6 @@
     var sendData = false;
 
     let showHome = function () {
-        $('.wraper').fadeIn('slow', 'swing');
         $('#displayTrips').fadeIn('slow', 'swing');
     };
 
@@ -67,7 +66,6 @@
             $('#displayNewRide').fadeOut('slow', 'swing');
             $('#displayBanner').fadeOut('slow', 'swing');
             $('#displayHeader').fadeIn('slow', 'swing');
-            $('.wraper').fadeIn('slow', 'swing');
             $('#displayRegister').fadeIn('slow', 'swing');
             $('#displayFooter').fadeIn('slow', 'swing');
         }
@@ -95,7 +93,6 @@
             $('#displayNewRide').fadeOut('slow', 'swing');
             $('#displayBanner').fadeOut('slow', 'swing');
             $('#displayHeader').fadeIn('slow', 'swing');
-            $('.wraper').fadeIn('slow', 'swing');
             $('#displayRegister').fadeIn('slow', 'swing');
             $('#displayFooter').fadeIn('slow', 'swing');
         }
@@ -460,7 +457,8 @@
 
     $('#regCarId').on('input',function () {
         let input = $(this);
-        let is_carId = input.val();
+        let re = /[0-9]+/;
+        let is_carId = re.test(input.val());
         if (is_carId) {
             input.removeClass("reg-table-td-input").addClass("reg-table-td-ok");
             input.removeClass("reg-table-td-error").addClass("reg-table-td-ok");
@@ -470,7 +468,7 @@
         else {
             input.removeClass("reg-table-td-input").addClass("reg-table-td-error");
             input.removeClass("reg-table-td-ok").addClass("reg-table-td-error");
-            $('#errorCarId').text('This field is required!');
+            $('#errorCarId').text('Value must be integer!');
             sendData = false;
         }
     });
@@ -488,7 +486,7 @@
         else {
             input.removeClass("reg-table-td-input").addClass("reg-table-td-error");
             input.removeClass("reg-table-td-ok").addClass("reg-table-td-error");
-            $('#errorModelYear').text('This field is required!');
+            $('#errorModelYear').text('Value must be year of 4 digits!');
             sendData = false;
         }
     });
@@ -506,7 +504,7 @@
         else {
             input.removeClass("reg-table-td-input").addClass("reg-table-td-error");
             input.removeClass("reg-table-td-ok").addClass("reg-table-td-error");
-            $('#errorRegNum').text('This field is required!');
+            $('#errorRegNum').text('Wrong format!(Example: NS111TX)');
             sendData = false;
         }
     });

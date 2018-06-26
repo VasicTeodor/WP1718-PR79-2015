@@ -72,7 +72,7 @@ namespace TaxiService.Repository
                         Grade = Int32.Parse(comment.Element("Grade").Value)
                     }).ToList();
 
-                foreach(var c in comments)
+                foreach (var c in comments)
                 {
                     try
                     {

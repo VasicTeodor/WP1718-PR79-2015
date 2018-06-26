@@ -53,7 +53,7 @@ namespace TaxiService.Repository
             if (File.Exists(fileName))
             {
                 XDocument xmlDocument = XDocument.Load(fileName);
-                
+
                 xmlDocument.Element("Customers")
                                         .Elements("Customer")
                                         .Where(x => x.Attribute("Id").Value == customer.Id.ToString()).FirstOrDefault()
@@ -115,7 +115,7 @@ namespace TaxiService.Repository
             {
                 XDocument xmlDocument = new XDocument(
                 new XDeclaration("1.0", "utf-8", "yes"),
-                
+
                 new XElement("Customers",
                 new XElement("Customer", new XAttribute("Id", customer.Id),
                 new XElement("Id", customer.Id),

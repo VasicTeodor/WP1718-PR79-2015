@@ -1,8 +1,19 @@
-﻿function generateMenu() {
+﻿var filtersOn = false;
+var allDrivesOn = false;
+
+function generateMenu() {
     if (document.getElementById("menu").style.display == "none") {
         document.getElementById("menu").style.display = "block";
     } else {
         document.getElementById("menu").style.display = "none";
+    }
+}
+
+function GetDrivesPeriod() {
+    if (sessionStorage.getItem('accessToken')) {
+        myDrives();
+
+        setTimeout(GetDrivesPeriod, 30000);
     }
 }
 
@@ -67,8 +78,8 @@ var updateDriverLocation = function (address, addressX, addressY) {
     let location = {
         drivedBy: user.id,
         address: address,
-        addressX: addressX.replace(/\./, ','),
-        addressY: addressY.replace(/\./, ',')
+        addressX: addressX,
+        addressY: addressY
     };
 
     $.ajax({
@@ -99,6 +110,35 @@ var freeDrivers = function GetFreeDrivers(carType) {
         url: '/api/Driver/GetFreeDrivers',
         data: {
             type: carType
+        },
+        dataType: 'json',
+        headers: {
+            'Authorization': 'Basic ' + token.toString()
+        },
+        success: function (data) {
+            driver = JSON.stringify(data);
+            $('#freeDriver').empty();
+            for (let i = 0; i < data.length; i++) {
+                let fullName = JSON.stringify(data[i].name) + ' ' + JSON.stringify(data[i].surname);
+                $('#freeDriver').append('<option value="' + JSON.stringify(data[i].id).replace(/"|_/g, '') + '">' + fullName.replace(/"|_/g, '') + '</option>');
+            }
+        },
+        error: function () {
+            alert("There is no free drivers, please try again later!");
+        }
+    });
+};
+
+var freeDriversLocation = function GetFreeDriversBylocation(carType, addressX, addressY) {
+    let token = sessionStorage.getItem('accessToken');
+
+    $.ajax({
+        type: 'GET',
+        url: '/api/Driver/GetFreeDriversByLen',
+        data: {
+            type: carType,
+            x: addressX,
+            y: addressY
         },
         dataType: 'json',
         headers: {
@@ -239,6 +279,8 @@ $(document).ready(function () {
     //    $('#menu').slideToggle(300);
     //});
 
+    GetDrivesPeriod();
+
     let displayRegister = function DisplayRegisterForm() {
         $('#btnAddNewDriver').hide();
         $('#btnUpdateAccount').hide();
@@ -259,7 +301,6 @@ $(document).ready(function () {
         $('#displayNewRide').fadeOut('slow', 'swing');
         $('#displayBanner').fadeOut('slow', 'swing');
         $('#displayHeader').fadeIn('slow', 'swing');
-        $('.wraper').fadeIn('slow', 'swing');
         $('#displayRegister').fadeIn('slow', 'swing');
         $('#displayFooter').fadeIn('slow', 'swing');
     };
@@ -281,7 +322,6 @@ $(document).ready(function () {
         $('#displayLoginForm').fadeOut('slow', 'swing');
         $("#blurBackground").fadeOut('slow', 'swing');
         if (sessionStorage.getItem('accessToken')) {
-            $('.wraper').fadeIn('slow', 'swing');
             $('#displayTrips').fadeIn('slow', 'swing');
             $('body').css('backgroundImage', 'url(Images/tax3i.jpg)');
             $('#btnLoginForm').hide();
@@ -329,7 +369,6 @@ $(document).ready(function () {
         } else {
             $('#displayTrips').fadeOut('slow', 'swing');
             $('#displayBanner').fadeIn('slow', 'swing');
-            $('.wraper').hide();
         }
         $('#displayRegister').fadeOut('slow', 'swing');
         $('#displayUsers').fadeOut('slow', 'swing');
@@ -338,10 +377,26 @@ $(document).ready(function () {
         $('#displayFooter').fadeIn('slow', 'swing');
     };
 
-    $('#btnHomeMenu').click(home);
-    $('#logoClickHome').click(home);
-    $('#logoClickHome2').click(home);
-    $('#btnHomeFooter').click(home);
+    $('#btnHomeMenu').click(function () {
+        allDrivesOn = false;
+        filtersOn = false;
+        home();
+    });
+    $('#logoClickHome').click(function () {
+        allDrivesOn = false;
+        filtersOn = false;
+        home();
+    });
+    $('#logoClickHome2').click(function () {
+        allDrivesOn = false;
+        filtersOn = false;
+        home();
+    });
+    $('#btnHomeFooter').click(function () {
+        allDrivesOn = false;
+        filtersOn = false;
+        home();
+    });
 
     $('#btnExitLogin').click(function () {
         $('#displayLoginForm').hide();
@@ -397,7 +452,6 @@ $(document).ready(function () {
         $("#displayNewDrive").fadeOut('slow', 'swing');
         home();
         formReset();
-        $('.wraper').fadeIn('slow', 'swing');
         $('#displayTrips').fadeIn('slow', 'swing');
     });
 
@@ -406,7 +460,6 @@ $(document).ready(function () {
         $("#displayDriverFinished").fadeOut('slow', 'swing');
         home();
         formReset();
-        $('.wraper').fadeIn('slow', 'swing');
         $('#displayTrips').fadeIn('slow', 'swing');
     });
 
@@ -415,7 +468,6 @@ $(document).ready(function () {
         $("#displayCommentForm").fadeOut('slow', 'swing');
         home();
         formReset();
-        $('.wraper').fadeIn('slow', 'swing');
         $('#displayTrips').fadeIn('slow', 'swing');
     });
 
@@ -424,7 +476,6 @@ $(document).ready(function () {
         $("#displayDriverLocation").fadeOut('slow', 'swing');
         home();
         formReset();
-        $('.wraper').fadeIn('slow', 'swing');
         $('#displayTrips').fadeIn('slow', 'swing');
     });
 
@@ -435,9 +486,9 @@ $(document).ready(function () {
             $('#btnRegisterFormMenu').show();
             $('#btnAddDriver').hide();
             $('#displayUsers').hide();
-            $('.wraper').hide();
             $('#usersTable').empty();
             $('#btnBanUsers').hide();
+            $('#btnNewDrive').prop("disabled", false);
             $('#menu').css('height', '200');
             $('#fillInTrips').empty();
             $('body').css('backgroundImage', 'url(Images/allBlack.png)');
@@ -447,6 +498,10 @@ $(document).ready(function () {
             $('#filtersTable').hide();
             home();
             formReset();
+            var inProgress = false;
+            var driving = false;
+            var filtersOn = false;
+            var allDrivesOn = false;
         }
     };
 
@@ -503,13 +558,11 @@ $(document).ready(function () {
                         '</tr>');
                     counter++;
                 }
-                $('.wraper').fadeOut('slow', 'swing');
                 $('#displayTrips').fadeOut('slow', 'swing');
                 $('#displayRegister').fadeOut('slow', 'swing');
                 $('#displayNewRide').fadeOut('slow', 'swing');
                 $('#displayBanner').fadeOut('slow', 'swing');
                 $('#displayHeader').fadeIn('slow', 'swing');
-                $('.wraper').fadeIn('slow', 'swing');
                 $('#displayUsers').fadeIn('slow', 'swing');
                 $('#displayFooter').fadeIn('slow', 'swing');
             },

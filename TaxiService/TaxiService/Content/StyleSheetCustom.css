@@ -128,7 +128,7 @@ body {
     border: 2px solid black;
 }
 
-.index-large-text{
+.index-large-text {
     font-family: Tahoma;
     font-size: 40px;
     text-align: center;
@@ -160,7 +160,7 @@ body {
     white-space: nowrap;
 }
 
-.index-login-table{
+.index-login-table {
     width: 90%;
     height: 70%;
     margin: auto auto;
@@ -168,17 +168,17 @@ body {
     overflow: hidden;
 }
 
-.index-login-table p {
-    font-family: Tahoma;
-    font-size: 20px;
-    font-weight: 700;
-    text-align: center;
-    white-space: nowrap;
-    width: 50%;
-    margin: 15px 20%;
-}
+    .index-login-table p {
+        font-family: Tahoma;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        white-space: nowrap;
+        width: 50%;
+        margin: 15px 20%;
+    }
 
-.index-text-wrap{
+.index-text-wrap {
     width: auto;
     height: 30px;
     display: flex;
@@ -277,7 +277,7 @@ body {
     cursor: pointer;
 }
 
-@media only screen and (min-width: 1000px){
+@media only screen and (min-width: 1000px) {
 
     .map {
         background-color: white !important;
@@ -285,7 +285,7 @@ body {
         height: 500px !important;
     }
 
-    
+
     .backgroundDiv {
         width: 720px !important;
     }
@@ -351,7 +351,7 @@ header {
     background-color: rgba(225,225,225,0.75);
     width: 100%;
     height: 100px;
-    z-index:1000;
+    z-index: 1000;
 }
 
 .menu-button {
@@ -386,29 +386,29 @@ header nav ul {
     border-radius: 0 0 15px 15px;
 }
 
-header nav ul li{
-    list-style: none;
-    padding: 3px 2px;
-    white-space: nowrap;
-    z-index:1000;
-    cursor: pointer;
-}
+    header nav ul li {
+        list-style: none;
+        padding: 3px 2px;
+        white-space: nowrap;
+        z-index: 1000;
+        cursor: pointer;
+    }
 
-header nav ul li p{
-    font-family: Tahoma;
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: black;
-    z-index:1000;
-    display: block;
-}
+        header nav ul li p {
+            font-family: Tahoma;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: black;
+            z-index: 1000;
+            display: block;
+        }
 
-header nav ul li p:hover{
-    background-color: #cdcdcd;
-}
+            header nav ul li p:hover {
+                background-color: #cdcdcd;
+            }
 
-.header-li-aligment{
+.header-li-aligment {
     margin-left: 12%;
 }
 
@@ -472,16 +472,16 @@ header nav ul li p:hover{
         position: absolute;
     }
 
-    header nav ul li {
-        list-style: none;
-        padding: 0 0 !important;
-        font-weight: bolder !important;
-        height: 45px !important;
-    }
+        header nav ul li {
+            list-style: none;
+            padding: 0 0 !important;
+            font-weight: bolder !important;
+            height: 45px !important;
+        }
 
-    header nav ul li p {
-        font-size: 18px !important;
-    }
+            header nav ul li p {
+                font-size: 18px !important;
+            }
 
     .header-large-brand {
         font-size: 70px !important;
@@ -493,14 +493,14 @@ header nav ul li p:hover{
         margin-top: 45px !important;
     }
 
-    header nav ul{
+    header nav ul {
         margin: 20px 0 20px 20px;
         float: left;
     }
 
-    header nav ul li p{
-        line-height: 60px;
-    }
+        header nav ul li p {
+            line-height: 60px;
+        }
 
     .login-button {
         display: block;
@@ -545,16 +545,16 @@ header nav ul li p:hover{
         margin-left: 15px;
     }
 
-    .profile-btns{
+    .profile-btns {
         float: right;
         display: none;
     }
-    
-    .myAccMenu{
+
+    .myAccMenu {
         display: none;
     }
 
-    .loginMenu{
+    .loginMenu {
         display: none;
     }
 }
@@ -563,7 +563,7 @@ header nav ul li p:hover{
 
 .index-banner {
     width: 100%;
-    height: calc(75vh - 100px);
+    height: calc(90vh - 100px);
     background-image: url('../Images/taxi.jpg');
     background-repeat: no-repeat;
     background-position: center;
@@ -600,9 +600,6 @@ header nav ul li p:hover{
 .wraper {
     width: 320px;
     margin: 5px auto 0 auto;
-    height: auto;
-    overflow-y: scroll;
-    background-color: rgba(255, 255, 255, 0.75);
 }
 
 .trips-wrap {
@@ -611,17 +608,23 @@ header nav ul li p:hover{
     background-color: rgba(255, 255, 255, 0.75);
 }
 
-.tableWrap{
+.cur-drive{
+    width: 320px;
+    height: 300px;
+    margin: 2vh auto;
+}
+
+.tableWrap {
     overflow-x: auto;
 }
 
-.weather{
+.weather {
     width: 300px;
     height: 240px;
     margin: 15px auto;
 }
 
-.tableWrapFilters{
+.tableWrapFilters {
     overflow-x: auto;
     display: none;
 }
@@ -638,7 +641,7 @@ header nav ul li p:hover{
     white-space: nowrap;
 }
 
-.home-tt-header{
+.home-tt-header {
     display: inline-block;
     width: 300px;
     margin: 20px 10px;
@@ -646,16 +649,16 @@ header nav ul li p:hover{
     border-bottom: 2px solid black;
 }
 
-.home-tt-header p{
-    display: inline;
-    text-align: center;
-    margin-left: 20px;
-    padding-right: 5px;
-    font-family: Tahoma;
-    font-size: 15px;
-    font-weight: 600;
-    color: black;
-}
+    .home-tt-header p {
+        display: inline;
+        text-align: center;
+        margin-left: 20px;
+        padding-right: 5px;
+        font-family: Tahoma;
+        font-size: 15px;
+        font-weight: 600;
+        color: black;
+    }
 
 .home-tt-main {
     width: 310px;
@@ -674,7 +677,7 @@ header nav ul li p:hover{
     padding-bottom: 10px;
 }
 
-.expand-table{
+.expand-table {
     border-radius: 50px 50px;
     font-family: Tahoma;
     font-weight: 900;
@@ -682,9 +685,9 @@ header nav ul li p:hover{
     border: 1px solid black;
 }
 
-.expand-table:hover{
-    background-color: #cdcdcd;
-}
+    .expand-table:hover {
+        background-color: #cdcdcd;
+    }
 
 .home-tt-other {
     width: 270px;
@@ -723,14 +726,14 @@ header nav ul li p:hover{
     width: 100%;
 }
 
-.table-td-drive{
+.table-td-drive {
     width: calc(100% - 50%);
     height: 35px;
     padding-bottom: 5px;
     vertical-align: middle;
 }
 
-.edit-drive{
+.edit-drive {
     height: 25px;
     width: 50px;
     font-family: Tahoma;
@@ -739,11 +742,11 @@ header nav ul li p:hover{
     border: 1px solid black;
 }
 
-.edit-drive:hover{
-    background-color: #cdcdcd;
-}
+    .edit-drive:hover {
+        background-color: #cdcdcd;
+    }
 
-.comment-bold{
+.comment-bold {
     font-family: Tahoma;
     font-weight: 900;
     font-size: 12px;
@@ -759,9 +762,9 @@ header nav ul li p:hover{
     border-radius: 20px 20px 20px 20px;
 }
 
-.edit-new-drive:hover {
-    background-color: #cdcdcd;
-}
+    .edit-new-drive:hover {
+        background-color: #cdcdcd;
+    }
 
 .comment-italic {
     font-family: Tahoma;
@@ -774,7 +777,7 @@ header nav ul li p:hover{
     display: none;
 }
 
-.all-drive-dispatcher{
+.all-drive-dispatcher {
     display: none;
 }
 
@@ -785,7 +788,43 @@ header nav ul li p:hover{
     text-align: center;
 }
 
+.cur-drive-table{
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+}
+
+.cur-drive-table tr th{
+    font-family: Tahoma;
+    font-size: 15px;
+    font-weight: 900;
+    color: black;
+    text-align: center;
+}
+
+.cur-drive-table tr td{
+    width: 50%;
+    vertical-align: central;
+    font-family: Tahoma;
+    font-size: 15px;
+    font-weight: 900;
+    color: black;
+    text-align: center;
+}
+
 @media only screen and (min-width: 1000px) {
+    .cur-drive {
+        width: 60vh !important;
+    }
+
+    .cur-drive-table tr th {
+        font-size: 25px !important;
+    }
+
+    .cur-drive-table tr td {
+        font-size: 20px !important;
+    }
+    
     .drive-filters {
         width: 600px !important;
         margin: 20px auto !important;
@@ -821,9 +860,9 @@ header nav ul li p:hover{
         margin-right: 225px;
     }
 
-    .all-drive-dispatcher:hover{
-        background-color: #cdcdcd;
-    }
+        .all-drive-dispatcher:hover {
+            background-color: #cdcdcd;
+        }
 
     .tableWrapFilters {
         width: 500px;
@@ -832,35 +871,35 @@ header nav ul li p:hover{
         text-align: center;
     }
 
-    .filters-table{
+    .filters-table {
         width: 450px;
         margin: 2vh auto;
     }
 
-    .filters-table td{
-        font-family: Tahoma;
-        font-size: 20px;
-        font-weight: 500;
-        color: black;
-        text-align: center;
-    }
+        .filters-table td {
+            font-family: Tahoma;
+            font-size: 20px;
+            font-weight: 500;
+            color: black;
+            text-align: center;
+        }
 
-    .filters-table td input {
-        font-family: Tahoma;
-        font-size: 16px;
-        font-weight: 500;
-        color: black;
-        text-align: center;
-    }
+            .filters-table td input {
+                font-family: Tahoma;
+                font-size: 16px;
+                font-weight: 500;
+                color: black;
+                text-align: center;
+            }
 
-    .filters-table td select{
-        font-family: Tahoma;
-        font-size: 16px;
-        font-weight: 500;
-        color: black;
-        text-align: center;
-        width: 100px;
-    }
+            .filters-table td select {
+                font-family: Tahoma;
+                font-size: 16px;
+                font-weight: 500;
+                color: black;
+                text-align: center;
+                width: 100px;
+            }
 
     .edit-new-drive {
         height: 60px !important;
@@ -870,7 +909,7 @@ header nav ul li p:hover{
         margin-bottom: 20px;
     }
 
-    .edit-drive-filters:hover{
+    .edit-drive-filters:hover {
         background-color: #cdcdcd;
     }
 
@@ -883,8 +922,7 @@ header nav ul li p:hover{
     }
 
     .wraper {
-        height: 64vh !important;
-        width: 1020px !important;
+        width: 1000px !important;
     }
 
     .trips-wrap {
@@ -963,7 +1001,7 @@ header nav ul li p:hover{
 }
 
 /*====================REGISTER FORM=====================*/
-.reg-header{
+.reg-header {
     width: 150px;
     font-family: Tahoma;
     font-size: 20px;
@@ -994,16 +1032,16 @@ header nav ul li p:hover{
     text-align: center;
 }
 
-.reg-table-normal{
+.reg-table-normal {
     height: 30px;
 }
 
-.reg-table-error{
+.reg-table-error {
     height: 20px;
     text-align: center;
 }
 
-.reg-table-td-input{
+.reg-table-td-input {
     border: 2px solid black;
 }
 
@@ -1029,9 +1067,9 @@ header nav ul li p:hover{
     cursor: pointer;
 }
 
-.btn-register:hover{
-    background-color: #cdcdcd;
-}
+    .btn-register:hover {
+        background-color: #cdcdcd;
+    }
 
 @media only screen and (min-width: 1000px) {
     .reg-header {
@@ -1041,7 +1079,7 @@ header nav ul li p:hover{
 
     .reg-table {
         width: 80% !important;
-        margin: 20px auto !important; 
+        margin: 20px auto !important;
         font-size: 25px !important;
     }
 
@@ -1051,7 +1089,7 @@ header nav ul li p:hover{
         font-size: 25px !important;
     }
 
-    .ban-table-td{
+    .ban-table-td {
         width: 269px !important;
     }
 
@@ -1102,7 +1140,7 @@ header nav ul li p:hover{
 
     .btn-register {
         font-size: 18px !important;
-        border: 3px solid black !important; 
+        border: 3px solid black !important;
     }
 }
 /*=====================FOOTER========================*/
@@ -1111,47 +1149,43 @@ footer {
     background-color: rgba(225,225,225,0.75);
     margin-top: 5px;
     overflow: hidden;
-    height: 25vh;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    opacity: 0.75;
 }
 
-footer ul{
-    width: auto;
-    float: left;
-    white-space: nowrap;
-    padding-left: 5vw;
-}
+    footer ul {
+        width: auto;
+        float: left;
+        white-space: nowrap;
+        padding-left: 5vw;
+    }
 
-footer ul li{
-    display: block;
-    list-style: none;
-    white-space: nowrap;
-}
+        footer ul li {
+            display: block;
+            list-style: none;
+            white-space: nowrap;
+        }
 
-footer ul li p{
-    font-family: Tahoma;
-    font-size: 24px;
-    line-height: 40px;
-    color: black;
-    cursor: pointer;
-}
+            footer ul li p {
+                font-family: Tahoma;
+                font-size: 24px;
+                line-height: 40px;
+                color: black;
+                cursor: pointer;
+            }
 
-.footer-sm{
+.footer-sm {
     margin-top: 5px;
     width: 40px;
     float: right;
     padding-right: 2vw;
 }
 
-.footer-sm img{
-    width: 100%;
-    margin-bottom: 10px;
-}
+    .footer-sm img {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 
-.footer-by h6{
+.footer-by h6 {
     font-family: Tahoma;
     font-size: 10px;
     line-height: 40px;
@@ -1160,22 +1194,21 @@ footer ul li p{
     margin-top: 150px;
 }
 
-@media only screen and (min-width: 1000px){
+@media only screen and (min-width: 1000px) {
 
-    footer ul{
+    footer ul {
         padding-right: 30px;
     }
 
-    footer ul li p{
-        font-family: Tahoma;
-        font-size: 24px;
-        line-height: 40px;
-        color: black;
-        text-transform: uppercase;
-    }
+        footer ul li p {
+            font-family: Tahoma;
+            font-size: 24px;
+            line-height: 40px;
+            color: black;
+            text-transform: uppercase;
+        }
 
-    .login-footer{
+    .login-footer {
         display: none;
     }
-
 }

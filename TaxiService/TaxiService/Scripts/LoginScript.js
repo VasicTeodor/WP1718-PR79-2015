@@ -1,8 +1,15 @@
 ﻿var counter = 1;
+var inProgress = false;
+var driving = false;
+
 function PrintAllDrives(allDrives) {
     $('#fillInTrips').empty();
     let user = JSON.parse(sessionStorage.getItem('activeUser'));
     let token = sessionStorage.getItem('accessToken');
+
+    if (user.role === 'Driver') {
+        CheckDriverDrives(allDrives);
+    }
 
     for (let i = 0; i < allDrives.length; i++) {
 
@@ -12,6 +19,24 @@ function PrintAllDrives(allDrives) {
             carType = 'Car';
         } else if (allDrives[i].carType == 2) {
             carType = 'Van';
+        }
+
+        let state = '';
+
+        if (allDrives[i].state === 0) {
+            state = 'On waiting list';
+        } else if (allDrives[i].state === 1) {
+            state = 'Canceled';
+        } else if (allDrives[i].state === 2) {
+            state = 'Formated';
+        } else if (allDrives[i].state === 3) {
+            state = 'Processed';
+        } else if (allDrives[i].state === 4) {
+            state = 'Accepted';
+        } else if (allDrives[i].state === 5) {
+            state = 'Successful';
+        } else {
+            state = 'Unsuccessful';
         }
 
         let buttons = '';
@@ -26,21 +51,58 @@ function PrintAllDrives(allDrives) {
                 buttons = '';
             }
         } else if (user.role === 'Driver') {
-            if (allDrives[i].state === 0) {
-                buttons = '<tr class="table-tr-drive">' +
-                    '<td colspan="2" class="table-td-drive" align="right">' +
-                    '<button class="edit-drive" id="btnEditDrive' + counter + '" onclick="EditDrive(this);" value="' + allDrives[i].driveId.toString() + '">Edit</button>' +
-                    '<button class="edit-drive" id="btnAcceptDrive' + counter + '"  onclick="DriverDrive(this);" value="' + allDrives[i].driveId.toString() + '">Drive</button>' +
-                    '</td>' +
-                    '</tr>';
-            } else if (allDrives[i].state === 4 || allDrives[i].state === 2) {
-                buttons = '<tr class="table-tr-drive">' +
-                    '<td colspan="2" class="table-td-drive" align="right">' +
-                    '<button class="edit-drive" id="btnEditDrive' + counter + '" onclick="EditDrive(this);" value="' + allDrives[i].driveId.toString() + '">Edit</button>' +
-                    '</td>' +
-                    '</tr>';
+            if (driving) {
+                if (allDrives[i].state === 4 || allDrives[i].state === 2 || allDrives[i].state === 3) {
+                    buttons = '<tr class="table-tr-drive">' +
+                        '<td colspan="2" class="table-td-drive" align="right">' +
+                        '<button class="edit-drive" id="btnEditDrive' + counter + '" onclick="EditDrive(this);" value="' + allDrives[i].driveId.toString() + '">Edit</button>' +
+                        '</td>' +
+                        '</tr>';
+
+                    let customer = '';
+                    if (allDrives[i].orderedBy != null) {
+                        customer = '<tr>' +
+                            '<td>CUSTOMER:</td>' +
+                            '<td>' + allDrives[i].orderedBy.name + ' ' + allDrives[i].orderedBy.surname +'</td>' +
+                            '</tr>';
+                    }
+                    $('#displayCurDrive').empty();
+                    $('#displayCurDrive').append('<table class="cur-drive-table">' +
+                        '<tr>' +
+                        '<th colspan="2">CURRENT DRIVE</th>' +
+                        '</tr>' +
+                        '<tr>' +
+                        '<td>SATE:</td>' +
+                        '<td>'+ state +'</td>' +
+                        '</tr>' +
+                        '<tr>' +
+                        '<td>ADDRESS:</td>' +
+                        '<td>' + allDrives[i].address.address.slice(0, allDrives[i].address.address.indexOf(',')) +'</td>' +
+                        '</tr>' +
+                        customer +
+                        '<tr>' +
+                        '<td>CAR TYPE:</td>' +
+                        '<td>'+ carType +'</td>' +
+                        '</tr>' +
+                        '</table>');
+                } 
             } else {
-                buttons = '';
+                if (allDrives[i].state === 0) {
+                    buttons = '<tr class="table-tr-drive">' +
+                        '<td colspan="2" class="table-td-drive" align="right">' +
+                        '<button class="edit-drive" id="btnEditDrive' + counter + '" onclick="EditDrive(this);" value="' + allDrives[i].driveId.toString() + '">Edit</button>' +
+                        '<button class="edit-drive" id="btnAcceptDrive' + counter + '"  onclick="DriverDrive(this);" value="' + allDrives[i].driveId.toString() + '">Drive</button>' +
+                        '</td>' +
+                        '</tr>';
+                } else if (allDrives[i].state === 4 || allDrives[i].state === 2 || allDrives[i].state === 3) {
+                    buttons = '<tr class="table-tr-drive">' +
+                        '<td colspan="2" class="table-td-drive" align="right">' +
+                        '<button class="edit-drive" id="btnEditDrive' + counter + '" onclick="EditDrive(this);" value="' + allDrives[i].driveId.toString() + '">Edit</button>' +
+                        '</td>' +
+                        '</tr>';
+                } else {
+                    buttons = '';
+                }
             }
         } else {
             if (allDrives[i].state === 0) {
@@ -50,12 +112,61 @@ function PrintAllDrives(allDrives) {
                     '<button class="edit-drive" id="btnQuitDrive' + counter + '"  onclick="QuitDrive(this);" value="' + allDrives[i].driveId.toString() + '">Quit</button>' +
                     '</td>' +
                     '</tr>';
-            } else if (allDrives[i].state === 5 && allDrives[i].comment == null) {
+                $('#displayCurDrive').empty();
+                $('#displayCurDrive').append('<table class="cur-drive-table">' +
+                    '<tr>' +
+                    '<th colspan="2">CURRENT DRIVE</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>SATE:</td>' +
+                    '<td>' + state + '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>ADDRESS:</td>' +
+                    '<td>' + allDrives[i].address.address.slice(0, allDrives[i].address.address.indexOf(',')) + '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>CAR TYPE:</td>' +
+                    '<td>' + carType + '</td>' +
+                    '</tr>' +
+                    '</table>');
+            } else if (allDrives[i].state === 3 || allDrives[i].state === 4) {
+                let driver = '';
+                if (allDrives[i].drivedBy != null) {
+                    driver = '<tr>' +
+                        '<td>DRIVER:</td>' +
+                        '<td>' + allDrives[i].drivedBy.name + ' ' + allDrives[i].drivedBy.surname + '</td>' +
+                        '</tr>';
+                }
+
+                $('#displayCurDrive').empty();
+                $('#displayCurDrive').append('<table class="cur-drive-table">' +
+                    '<tr>' +
+                    '<th colspan="2">CURRENT DRIVE</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>SATE:</td>' +
+                    '<td>' + state + '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>ADDRESS:</td>' +
+                    '<td>' + allDrives[i].address.address.slice(0, allDrives[i].address.address.indexOf(',')) + '</td>' +
+                    '</tr>' +
+                    driver +
+                    '<tr>' +
+                    '<td>CAR TYPE:</td>' +
+                    '<td>' + carType + '</td>' +
+                    '</tr>' +
+                    '</table>');
+
+            } else if (allDrives[i].state === 5) {
                 buttons = '<tr class="table-tr-drive">' +
                     '<td colspan="2" class="table-td-drive" align="right">' +
                     '<button class="edit-drive" id="btnCustomerComment' + counter + '" onclick="LeaveComment(this);" value="' + allDrives[i].driveId.toString() + '">Comment</button>' +
                     '</td>' +
                     '</tr>';
+            } else {
+                buttons = '';
             }
         }
 
@@ -126,24 +237,6 @@ function PrintAllDrives(allDrives) {
                 '<td class="table-td-drive"><p class="home-tt-display2">' + allDrives[i].destination.address.toString() + '</p></td>' +
                 '</tr>';
         }
-
-        let state = '';
-
-        if (allDrives[i].state === 0) {
-            state = 'On waiting list';
-        } else if (allDrives[i].state === 1) {
-            state = 'Canceled';
-        } else if (allDrives[i].state === 2) {
-            state = 'Formated';
-        } else if (allDrives[i].state === 3) {
-            state = 'Processed';
-        } else if (allDrives[i].state === 4) {
-            state = 'Accepted';
-        } else if (allDrives[i].state === 5) {
-            state = 'Successful';
-        } else{
-            state = 'Unsuccessful';
-        }
         
         let d = new Date(allDrives[i].date),
             minutes = d.getMinutes().toString().length == 1 ? '0' + d.getMinutes() : d.getMinutes(),
@@ -191,6 +284,39 @@ function PrintAllDrives(allDrives) {
             '</div>' +
             '</div>');
         counter++;
+    }
+
+    if (user.role === 'Customer') {
+        CheckCustomersDrive(allDrives);
+        if (inProgress) {
+            $('#btnNewDrive').prop("disabled", true);
+        } else {
+            $('#btnNewDrive').prop("disabled", false);
+        }
+    }
+}
+
+function CheckCustomersDrive(data) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].state === 3 || data[i].state === 4 || data[i].state === 0) {
+            inProgress = true;
+            break;
+        } else {
+            $('#displayCurDrive').empty();
+            inProgress = false;
+        }
+    }
+}
+
+function CheckDriverDrives(data) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].state === 2 || data[i].state === 3 || data[i].state === 4) {
+            driving = true;
+            break;
+        } else {
+            $('#displayCurDrive').empty();
+            driving = false;
+        }
     }
 }
 
@@ -304,11 +430,11 @@ $(document).ready(function () {
                         $('#menu').css('height', '152');
                         $('.admin-filters').hide();
                         $('.customer-filters').show();
+                        allDrivesOn = false;
+                        filtersOn = false;
                     }
                     formReset();
-
                     $('#displayTrips').fadeIn('slow', 'swing');
-                    $('.wraper').fadeIn('slow', 'swing');
 
                     PrintAllDrives(allDrives);
                     

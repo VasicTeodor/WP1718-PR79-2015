@@ -38,7 +38,7 @@ namespace TaxiService.Repository
             if (File.Exists(fileName))
             {
                 XDocument xmlDocument = XDocument.Load(fileName);
-                
+
                 xmlDocument.Element("Drivers")
                                         .Elements("Driver")
                                         .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
@@ -87,7 +87,7 @@ namespace TaxiService.Repository
                                        .Elements("Driver")
                                        .Where(x => x.Attribute("Id").Value == driver.Id.ToString()).FirstOrDefault()
                                        .SetElementValue("Type", driver.Car.Type);
-                
+
                 xmlDocument.Save(fileName);
             }
         }
@@ -146,7 +146,7 @@ namespace TaxiService.Repository
             }
         }
 
-                public bool LogIn(string username, string password)
+        public bool LogIn(string username, string password)
         {
             if (File.Exists(fileName))
             {

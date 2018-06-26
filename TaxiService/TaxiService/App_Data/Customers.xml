@@ -78,4 +78,17 @@
     <IsBanned>false</IsBanned>
     <Role>Customer</Role>
   </Customer>
+  <Customer Id="2be090e9-7899-477a-8b17-d70a0c49585e">
+    <Id>2be090e9-7899-477a-8b17-d70a0c49585e</Id>
+    <Username>Customer7</Username>
+    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
+    <Name>Mus</Name>
+    <Surname>mus</Surname>
+    <Jmbg>5437835478784</Jmbg>
+    <Phone>39484848</Phone>
+    <Email>mus@s</Email>
+    <Gender>Male</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Customer</Role>
+  </Customer>
 </Customers>
