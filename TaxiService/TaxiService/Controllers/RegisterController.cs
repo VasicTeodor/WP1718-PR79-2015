@@ -19,20 +19,28 @@ namespace TaxiService.Controllers
                 !DataRepository._dispatcherRepo.CheckIfDispatcherExists(customer.Username) &&
                 !DataRepository._driverRepo.CheckIfDriverExists(customer.Username))
             {
-                customer.Id = Guid.NewGuid();
-                customer.Role = Enums.Roles.Customer;
-                customer.IsBanned = false;
-                LoginDto logObj = new LoginDto();
-                logObj.AccessToken = ServiceSecurity.MakeToken($"{customer.Username}:{customer.Password}");
-                customer.Password = ServiceSecurity.EncryptData(customer.Password, "password");
-                logObj.User = customer;
-                DataRepository._customerRepo.NewCustomer(customer);
+                if (Validate(customer))
+                {
+                    customer.Id = Guid.NewGuid();
+                    customer.Role = Enums.Roles.Customer;
+                    customer.IsBanned = false;
+                    LoginDto logObj = new LoginDto();
+                    logObj.AccessToken = ServiceSecurity.MakeToken($"{customer.Username}:{customer.Password}");
+                    customer.Password = ServiceSecurity.EncryptData(customer.Password, "password");
+                    logObj.User = customer;
+                    DataRepository._customerRepo.NewCustomer(customer);
 
-                return Request.CreateResponse(HttpStatusCode.Created, logObj);
+                    return Request.CreateResponse(HttpStatusCode.Created, logObj);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+
+                }
             }
             else
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
         }
 
@@ -50,13 +58,53 @@ namespace TaxiService.Controllers
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.NotAcceptable);
+                    return Request.CreateResponse(HttpStatusCode.NotAcceptable, false);
                 }
             }
             else
             {
-                return Request.CreateResponse(HttpStatusCode.NotAcceptable);
+                return Request.CreateResponse(HttpStatusCode.NotAcceptable, false);
             }
+        }
+
+        private bool Validate(Customer customer)
+        {
+            if(String.IsNullOrEmpty(customer.Name) || customer.Name.Length < 4)
+            {
+                return false;
+            }
+
+            if(String.IsNullOrEmpty(customer.Surname) || customer.Surname.Length < 4)
+            {
+                return false;
+            }
+
+            if(!customer.Email.Contains('@') || !customer.Email.Contains('.'))
+            {
+                return false;
+            }
+
+            if(customer.Phone.ToString().Length < 6)
+            {
+                return false;
+            }
+
+            if(customer.Jmbg.ToString().Length < 13)
+            {
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(customer.Username))
+            {
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(customer.Password))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

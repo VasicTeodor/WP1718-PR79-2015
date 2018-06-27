@@ -48,17 +48,6 @@ namespace TaxiService.Controllers
                 {
                     Driver driver = DataRepository._driverRepo.RetriveDriverById(userId);
                     allDrives.RemoveAll(d => (d.State != Enums.Status.Created) || (d.CarType != driver.Car.Type && d.CarType != Enums.CarTypes.Bez_Naznake));
-                    allDrives.Sort(delegate (Drive d1, Drive d2)
-                    {
-                        if(CalculateLength(driver.Location.X,driver.Location.Y,d1.Address.X,d1.Address.Y) < CalculateLength(driver.Location.X, driver.Location.Y, d2.Address.X, d2.Address.Y))
-                        {
-                            return -1;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    });
                 }
 
                 if (userRole == Enums.Roles.Customer)
@@ -117,126 +106,152 @@ namespace TaxiService.Controllers
             string userId = jToken.Value<string>("userId");
             Guid user = Guid.Parse(userId);
 
-            List<Drive> userDrives = null;
-            userDrives = DataRepository._driveRepo.GetAllDrivesForCustomerId(user).ToList();
-
             Enums.Roles role = (Enums.Roles)Enum.Parse(typeof(Enums.Roles), jToken.Value<string>("userRole"));
 
-            if (allDrives != null && userDrives != null)
+            if (allDrives != null)
             {
+                List<Drive> resultDrives = new List<Drive>();
+
                 if (role == Enums.Roles.Customer)
                 {
-                    List<Drive> filtered = new List<Drive>();
-
-                    string sortBy = jToken.Value<string>("sortBy");
-
-                    if (!sortBy.Equals("None"))
+                    resultDrives = DataRepository._driveRepo.GetAllDrivesForCustomerId(user).ToList(); ;
+                }
+                else if (role != Enums.Roles.Customer && jToken.Value<string>("whatDrives").Equals("My"))
+                {
+                    if (role == Enums.Roles.Dispatcher)
                     {
-                        if (sortBy.Equals("Date"))
-                        {
-                            userDrives.Sort((d1, d2) => DateTime.Compare(d2.Date, d1.Date));
-                        } else if (sortBy.Equals("Grade"))
-                        {
-                            userDrives.RemoveAll(x => x.Comments == null);
-
-                            userDrives.Sort((d1, d2) => d2.Comments.Grade.CompareTo(d1.Comments.Grade));
-                        }
+                        allDrives.RemoveAll(d => (d.ApprovedBy == null) || (d.ApprovedBy.Id != user));
+                        resultDrives = allDrives;
                     }
-
-                    if (!jToken.Value<string>("filterBy").Equals("State"))
+                    else
                     {
-                        Enums.Status state = (Enums.Status)Enum.Parse(typeof(Enums.Status), jToken.Value<string>("filterBy"));
-                        userDrives.RemoveAll(x => x.State != state);
+                        allDrives.RemoveAll(d => (d.DrivedBy == null) || (d.DrivedBy.Id != user));
+                        resultDrives = allDrives;
                     }
-
-                    if (!String.IsNullOrEmpty(jToken.Value<string>("fromDate")) || !String.IsNullOrEmpty(jToken.Value<string>("toDate")))
+                }
+                else
+                {
+                    if (role == Enums.Roles.Dispatcher)
                     {
-                        if (!String.IsNullOrEmpty(jToken.Value<string>("fromDate")))
-                        {
-                            DateTime dateFrom = DateTime.Parse(jToken.Value<string>("fromDate"));
+                        resultDrives = allDrives;
+                    }
+                    else
+                    {
+                        allDrives.RemoveAll(d => d.State != Enums.Status.Created);
+                        resultDrives = allDrives;
+                    }
+                }
+                List<Drive> filtered = new List<Drive>();
 
-                            if (!String.IsNullOrEmpty(jToken.Value<string>("toDate")))
-                            {
-                                DateTime dateTo = DateTime.Parse(jToken.Value<string>("toDate"));
+                string sortBy = jToken.Value<string>("sortBy");
 
-                                userDrives.RemoveAll(d => (d.Date.Date < dateFrom.Date) || (d.Date.Date > dateTo.Date));
-                            }
+                if (!sortBy.Equals("None"))
+                {
+                    if (sortBy.Equals("Date"))
+                    {
+                        resultDrives.Sort((d1, d2) => DateTime.Compare(d2.Date, d1.Date));
+                    }
+                    else if (sortBy.Equals("Grade"))
+                    {
+                        resultDrives.RemoveAll(x => x.Comments == null);
 
-                            userDrives.RemoveAll(d => d.Date.Date < dateFrom.Date);
-                        }
-                        else
+                        resultDrives.Sort((d1, d2) => d2.Comments.Grade.CompareTo(d1.Comments.Grade));
+                    }
+                }
+
+                if (!jToken.Value<string>("filterBy").Equals("State"))
+                {
+                    Enums.Status state = (Enums.Status)Enum.Parse(typeof(Enums.Status), jToken.Value<string>("filterBy"));
+                    resultDrives.RemoveAll(x => x.State != state);
+                }
+
+                if (!String.IsNullOrEmpty(jToken.Value<string>("fromDate")) || !String.IsNullOrEmpty(jToken.Value<string>("toDate")))
+                {
+                    if (!String.IsNullOrEmpty(jToken.Value<string>("fromDate")))
+                    {
+                        DateTime dateFrom = DateTime.Parse(jToken.Value<string>("fromDate"));
+
+                        if (!String.IsNullOrEmpty(jToken.Value<string>("toDate")))
                         {
                             DateTime dateTo = DateTime.Parse(jToken.Value<string>("toDate"));
 
-                            userDrives.RemoveAll(d => d.Date.Date > dateTo.Date);
+                            resultDrives.RemoveAll(d => (d.Date.Date < dateFrom.Date) || (d.Date.Date > dateTo.Date));
+                        }
+
+                        resultDrives.RemoveAll(d => d.Date.Date < dateFrom.Date);
+                    }
+                    else
+                    {
+                        DateTime dateTo = DateTime.Parse(jToken.Value<string>("toDate"));
+
+                        resultDrives.RemoveAll(d => d.Date.Date > dateTo.Date);
+                    }
+                }
+
+                if (!String.IsNullOrEmpty(jToken.Value<string>("gradeFrom")) || !String.IsNullOrEmpty(jToken.Value<string>("gradeTo")))
+                {
+
+                    if (!String.IsNullOrEmpty(jToken.Value<string>("gradeFrom")) && !jToken.Value<string>("gradeFrom").Equals("Grade"))
+                    {
+                        resultDrives.RemoveAll(x => x.Comments == null);
+
+                        int gradeFrom = Int32.Parse(jToken.Value<string>("gradeFrom"));
+
+                        if (!String.IsNullOrEmpty(jToken.Value<string>("gradeTo")) && !jToken.Value<string>("gradeTo").Equals("Grade"))
+                        {
+                            int gradeTo = Int32.Parse(jToken.Value<string>("gradeTo"));
+
+                            resultDrives.RemoveAll(d => (d.Comments.Grade < gradeFrom) || (d.Comments.Grade > gradeTo));
+                        }
+
+                        resultDrives.RemoveAll(d => d.Comments.Grade < gradeFrom);
+
+                    }
+                    else
+                    {
+                        if (!String.IsNullOrEmpty(jToken.Value<string>("gradeTo")) && !jToken.Value<string>("gradeTo").Equals("Grade"))
+                        {
+                            resultDrives.RemoveAll(x => x.Comments == null);
+                            int gradeTo = Int32.Parse(jToken.Value<string>("gradeTo"));
+
+                            resultDrives.RemoveAll(d => d.Comments.Grade > gradeTo);
                         }
                     }
+                }
 
-                    if (!String.IsNullOrEmpty(jToken.Value<string>("gradeFrom")) || !String.IsNullOrEmpty(jToken.Value<string>("gradeTo")))
+                if (!String.IsNullOrEmpty(jToken.Value<string>("priceFrom")) || !String.IsNullOrEmpty(jToken.Value<string>("priceTo")))
+                {
+                    if (!String.IsNullOrEmpty(jToken.Value<string>("priceFrom")))
                     {
+                        double priceFrom = Double.Parse(jToken.Value<string>("priceFrom"));
 
-                        if (!String.IsNullOrEmpty(jToken.Value<string>("gradeFrom")) && !jToken.Value<string>("gradeFrom").Equals("Grade"))
-                        {
-                            userDrives.RemoveAll(x => x.Comments == null);
-
-                            int gradeFrom = Int32.Parse(jToken.Value<string>("gradeFrom"));
-
-                            if (!String.IsNullOrEmpty(jToken.Value<string>("gradeTo")) && !jToken.Value<string>("gradeTo").Equals("Grade"))
-                            {
-                                int gradeTo = Int32.Parse(jToken.Value<string>("gradeTo"));
-
-                                userDrives.RemoveAll(d => (d.Comments.Grade < gradeFrom) || (d.Comments.Grade > gradeTo));
-                            }
-
-                            userDrives.RemoveAll(d => d.Comments.Grade < gradeFrom);
-
-                        }
-                        else
-                        {
-                            if (!String.IsNullOrEmpty(jToken.Value<string>("gradeTo")) && !jToken.Value<string>("gradeTo").Equals("Grade"))
-                            {
-                                userDrives.RemoveAll(x => x.Comments == null);
-                                int gradeTo = Int32.Parse(jToken.Value<string>("gradeTo"));
-
-                                userDrives.RemoveAll(d => d.Comments.Grade > gradeTo);
-                            }
-                        }
-                    }
-
-                    if (!String.IsNullOrEmpty(jToken.Value<string>("priceFrom")) || !String.IsNullOrEmpty(jToken.Value<string>("priceTo")))
-                    {
-                        if (!String.IsNullOrEmpty(jToken.Value<string>("priceFrom")))
-                        {
-                            double priceFrom = Double.Parse(jToken.Value<string>("priceFrom"));
-
-                            if (!String.IsNullOrEmpty(jToken.Value<string>("priceTo")))
-                            {
-                                double priceTo = Double.Parse(jToken.Value<string>("priceTo"));
-
-                                userDrives.RemoveAll(d => (d.Price < priceFrom) || (d.Price > priceTo));
-                            }
-
-                            userDrives.RemoveAll(d => d.Price < priceFrom);
-
-                        }
-                        else
+                        if (!String.IsNullOrEmpty(jToken.Value<string>("priceTo")))
                         {
                             double priceTo = Double.Parse(jToken.Value<string>("priceTo"));
 
-                            userDrives.RemoveAll(d => d.Price > priceTo);
+                            resultDrives.RemoveAll(d => (d.Price < priceFrom) || (d.Price > priceTo));
                         }
-                    }
 
-                    filteredDrives = userDrives;
+                        resultDrives.RemoveAll(d => d.Price < priceFrom);
+
+                    }
+                    else
+                    {
+                        double priceTo = Double.Parse(jToken.Value<string>("priceTo"));
+
+                        resultDrives.RemoveAll(d => d.Price > priceTo);
+                    }
                 }
+
+                filteredDrives = resultDrives;
 
                 if (role == Enums.Roles.Dispatcher)
                 {
                     if (jToken.Value<string>("searchRole").Equals("Customer"))
                     {
-                        allDrives.RemoveAll(d => d.OrderedBy == null);
                         if (!String.IsNullOrEmpty(jToken.Value<string>("filterName")) || !String.IsNullOrEmpty(jToken.Value<string>("filterSurname")))
                         {
+                            resultDrives.RemoveAll(d => d.OrderedBy == null);
                             if (!String.IsNullOrEmpty(jToken.Value<string>("filterName")))
                             {
                                 string name = jToken.Value<string>("filterName");
@@ -245,26 +260,26 @@ namespace TaxiService.Controllers
                                 {
                                     string surname = jToken.Value<string>("filterSurname");
 
-                                    allDrives.RemoveAll(d => (!d.OrderedBy.Name.Contains(name)) && (!d.OrderedBy.Surname.Contains(surname)));
+                                    resultDrives.RemoveAll(d => (!d.OrderedBy.Name.Contains(name)) && (!d.OrderedBy.Surname.Contains(surname)));
                                 }
 
-                                allDrives.RemoveAll(d => !d.OrderedBy.Name.Contains(name));
+                                resultDrives.RemoveAll(d => !d.OrderedBy.Name.Contains(name));
 
                             }
                             else
                             {
                                 string surname = jToken.Value<string>("filterSurname");
 
-                                allDrives.RemoveAll(d => !d.OrderedBy.Surname.Contains(surname));
+                                resultDrives.RemoveAll(d => !d.OrderedBy.Surname.Contains(surname));
                             }
                         }
-                        filteredDrives = allDrives;
+                        filteredDrives = resultDrives;
                     }
                     else if (jToken.Value<string>("searchRole").Equals("Driver"))
                     {
-                        allDrives.RemoveAll(d => d.DrivedBy == null);
                         if (!String.IsNullOrEmpty(jToken.Value<string>("filterName")) || !String.IsNullOrEmpty(jToken.Value<string>("filterSurname")))
                         {
+                            resultDrives.RemoveAll(d => d.DrivedBy == null);
                             if (!String.IsNullOrEmpty(jToken.Value<string>("filterName")))
                             {
                                 string name = jToken.Value<string>("filterName");
@@ -273,21 +288,41 @@ namespace TaxiService.Controllers
                                 {
                                     string surname = jToken.Value<string>("filterSurname");
 
-                                    allDrives.RemoveAll(d => (!d.DrivedBy.Name.Contains(name)) && (!d.DrivedBy.Surname.Contains(surname)));
+                                    resultDrives.RemoveAll(d => (!d.DrivedBy.Name.Contains(name)) && (!d.DrivedBy.Surname.Contains(surname)));
                                 }
 
-                                allDrives.RemoveAll(d => !d.DrivedBy.Name.Contains(name));
+                                resultDrives.RemoveAll(d => !d.DrivedBy.Name.Contains(name));
 
                             }
                             else
                             {
                                 string surname = jToken.Value<string>("filterSurname");
 
-                                allDrives.RemoveAll(d => !d.DrivedBy.Surname.Contains(surname));
+                                resultDrives.RemoveAll(d => !d.DrivedBy.Surname.Contains(surname));
                             }
                         }
-                        filteredDrives = allDrives;
+                        filteredDrives = resultDrives;
                     }
+                }
+
+                if(role == Enums.Roles.Driver)
+                {
+                    if (jToken.Value<string>("drivesNearMe").Equals("Yes"))
+                    {
+                        Driver driver = DataRepository._driverRepo.RetriveDriverById(user);
+                        resultDrives.Sort(delegate (Drive d1, Drive d2)
+                        {
+                            if (CalculateLength(driver.Location.X, driver.Location.Y, d1.Address.X, d1.Address.Y) < CalculateLength(driver.Location.X, driver.Location.Y, d2.Address.X, d2.Address.Y))
+                            {
+                                return -1;
+                            }
+                            else
+                            {
+                                return 1;
+                            }
+                        });
+                    }
+                    filteredDrives = resultDrives;
                 }
                 return Request.CreateResponse(HttpStatusCode.OK, filteredDrives);
             }

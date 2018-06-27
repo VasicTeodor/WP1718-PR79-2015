@@ -51,7 +51,7 @@ function PrintAllDrives(allDrives) {
                 buttons = '';
             }
         } else if (user.role === 'Driver') {
-            if (driving) {
+            if (user.occupied) {
                 if (allDrives[i].state === 4 || allDrives[i].state === 2 || allDrives[i].state === 3) {
                     buttons = '<tr class="table-tr-drive">' +
                         '<td colspan="2" class="table-td-drive" align="right">' +
@@ -90,7 +90,7 @@ function PrintAllDrives(allDrives) {
                 if (allDrives[i].state === 0) {
                     buttons = '<tr class="table-tr-drive">' +
                         '<td colspan="2" class="table-td-drive" align="right">' +
-                        '<button class="edit-drive" id="btnEditDrive' + counter + '" onclick="EditDrive(this);" value="' + allDrives[i].driveId.toString() + '">Edit</button>' +
+                        '<button class="edit-drive" id="btnEditDrive' + counter + '" style="display: none;" onclick="EditDrive(this);" value="' + allDrives[i].driveId.toString() + '">Edit</button>' +
                         '<button class="edit-drive" id="btnAcceptDrive' + counter + '"  onclick="DriverDrive(this);" value="' + allDrives[i].driveId.toString() + '">Drive</button>' +
                         '</td>' +
                         '</tr>';
@@ -407,10 +407,12 @@ $(document).ready(function () {
                         $('#btnRegisterFormMenu').hide();
                         $('#menu').css('height', '248');
                         $('.admin-filters').show();
-                        $('.customer-filters').hide();
+                        $('.customer-filters').show();
+                        $('.driver-filters').hide();
+                        $('.common-filters').show();
                     } else if (user.role === 'Driver') {
                         $('#btnNewDrive').hide();
-                        $('#btnDriveFilters').hide();
+                        $('#btnDriveFilters').show();
                         $('#btnDriverLocation').show();
                         $('#btnDriverAllDrives').show();
                         $('#btnDispatcherAllDrives').hide();
@@ -418,6 +420,10 @@ $(document).ready(function () {
                         $('#btnBanUsers').hide();
                         $('#btnRegisterFormMenu').hide();
                         $('#menu').css('height', '152');
+                        $('.driver-filters').show();
+                        $('.admin-filters').hide();
+                        $('.customer-filters').show();
+                        $('.common-filters').show();
                     } else {
                         $('#btnNewDrive').show();
                         $('#btnDriveFilters').show();
@@ -429,7 +435,9 @@ $(document).ready(function () {
                         $('#btnRegisterFormMenu').hide();
                         $('#menu').css('height', '152');
                         $('.admin-filters').hide();
+                        $('.driver-filters').hide();
                         $('.customer-filters').show();
+                        $('.common-filters').hide();
                         allDrivesOn = false;
                         filtersOn = false;
                     }

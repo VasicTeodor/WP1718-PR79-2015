@@ -339,11 +339,17 @@ $(document).ready(function () {
                 $('#btnRegisterFormMenu').hide();
                 $('#menu').css('height', '248');
                 $('.admin-filters').show();
-                $('.customer-filters').hide();
+                $('.common-filters').show();
+                $('.driver-filters').hide();
+                $('.customer-filters').show();
                 $('#displayBanner').fadeOut('slow', 'swing');
             } else if (user.role === 'Driver') {
                 $('#btnNewDrive').hide();
-                $('#btnDriveFilters').hide();
+                $('#btnDriveFilters').show();
+                $('.admin-filters').hide();
+                $('.common-filters').show();
+                $('.driver-filters').show();
+                $('.customer-filters').show();
                 $('#btnDriverLocation').show();
                 $('#btnDriverAllDrives').show();
                 $('#btnDispatcherAllDrives').hide();
@@ -364,6 +370,8 @@ $(document).ready(function () {
                 $('#menu').css('height', '152');
                 $('.admin-filters').hide();
                 $('.customer-filters').show();
+                $('.common-filters').hide();
+                $('.driver-filters').hide();
                 $('#displayBanner').fadeOut('slow', 'swing');
             }
         } else {
@@ -451,6 +459,7 @@ $(document).ready(function () {
         $("#blurBackground").fadeOut('slow', 'swing');
         $("#displayNewDrive").fadeOut('slow', 'swing');
         home();
+        $('#btnNewDrive').prop("disabled", false);
         formReset();
         $('#displayTrips').fadeIn('slow', 'swing');
     });
@@ -487,6 +496,7 @@ $(document).ready(function () {
             $('#btnAddDriver').hide();
             $('#displayUsers').hide();
             $('#usersTable').empty();
+            $('#displayCurDrive').empty();
             $('#btnBanUsers').hide();
             $('#btnNewDrive').prop("disabled", false);
             $('#menu').css('height', '200');

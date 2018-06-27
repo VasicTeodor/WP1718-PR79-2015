@@ -1,93 +1,67 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Customers>
-  <Customer Id="018c725d-8a44-4dab-aa43-c98ac90ff406">
-    <Id>018c725d-8a44-4dab-aa43-c98ac90ff406</Id>
+  <Customer Id="648f8f98-4abb-4832-98cb-3261a7f401f9">
+    <Id>648f8f98-4abb-4832-98cb-3261a7f401f9</Id>
     <Username>Customer</Username>
+    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
+    <Name>Ljiljana</Name>
+    <Surname>Vasic</Surname>
+    <Jmbg>4343434343343</Jmbg>
+    <Phone>1212121</Phone>
+    <Email>lili@gmail.com</Email>
+    <Gender>Female</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="abcc0a56-ac97-492e-9197-30f35a8ccb97">
+    <Id>abcc0a56-ac97-492e-9197-30f35a8ccb97</Id>
+    <Username>Customer2</Username>
+    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
+    <Name>Dalibor</Name>
+    <Surname>Vasic</Surname>
+    <Jmbg>5354354354353</Jmbg>
+    <Phone>35252523</Phone>
+    <Email>dado@gmail.com</Email>
+    <Gender>Male</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="f0216476-52f4-49a3-8686-69ba64853dc9">
+    <Id>f0216476-52f4-49a3-8686-69ba64853dc9</Id>
+    <Username>Customer3</Username>
+    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
+    <Name>Milijana</Name>
+    <Surname>Radovic</Surname>
+    <Jmbg>1345566889543</Jmbg>
+    <Phone>342423</Phone>
+    <Email>mika@hot.com</Email>
+    <Gender>Female</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="79d2c0fb-34d6-4f94-be79-e46b1c815372">
+    <Id>79d2c0fb-34d6-4f94-be79-e46b1c815372</Id>
+    <Username>Customer4</Username>
     <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
     <Name>Petar</Name>
     <Surname>Petrovic</Surname>
-    <Jmbg>2335543542334</Jmbg>
-    <Phone>03133432</Phone>
-    <IsBanned>false</IsBanned>
-    <Email>pera@gmail.com</Email>
+    <Jmbg>2142534545554</Jmbg>
+    <Phone>342432</Phone>
+    <Email>rope@gmail.com</Email>
     <Gender>Male</Gender>
-    <Role>Customer</Role>
-  </Customer>
-  <Customer Id="73c6b055-9a49-47b5-b372-259d66afd752">
-    <Id>73c6b055-9a49-47b5-b372-259d66afd752</Id>
-    <Username>Customer2</Username>
-    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
-    <Name>Nikola</Name>
-    <Surname>Vasic</Surname>
-    <Jmbg>2424242424242</Jmbg>
-    <Phone>021883041</Phone>
-    <Email>nikola@gmail.com</Email>
     <IsBanned>false</IsBanned>
-    <Gender>Male</Gender>
     <Role>Customer</Role>
   </Customer>
-  <Customer Id="5e38440e-5481-45ef-8ca5-540a1a4ee490">
-    <Id>5e38440e-5481-45ef-8ca5-540a1a4ee490</Id>
-    <Username>Customer3</Username>
-    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
-    <Name>Aleksa</Name>
-    <Surname>Aleksic</Surname>
-    <Jmbg>4223535252352</Jmbg>
-    <Phone>031432324</Phone>
-    <Email>aca@gmail.com</Email>
-    <IsBanned>false</IsBanned>
-    <Gender>Male</Gender>
-    <Role>Customer</Role>
-  </Customer>
-  <Customer Id="33691482-322c-4837-b694-50958f42c713">
-    <Id>33691482-322c-4837-b694-50958f42c713</Id>
-    <Username>Customer4</Username>
-    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
-    <Name>Aleksandra</Name>
-    <Surname>Aleksic</Surname>
-    <Jmbg>4223535252352</Jmbg>
-    <Phone>031432324</Phone>
-    <Email>aca@gmail.com</Email>
-    <IsBanned>false</IsBanned>
-    <Gender>Female</Gender>
-    <Role>Customer</Role>
-  </Customer>
-  <Customer Id="d4189454-c5a6-4cb7-a1a8-5dfa53097a1c">
-    <Id>d4189454-c5a6-4cb7-a1a8-5dfa53097a1c</Id>
+  <Customer Id="73b83f19-9646-4870-85aa-587a4b3bea86">
+    <Id>73b83f19-9646-4870-85aa-587a4b3bea86</Id>
     <Username>Customer5</Username>
     <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
-    <Name>Milan</Name>
-    <Surname>Pasic</Surname>
-    <Jmbg>4848444484844</Jmbg>
-    <Phone>02485585</Phone>
-    <Email>misko@gmail</Email>
-    <IsBanned>false</IsBanned>
-    <Gender>Male</Gender>
-    <Role>Customer</Role>
-  </Customer>
-  <Customer Id="e71b028f-99f0-4049-9940-c66917cb2163">
-    <Id>e71b028f-99f0-4049-9940-c66917cb2163</Id>
-    <Username>Customer6</Username>
-    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
-    <Name>Nemanja</Name>
-    <Surname>Nekic</Surname>
-    <Jmbg>1234345435445</Jmbg>
-    <Phone>0394377236</Phone>
-    <Email>neca@gmail.com</Email>
-    <Gender>Male</Gender>
-    <IsBanned>false</IsBanned>
-    <Role>Customer</Role>
-  </Customer>
-  <Customer Id="2be090e9-7899-477a-8b17-d70a0c49585e">
-    <Id>2be090e9-7899-477a-8b17-d70a0c49585e</Id>
-    <Username>Customer7</Username>
-    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
-    <Name>Mus</Name>
-    <Surname>mus</Surname>
-    <Jmbg>5437835478784</Jmbg>
-    <Phone>39484848</Phone>
-    <Email>mus@s</Email>
-    <Gender>Male</Gender>
+    <Name>Mira</Name>
+    <Surname>Marcetic</Surname>
+    <Jmbg>2343544565678</Jmbg>
+    <Phone>234243</Phone>
+    <Email>mira@gmail.com</Email>
+    <Gender>Female</Gender>
     <IsBanned>false</IsBanned>
     <Role>Customer</Role>
   </Customer>

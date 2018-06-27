@@ -23,6 +23,13 @@
                 $('#btnUpdateAccount').show();
                 $('#btnAddNewDriver').hide();
 
+                let carType = '';
+                if (user.car.type === 1) {
+                    carType = 'Car';
+                } else {
+                    carType = 'Kombi';
+                }
+
                 $('#regName').val(user.name);
                 $('#regSurname').val(user.surname);
                 $('#regEmail').val(user.email);
@@ -34,7 +41,7 @@
                 $('#regModelYear').val(user.car.modelYear);
                 $('#regNumber').val(user.car.regNumber);
                 $('#regCarId').val(user.car.carId);
-                $('#newCarType').val(user.car.type.toString());
+                $('#newCarType').val(carType);
             }
             else if (user.role === 'Customer' || user.role === 'Dispatcher') {
                 $('#btnAddNewDriver').hide();
@@ -214,19 +221,19 @@
         if (sendData) {
 
             let driver = {
-                name: $('#regName').val(),
-                surname: $('#regSurname').val(),
-                email: $('#regEmail').val(),
-                phone: $('#regPhone').val(),
-                jmbg: $('#regJmbg').val(),
-                gender: $('#regGender').val(),
-                username: $('#regUsername').val(),
-                password: $('#regPass').val(),
+                name: $('#regName').val().trim(),
+                surname: $('#regSurname').val().trim(),
+                email: $('#regEmail').val().trim(),
+                phone: $('#regPhone').val().trim(),
+                jmbg: $('#regJmbg').val().trim(),
+                gender: $('#regGender').val().trim(),
+                username: $('#regUsername').val().trim(),
+                password: $('#regPass').val().trim(),
                 car: {
-                    modelYear: $('#regModelYear').val(),
-                    regNumber: $('#regNumber').val(),
-                    carId: $('#regCarId').val(),
-                    type: $('#newCarType').val()
+                    modelYear: $('#regModelYear').val().trim(),
+                    regNumber: $('#regNumber').val().trim(),
+                    carId: $('#regCarId').val().trim(),
+                    type: $('#newCarType').val().trim()
                 }
             };
 
@@ -260,17 +267,18 @@
                 url: '/api/Register/RegisterAccount',
                 method: 'POST',
                 data: {
-                    Name: $('#regName').val(),
-                    Surname: $('#regSurname').val(),
-                    Email: $('#regEmail').val(),
-                    Phone: $('#regPhone').val(),
-                    Jmbg: $('#regJmbg').val(),
-                    Gender: $('#regGender').val(),
-                    Username: $('#regUsername').val(),
-                    Password: $('#regPass').val()
+                    Name: $('#regName').val().trim(),
+                    Surname: $('#regSurname').val().trim(),
+                    Email: $('#regEmail').val().trim(),
+                    Phone: $('#regPhone').val().trim(),
+                    Jmbg: $('#regJmbg').val().trim(),
+                    Gender: $('#regGender').val().trim(),
+                    Username: $('#regUsername').val().trim(),
+                    Password: $('#regPass').val().trim()
                 },
                 success: function (data) {
                     alert("Uspesna registracija!");
+                    $('body').css('backgroundImage', 'url(Images/tax3i.jpg)');
                     sessionStorage.setItem('accessToken', data.accessToken);
                     sessionStorage.setItem('activeUser', JSON.stringify(data.user));
                     $('#btnLoginForm').hide();
@@ -297,7 +305,8 @@
 
     $('#regName').on('input', function () {
         let input = $(this);
-        let is_name = input.val();
+        let re = /([A-Za-z]{4,16})/i;
+        let is_name = re.test(input.val());
         if (is_name)
         {
             input.removeClass("reg-table-td-input").addClass("reg-table-td-ok");
@@ -309,14 +318,15 @@
         {
             input.removeClass("reg-table-td-input").addClass("reg-table-td-error");
             input.removeClass("reg-table-td-ok").addClass("reg-table-td-error");
-            $('#errorName').text('This field is required!');
+            $('#errorName').text('Value must be 4 alphabets at least!');
             sendData = false;
         }
     });
 
     $('#regSurname').on('input', function () {
         let input = $(this);
-        let is_surname = input.val();
+        let re = /([A-Za-z]{4,16})/i;
+        let is_surname = re.test(input.val());
         if (is_surname) {
             input.removeClass("reg-table-td-input").addClass("reg-table-td-ok");
             input.removeClass("reg-table-td-error").addClass("reg-table-td-ok");
@@ -326,7 +336,7 @@
         else {
             input.removeClass("reg-table-td-input").addClass("reg-table-td-error");
             input.removeClass("reg-table-td-ok").addClass("reg-table-td-error");
-            $('#errorSurname').text('This field is required!');
+            $('#errorSurname').text('Value must be 4 alphabets at least!');
             sendData = false;
         }
     });
@@ -351,7 +361,7 @@
 
     $('#regEmail').on('input', function () {
         let input = $(this);
-        let re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        let re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+/;
         let is_email = re.test(input.val());
         if (is_email)
         {
@@ -396,7 +406,7 @@
                     Username: $('#regUsername').val(),
                     Password: $('#regPass').val()
                 },
-                success: function (data) {
+                success: function () {
                     $('#regUsername').removeClass("reg-table-td-input").addClass("reg-table-td-ok");
                     $('#regUsername').removeClass("reg-table-td-error").addClass("reg-table-td-ok");
                     $('#errorUsername').text(' ');

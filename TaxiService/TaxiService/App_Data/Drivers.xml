@@ -1,77 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Drivers>
-  <Driver Id="119b31ed-02e9-4e33-82e0-1acac9f39c7b">
-    <Id>119b31ed-02e9-4e33-82e0-1acac9f39c7b</Id>
+  <Driver Id="8f78a1d2-c022-457b-ae73-424c049a2be9">
+    <Id>8f78a1d2-c022-457b-ae73-424c049a2be9</Id>
     <Username>Driver</Username>
     <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
-    <Name>Djordje</Name>
-    <Surname>Pesnica</Surname>
-    <Jmbg>1254254325443</Jmbg>
-    <Phone>0605342354</Phone>
-    <Email>djoka@taxins.com</Email>
+    <Name>Predrag</Name>
+    <Surname>Stankovic</Surname>
+    <Jmbg>1212121212121</Jmbg>
+    <Phone>4555555</Phone>
+    <Email>stanke@taxins.com</Email>
     <Gender>Male</Gender>
-    <Role>Driver</Role>
-    <Occupied>false</Occupied>
     <IsBanned>false</IsBanned>
-    <X>45.2587591</X>
-    <Y>19.8386296</Y>
-    <Address>Војводе Шупљикца 2, Нови Сад 21101</Address>
-    <CarId>2</CarId>
-    <ModelYear>2015</ModelYear>
-    <RegNumber>NS222TX</RegNumber>
-    <Type>Bez_Naznake</Type>
-  </Driver>
-  <Driver Id="48eaa55e-1911-4c19-8727-61b4e4907202">
-    <Id>48eaa55e-1911-4c19-8727-61b4e4907202</Id>
-    <Username>Driver2</Username>
-    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
-    <Name>Pera</Name>
-    <Surname>Udarac</Surname>
-    <Jmbg>1254254325443</Jmbg>
-    <Phone>0605342354</Phone>
-    <Email>sarma@taxins.com</Email>
-    <Gender>Male</Gender>
-    <Role>Driver</Role>
-    <Occupied>false</Occupied>
-    <IsBanned>false</IsBanned>
-    <X>45.2622559</X>
-    <Y>19.8188044</Y>
-    <Address>Руменачка 33, Нови Сад 21113</Address>
-    <CarId>2</CarId>
-    <ModelYear>2016</ModelYear>
-    <RegNumber>NS325TX</RegNumber>
-    <Type>Bez_Naznake</Type>
-  </Driver>
-  <Driver Id="a9e3a986-4a26-44ee-a215-bab40d2533db">
-    <Id>a9e3a986-4a26-44ee-a215-bab40d2533db</Id>
-    <Username>Driver3</Username>
-    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
-    <Name>Nikola</Name>
-    <Surname>Zrnic</Surname>
-    <Jmbg>1234325323245</Jmbg>
-    <Phone>324442134</Phone>
-    <Email>zrna96@gmail.com</Email>
-    <Gender>Male</Gender>
     <Role>Driver</Role>
     <Occupied>true</Occupied>
+    <X>45.2649908</X>
+    <Y>19.8316440508735</Y>
+    <Address>Булевар Јаше Томића ББ, Нови Сад 21000</Address>
+    <CarId>1</CarId>
+    <ModelYear>2020</ModelYear>
+    <RegNumber>NS333TX</RegNumber>
+    <Type>Car</Type>
+  </Driver>
+  <Driver Id="3d8a48ca-d39d-4d83-bb1b-f9d4863ee0d9">
+    <Id>3d8a48ca-d39d-4d83-bb1b-f9d4863ee0d9</Id>
+    <Username>Driver2</Username>
+    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
+    <Name>Boris</Name>
+    <Surname>Vranicar</Surname>
+    <Jmbg>3243235235253</Jmbg>
+    <Phone>1342142</Phone>
+    <Email>borko@taxins.com</Email>
+    <Gender>Male</Gender>
     <IsBanned>false</IsBanned>
-    <X>45.2568356</X>
-    <Y>19.8316839</Y>
-    <Address>Branimira Ćosića 10, Novi Sad 21101</Address>
-    <CarId>3</CarId>
+    <Role>Driver</Role>
+    <Occupied>true</Occupied>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>2</CarId>
     <ModelYear>2018</ModelYear>
+    <RegNumber>NS245TX</RegNumber>
+    <Type>Car</Type>
+  </Driver>
+  <Driver Id="68d43ffa-4148-4e20-82fc-2082497a5884">
+    <Id>68d43ffa-4148-4e20-82fc-2082497a5884</Id>
+    <Username>Driver3</Username>
+    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
+    <Name>Igor</Name>
+    <Surname>Djurakovic</Surname>
+    <Jmbg>4884484848485</Jmbg>
+    <Phone>3848484</Phone>
+    <Email>djura@taxins.com</Email>
+    <Gender>Male</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Driver</Role>
+    <Occupied>false</Occupied>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>3</CarId>
+    <ModelYear>2006</ModelYear>
     <RegNumber>NS244TX</RegNumber>
     <Type>Car</Type>
   </Driver>
-  <Driver Id="191c3687-35bf-43ea-90b2-d18e62b7db24">
-    <Id>191c3687-35bf-43ea-90b2-d18e62b7db24</Id>
+  <Driver Id="f37e1ea9-c375-4251-8cdb-125e8fae0e5b">
+    <Id>f37e1ea9-c375-4251-8cdb-125e8fae0e5b</Id>
     <Username>Driver4</Username>
     <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
-    <Name>Sonja</Name>
-    <Surname>Marinkovic</Surname>
-    <Jmbg>3423542435662</Jmbg>
-    <Phone>34242312</Phone>
-    <Email>sonja@gmail.com</Email>
+    <Name>Katica</Name>
+    <Surname>Katic</Surname>
+    <Jmbg>3494848848484</Jmbg>
+    <Phone>393883</Phone>
+    <Email>katica@taxins.com</Email>
     <Gender>Female</Gender>
     <IsBanned>false</IsBanned>
     <Role>Driver</Role>
@@ -79,30 +79,177 @@
     <X>0</X>
     <Y>0</Y>
     <Address>garage</Address>
-    <CarId>1</CarId>
-    <ModelYear>2014</ModelYear>
-    <RegNumber>NS205TX</RegNumber>
-    <Type>Bez_Naznake</Type>
+    <CarId>4</CarId>
+    <ModelYear>2005</ModelYear>
+    <RegNumber>NS5333TX</RegNumber>
+    <Type>Car</Type>
   </Driver>
-  <Driver Id="f02b184e-21b6-462a-baed-05c973122429">
-    <Id>f02b184e-21b6-462a-baed-05c973122429</Id>
+  <Driver Id="9425a728-90ab-4ae8-acae-434ff064e8d3">
+    <Id>9425a728-90ab-4ae8-acae-434ff064e8d3</Id>
     <Username>Driver5</Username>
     <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
-    <Name>Suzana</Name>
-    <Surname>Jovicic</Surname>
-    <Jmbg>2346423432345</Jmbg>
-    <Phone>342534</Phone>
-    <Email>suza@taxins.com</Email>
+    <Name>Milica</Name>
+    <Surname>Mrvic</Surname>
+    <Jmbg>7812734273554</Jmbg>
+    <Phone>4847847</Phone>
+    <Email>mica@taxins.com</Email>
     <Gender>Female</Gender>
     <IsBanned>false</IsBanned>
     <Role>Driver</Role>
     <Occupied>false</Occupied>
-    <X>45.2571111</X>
-    <Y>19.8344797</Y>
-    <Address>Булевар ослобођења 65, Нови Сад 21101</Address>
-    <CarId>4</CarId>
-    <ModelYear>2015</ModelYear>
-    <RegNumber>NS5343TX</RegNumber>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>5</CarId>
+    <ModelYear>2568</ModelYear>
+    <RegNumber>NS344TX</RegNumber>
+    <Type>Car</Type>
+  </Driver>
+  <Driver Id="1c4aabbf-d867-4d28-9588-d36e0b9de15c">
+    <Id>1c4aabbf-d867-4d28-9588-d36e0b9de15c</Id>
+    <Username>Driver6</Username>
+    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
+    <Name>Voza</Name>
+    <Surname>Vozac</Surname>
+    <Jmbg>5314535425345</Jmbg>
+    <Phone>324324</Phone>
+    <Email>voza@taxins.com</Email>
+    <Gender>Male</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Driver</Role>
+    <Occupied>false</Occupied>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>22</CarId>
+    <ModelYear>2018</ModelYear>
+    <RegNumber>NS2222TX</RegNumber>
+    <Type>Car</Type>
+  </Driver>
+  <Driver Id="22a40d3d-7acd-4014-9610-e4e2620c6aa6">
+    <Id>22a40d3d-7acd-4014-9610-e4e2620c6aa6</Id>
+    <Username>Driver7</Username>
+    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
+    <Name>Jovan</Name>
+    <Surname>Popadic</Surname>
+    <Jmbg>3423324342342</Jmbg>
+    <Phone>3424234</Phone>
+    <Email>joca@taxins.com</Email>
+    <Gender>Male</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Driver</Role>
+    <Occupied>false</Occupied>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>22</CarId>
+    <ModelYear>2412</ModelYear>
+    <RegNumber>NS245TX</RegNumber>
+    <Type>Kombi</Type>
+  </Driver>
+  <Driver Id="05e7235a-d423-4026-aa30-cfebdbce20ab">
+    <Id>05e7235a-d423-4026-aa30-cfebdbce20ab</Id>
+    <Username>Driver8</Username>
+    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
+    <Name>Trfko</Name>
+    <Surname>Trfic</Surname>
+    <Jmbg>3548354835484</Jmbg>
+    <Phone>204040</Phone>
+    <Email>trfko@taxins.com</Email>
+    <Gender>Male</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Driver</Role>
+    <Occupied>false</Occupied>
+    <X>45.2670744</X>
+    <Y>19.8419641</Y>
+    <Address>Koste Šokice 5, Novi Sad 21138</Address>
+    <CarId>34</CarId>
+    <ModelYear>2951</ModelYear>
+    <RegNumber>NS221TX</RegNumber>
+    <Type>Kombi</Type>
+  </Driver>
+  <Driver Id="a6ba5ba1-a617-4d5a-8b4f-3a5869cdd1d6">
+    <Id>a6ba5ba1-a617-4d5a-8b4f-3a5869cdd1d6</Id>
+    <Username>Driver9</Username>
+    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
+    <Name>Imee</Name>
+    <Surname>Prezime</Surname>
+    <Jmbg>3422343423424</Jmbg>
+    <Phone>3422423</Phone>
+    <Email>ime@taxins.com</Email>
+    <Gender>Male</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Driver</Role>
+    <Occupied>false</Occupied>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>324</CarId>
+    <ModelYear>2334</ModelYear>
+    <RegNumber>NS3434TX</RegNumber>
+    <Type>Kombi</Type>
+  </Driver>
+  <Driver Id="bf891748-f91a-4b10-a883-bec94630accc">
+    <Id>bf891748-f91a-4b10-a883-bec94630accc</Id>
+    <Username>Driver10</Username>
+    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
+    <Name>Ohoo</Name>
+    <Surname>Ohoho</Surname>
+    <Jmbg>2134124244242</Jmbg>
+    <Phone>244323</Phone>
+    <Email>oho@taxins.com</Email>
+    <Gender>Female</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Driver</Role>
+    <Occupied>true</Occupied>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>23</CarId>
+    <ModelYear>2445</ModelYear>
+    <RegNumber>NS533TX</RegNumber>
+    <Type>Kombi</Type>
+  </Driver>
+  <Driver Id="800bcced-f01a-4483-a1e7-c3483fbc247a">
+    <Id>800bcced-f01a-4483-a1e7-c3483fbc247a</Id>
+    <Username>Driver11</Username>
+    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
+    <Name>Asus</Name>
+    <Surname>Nitro</Surname>
+    <Jmbg>4214242142424</Jmbg>
+    <Phone>24124412</Phone>
+    <Email>asus@taxins.com</Email>
+    <Gender>Male</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Driver</Role>
+    <Occupied>false</Occupied>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>234</CarId>
+    <ModelYear>5332</ModelYear>
+    <RegNumber>ZU552DE</RegNumber>
+    <Type>Kombi</Type>
+  </Driver>
+  <Driver Id="a84741e9-0a63-4aea-b73a-d9a15c1eaf58">
+    <Id>a84741e9-0a63-4aea-b73a-d9a15c1eaf58</Id>
+    <Username>Driver12</Username>
+    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
+    <Name>Opaa</Name>
+    <Surname>Cupaa</Surname>
+    <Jmbg>2443333444433</Jmbg>
+    <Phone>3243423</Phone>
+    <Email>nas@dva.skupa</Email>
+    <Gender>Female</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Driver</Role>
+    <Occupied>false</Occupied>
+    <X>0</X>
+    <Y>0</Y>
+    <Address>garage</Address>
+    <CarId>56</CarId>
+    <ModelYear>3245</ModelYear>
+    <RegNumber>NA222SK</RegNumber>
     <Type>Kombi</Type>
   </Driver>
 </Drivers>

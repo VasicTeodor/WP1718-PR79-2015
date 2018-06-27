@@ -443,7 +443,7 @@ namespace TaxiService.Repository
             }
             else
             {
-                return null;
+                return new List<Drive>();
             }
         }
 
@@ -593,7 +593,7 @@ namespace TaxiService.Repository
             }
             else
             {
-                return null;
+                return new List<Drive>();
             }
         }
 

@@ -151,7 +151,7 @@ namespace TaxiService.Controllers
             update = DataRepository._driveRepo.RetriveDriveById(driveId);
             driver = DataRepository._driverRepo.RetriveDriverById(drivenBy);
 
-            if (update != null && driver != null)
+            if (update != null && driver != null && driver.Occupied == false)
             {
                 if(update.State == Enums.Status.Created)
                 {
@@ -204,7 +204,7 @@ namespace TaxiService.Controllers
                 driver.Occupied = false;
                 DataRepository._driverRepo.DriverOccupation(driver);
                 DataRepository._driveRepo.FinishDrive(update);
-                return Request.CreateResponse(HttpStatusCode.OK, update);
+                return Request.CreateResponse(HttpStatusCode.OK, driver);
             }
             else
             {

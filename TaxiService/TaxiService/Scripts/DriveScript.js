@@ -211,6 +211,7 @@ function QuitDrive(elem) {
         });
 
         $("#blurBackground").fadeIn('slow', 'swing');
+        $('#btnExitComment').hide();
         $("#displayCommentForm").fadeIn('slow', 'swing');
     }
 }
@@ -311,7 +312,10 @@ function DriverDrive(elem) {
             },
             success: function (data) {
                 sessionStorage.setItem('activeUser', JSON.stringify(data));
+                let text = elem.id;
+                let dispEdit = text.replace('btnAcceptDrive', 'btnEditDrive');
                 $('#' + elem.id).fadeOut('slow', 'swing');
+                $('#' + dispEdit).fadeIn('slow', 'swing');
             },
             statusCode: {
                 410: function () {
@@ -524,7 +528,7 @@ $(document).ready(function () {
                             alert('This drive is not active anymore.');
                             drives();
                         } else {
-                            alert("Your drive is acceppted, you can not edit it anymore.")
+                            alert("Your drive is acceppted, you can not edit it anymore.");
                             myDrives();
                         }
                     },
@@ -560,7 +564,7 @@ $(document).ready(function () {
             price: $('#drivePrice').val().replace(/\./,',')
         };
 
-        if (price) {
+        if (price && $('#drivePrice').val()) {
             $.ajax({
                 type: 'PUT',
                 url: '/api/Driver/UpdateDrive',
@@ -573,6 +577,7 @@ $(document).ready(function () {
                 success: function (data) {
                     updateDriverLocation($('#driveDestinationAddress').val(), $('#driveDestinationAddressX').val(), $('#driveDestinationAddressY').val());
                     myDrives();
+                    sessionStorage.setItem('activeUser', JSON.stringify(data));
                     $("#blurBackground").fadeOut('slow', 'swing');
                     $("#displayNewDrive").fadeOut('slow', 'swing');
                     formReset();
@@ -592,51 +597,55 @@ $(document).ready(function () {
         var token = sessionStorage.getItem('accessToken');
         var user = JSON.parse(sessionStorage.getItem('activeUser'));
 
-        let uri = '/api/';
-        let drive;
-        if (user.role === 'Driver') {
-            drive = {
-                driveId: updateDriveId,
-                drivedBy: user.id,
-                state: $('#driverFinishedState').val(),
-                text: $('#commentText').val(),
-                grade: $('#commentGrade').val()
-            };
+        let comment = $('#commentText').val().toString();
+        if (comment.length > 10) {
+            let uri = '/api/';
+            let drive;
+            if (user.role === 'Driver') {
+                drive = {
+                    driveId: updateDriveId,
+                    drivedBy: user.id,
+                    state: $('#driverFinishedState').val(),
+                    text: $('#commentText').val(),
+                    grade: $('#commentGrade').val()
+                };
 
-            uri += 'Driver/FailedDrive';
-        } else {
-            drive = {
-                driveId: updateDriveId,
-                orderedBy: user.id,
-                text: $('#commentText').val(),
-                grade: $('#commentGrade').val()
-            };
+                uri += 'Driver/FailedDrive';
+            } else {
+                drive = {
+                    driveId: updateDriveId,
+                    orderedBy: user.id,
+                    text: $('#commentText').val(),
+                    grade: $('#commentGrade').val()
+                };
 
-            uri += 'Customer/AddComment';
-        }
-
-        $.ajax({
-            type: 'PUT',
-            url: uri,
-            data: JSON.stringify(drive),
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            headers: {
-                'Authorization': 'Basic ' + token.toString()
-            },
-            success: function (data) {
-                myDrives();
-                $("#blurBackground").fadeOut('slow', 'swing');
-                $("#displayCommentForm").fadeOut('slow', 'swing');
-                formReset();
-            },
-            error: function () {
+                uri += 'Customer/AddComment';
             }
-        });
 
-        $("#blurBackground").fadeOut('slow', 'swing');
-        $("#displayCommentForm").fadeOut('slow', 'swing');
-        updateDriveId = '';
+            $.ajax({
+                type: 'PUT',
+                url: uri,
+                data: JSON.stringify(drive),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Basic ' + token.toString()
+                },
+                success: function (data) {
+                    myDrives();
+                    $("#blurBackground").fadeOut('slow', 'swing');
+                    $("#displayCommentForm").fadeOut('slow', 'swing');
+                    formReset();
+                },
+                error: function () {
+                }
+            });
+
+            $('#btnExitComment').show();
+            $("#blurBackground").fadeOut('slow', 'swing');
+            $("#displayCommentForm").fadeOut('slow', 'swing');
+            updateDriveId = '';
+        }
     });
 
     $('#btnDriverAllDrives').click(drives);
@@ -647,7 +656,6 @@ $(document).ready(function () {
         var user = JSON.parse(sessionStorage.getItem('activeUser'));
         
         let filters;
-        if (user.role === 'Customer') {
             filters = {
                 userRole: user.role,
                 userId: user.id,
@@ -658,17 +666,15 @@ $(document).ready(function () {
                 gradeFrom: $('#filterGradeFrom').val(),
                 gradeTo: $('#filterGradeTo').val(),
                 priceFrom: $('#filterPriceFrom').val().replace(/\./,','),
-                priceTo: $('#filterPriceTo').val().replace(/\./,',')
-            };
-            
-        } else {
-            filters = {
-                userRole: user.role,
-                userId: user.id,
+                priceTo: $('#filterPriceTo').val().replace(/\./, ','),
                 searchRole: $('#filterRole').val(),
                 filterName: $('#filterName').val(),
-                filterSurname: $('#filterSurname').val()
-            };
+                filterSurname: $('#filterSurname').val(),
+                whatDrives: $('#selectDrives').val(),
+                drivesNearMe: $('#drivesNear').val()
+        };
+
+        if (user.role !== 'Customer') {
             filtersOn = true;
         }
 
@@ -722,8 +728,8 @@ $(document).ready(function () {
     $('#driveCar').on('change', function () {
         var user = JSON.parse(sessionStorage.getItem('activeUser'));
 
-        if (user.role === 'Dispatcher') {
-            freeDrivers($('#driveCar').val());
+        if (user.role === 'Dispatcher' && $('#driveAddressX').val()) {
+            freeDriversLocation($('#driveCar').val(), $('#driveAddressX').val(), $('#driveAddressY').val());
         }
     });
 

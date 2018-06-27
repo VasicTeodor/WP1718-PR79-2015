@@ -64,8 +64,8 @@
                         <button id="btnNewDrive" class="edit-new-drive">New drive</button>
                         <button id="btnDriveFilters" class="edit-drive-filters">Filters</button>
                         <button id="btnDriverLocation" class="edit-new-drive">Change Location</button>
-                        <button id="btnDriverAllDrives" class="edit-drive-filters">All Drives</button>
                         <br />
+                        <button id="btnDriverAllDrives" class="all-drive-dispatcher">All Drives</button>
                         <button id="btnDispatcherAllDrives" class="all-drive-dispatcher">All Drives</button>
                         <div class="tableWrapFilters">
                             <div id="filtersTable" style="display: none;">
@@ -135,8 +135,8 @@
                                         <td>Search by Price:</td>
                                     </tr>
                                     <tr class="customer-filters">
-                                        <td>From:<input type="text" id="filterPriceFrom" /></td>
-                                        <td>To:<input type="text" id="filterPriceTo" /></td>
+                                        <td>From:<br /><input type="text" id="filterPriceFrom" /></td>
+                                        <td>To:<br /><input type="text" id="filterPriceTo" /></td>
                                     </tr>
                                     <tr class="admin-filters">
                                         <td>Search by name:</td>
@@ -151,6 +151,24 @@
                                             <select id="filterRole">
                                                 <option value="Driver">Driver</option>
                                                 <option value="Customer">Customer</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr class="admin/driver-filters">
+                                        <td>Search drives:</td>
+                                        <td>
+                                            <select id="selectDrives">
+                                                <option value="My">My Drives</option>
+                                                <option value="All">All Drives</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr class="driver-filters">
+                                        <td>Drives Near Me:</td>
+                                        <td>
+                                            <select id="drivesNear">
+                                                <option value="No">No</option>
+                                                <option value="Yes">Yes</option>
                                             </select>
                                         </td>
                                     </tr>

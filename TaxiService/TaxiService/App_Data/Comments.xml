@@ -1,139 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Comments>
-  <Comment Id="4396ab22-61b8-47af-bd8b-c00568a64177">
-    <CommentId>4396ab22-61b8-47af-bd8b-c00568a64177</CommentId>
-    <CommentedOn>47431110-8dda-4442-bb50-48e985c1e03d</CommentedOn>
-    <CreatedById>119b31ed-02e9-4e33-82e0-1acac9f39c7b</CreatedById>
-    <CreatedOn>2018-06-21T04:32:59.6052151+02:00</CreatedOn>
-    <Description>Pukla guma na putu</Description>
+  <Comment Id="a90a1c03-55d1-44a7-b0b2-0bca73df1f11">
+    <CommentId>a90a1c03-55d1-44a7-b0b2-0bca73df1f11</CommentId>
+    <CommentedOn>8256304b-d63b-4522-8912-fdb1ff620169</CommentedOn>
+    <CreatedById>8f78a1d2-c022-457b-ae73-424c049a2be9</CreatedById>
+    <CreatedOn>2018-06-26T23:19:24.3555792+02:00</CreatedOn>
+    <Description>Auto se pokvario pri izlasku iz garaze.</Description>
     <Grade>0</Grade>
   </Comment>
-  <Comment Id="2bc17949-9f2b-4dcc-8b4a-4020e496702f">
-    <CommentId>2bc17949-9f2b-4dcc-8b4a-4020e496702f</CommentId>
-    <CommentedOn>04a94705-fdec-40dd-afd2-a3eb51b429ae</CommentedOn>
-    <CreatedById>73c6b055-9a49-47b5-b372-259d66afd752</CreatedById>
-    <CreatedOn>2018-06-21T14:41:02.7393235+02:00</CreatedOn>
-    <Description>Povezao me komsija</Description>
-    <Grade>0</Grade>
-  </Comment>
-  <Comment Id="7292b1a1-d137-4c21-8065-4a2d1780163c">
-    <CommentId>7292b1a1-d137-4c21-8065-4a2d1780163c</CommentId>
-    <CommentedOn>04a94705-fdec-40dd-afd2-a3eb51b429ae</CommentedOn>
-    <CreatedById>73c6b055-9a49-47b5-b372-259d66afd752</CreatedById>
-    <CreatedOn>2018-06-21T14:42:12.8590693+02:00</CreatedOn>
-    <Description>Povezao me komsija</Description>
-    <Grade>0</Grade>
-  </Comment>
-  <Comment Id="38bddcb4-486e-4fa0-be5e-9c40e5af5c8e">
-    <CommentId>38bddcb4-486e-4fa0-be5e-9c40e5af5c8e</CommentId>
-    <CommentedOn>015f2e63-df82-4086-8074-f090135a95a1</CommentedOn>
-    <CreatedById>73c6b055-9a49-47b5-b372-259d66afd752</CreatedById>
-    <CreatedOn>2018-06-21T14:46:56.1994071+02:00</CreatedOn>
-    <Description>Pocela je kisa</Description>
-    <Grade>4</Grade>
-  </Comment>
-  <Comment Id="707e1144-5bcd-44e0-9dd3-db315afe8c6c">
-    <CommentId>707e1144-5bcd-44e0-9dd3-db315afe8c6c</CommentId>
-    <CommentedOn>015f2e63-df82-4086-8074-f090135a95a1</CommentedOn>
-    <CreatedById>73c6b055-9a49-47b5-b372-259d66afd752</CreatedById>
-    <CreatedOn>2018-06-21T14:47:29.7830202+02:00</CreatedOn>
-    <Description>Pocela je kisa</Description>
+  <Comment Id="6475b3a7-9977-4ec1-a3bb-87bee217ac75">
+    <CommentId>6475b3a7-9977-4ec1-a3bb-87bee217ac75</CommentId>
+    <CommentedOn>8891f031-8cfc-41ac-8d7e-bfaa31a2e83a</CommentedOn>
+    <CreatedById>648f8f98-4abb-4832-98cb-3261a7f401f9</CreatedById>
+    <CreatedOn>2018-06-27T02:20:44.8402574+02:00</CreatedOn>
+    <Description>Voznja je bila savrsena!</Description>
     <Grade>5</Grade>
-  </Comment>
-  <Comment Id="aea616eb-f42a-49b2-9417-16260ce56ea7">
-    <CommentId>aea616eb-f42a-49b2-9417-16260ce56ea7</CommentId>
-    <CommentedOn>ea77bb9d-b846-4368-88a8-811f652fea8e</CommentedOn>
-    <CreatedById>018c725d-8a44-4dab-aa43-c98ac90ff406</CreatedById>
-    <CreatedOn>2018-06-22T18:10:02.5458579+02:00</CreatedOn>
-    <Description>Voznja je bila udobna!</Description>
-    <Grade>5</Grade>
-  </Comment>
-  <Comment Id="b5942af2-a65a-4d28-9da9-ee860134cef7">
-    <CommentId>b5942af2-a65a-4d28-9da9-ee860134cef7</CommentId>
-    <CommentedOn>51ce81ae-7250-41f3-b10e-aee5689c5d2d</CommentedOn>
-    <CreatedById>119b31ed-02e9-4e33-82e0-1acac9f39c7b</CreatedById>
-    <CreatedOn>2018-06-23T18:53:35.3105586+02:00</CreatedOn>
-    <Description>Crko auto</Description>
-    <Grade>1</Grade>
-  </Comment>
-  <Comment Id="b449c9ba-fdac-48d9-985b-9c6b1bcaadd7">
-    <CommentId>b449c9ba-fdac-48d9-985b-9c6b1bcaadd7</CommentId>
-    <CommentedOn>f9a4936e-8f3f-44b2-a4bc-4c6ebca02596</CommentedOn>
-    <CreatedById>018c725d-8a44-4dab-aa43-c98ac90ff406</CreatedById>
-    <CreatedOn>2018-06-24T00:52:17.4320074+02:00</CreatedOn>
-    <Description>Sve je bilo vrh</Description>
-    <Grade>5</Grade>
-  </Comment>
-  <Comment Id="c3247a53-82b7-4742-a66a-fddb5311e00e">
-    <CommentId>c3247a53-82b7-4742-a66a-fddb5311e00e</CommentId>
-    <CommentedOn>2fd3e4ea-ac84-4bb5-b623-dada2b4afb57</CommentedOn>
-    <CreatedById>119b31ed-02e9-4e33-82e0-1acac9f39c7b</CreatedById>
-    <CreatedOn>2018-06-24T23:23:04.2826642+02:00</CreatedOn>
-    <Description>Doslo je do sudara na putu, nisam mogao doci do musterije.</Description>
-    <Grade>0</Grade>
-  </Comment>
-  <Comment Id="5c664370-b76d-4a83-9f21-781dd0500b33">
-    <CommentId>5c664370-b76d-4a83-9f21-781dd0500b33</CommentId>
-    <CommentedOn>707f91a7-8448-4de3-8346-19d7d3d954ff</CommentedOn>
-    <CreatedById>d4189454-c5a6-4cb7-a1a8-5dfa53097a1c</CreatedById>
-    <CreatedOn>2018-06-26T01:57:44.4135452+02:00</CreatedOn>
-    <Description>Nije mi potreban taksi idem busom</Description>
-    <Grade>0</Grade>
-  </Comment>
-  <Comment Id="0fb6a093-a4ee-485b-9156-3b587ff53062">
-    <CommentId>0fb6a093-a4ee-485b-9156-3b587ff53062</CommentId>
-    <CommentedOn>1acf2027-8979-4d18-9b03-731d1be0d2ef</CommentedOn>
-    <CreatedById>d4189454-c5a6-4cb7-a1a8-5dfa53097a1c</CreatedById>
-    <CreatedOn>2018-06-26T02:02:13.3123186+02:00</CreatedOn>
-    <Description>Nije mi potreban taksi idem busom</Description>
-    <Grade>0</Grade>
-  </Comment>
-  <Comment Id="fcc9376a-2846-42e7-8572-da7c7f868005">
-    <CommentId>fcc9376a-2846-42e7-8572-da7c7f868005</CommentId>
-    <CommentedOn>e2d161d1-7683-4738-9ead-ced666f02760</CommentedOn>
-    <CreatedById>d4189454-c5a6-4cb7-a1a8-5dfa53097a1c</CreatedById>
-    <CreatedOn>2018-06-26T02:02:43.2885372+02:00</CreatedOn>
-    <Description>Nije mi potreban taksi idem busom</Description>
-    <Grade>0</Grade>
-  </Comment>
-  <Comment Id="5d7d3311-d802-4a1c-89f9-d96517fe0bc7">
-    <CommentId>5d7d3311-d802-4a1c-89f9-d96517fe0bc7</CommentId>
-    <CommentedOn>8236dc1a-de0b-422e-9c18-50ac18f21369</CommentedOn>
-    <CreatedById>d4189454-c5a6-4cb7-a1a8-5dfa53097a1c</CreatedById>
-    <CreatedOn>2018-06-26T02:03:19.1273479+02:00</CreatedOn>
-    <Description>Nije mi potreban taksi idem busom</Description>
-    <Grade>0</Grade>
-  </Comment>
-  <Comment Id="cd316a7c-229a-4f70-b099-b71856c760b3">
-    <CommentId>cd316a7c-229a-4f70-b099-b71856c760b3</CommentId>
-    <CommentedOn>1e15ba04-ad8c-4251-baac-ca94a632120f</CommentedOn>
-    <CreatedById>d4189454-c5a6-4cb7-a1a8-5dfa53097a1c</CreatedById>
-    <CreatedOn>2018-06-26T02:03:37.4344204+02:00</CreatedOn>
-    <Description>Nije mi potreban taksi idem busom</Description>
-    <Grade>0</Grade>
-  </Comment>
-  <Comment Id="5e04728c-c747-4d1e-846b-d81c04943a58">
-    <CommentId>5e04728c-c747-4d1e-846b-d81c04943a58</CommentId>
-    <CommentedOn>0f94a2c0-6b62-4c01-b5b0-c0e4507c8d2e</CommentedOn>
-    <CreatedById>d4189454-c5a6-4cb7-a1a8-5dfa53097a1c</CreatedById>
-    <CreatedOn>2018-06-26T02:03:50.0024258+02:00</CreatedOn>
-    <Description>Nije mi potreban taksi idem busom</Description>
-    <Grade>0</Grade>
-  </Comment>
-  <Comment Id="51740220-1515-4304-8a10-a9b035b59822">
-    <CommentId>51740220-1515-4304-8a10-a9b035b59822</CommentId>
-    <CommentedOn>a201b5cc-08c5-425c-8b97-5286d1bc30db</CommentedOn>
-    <CreatedById>d4189454-c5a6-4cb7-a1a8-5dfa53097a1c</CreatedById>
-    <CreatedOn>2018-06-26T02:04:54.7157747+02:00</CreatedOn>
-    <Description>Predomislio sam se</Description>
-    <Grade>0</Grade>
-  </Comment>
-  <Comment Id="56ab98de-6129-43ef-9237-2b1401b0b9e5">
-    <CommentId>56ab98de-6129-43ef-9237-2b1401b0b9e5</CommentId>
-    <CommentedOn>acfaf959-09bc-4d25-95bc-fa12b1fbf1c7</CommentedOn>
-    <CreatedById>48eaa55e-1911-4c19-8727-61b4e4907202</CreatedById>
-    <CreatedOn>2018-06-26T02:07:08.4890775+02:00</CreatedOn>
-    <Description>Greska, otisao je sa drugim taksijem</Description>
-    <Grade>0</Grade>
   </Comment>
 </Comments>
