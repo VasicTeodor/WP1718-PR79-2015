@@ -90,11 +90,11 @@
     <CustomerId>f0216476-52f4-49a3-8686-69ba64853dc9</CustomerId>
     <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
     <DriverId>8f78a1d2-c022-457b-ae73-424c049a2be9</DriverId>
-    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
+    <CommentId>ce49b69d-2404-4a0b-8a56-429056b1522b</CommentId>
     <Date>2018-06-26T23:27:01.6685285+02:00</Date>
     <CarType>Car</CarType>
     <Price>0</Price>
-    <State>Accepted</State>
+    <State>Unsuccessful</State>
     <AddressX>45.2564136</AddressX>
     <AddressY>19.8507603</AddressY>
     <AddressA>Dunavska 33, Novi Sad 21101</AddressA>
@@ -105,13 +105,13 @@
   <Drive Id="d615f0ef-767f-4921-8131-912c94351973">
     <Id>d615f0ef-767f-4921-8131-912c94351973</Id>
     <CustomerId>79d2c0fb-34d6-4f94-be79-e46b1c815372</CustomerId>
-    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
-    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
+    <DispatcherId>6c76fe0d-bc81-4c86-a31e-407418072971</DispatcherId>
+    <DriverId>05e7235a-d423-4026-aa30-cfebdbce20ab</DriverId>
     <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
     <Date>2018-06-26T23:29:42.4028915+02:00</Date>
     <CarType>Bez_Naznake</CarType>
     <Price>0</Price>
-    <State>Created</State>
+    <State>Processed</State>
     <AddressX>45.2578135</AddressX>
     <AddressY>19.8245803</AddressY>
     <AddressA>Mičurinova 68a, Novi Sad 21101</AddressA>
@@ -169,5 +169,39 @@
     <DestinationX>45.2649908</DestinationX>
     <DestinationY>19.8316440508735</DestinationY>
     <DestinationAddress>Булевар Јаше Томића ББ, Нови Сад 21000</DestinationAddress>
+  </Drive>
+  <Drive Id="61bebce6-2fe2-42d2-8f0e-45578691bfbd">
+    <Id>61bebce6-2fe2-42d2-8f0e-45578691bfbd</Id>
+    <CustomerId>e20bae91-3077-45b1-ad1c-f098c641f9c1</CustomerId>
+    <DispatcherId>6c76fe0d-bc81-4c86-a31e-407418072971</DispatcherId>
+    <DriverId>1c4aabbf-d867-4d28-9588-d36e0b9de15c</DriverId>
+    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
+    <Date>2018-06-27T15:18:16.4749235+02:00</Date>
+    <CarType>Bez_Naznake</CarType>
+    <Price>0</Price>
+    <State>Processed</State>
+    <AddressX>45.2628574</AddressX>
+    <AddressY>19.8333554</AddressY>
+    <AddressA>Саве Ковачевића 12, Нови Сад 21000</AddressA>
+    <DestinationX>0</DestinationX>
+    <DestinationY>0</DestinationY>
+    <DestinationAddress>Unset</DestinationAddress>
+  </Drive>
+  <Drive Id="8016501a-989e-483b-b605-640007f2b152">
+    <Id>8016501a-989e-483b-b605-640007f2b152</Id>
+    <CustomerId>f0216476-52f4-49a3-8686-69ba64853dc9</CustomerId>
+    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
+    <DriverId>00000000-0000-0000-0000-000000000000</DriverId>
+    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
+    <Date>2018-06-27T20:28:44.479448+02:00</Date>
+    <CarType>Bez_Naznake</CarType>
+    <Price>0</Price>
+    <State>Created</State>
+    <AddressX>45.2593879</AddressX>
+    <AddressY>19.8290317</AddressY>
+    <AddressA>Булевар краља Петра I 31, Нови Сад 21000</AddressA>
+    <DestinationX>0</DestinationX>
+    <DestinationY>0</DestinationY>
+    <DestinationAddress>Unset</DestinationAddress>
   </Drive>
 </Drives>

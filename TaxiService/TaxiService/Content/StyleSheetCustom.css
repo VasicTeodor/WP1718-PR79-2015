@@ -812,6 +812,16 @@ header nav ul {
     text-align: center;
 }
 
+.welcome-txt {
+    margin-top: 35%;
+    width: 100%;
+    text-align: center;
+    font-family: Tahoma;
+    font-size: 25px;
+    font-weight: 900;
+    color: black;
+}
+
 @media only screen and (min-width: 1000px) {
     .cur-drive {
         width: 60vh !important;
@@ -823,6 +833,10 @@ header nav ul {
 
     .cur-drive-table tr td {
         font-size: 20px !important;
+    }
+
+    .welcome-txt{
+        font-size: 30px;
     }
     
     .drive-filters {

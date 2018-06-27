@@ -1,5 +1,7 @@
 ﻿var filtersOn = false;
 var allDrivesOn = false;
+var slideOn = 0;
+var expanded = false;
 
 function generateMenu() {
     if (document.getElementById("menu").style.display == "none") {
@@ -10,11 +12,53 @@ function generateMenu() {
 }
 
 function GetDrivesPeriod() {
-    if (sessionStorage.getItem('accessToken')) {
+    if (sessionStorage.getItem('accessToken') && !expanded) {
         myDrives();
-
-        setTimeout(GetDrivesPeriod, 30000);
+        if (allDrivesOn && !filtersOn) {
+            drives();
+        }
     }
+
+    setTimeout(GetDrivesPeriod, 10000);
+}
+
+function About() {
+    $('#displayBanner').css('backgroundImage', 'url(Images/taxi1.jpg)');
+    $('#bannerBig').empty();
+    $('#bannerBig').append('WE ARE TAXI<br>NOVI SAD');
+    $('#bannerSmall').empty();
+    $('#bannerSmall').append('We are small busines started with wish to supply people <br> in Novi Sad with transporarion on another level. <br/> Our main goal is to make our customers happy.');
+}
+
+function Contact() {
+    $('#displayBanner').css('backgroundImage', 'url(Images/taxi2.jpg)');
+    $('#bannerBig').empty();
+    $('#bannerBig').append('NEED A RIDE? CALL US! <br/> 777-777');
+    $('#bannerSmall').empty();
+    $('#bannerSmall').append('Our dispatcher will find a suitable car for you, <br /> and we will get you going places!');
+}
+
+function StartBanner(){
+    $('#displayBanner').css('backgroundImage', 'url(Images/taxi.jpg)');
+    $('#bannerBig').empty();
+    $('#bannerBig').append('WE ARE TAXI<br>NOVI SAD');
+    $('#bannerSmall').empty();
+    $('#bannerSmall').append('With speciality in transporting people in luxury cars <br> and vans, with low prices.');
+}
+
+function SlideShow() {
+    if (slideOn === 0) {
+        StartBanner();
+        slideOn = 1;
+    } else if (slideOn === 1) {
+        Contact();
+        slideOn = 2;
+    } else if (slideOn === 2) {
+        About();
+        slideOn = 0;
+    }
+
+    setTimeout(SlideShow, 7000);
 }
 
 function formatTime() {
@@ -32,9 +76,11 @@ function showOtherInfo(elem) {
     if (document.getElementById("otherInfo" + elem.id).style.display == "none") {
         $('#otherInfo' + elem.id).slideDown('slow');
         document.getElementById(elem.id).innerHTML = "-";
+        expanded = true;
     } else {
         $('#otherInfo' + elem.id).slideUp('slow');
         document.getElementById(elem.id).innerHTML = "+";
+        expanded = false;
     }
 }
 
@@ -281,6 +327,8 @@ $(document).ready(function () {
 
     GetDrivesPeriod();
 
+    SlideShow();
+
     let displayRegister = function DisplayRegisterForm() {
         $('#btnAddNewDriver').hide();
         $('#btnUpdateAccount').hide();
@@ -383,6 +431,7 @@ $(document).ready(function () {
         $('#displayNewRide').fadeOut('slow', 'swing');
         $('#displayHeader').fadeIn('slow', 'swing');
         $('#displayFooter').fadeIn('slow', 'swing');
+        expanded = false;
     };
 
     $('#btnHomeMenu').click(function () {

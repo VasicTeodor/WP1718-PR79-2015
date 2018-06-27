@@ -260,17 +260,17 @@ namespace TaxiService.Controllers
                                 {
                                     string surname = jToken.Value<string>("filterSurname");
 
-                                    resultDrives.RemoveAll(d => (!d.OrderedBy.Name.Contains(name)) && (!d.OrderedBy.Surname.Contains(surname)));
+                                    resultDrives.RemoveAll(d => (!d.OrderedBy.Name.ToLower().Contains(name.ToLower())) || (!d.OrderedBy.Surname.ToLower().Contains(surname.ToLower())));
                                 }
 
-                                resultDrives.RemoveAll(d => !d.OrderedBy.Name.Contains(name));
+                                resultDrives.RemoveAll(d => !d.OrderedBy.Name.ToLower().Contains(name.ToLower()));
 
                             }
                             else
                             {
                                 string surname = jToken.Value<string>("filterSurname");
 
-                                resultDrives.RemoveAll(d => !d.OrderedBy.Surname.Contains(surname));
+                                resultDrives.RemoveAll(d => !d.OrderedBy.Surname.ToLower().Contains(surname.ToLower()));
                             }
                         }
                         filteredDrives = resultDrives;
@@ -288,17 +288,17 @@ namespace TaxiService.Controllers
                                 {
                                     string surname = jToken.Value<string>("filterSurname");
 
-                                    resultDrives.RemoveAll(d => (!d.DrivedBy.Name.Contains(name)) && (!d.DrivedBy.Surname.Contains(surname)));
+                                    resultDrives.RemoveAll(d => (!d.DrivedBy.Name.ToLower().Contains(name.ToLower())) || (!d.DrivedBy.Surname.ToLower().Contains(surname.ToLower())));
                                 }
 
-                                resultDrives.RemoveAll(d => !d.DrivedBy.Name.Contains(name));
+                                resultDrives.RemoveAll(d => !d.DrivedBy.Name.ToLower().Contains(name.ToLower()));
 
                             }
                             else
                             {
                                 string surname = jToken.Value<string>("filterSurname");
 
-                                resultDrives.RemoveAll(d => !d.DrivedBy.Surname.Contains(surname));
+                                resultDrives.RemoveAll(d => !d.DrivedBy.Surname.ToLower().Contains(surname.ToLower()));
                             }
                         }
                         filteredDrives = resultDrives;

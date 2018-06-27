@@ -289,6 +289,10 @@
                     $('#btnDriverAllDrives').hide();
                     $('#btnDispatcherAllDrives').hide();
                     $('#displayRegister').fadeOut('slow', 'swing', showHome);
+                    $('.admin-filters').hide();
+                    $('.driver-filters').hide();
+                    $('.customer-filters').show();
+                    $('.common-filters').hide();
                     formReset();
                     showHome();
                 },

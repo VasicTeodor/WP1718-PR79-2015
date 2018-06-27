@@ -65,4 +65,17 @@
     <IsBanned>false</IsBanned>
     <Role>Customer</Role>
   </Customer>
+  <Customer Id="e20bae91-3077-45b1-ad1c-f098c641f9c1">
+    <Id>e20bae91-3077-45b1-ad1c-f098c641f9c1</Id>
+    <Username>Customer6</Username>
+    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
+    <Name>Ceca</Name>
+    <Surname>Radovic</Surname>
+    <Jmbg>1123232354643</Jmbg>
+    <Phone>33445667</Phone>
+    <Email>ceca@gmail.com</Email>
+    <Gender>Female</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Customer</Role>
+  </Customer>
 </Customers>

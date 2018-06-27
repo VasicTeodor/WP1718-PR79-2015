@@ -313,6 +313,7 @@ function DriverDrive(elem) {
             success: function (data) {
                 sessionStorage.setItem('activeUser', JSON.stringify(data));
                 let text = elem.id;
+                myDrives();
                 let dispEdit = text.replace('btnAcceptDrive', 'btnEditDrive');
                 $('#' + elem.id).fadeOut('slow', 'swing');
                 $('#' + dispEdit).fadeIn('slow', 'swing');
@@ -518,6 +519,10 @@ $(document).ready(function () {
                 },
                 success: function (data) {
                     myDrives();
+                    if (allDrivesOn) {
+                        drives();
+                        allDrivesOn = false;
+                    }
                     $("#blurBackground").fadeOut('slow', 'swing');
                     $("#displayNewDrive").fadeOut('slow', 'swing');
                     formReset();
@@ -648,8 +653,15 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnDriverAllDrives').click(drives);
-    $('#btnDispatcherAllDrives').click(drives);
+    $('#btnDriverAllDrives').click(function () {
+        filtersOn = false;
+        drives();
+    });
+
+    $('#btnDispatcherAllDrives').click(function () {
+        filtersOn = false;
+        drives();
+    });
 
     $('#btnApplyFilters').click(function () {
         var token = sessionStorage.getItem('accessToken');
@@ -694,6 +706,8 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('#btnResetFilters').click(formReset);
 
     $("#drivePrice").on("keypress keyup blur", function (event) {
         //this.value = this.value.replace(/[^0-9\.]/g,'');

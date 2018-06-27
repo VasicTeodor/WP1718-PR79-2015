@@ -11,6 +11,25 @@ function PrintAllDrives(allDrives) {
         CheckDriverDrives(allDrives);
     }
 
+    if (user.role === 'Dispatcher') {
+        $('#displayCurDrive').empty();
+        $('#displayCurDrive').append('<p id="welcomeTxt" class="welcome-txt">WELCOME ' + user.name + ' ' + user.surname + ',<br /> HAVE A NICE DAY!</p>');
+    }
+
+    if (user.role === 'Customer') {
+        $('#displayCurDrive').empty();
+        $('#displayCurDrive').append('<p id="welcomeTxt" class="welcome-txt">WELCOME ' + user.name + ' ' + user.surname + ',<br /> HAVE A NICE DAY!</p>');
+    }
+
+    if (user.role === 'Customer') {
+        CheckCustomersDrive(allDrives);
+        if (inProgress) {
+            $('#btnNewDrive').prop("disabled", true);
+        } else {
+            $('#btnNewDrive').prop("disabled", false);
+        }
+    }
+
     for (let i = 0; i < allDrives.length; i++) {
 
         let carType = 'Any';
@@ -285,36 +304,33 @@ function PrintAllDrives(allDrives) {
             '</div>');
         counter++;
     }
-
-    if (user.role === 'Customer') {
-        CheckCustomersDrive(allDrives);
-        if (inProgress) {
-            $('#btnNewDrive').prop("disabled", true);
-        } else {
-            $('#btnNewDrive').prop("disabled", false);
-        }
-    }
 }
 
 function CheckCustomersDrive(data) {
+    let user = JSON.parse(sessionStorage.getItem('activeUser'));
+
     for (let i = 0; i < data.length; i++) {
         if (data[i].state === 3 || data[i].state === 4 || data[i].state === 0) {
             inProgress = true;
             break;
         } else {
             $('#displayCurDrive').empty();
+            $('#displayCurDrive').append('<p id="welcomeTxt" class="welcome-txt">WELCOME ' + user.name + ' ' + user.surname + ',<br /> HAVE A NICE DAY!</p>');
             inProgress = false;
         }
     }
 }
 
 function CheckDriverDrives(data) {
+    let user = JSON.parse(sessionStorage.getItem('activeUser'));
+
     for (let i = 0; i < data.length; i++) {
         if (data[i].state === 2 || data[i].state === 3 || data[i].state === 4) {
             driving = true;
             break;
         } else {
             $('#displayCurDrive').empty();
+            $('#displayCurDrive').append('<p id="welcomeTxt" class="welcome-txt">WELCOME ' + user.name + ' ' + user.surname + ',<br /> HAVE A NICE DAY!</p>');
             driving = false;
         }
     }

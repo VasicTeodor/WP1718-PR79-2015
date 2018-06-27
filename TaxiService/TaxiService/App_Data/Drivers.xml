@@ -12,7 +12,7 @@
     <Gender>Male</Gender>
     <IsBanned>false</IsBanned>
     <Role>Driver</Role>
-    <Occupied>true</Occupied>
+    <Occupied>false</Occupied>
     <X>45.2649908</X>
     <Y>19.8316440508735</Y>
     <Address>Булевар Јаше Томића ББ, Нови Сад 21000</Address>
@@ -117,7 +117,7 @@
     <Gender>Male</Gender>
     <IsBanned>false</IsBanned>
     <Role>Driver</Role>
-    <Occupied>false</Occupied>
+    <Occupied>true</Occupied>
     <X>0</X>
     <Y>0</Y>
     <Address>garage</Address>
@@ -159,7 +159,7 @@
     <Gender>Male</Gender>
     <IsBanned>false</IsBanned>
     <Role>Driver</Role>
-    <Occupied>false</Occupied>
+    <Occupied>true</Occupied>
     <X>45.2670744</X>
     <Y>19.8419641</Y>
     <Address>Koste Šokice 5, Novi Sad 21138</Address>

@@ -16,4 +16,12 @@
     <Description>Voznja je bila savrsena!</Description>
     <Grade>5</Grade>
   </Comment>
+  <Comment Id="ce49b69d-2404-4a0b-8a56-429056b1522b">
+    <CommentId>ce49b69d-2404-4a0b-8a56-429056b1522b</CommentId>
+    <CommentedOn>64feb0b9-f4ed-402b-b5fa-685b31383d7d</CommentedOn>
+    <CreatedById>8f78a1d2-c022-457b-ae73-424c049a2be9</CreatedById>
+    <CreatedOn>2018-06-27T16:02:55.6848272+02:00</CreatedOn>
+    <Description>Bila je jako bezobrazna!</Description>
+    <Grade>1</Grade>
+  </Comment>
 </Comments>
