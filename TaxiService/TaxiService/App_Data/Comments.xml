@@ -24,4 +24,36 @@
     <Description>Bila je jako bezobrazna!</Description>
     <Grade>1</Grade>
   </Comment>
+  <Comment Id="e2efd2e9-f112-4ac8-8fbd-96e2a3f439c8">
+    <CommentId>e2efd2e9-f112-4ac8-8fbd-96e2a3f439c8</CommentId>
+    <CommentedOn>8016501a-989e-483b-b605-640007f2b152</CommentedOn>
+    <CreatedById>f0216476-52f4-49a3-8686-69ba64853dc9</CreatedById>
+    <CreatedOn>2018-06-28T00:23:05.9104281+02:00</CreatedOn>
+    <Description>Odlican vozac, udobno vozilo, sve na nivou!</Description>
+    <Grade>5</Grade>
+  </Comment>
+  <Comment Id="99bad19b-0b2e-413b-8553-581ae0fee472">
+    <CommentId>99bad19b-0b2e-413b-8553-581ae0fee472</CommentId>
+    <CommentedOn>324286c4-cfb9-463c-b50c-19ee070d699b</CommentedOn>
+    <CreatedById>8f78a1d2-c022-457b-ae73-424c049a2be9</CreatedById>
+    <CreatedOn>2018-06-28T00:24:36.3493467+02:00</CreatedOn>
+    <Description>Radovi na putu.</Description>
+    <Grade>0</Grade>
+  </Comment>
+  <Comment Id="500b975e-0be7-4467-a0be-2687a9fea1f2">
+    <CommentId>500b975e-0be7-4467-a0be-2687a9fea1f2</CommentId>
+    <CommentedOn>ac139989-4f60-46d0-9be2-a57db0997f51</CommentedOn>
+    <CreatedById>f7cab93d-a171-473f-b222-8f7500b6f8c5</CreatedById>
+    <CreatedOn>2018-06-28T01:40:00.5135048+02:00</CreatedOn>
+    <Description>Pokupio me je brat!</Description>
+    <Grade>3</Grade>
+  </Comment>
+  <Comment Id="045445ac-5a7c-4eb2-ab5e-3ffcb64e038d">
+    <CommentId>045445ac-5a7c-4eb2-ab5e-3ffcb64e038d</CommentId>
+    <CommentedOn>9eea5a75-9b7a-4619-9f14-4c200caea856</CommentedOn>
+    <CreatedById>117d8a9b-2a49-48b1-aad7-81d72b02262a</CreatedById>
+    <CreatedOn>2018-06-28T01:47:42.0840957+02:00</CreatedOn>
+    <Description>Auto se pokvario na putu ka destinaciji.</Description>
+    <Grade>3</Grade>
+  </Comment>
 </Comments>

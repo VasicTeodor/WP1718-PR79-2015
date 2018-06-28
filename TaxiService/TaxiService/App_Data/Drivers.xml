@@ -13,9 +13,9 @@
     <IsBanned>false</IsBanned>
     <Role>Driver</Role>
     <Occupied>false</Occupied>
-    <X>45.2649908</X>
-    <Y>19.8316440508735</Y>
-    <Address>Булевар Јаше Томића ББ, Нови Сад 21000</Address>
+    <X>45.2585935</X>
+    <Y>19.8393325</Y>
+    <Address>Војводе Бојовића 8a, Нови Сад 21101</Address>
     <CarId>1</CarId>
     <ModelYear>2020</ModelYear>
     <RegNumber>NS333TX</RegNumber>
@@ -180,7 +180,7 @@
     <Gender>Male</Gender>
     <IsBanned>false</IsBanned>
     <Role>Driver</Role>
-    <Occupied>false</Occupied>
+    <Occupied>true</Occupied>
     <X>0</X>
     <Y>0</Y>
     <Address>garage</Address>
@@ -222,7 +222,7 @@
     <Gender>Male</Gender>
     <IsBanned>false</IsBanned>
     <Role>Driver</Role>
-    <Occupied>false</Occupied>
+    <Occupied>true</Occupied>
     <X>0</X>
     <Y>0</Y>
     <Address>garage</Address>
@@ -251,5 +251,26 @@
     <ModelYear>3245</ModelYear>
     <RegNumber>NA222SK</RegNumber>
     <Type>Kombi</Type>
+  </Driver>
+  <Driver Id="117d8a9b-2a49-48b1-aad7-81d72b02262a">
+    <Id>117d8a9b-2a49-48b1-aad7-81d72b02262a</Id>
+    <Username>Driver13</Username>
+    <Password>pHU0xeH8Vy0Q9ozOmxTDyw==</Password>
+    <Name>Richard</Name>
+    <Surname>Hamond</Surname>
+    <Jmbg>2144214242422</Jmbg>
+    <Phone>0657585441</Phone>
+    <Email>hamond@taxins.com</Email>
+    <Gender>Male</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Driver</Role>
+    <Occupied>false</Occupied>
+    <X>45.2519053</X>
+    <Y>19.8506535</Y>
+    <Address>Jovana Đorđevića 13, Novi Sad 21101</Address>
+    <CarId>23</CarId>
+    <ModelYear>2018</ModelYear>
+    <RegNumber>NS555TX</RegNumber>
+    <Type>Car</Type>
   </Driver>
 </Drivers>

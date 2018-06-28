@@ -650,6 +650,8 @@ $(document).ready(function () {
             $("#blurBackground").fadeOut('slow', 'swing');
             $("#displayCommentForm").fadeOut('slow', 'swing');
             updateDriveId = '';
+        } else {
+            alert('Please enter text of comment! (Min 10 chars)');
         }
     });
 

@@ -78,4 +78,17 @@
     <IsBanned>false</IsBanned>
     <Role>Customer</Role>
   </Customer>
+  <Customer Id="f7cab93d-a171-473f-b222-8f7500b6f8c5">
+    <Id>f7cab93d-a171-473f-b222-8f7500b6f8c5</Id>
+    <Username>Customer7</Username>
+    <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
+    <Name>Aleksandar</Name>
+    <Surname>Vasic</Surname>
+    <Jmbg>1802199923452</Jmbg>
+    <Phone>13131313</Phone>
+    <Email>vaske@gmail.com</Email>
+    <Gender>Male</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Customer</Role>
+  </Customer>
 </Customers>

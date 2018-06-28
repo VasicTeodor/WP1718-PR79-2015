@@ -27,7 +27,7 @@ function About() {
     $('#bannerBig').empty();
     $('#bannerBig').append('WE ARE TAXI<br>NOVI SAD');
     $('#bannerSmall').empty();
-    $('#bannerSmall').append('We are small busines started with wish to supply people <br> in Novi Sad with transporarion on another level. <br/> Our main goal is to make our customers happy.');
+    $('#bannerSmall').append('We are small busines started with wish to supply people <br> in Novi Sad with transportation on another level. <br/> Our main goal is to make our customers happy.');
 }
 
 function Contact() {
@@ -365,6 +365,9 @@ $(document).ready(function () {
     $('#btnLoginForm').click(login);
     $("#btnLoginMenu").click(login);
 
+    $('#btnConMenu').click(Contact);
+    $('#btnAboMenu').click(About);
+    $('#contactFooter').click(About);
 
     let home = function DisplayHome() {
         $('#displayLoginForm').fadeOut('slow', 'swing');

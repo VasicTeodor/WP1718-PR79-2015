@@ -22,14 +22,21 @@ namespace TaxiService.Controllers
                 !DataRepository._dispatcherRepo.CheckIfDispatcherExists(driver.Username) &&
                 !DataRepository._driverRepo.CheckIfDriverExists(driver.Username))
             {
-                driver.Id = Guid.NewGuid();
-                driver.Role = Enums.Roles.Driver;
-                driver.Password = ServiceSecurity.EncryptData(driver.Password, "password");
-                driver.Occupied = false;
-                driver.IsBanned = false;
-                driver.Location = new Location { Address = "garage", X = 0, Y = 0 };
-                DataRepository._driverRepo.NewDriver(driver);
-                return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driverRepo.RetriveDriverById(driver.Id));
+                if (Validate(driver))
+                {
+                    driver.Id = Guid.NewGuid();
+                    driver.Role = Enums.Roles.Driver;
+                    driver.Password = ServiceSecurity.EncryptData(driver.Password, "password");
+                    driver.Occupied = false;
+                    driver.IsBanned = false;
+                    driver.Location = new Location { Address = "garage", X = 0, Y = 0 };
+                    DataRepository._driverRepo.NewDriver(driver);
+                    return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driverRepo.RetriveDriverById(driver.Id));
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                }
             }
             else
             {
@@ -135,6 +142,46 @@ namespace TaxiService.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
+        }
+
+        private bool Validate(Driver driver)
+        {
+            if (String.IsNullOrEmpty(driver.Name) || driver.Name.Length < 4)
+            {
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(driver.Surname) || driver.Surname.Length < 4)
+            {
+                return false;
+            }
+
+            if (!driver.Email.Contains('@') || !driver.Email.Contains('.'))
+            {
+                return false;
+            }
+
+            if (driver.Phone.ToString().Length < 6)
+            {
+                return false;
+            }
+
+            if (driver.Jmbg.ToString().Length < 13)
+            {
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(driver.Username))
+            {
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(driver.Password))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

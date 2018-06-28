@@ -310,6 +310,7 @@ namespace TaxiService.Controllers
                     if (jToken.Value<string>("drivesNearMe").Equals("Yes"))
                     {
                         Driver driver = DataRepository._driverRepo.RetriveDriverById(user);
+                        resultDrives.RemoveAll(d => (d.DrivedBy == null) || (d.CarType != driver.Car.Type));
                         resultDrives.Sort(delegate (Drive d1, Drive d2)
                         {
                             if (CalculateLength(driver.Location.X, driver.Location.Y, d1.Address.X, d1.Address.Y) < CalculateLength(driver.Location.X, driver.Location.Y, d2.Address.X, d2.Address.Y))
