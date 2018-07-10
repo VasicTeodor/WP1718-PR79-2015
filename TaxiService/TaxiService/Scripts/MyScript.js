@@ -12,7 +12,7 @@ function generateMenu() {
 }
 
 function GetDrivesPeriod() {
-    if (sessionStorage.getItem('accessToken') && !expanded) {
+    if (sessionStorage.getItem('accessToken') && !expanded && !filtersOn) {
         myDrives();
         if (allDrivesOn && !filtersOn) {
             drives();

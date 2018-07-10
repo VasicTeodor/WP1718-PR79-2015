@@ -306,4 +306,38 @@
     <DestinationY>0</DestinationY>
     <DestinationAddress>Unset</DestinationAddress>
   </Drive>
+  <Drive Id="0d034c16-b8c0-40ce-96f9-4c05b11c4ebf">
+    <Id>0d034c16-b8c0-40ce-96f9-4c05b11c4ebf</Id>
+    <CustomerId>f7cab93d-a171-473f-b222-8f7500b6f8c5</CustomerId>
+    <DispatcherId>6c76fe0d-bc81-4c86-a31e-407418072971</DispatcherId>
+    <DriverId>8f78a1d2-c022-457b-ae73-424c049a2be9</DriverId>
+    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
+    <Date>2018-06-28T12:07:13.7618612+02:00</Date>
+    <CarType>Bez_Naznake</CarType>
+    <Price>450.25</Price>
+    <State>Successful</State>
+    <AddressX>45.2629894</AddressX>
+    <AddressY>19.8409099</AddressY>
+    <AddressA>Доситејева 23, Нови Сад 21000</AddressA>
+    <DestinationX>45.2567966</DestinationX>
+    <DestinationY>19.8254273</DestinationY>
+    <DestinationAddress>Slobodana Bajića 46, Novi Sad 21101</DestinationAddress>
+  </Drive>
+  <Drive Id="b9486ddd-cd99-4a64-ae4f-bcb0fe58e2b4">
+    <Id>b9486ddd-cd99-4a64-ae4f-bcb0fe58e2b4</Id>
+    <CustomerId>f7cab93d-a171-473f-b222-8f7500b6f8c5</CustomerId>
+    <DispatcherId>00000000-0000-0000-0000-000000000000</DispatcherId>
+    <DriverId>8f78a1d2-c022-457b-ae73-424c049a2be9</DriverId>
+    <CommentId>00000000-0000-0000-0000-000000000000</CommentId>
+    <Date>2018-06-28T12:09:35.0310357+02:00</Date>
+    <CarType>Bez_Naznake</CarType>
+    <Price>556.45</Price>
+    <State>Successful</State>
+    <AddressX>45.2573209</AddressX>
+    <AddressY>19.8281537</AddressY>
+    <AddressA>Слободана Бајића 20, Нови Сад 21101</AddressA>
+    <DestinationX>45.2463069</DestinationX>
+    <DestinationY>19.8154821</DestinationY>
+    <DestinationAddress>Pavleka Miškine 17, Novi Sad 21000</DestinationAddress>
+  </Drive>
 </Drives>
