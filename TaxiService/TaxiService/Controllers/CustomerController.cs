@@ -52,6 +52,26 @@ namespace TaxiService.Controllers
             DataRepository._driveRepo.AddNewDriveCustomer(drive);
             return Request.CreateResponse(HttpStatusCode.Created, DataRepository._driveRepo.RetriveDriveById(drive.DriveId));
         }
+		
+		[HttpGet]
+        [Route("api/Customer/GetCustomer")]
+        [BasicAuthentication]
+        public HttpResponseMessage GetCustomer([FromUri] string id)
+        {
+            Guid chosenId = Guid.Parse(id);
+
+            Customer customer = null;
+            customer = DataRepository._customerRepo.RetriveCustomerById(chosenId);
+
+            if(customer != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, customer);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+        }
 
         [HttpPut]
         [Route("api/Customer/QuitDrive")]

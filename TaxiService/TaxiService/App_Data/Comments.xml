@@ -56,4 +56,36 @@
     <Description>Auto se pokvario na putu ka destinaciji.</Description>
     <Grade>3</Grade>
   </Comment>
+  <Comment Id="4b388e8d-5bcb-418c-ae02-056f852f86a1">
+    <CommentId>4b388e8d-5bcb-418c-ae02-056f852f86a1</CommentId>
+    <CommentedOn>8891f031-8cfc-41ac-8d7e-bfaa31a2e83a</CommentedOn>
+    <CreatedById>648f8f98-4abb-4832-98cb-3261a7f401f9</CreatedById>
+    <CreatedOn>2018-08-03T22:37:42.9930528+02:00</CreatedOn>
+    <Description>Voznja je bila odlicna. TaxiApp</Description>
+    <Grade>5</Grade>
+  </Comment>
+  <Comment Id="f0a25fc6-ee57-4c42-afd0-6eccc2040ae1">
+    <CommentId>f0a25fc6-ee57-4c42-afd0-6eccc2040ae1</CommentId>
+    <CommentedOn>8891f031-8cfc-41ac-8d7e-bfaa31a2e83a</CommentedOn>
+    <CreatedById>648f8f98-4abb-4832-98cb-3261a7f401f9</CreatedById>
+    <CreatedOn>2018-08-03T22:39:06.9466765+02:00</CreatedOn>
+    <Description>Voznja je bila odlicna. TaxiApp</Description>
+    <Grade>5</Grade>
+  </Comment>
+  <Comment Id="9ae905bf-a838-4a8d-aff5-389bfe40e1e1">
+    <CommentId>9ae905bf-a838-4a8d-aff5-389bfe40e1e1</CommentId>
+    <CommentedOn>8891f031-8cfc-41ac-8d7e-bfaa31a2e83a</CommentedOn>
+    <CreatedById>648f8f98-4abb-4832-98cb-3261a7f401f9</CreatedById>
+    <CreatedOn>2018-08-03T22:43:04.1922387+02:00</CreatedOn>
+    <Description>Odlicna Voznjica</Description>
+    <Grade>5</Grade>
+  </Comment>
+  <Comment Id="5531be68-62ae-4cfe-9d5b-13c59827176b">
+    <CommentId>5531be68-62ae-4cfe-9d5b-13c59827176b</CommentId>
+    <CommentedOn>913da350-2cc8-4777-b858-8256360528eb</CommentedOn>
+    <CreatedById>f7cab93d-a171-473f-b222-8f7500b6f8c5</CreatedById>
+    <CreatedOn>2018-08-03T22:51:50.1353164+02:00</CreatedOn>
+    <Description>Odlican taksista. (TaxiApp)</Description>
+    <Grade>5</Grade>
+  </Comment>
 </Comments>

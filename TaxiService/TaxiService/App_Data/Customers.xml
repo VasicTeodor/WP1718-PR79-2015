@@ -19,9 +19,9 @@
     <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
     <Name>Dalibor</Name>
     <Surname>Vasic</Surname>
-    <Jmbg>5354354354353</Jmbg>
-    <Phone>35252523</Phone>
-    <Email>dado@gmail.com</Email>
+    <Jmbg>3333333333333</Jmbg>
+    <Phone>35252523333</Phone>
+    <Email>dado33@gmail.com</Email>
     <Gender>Male</Gender>
     <IsBanned>false</IsBanned>
     <Role>Customer</Role>
@@ -43,12 +43,12 @@
     <Id>79d2c0fb-34d6-4f94-be79-e46b1c815372</Id>
     <Username>Customer4</Username>
     <Password>aln/kWFm8vFiV5htSY6DfA==</Password>
-    <Name>Petar</Name>
+    <Name>Petra</Name>
     <Surname>Petrovic</Surname>
-    <Jmbg>2142534545554</Jmbg>
-    <Phone>342432</Phone>
-    <Email>rope@gmail.com</Email>
-    <Gender>Male</Gender>
+    <Jmbg>2155555545554</Jmbg>
+    <Phone>34243211</Phone>
+    <Email>petra@gmail.com</Email>
+    <Gender>Female</Gender>
     <IsBanned>false</IsBanned>
     <Role>Customer</Role>
   </Customer>
@@ -87,6 +87,19 @@
     <Jmbg>1802199923452</Jmbg>
     <Phone>13131313</Phone>
     <Email>vaske@gmail.com</Email>
+    <Gender>Male</Gender>
+    <IsBanned>false</IsBanned>
+    <Role>Customer</Role>
+  </Customer>
+  <Customer Id="f877a483-7e84-4e9c-a763-68dc15a763d8">
+    <Id>f877a483-7e84-4e9c-a763-68dc15a763d8</Id>
+    <Username>taxiapp</Username>
+    <Password>hYvziy7NUzNwsVdOjTwJMA==</Password>
+    <Name>Pera</Name>
+    <Surname>Peric</Surname>
+    <Jmbg>1243737377357</Jmbg>
+    <Phone>123421</Phone>
+    <Email>pera@afs.com</Email>
     <Gender>Male</Gender>
     <IsBanned>false</IsBanned>
     <Role>Customer</Role>
